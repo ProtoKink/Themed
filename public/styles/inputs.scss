@@ -64,7 +64,11 @@ input[type="checkbox"]::before {
 
 input[type=range]::-moz-range-track,
 input[type=range]::-webkit-slider-runnable-track {
-  background-color: var(--tmd-element);
+
+  &:not(.hue-input),
+  &:not(.opacity-select) {
+    background-color: var(--tmd-element);
+  }
 }
 
 input[type=range]::-moz-range-thumb,
