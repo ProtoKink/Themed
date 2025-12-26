@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/dDeepLb/Themed-BC#readme",
   "dependencies": {
-    "bc-deeplib": "^2.4.2",
+    "bc-deeplib": "^4.0.0",
     "bondage-club-mod-sdk": "^1.2.0",
     "color": "^5.0.0"
   },
@@ -36,7 +36,7 @@
     "@types/node": "^20.16.3",
     "@typescript-eslint/eslint-plugin": "^8.43.0",
     "@typescript-eslint/parser": "^8.43.0",
-    "bc-stubs": "~121.0.0",
+    "bc-stubs": "123.0.0-Beta.3",
     "chokidar": "^4.0.3",
     "esbuild": "^0.25.9",
     "esbuild-copy-files-plugin": "^1.2.1",
