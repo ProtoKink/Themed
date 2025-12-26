@@ -19,7 +19,7 @@ export class GuiColors extends BaseSubscreen {
 
   get pageStructure(): SettingElement[][] {
     const settings = this.settings;
-    const defaultSettings = getModule<ColorsModule>('ColorsModule').defaultSettings;
+    const defaultSettings = getModule('ColorsModule').defaultSettings;
     const isBaseMode = !modStorage.playerStorage.GlobalModule.doUseAdvancedColoring;
     const baseModeKey = (key: keyof BaseColorsModel) => ['main', 'accent', 'text'].includes(key);
 
@@ -114,7 +114,7 @@ export class GuiColors extends BaseSubscreen {
 
     this.settingsBackup = CommonCloneDeep(this.settings);
 
-    const settings = getModule<ColorsModule>('ColorsModule').settings;
+    const settings = getModule('ColorsModule').settings;
 
     Object.entries(this.settings.base).forEach(([key]) => {
       (document.getElementById(key) as HTMLInputElement)?.addEventListener('input', function () {
@@ -146,7 +146,7 @@ export class GuiColors extends BaseSubscreen {
   }
 
   exit(): void {
-    const settings = getModule<ColorsModule>('ColorsModule').settings;
+    const settings = getModule('ColorsModule').settings;
 
     Object.entries(this.settings.base).forEach(([key]) => {
       const input = document.getElementById(key) as HTMLInputElement;

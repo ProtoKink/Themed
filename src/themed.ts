@@ -1,4 +1,4 @@
-import { BaseMigrator, BaseModule, GUI, GuiImportExport, initMod, modStorage, VersionModule } from 'bc-deeplib/deeplib';
+import { BaseMigrator, BaseModule, GUI, GuiImportExport, initMod, modStorage, ModuleKey, ModulesList, VersionModule } from 'bc-deeplib/deeplib';
 import { loadLoginOptions } from './hooks/login_options';
 import { V140Migrator } from './migrators/v140_migrator';
 import { ColorsModule } from './modules/colors';
@@ -8,7 +8,6 @@ import { GuiRedrawModule } from './modules/gui_redraw';
 import { IntegrationModule } from './modules/integration';
 import { ProfilesModule } from './modules/profiles';
 import { ShareModule } from './modules/share';
-import { MOD_VERSION_CAPTION } from './utilities/mod_definition';
 import { DeeplibMigrator } from './migrators/deeplib_migrator';
 import { GuiReset } from './screens/reset';
 
@@ -22,38 +21,32 @@ import { GuiReset } from './screens/reset';
     new DeeplibMigrator(),
   ];
 
-  const modules: Array<BaseModule> = [
-    new GUI({
+  const modules: Partial<ModulesList> = {
+    GUI: new GUI({
       buttonText: 'Themed',
       identifier: 'Themed',
       image: `${PUBLIC_URL}/images/mod.png`,
     }),
-    new GlobalModule(),
-    new ColorsModule(),
-    new GuiRedrawModule(),
-    new IntegrationModule(),
-    new ProfilesModule(),
-    new CommandsModule(),
-    new ShareModule(),
-    new VersionModule({
+    GlobalModule: new GlobalModule(),
+    ColorsModule: new ColorsModule(),
+    GuiRedrawModule: new GuiRedrawModule(),
+    IntegrationModule: new IntegrationModule(),
+    ProfilesModule: new ProfilesModule(),
+    CommandsModule: new CommandsModule(),
+    ShareModule: new ShareModule(),
+    VersionModule: new VersionModule({
       newVersionMessage: changelog,
       migrators
     })
-  ];
+  };
 
   return initMod({
     beforeLogin: () => loadLoginOptions(),
     initFunction: () => {
       ColorsModule.reloadTheme();
     },
-    modInfo: {
-      info: {
-        name: 'Themed',
-        fullName: 'Themed',
-        version: MOD_VERSION_CAPTION,
-        repository: 'https://github.com/dDeepLb/Themed-BC',
-      }
-    },
+    modName: 'Themed',
+    modRepository: 'https://github.com/dDeepLb/Themed-BC',
     mainMenuOptions: {
       importExportSubscreen: new GuiImportExport({
         customFileExtension: '.tmd',
@@ -62,11 +55,10 @@ import { GuiReset } from './screens/reset';
           ColorsModule.reloadTheme();
         },
       }),
-      repoLink: 'https://github.com/dDeepLb/Themed-BC',
       wikiLink: 'https://github.com/dDeepLb/Themed-BC/wiki',
       resetSubscreen: new GuiReset()
     },
-    modules,
+    modules: modules,
     translationOptions: {
       pathToTranslationsFolder: `${PUBLIC_URL}/translations/`,
     }

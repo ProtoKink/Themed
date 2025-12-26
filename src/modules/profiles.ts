@@ -1,9 +1,6 @@
-import { BaseModule, deepMerge, getModule, modStorage, Subscreen } from 'bc-deeplib/deeplib';
+import { BaseModule, deepMerge, getModule, modStorage, registerModule, Subscreen } from 'bc-deeplib/deeplib';
 import { ProfileSaveModel, ProfilesSettingsModel } from '../models/profiles';
 import { GuiProfiles } from '../screens/profiles';
-import { ColorsModule } from './colors';
-import { GlobalModule } from './global';
-import { IntegrationModule } from './integration';
 
 export class ProfilesModule extends BaseModule {
   get settings(): ProfilesSettingsModel {
@@ -20,9 +17,9 @@ export class ProfilesModule extends BaseModule {
 
   get defaultSettings() {
     const profileDefaults: ProfileSaveModel = {
-      GlobalModule: getModule<GlobalModule>('GlobalModule').defaultSettings,
-      ColorsModule: getModule<ColorsModule>('ColorsModule').defaultSettings,
-      IntegrationModule: getModule<IntegrationModule>('IntegrationModule').defaultSettings
+      GlobalModule: getModule('GlobalModule').defaultSettings,
+      ColorsModule: getModule('ColorsModule').defaultSettings,
+      IntegrationModule: getModule('IntegrationModule').defaultSettings
     };
 
     const data = modStorage.playerStorage?.ProfilesModule || {};
