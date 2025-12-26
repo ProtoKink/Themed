@@ -56,8 +56,9 @@ input[type=checkbox]::before {
   background-color: var(--tmd-accent);
 }
 
-input[type=range]::-moz-range-track,
-input[type=range]::-webkit-slider-runnable-track {
+input[type=range]::-moz-range-track:not(.hue-input), input[type=range]::-moz-range-track:not(.opacity-select),
+input[type=range]::-webkit-slider-runnable-track:not(.hue-input),
+input[type=range]::-webkit-slider-runnable-track:not(.opacity-select) {
   background-color: var(--tmd-element);
 }
 
