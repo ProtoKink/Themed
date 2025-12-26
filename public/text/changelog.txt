@@ -1,3 +1,8 @@
+1.7.1
+• Fix weird line on hue and opacity sliders for color picker
+• Fix critical bug that made mod unusable (thanks Arius~)
+• Update library to 4.0.0
+
 1.7.0
 • Adapt new DOMified screens to be themeable.
 • Add two more colors: Text Shadow and Text Disabled.
@@ -5,6 +10,3 @@
 1.6.2
 • Small fixes.
 
-1.6.1
-• Adapted new preference interface to be themeable.
-• Fixed when in Themed settings the character was unnecessarily forced up.
