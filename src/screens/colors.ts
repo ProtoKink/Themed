@@ -137,7 +137,7 @@ export class GuiColors extends BaseSubscreen {
 
     const menu = document.getElementById('deeplib-nav-menu');
     if (menu) {
-      ElementMenu.PrependItem(menu, typeToggleButton);
+      menu.prepend(typeToggleButton);
     }
 
     this.settingsBackup = CommonCloneDeep(this.settings);
