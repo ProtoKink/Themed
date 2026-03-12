@@ -16,7 +16,7 @@ export class GuiIntegration extends BaseSubscreen {
   }
 
   get pageStructure(): SettingElement[][] {
-    const defaultSettings = getModule<IntegrationModule>('IntegrationModule').defaultSettings;
+    const defaultSettings = getModule('IntegrationModule').defaultSettings;
 
     return [Object.entries(this.settings).map(([key, value]) => { 
       const typedKey = key as keyof IntegrationSettingsModel;

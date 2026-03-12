@@ -81,7 +81,7 @@ function createUI() {
                 }),
                 value
               ]
-            } as HTMLOptions<keyof HTMLElementTagNameMap>;
+            } as HTMLOptions<'label'>;
           })
         ]
       },
