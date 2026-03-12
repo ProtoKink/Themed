@@ -3,6 +3,12 @@ input:not([type="range"]) {
   background: var(--tmd-element);
   color: var(--tmd-text);
   border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
+
+  &:invalid:not(:disabled):not(:read-only) {
+    border-color: var(--tmd-invalid);
+    background-color: color-mix(in srgb, var(--tmd-element) 80%, var(--tmd-invalid) 20%);
+    box-shadow: 0 0 5px 0px var(--tmd-invalid);
+  }
 }
 
 input[type="range"] {

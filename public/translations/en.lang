@@ -59,6 +59,8 @@ colors.setting.theme-type-light = Light
 colors.setting.theme-type.name = Theme type
 colors.setting.theme-type.desc = Decides what type your theme will be considered as. Currenly changes colors of certain icons. For example, dark theme should have white icons, while light theme should have black icons. 
 
+colors.setting.invalid.name = Invalid color
+colors.setting.invalid.desc = Used for indicating invalid elements. For example, when entering invalid hex color.
 colors.setting.equipped.name = Equipped color
 colors.setting.equipped.desc = Used for indicating equipped items in inventory. Requires BC Inventory integration to be enabled.
 colors.setting.crafted.name = Crafted color

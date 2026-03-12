@@ -25,6 +25,7 @@ export type BaseColorsModel = {
 };
 
 export type SpecialColorsModel = {
+  invalid: string;
   equipped: string;
   crafted: string;
   blocked: string;

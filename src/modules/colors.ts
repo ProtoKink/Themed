@@ -11,6 +11,7 @@ const elementColor = primaryColor.lighten(0.2);
 const accentColor = Color('#440171');
 const textColor = Color('#cccccc');
 const specialColors = {
+  invalid: Color('#870c0c'),
   equipped: Color('#3575b5'),
   crafted: Color('#aaa235'),
   blocked: Color('#870c0c'),
@@ -53,6 +54,7 @@ export class ColorsModule extends BaseModule {
         textShadow: textColor.darken(0.2).hex(),
       },
       special: {
+        invalid: specialColors.invalid.hex(),
         equipped: specialColors.equipped.hex(),
         crafted: specialColors.crafted.hex(),
         blocked: specialColors.blocked.hex(),
