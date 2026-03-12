@@ -4,9 +4,15 @@ import { ColorsModule } from '../modules/colors';
 import { _Color } from '../utilities/color';
 import { Dropdown, Input, SettingElement } from 'bc-deeplib/base/elements_typings';
 
-
 export class GuiColors extends BaseSubscreen {
+  static instance: GuiColors;
   settingsBackup: ColorsSettingsModel = {} as ColorsSettingsModel;
+  colorPickerInput: boolean = false;
+
+  constructor() {
+    super(getModule('ColorsModule'));
+    GuiColors.instance = this;
+  }
 
   static override subscreenOptions: SubscreenOptions = {
     name: 'colors',
@@ -56,8 +62,19 @@ export class GuiColors extends BaseSubscreen {
         description: getText(`colors.setting.${key}.desc`),
         setElementValue: () => value ?? defaultSettings.base[typedKey],
         setSettingValue: () => value ?? defaultSettings.base[typedKey],
-        disabled: isBaseMode && !baseModeKey(typedKey)
-      };
+        disabled: isBaseMode && !baseModeKey(typedKey),
+        htmlOptions: {
+          input: {
+            eventListeners: {
+              click: function(ev) {
+                if (this.type !== 'color') return;
+                ev.preventDefault();
+                GuiColors.instance.colorPickerToggle(this, getText(`colors.setting.${key}.name`));
+              }
+            }
+          } as Omit<HTMLOptions<'input'>, 'tag'>
+        }
+      }
     })
       .sort((a, b) => (a.disabled ? 1 : 0) - (b.disabled ? 1 : 0)) as Input[])
 
@@ -71,6 +88,17 @@ export class GuiColors extends BaseSubscreen {
         description: getText(`colors.setting.${key}.desc`),
         setElementValue: () => value ?? defaultSettings.special[typedKey],
         setSettingValue: () => value ?? defaultSettings.special[typedKey],
+        htmlOptions: {
+          input: {
+            eventListeners: {
+              click: function(ev) {
+                if (this.type !== 'color') return;
+                ev.preventDefault();
+                GuiColors.instance.colorPickerToggle(this, getText(`colors.setting.${key}.name`));
+              }
+            }
+          } as Omit<HTMLOptions<'input'>, 'tag'>
+        }
       };
     }));
 
@@ -146,6 +174,14 @@ export class GuiColors extends BaseSubscreen {
   }
 
   exit(): void {
+    if (this.colorPickerInput) {
+      ColorPickerExit(true);
+      document.getElementById("tmd-colors-color-picker-backdrop")?.remove();
+      this.colorPickerInput = false;
+      return;
+    }
+
+    
     const settings = getModule('ColorsModule').settings;
 
     Object.entries(this.settings.base).forEach(([key]) => {
@@ -172,4 +208,63 @@ export class GuiColors extends BaseSubscreen {
 
     super.exit();
   }
+
+  unload(): void {
+    ColorPickerExit(true);
+    super.unload();
+  }
+
+  resize(): void {
+    super.resize();
+    ColorPickerResize(false);
+  }
+
+  private colorPickerToggle(input: HTMLInputElement, title: string) {
+    if (!this.colorPickerInput) {
+      const paddingTop = 75;
+      const paddingRight = 2000 - (1815 + 90);
+      const shape: [number, number, number, number] = [
+        2000 - ColorPicker.defaultShape[2] - paddingRight + 25,
+        paddingTop,
+        ColorPicker.defaultShape[2],
+        1000 - paddingTop * 2,
+      ];
+      ColorPickerInit({
+        colorState: {
+          colors: [input.value || '#ffffff'],
+          defaultColors: ['#ffffff'],
+          opacity: [1],
+          editOpacity: false,
+        },
+        heading: title,
+        shape,
+        onInput: () => null,
+        onExit: ({ colors }, save) => {
+          if (save) {
+            ElementValue(input.id, colors[0]);
+          }
+          this.colorPickerInput = false;
+          document.getElementById('tmd-colors-color-picker-backdrop')?.toggleAttribute('hidden', true);
+        },
+      }).then(colorPicker => {
+        let backdrop = document.getElementById('tmd-colors-color-picker-backdrop');
+        if (!backdrop) {
+          ElementCreate({
+            tag: 'div',
+            attributes: { id: 'tmd-colors-color-picker-backdrop' },
+            children: [colorPicker],
+            parent: document.body,
+            style: { 'background-color': 'rgba(0, 0, 0, 0.3)', width: '100%', height: '100%', position: 'absolute' },
+          });
+        } else {
+          backdrop.toggleAttribute('hidden', false);
+        }
+      });
+    } else {
+      ColorPickerHide();
+      document.getElementById('tmd-colors-color-picker-backdrop')?.toggleAttribute('hidden', true);
+    }
+    this.colorPickerInput = !this.colorPickerInput;
+  }
+  
 }
