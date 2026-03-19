@@ -130,7 +130,7 @@ var Themed = (() => {
         _a2.menu.append(r);
       }
       if (this.options.doShowTitle) {
-        let n = c.createLabel({ id: "deeplib-subscreen-title", label: d(`${this.options.name}.title`).replace("$ModVersion", "1.7.1") });
+        let n = c.createLabel({ id: "deeplib-subscreen-title", label: d(`${this.options.name}.title`).replace("$ModVersion", "1.8.0") });
         g.appendToSubscreen(n);
       }
       if (this.options.doShowExitButton) {
@@ -633,7 +633,7 @@ var Themed = (() => {
   var w;
   function st(t) {
     import("https://cdn.jsdelivr.net/npm/bondage-club-mod-sdk@1.2.0/+esm").then(() => {
-      if (I = new E({ name: t.modName, fullName: t.modName, version: "1.7.1", repository: t.modRepository }), w = t.modName, u = new X(t.modName), p = new V(w), N.injectInline("deeplib-style", $), p.debug("Init wait"), !CurrentScreen || CurrentScreen === "Login") {
+      if (I = new E({ name: t.modName, fullName: t.modName, version: "1.8.0", repository: t.modRepository }), w = t.modName, u = new X(t.modName), p = new V(w), N.injectInline("deeplib-style", $), p.debug("Init wait"), !CurrentScreen || CurrentScreen === "Login") {
         t.beforeLogin?.();
         let i = I.hookFunction("LoginResponse", 0, (n, o) => {
           p.debug("Init! LoginResponse caught: ", n), o(n);
@@ -654,7 +654,7 @@ var Themed = (() => {
       be();
       return;
     }
-    await t.initFunction?.(), t.mainMenuOptions && x("GUI") && k.setOptions({ ...t.mainMenuOptions, repoLink: t.modRepository }), window[t.modName + "Loaded"] = true, p.log(`Loaded! Version: ${"1.7.1"}`);
+    await t.initFunction?.(), t.mainMenuOptions && x("GUI") && k.setOptions({ ...t.mainMenuOptions, repoLink: t.modRepository }), window[t.modName + "Loaded"] = true, p.log(`Loaded! Version: ${"1.8.0"}`);
   }
   __name(te, "te");
   s(te, "init");
@@ -741,7 +741,7 @@ var Themed = (() => {
       super(), e ?? (e = {}), _a6.newVersionMessage = e.newVersionMessage, e.migrators && (_a6.migrators = e.migrators, _a6.migrators.sort((i, n) => i.migrationVersion.localeCompare(n.migrationVersion))), _a6.beforeEach = e.beforeEach, _a6.afterEach = e.afterEach, _a6.beforeAll = e.beforeAll, _a6.afterAll = e.afterAll;
     }
     load() {
-      _a6.version = "1.7.1", _a6.checkVersionUpdate(), u.playerStorage.GlobalModule.doShowNewVersionMessage && _a6.isItNewVersion && _a6.sendNewVersionMessage();
+      _a6.version = "1.8.0", _a6.checkVersionUpdate(), u.playerStorage.GlobalModule.doShowNewVersionMessage && _a6.isItNewVersion && _a6.sendNewVersionMessage();
     }
     static checkVersionUpdate() {
       let e = _a6.loadVersion(), i = _a6.version;
@@ -1436,7 +1436,7 @@ var Themed = (() => {
     load() {
       if (this.extensionStorage) {
         let e = _a12.dataDecompress(this.extensionStorage || "");
-        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.7.1" } : this.playerStorage = e;
+        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.8.0" } : this.playerStorage = e;
       } else this.playerStorage = {};
     }
     save() {
@@ -3573,8 +3573,10 @@ var Themed = (() => {
   // src/screens/colors.ts
   var _GuiColors = class _GuiColors extends m {
     constructor() {
-      super(...arguments);
+      super(x("ColorsModule"));
       __publicField(this, "settingsBackup", {});
+      __publicField(this, "colorPickerInput", false);
+      _GuiColors.instance = this;
     }
     get settings() {
       return super.settings;
@@ -3613,7 +3615,18 @@ var Themed = (() => {
           description: d(`colors.setting.${key}.desc`),
           setElementValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.base[typedKey], "setElementValue"),
           setSettingValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.base[typedKey], "setSettingValue"),
-          disabled: isBaseMode && !baseModeKey(typedKey)
+          disabled: isBaseMode && !baseModeKey(typedKey),
+          htmlOptions: {
+            input: {
+              eventListeners: {
+                click: /* @__PURE__ */ __name(function(ev) {
+                  if (this.type !== "color") return;
+                  ev.preventDefault();
+                  _GuiColors.instance.colorPickerToggle(this, d(`colors.setting.${key}.name`));
+                }, "click")
+              }
+            }
+          }
         };
       }).sort((a, b2) => (a.disabled ? 1 : 0) - (b2.disabled ? 1 : 0)));
       ret[1].push(...Object.entries(this.settings.special).map(([key, value]) => {
@@ -3624,7 +3637,18 @@ var Themed = (() => {
           label: d(`colors.setting.${key}.name`),
           description: d(`colors.setting.${key}.desc`),
           setElementValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.special[typedKey], "setElementValue"),
-          setSettingValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.special[typedKey], "setSettingValue")
+          setSettingValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.special[typedKey], "setSettingValue"),
+          htmlOptions: {
+            input: {
+              eventListeners: {
+                click: /* @__PURE__ */ __name(function(ev) {
+                  if (this.type !== "color") return;
+                  ev.preventDefault();
+                  _GuiColors.instance.colorPickerToggle(this, d(`colors.setting.${key}.name`));
+                }, "click")
+              }
+            }
+          }
         };
       }));
       return ret;
@@ -3658,7 +3682,7 @@ var Themed = (() => {
       });
       const menu = document.getElementById("deeplib-nav-menu");
       if (menu) {
-        ElementMenu.PrependItem(menu, typeToggleButton);
+        menu.prepend(typeToggleButton);
       }
       this.settingsBackup = CommonCloneDeep(this.settings);
       const settings = x("ColorsModule").settings;
@@ -3688,6 +3712,12 @@ var Themed = (() => {
       });
     }
     exit() {
+      if (this.colorPickerInput) {
+        ColorPickerExit(true);
+        document.getElementById("tmd-colors-color-picker-backdrop")?.remove();
+        this.colorPickerInput = false;
+        return;
+      }
       const settings = x("ColorsModule").settings;
       Object.entries(this.settings.base).forEach(([key]) => {
         const input = document.getElementById(key);
@@ -3707,8 +3737,64 @@ var Themed = (() => {
       });
       super.exit();
     }
+    unload() {
+      ColorPickerExit(true);
+      super.unload();
+    }
+    resize() {
+      super.resize();
+      ColorPickerResize(false);
+    }
+    colorPickerToggle(input, title) {
+      if (!this.colorPickerInput) {
+        const paddingTop = 75;
+        const paddingRight = 2e3 - (1815 + 90);
+        const shape = [
+          2e3 - ColorPicker.defaultShape[2] - paddingRight + 25,
+          paddingTop,
+          ColorPicker.defaultShape[2],
+          1e3 - paddingTop * 2
+        ];
+        ColorPickerInit({
+          colorState: {
+            colors: [input.value || "#ffffff"],
+            defaultColors: ["#ffffff"],
+            opacity: [1],
+            editOpacity: false
+          },
+          heading: title,
+          shape,
+          onInput: /* @__PURE__ */ __name(() => null, "onInput"),
+          onExit: /* @__PURE__ */ __name(({ colors }, save) => {
+            if (save) {
+              ElementValue(input.id, colors[0]);
+            }
+            this.colorPickerInput = false;
+            document.getElementById("tmd-colors-color-picker-backdrop")?.toggleAttribute("hidden", true);
+          }, "onExit")
+        }).then((colorPicker) => {
+          let backdrop = document.getElementById("tmd-colors-color-picker-backdrop");
+          if (!backdrop) {
+            ElementCreate({
+              tag: "div",
+              attributes: { id: "tmd-colors-color-picker-backdrop" },
+              children: [colorPicker],
+              parent: document.body,
+              style: { "background-color": "rgba(0, 0, 0, 0.3)", width: "100%", height: "100%", position: "absolute" }
+            });
+          } else {
+            backdrop.toggleAttribute("hidden", false);
+          }
+        });
+      } else {
+        ColorPickerHide();
+        document.getElementById("tmd-colors-color-picker-backdrop")?.toggleAttribute("hidden", true);
+      }
+      this.colorPickerInput = !this.colorPickerInput;
+    }
   };
   __name(_GuiColors, "GuiColors");
+  __publicField(_GuiColors, "instance");
   __publicField(_GuiColors, "subscreenOptions", {
     name: "colors",
     icon: `${"https://ddeeplb.github.io/Themed-BC/public"}/images/palette.svg`
@@ -3898,7 +3984,72 @@ var Themed = (() => {
     doColorizeImages: [
       ""
     ],
-    doDrawImage(source) {
+    doNotColorizeHTMLImageIncludes: [
+      "Assets/Female3DCG/",
+      "Backgrounds/",
+      "Icons/Struggle/",
+      "Icons/LARP/",
+      "Icons/MagicBattle/",
+      "Screens/",
+      "http",
+      "data:"
+    ],
+    doColorizeHTMLImageIncludes: [
+      "https://ddeeplb.github.io/Themed-BC/public"
+    ],
+    doNotColorizeHTMLImages: [
+      "Icons/Information.svg",
+      "Icons/Search.png",
+      "Icons/CaretUp.svg",
+      "Icons/cross.svg",
+      "Icons/RoomTypeNormal.svg",
+      "Icons/RoomTypeHybrid.svg",
+      "Icons/RoomTypeMap.svg",
+      "Icons/Female.svg",
+      "Icons/Gender.svg",
+      "Icons/Male.svg",
+      "Icons/Accept.png",
+      "Icons/Activity.png",
+      "Icons/Arousal.png",
+      "Icons/Audio.png",
+      "Icons/BlindToggle2.png",
+      "Icons/Cancel.png",
+      "Icons/Cell.png",
+      "Icons/Checked.png",
+      "Icons/ClubCard.png",
+      "Icons/Controller.png",
+      "Icons/Crafting.png",
+      "Icons/Exit.png",
+      "Icons/Explore.png",
+      "Icons/Gavel.png",
+      "Icons/Gender.png",
+      "Icons/Infiltration.png",
+      "Icons/Lock.png",
+      "Icons/LockMenu.png",
+      "Icons/MagicSchool.png",
+      "Icons/Online.png",
+      "Icons/Platform.png",
+      "Icons/Poker.png",
+      "Icons/Search.png",
+      "Icons/Security.png",
+      "Icons/ServiceBell.png",
+      "Icons/Title.png",
+      "Icons/Use.png",
+      "Icons/WinkNone.png",
+      "Icons/Color.png",
+      "Icons/ColorChange.png",
+      "Icons/ColorChangeMulti.png",
+      "Icons/Small/ColorBlocked.png",
+      "Icons/Small/ColorChange.png",
+      "Icons/Small/ColorChangeMulti.png",
+      "Icons/Small/Naked.png",
+      "Icons/Small/Use.png",
+      "Icons/Small/YouTube.png"
+    ],
+    doColorizeHTMLImages: [
+      ""
+    ],
+    doColorizeImage(source) {
       if (!source) return false;
       if (typeof source !== "string") return false;
       let doDraw = true;
@@ -3912,6 +4063,26 @@ var Themed = (() => {
       if (!doDraw) {
         const includesFolder = _Image.doColorizeImageIncludes.some((prefix) => source.startsWith(prefix));
         const includesFile = _Image.doColorizeImages.includes(source);
+        if (includesFolder || includesFile) {
+          doDraw = true;
+        }
+      }
+      return doDraw;
+    },
+    doColorizeHTMLImage(source) {
+      if (!source) return false;
+      if (typeof source !== "string") return false;
+      let doDraw = true;
+      if (doDraw) {
+        const includesFolder = _Image.doNotColorizeHTMLImageIncludes.some((prefix) => source.startsWith(prefix) || source.startsWith("./" + prefix));
+        const includesFile = _Image.doNotColorizeHTMLImages.includes(source);
+        if (includesFolder || includesFile) {
+          doDraw = false;
+        }
+      }
+      if (!doDraw) {
+        const includesFolder = _Image.doColorizeHTMLImageIncludes.some((prefix) => source.startsWith(prefix) || source.startsWith("./" + prefix));
+        const includesFile = _Image.doColorizeHTMLImages.includes(source);
         if (includesFolder || includesFile) {
           doDraw = true;
         }
@@ -4071,7 +4242,7 @@ var Themed = (() => {
       (args, next) => {
         if (!doRedraw()) return next(args);
         if (typeof args[0] !== "string") return next(args);
-        if (!_Image.doDrawImage(args[0])) return next(args);
+        if (!_Image.doColorizeImage(args[0])) return next(args);
         const [Source, Canvas, X2, Y] = args;
         let Options = args[4];
         Options ?? (Options = {});
@@ -4391,6 +4562,25 @@ var Themed = (() => {
   }
   __name(hookDrawTextWrap, "hookDrawTextWrap");
 
+  // src/hooks/gui_redraw/element_button_create.ts
+  function hookElementButtonCreate() {
+    I.hookFunction(
+      "ElementButton.Create",
+      S.Observe,
+      (args, next) => {
+        if (!doRedraw()) return next(args);
+        let [, , options2] = args;
+        options2 ?? (options2 = {});
+        if (!options2.image || typeof options2.image !== "string") return next(args);
+        if (!_Image.doColorizeHTMLImage(options2.image)) return next(args);
+        options2.imageColor = plainColors.accent;
+        return next(args);
+      },
+      ModuleCategory.GuiRedraw
+    );
+  }
+  __name(hookElementButtonCreate, "hookElementButtonCreate");
+
   // src/modules/gui_redraw.ts
   var doRedraw = /* @__PURE__ */ __name(() => {
     return u.playerStorage?.GlobalModule?.modEnabled && u.playerStorage.GlobalModule?.doVanillaGuiOverhaul && CurrentScreen !== "ClubCard";
@@ -4415,6 +4605,7 @@ var Themed = (() => {
       hookDrawTextFit();
       hookDrawText();
       hookDialogGetMenuButtonColor();
+      hookElementButtonCreate();
       if (doRedraw()) this.patchGui();
     }
     patchGui() {
@@ -4433,8 +4624,8 @@ var Themed = (() => {
       I.patchFunction("AppearanceRun", {
         'const ButtonColor = canAccess ? "White" : "#888";': 'const ButtonColor = canAccess ? "%background" : "%disabled";',
         'DrawButton(1635, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", layeringEnabled ? "#fff" : "#aaa", "Icons/Small/Layering.png", TextGet("Layering"), !layeringEnabled);': 'DrawButton(1635, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", layeringEnabled ? "%background" : "%disabled", "Icons/Small/Layering.png", TextGet("Layering"), !layeringEnabled);',
-        'DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "#aaa", null, null, !CanCycleColors);': 'DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "%disabled", null, null, !CanCycleColors);',
-        'DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "#fff" : "#aaa", CanPickColor ? ColorIsSimple ? "Icons/Small/ColorChange.png" : "Icons/Small/ColorChangeMulti.png" : "Icons/Small/ColorBlocked.png", null, !CanPickColor);': 'DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "%background" : "%disabled", CanPickColor ? ColorIsSimple ? "Icons/Small/ColorChange.png" : "Icons/Small/ColorChangeMulti.png" : "Icons/Small/ColorBlocked.png", null, !CanPickColor);'
+        'DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "#aaa", undefined, undefined, !CanCycleColors);': 'DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "%disabled", undefined, undefined, !CanCycleColors);',
+        'DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "#fff" : "#aaa", CanPickColor ? ColorIsSimple ? "Icons/Small/ColorChange.png" : "Icons/Small/ColorChangeMulti.png" : "Icons/Small/ColorBlocked.png", undefined, !CanPickColor);': 'DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "%background" : "%disabled", CanPickColor ? ColorIsSimple ? "Icons/Small/ColorChange.png" : "Icons/Small/ColorChangeMulti.png" : "Icons/Small/ColorBlocked.png", undefined, !CanPickColor);'
       });
       I.patchFunction("ExtendedItemGetButtonColor", {
         'ButtonColor = "#888888";': 'ButtonColor = "%accent";',
@@ -4451,8 +4642,8 @@ var Themed = (() => {
         'DrawButton(500, 825, 300, 64, TextGet("DifficultyChangeMode") + " " + TextGet("DifficultyLevel" + PreferenceDifficultyLevel.toString()), PreferenceDifficultyAccept ? "White" : "#ebebe4", "");': 'DrawButton(500, 825, 300, 64, TextGet("DifficultyChangeMode") + " " + TextGet("DifficultyLevel" + PreferenceDifficultyLevel.toString()), PreferenceDifficultyAccept ? "%background" : "%disabled", "");'
       });
       I.patchFunction("ChatAdminRoomCustomizationRun", {
-        'DrawButton(725, 840, 250, 65, TextGet("Clear"), ChatRoomPlayerIsAdmin() ? "White" : "#ebebe4", null, null, !ChatRoomPlayerIsAdmin());': 'DrawButton(725, 840, 250, 65, TextGet("Clear"), ChatRoomPlayerIsAdmin() ? "%background" : "%disabled", null, null, !ChatRoomPlayerIsAdmin());',
-        'DrawButton(1025, 840, 250, 65, TextGet("Save"), ChatRoomPlayerIsAdmin() ? "White" : "#ebebe4", null, null, !ChatRoomPlayerIsAdmin());': 'DrawButton(1025, 840, 250, 65, TextGet("Save"), ChatRoomPlayerIsAdmin() ? "%background" : "%disabled", null, null, !ChatRoomPlayerIsAdmin());'
+        'DrawButton(725, 840, 250, 65, TextGet("Clear"), canEditCustom ? "White" : "#ebebe4", null, null, !canEditCustom);': 'DrawButton(725, 840, 250, 65, TextGet("Clear"), canEditCustom ? "%background" : "%disabled", null, null, !canEditCustom);',
+        'DrawButton(1025, 840, 250, 65, TextGet("Save"), canEditCustom ? "White" : "#ebebe4", null, null, !canEditCustom);': 'DrawButton(1025, 840, 250, 65, TextGet("Save"), canEditCustom ? "%background" : "%disabled", null, null, !canEditCustom);'
       });
       I.patchFunction("Shop2._AssetElementDraw", {
         'options.Background = "cyan";': 'options.Background = "%hover";',
@@ -4639,6 +4830,7 @@ var Themed = (() => {
   var accentColor = color_default("#440171");
   var textColor = color_default("#cccccc");
   var specialColors2 = {
+    invalid: color_default("#870c0c"),
     equipped: color_default("#3575b5"),
     crafted: color_default("#aaa235"),
     blocked: color_default("#870c0c"),
@@ -4677,6 +4869,7 @@ var Themed = (() => {
           textShadow: textColor.darken(0.2).hex()
         },
         special: {
+          invalid: specialColors2.invalid.hex(),
           equipped: specialColors2.equipped.hex(),
           crafted: specialColors2.crafted.hex(),
           blocked: specialColors2.blocked.hex(),
