@@ -1,3 +1,9 @@
+1.8.0
+• Add new color: Invalid. Used for indicating invalid elements. For example, when entering invalid hex color.
+• Color inputs now use built-in color picker.
+• Colorize icons for HTML buttons.
+• Fix some bugs.
+
 1.7.1
 • Fix weird line on hue and opacity sliders for color picker
 • Fix critical bug that made mod unusable (thanks Arius~)
@@ -6,7 +12,4 @@
 1.7.0
 • Adapt new DOMified screens to be themeable.
 • Add two more colors: Text Shadow and Text Disabled.
-
-1.6.2
-• Small fixes.
 
