@@ -12,7 +12,7 @@ import { hookDrawRoomBackground } from '../hooks/gui_redraw/draw_room_background
 import { hookDrawText } from '../hooks/gui_redraw/draw_text';
 import { hookDrawTextFit } from '../hooks/gui_redraw/draw_text_fit';
 import { hookDrawTextWrap } from '../hooks/gui_redraw/draw_text_wrap';
-;
+import { hookElementButtonCreate } from '../hooks/gui_redraw/element_button_create';
 
 export const doRedraw = () => {
   return modStorage.playerStorage?.GlobalModule?.modEnabled && modStorage.playerStorage.GlobalModule?.doVanillaGuiOverhaul && CurrentScreen !== 'ClubCard';
@@ -36,7 +36,8 @@ export class GuiRedrawModule extends BaseModule {
     hookDrawTextFit();
     hookDrawText();
     hookDialogGetMenuButtonColor();
-
+    hookElementButtonCreate();
+    
     if (doRedraw()) this.patchGui();
   }
 

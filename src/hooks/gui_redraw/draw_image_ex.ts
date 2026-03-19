@@ -11,7 +11,7 @@ export function hookDrawImageEx() {
     (args: Parameters<typeof DrawImageEx>, next: (args: Parameters<typeof DrawImageEx>) => ReturnType<typeof DrawImageEx>) => {
       if (!doRedraw()) return next(args);
       if (typeof args[0] !== 'string') return next(args);
-      if (!_Image.doDrawImage(args[0])) return next(args);
+      if (!_Image.doColorizeImage(args[0])) return next(args);
 
       const [Source, Canvas, X, Y] = args;
       let Options = args[4];
