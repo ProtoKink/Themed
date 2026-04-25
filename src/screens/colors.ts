@@ -114,7 +114,7 @@ export class GuiColors extends BaseSubscreen {
         this.pageStructure.forEach((page) => {
           page.forEach((elm) => {
             if (elm.type == 'color' || elm.type == 'text') {
-              const e = document.getElementById(elm.id);
+              const e = ElementWrap(elm?.id ?? '');
               if (!e) return;
               const elementType = e.getAttribute('type');
 

@@ -30,7 +30,7 @@ export function loadLoginOptions() {
 
     ElementSetSize(ids.optionsSheet, 1000, 500);
   });
-  
+
   const loginExitHook = sdk.hookFunction('LoginUnload', HookPriority.Observe, (args, next) => {
     loginExitHook();
     loginRunHook();
@@ -76,9 +76,9 @@ function createUI() {
                   localSettingsSave();
                   repatchLoginPage();
                 },
-                {
-                  checked: loginOptions[typedKey],
-                }),
+                  {
+                    checked: loginOptions[typedKey],
+                  }),
                 value
               ]
             } as HTMLOptions<'label'>;
