@@ -96,20 +96,6 @@ export class GuiRedrawModule extends BaseModule {
         'ButtonColor = Hover ? "%hover" : "%background";',
     });
 
-    sdk.patchFunction('PreferenceSubscreenDifficultyRun', {
-      'DrawButton(500, 320 + 150 * D, 300, 64, TextGet("DifficultyLevel" + D.toString()), (D == Player.GetDifficulty()) ? "#DDFFDD" : "White", "");':
-        'DrawButton(500, 320 + 150 * D, 300, 64, TextGet("DifficultyLevel" + D.toString()), (D == Player.GetDifficulty()) ? "%accent" : "%background", "");',
-      'DrawButton(500, 825, 300, 64, TextGet("DifficultyChangeMode") + " " + TextGet("DifficultyLevel" + PreferenceDifficultyLevel.toString()), PreferenceDifficultyAccept ? "White" : "#ebebe4", "");':
-        'DrawButton(500, 825, 300, 64, TextGet("DifficultyChangeMode") + " " + TextGet("DifficultyLevel" + PreferenceDifficultyLevel.toString()), PreferenceDifficultyAccept ? "%background" : "%disabled", "");'
-    });
-
-    sdk.patchFunction('ChatAdminRoomCustomizationRun', {
-      'DrawButton(725, 840, 250, 65, TextGet("Clear"), canEditCustom ? "White" : "#ebebe4", null, null, !canEditCustom);':
-        'DrawButton(725, 840, 250, 65, TextGet("Clear"), canEditCustom ? "%background" : "%disabled", null, null, !canEditCustom);',
-      'DrawButton(1025, 840, 250, 65, TextGet("Save"), canEditCustom ? "White" : "#ebebe4", null, null, !canEditCustom);':
-        'DrawButton(1025, 840, 250, 65, TextGet("Save"), canEditCustom ? "%background" : "%disabled", null, null, !canEditCustom);',
-    });
-
     sdk.patchFunction('Shop2._AssetElementDraw', {
       'options.Background = "cyan";':
         'options.Background = "%hover";',
@@ -119,15 +105,6 @@ export class GuiRedrawModule extends BaseModule {
         'options.Background = "%disabled";',
       'options.Background = "pink";':
         'options.Background = "%equipped";',
-    });
-
-    sdk.patchFunction('ChatRoomMenuDraw', {
-      'let color = "White";': 'let color = "%background";',
-      'color = "White";': 'color = "%background";',
-      'color = "Pink";': 'color = "%blocked";',
-      'color = "Yellow";': 'color = "%limited";',
-      'color = ChatRoomGetUpTimer === 0 ? "Yellow" : "Pink";': 'color = ChatRoomGetUpTimer === 0 ? "%limited" : "%blocked";',
-      'color = Player.IsSlow() ? "Yellow" : "White";': 'color = Player.IsSlow() ? "%limited" : "%background";',
     });
 
     this.patched = true;
@@ -142,10 +119,7 @@ export class GuiRedrawModule extends BaseModule {
     sdk.unpatchFunction('AppearanceRun');
 
     sdk.unpatchFunction('ExtendedItemGetButtonColor');
-    sdk.unpatchFunction('PreferenceSubscreenDifficultyRun');
-    sdk.unpatchFunction('ChatAdminRoomCustomizationRun');
     sdk.unpatchFunction('Shop2._AssetElementDraw');
-    sdk.unpatchFunction('ChatRoomMenuDraw');
 
     this.patched = false;
   }

@@ -104,16 +104,16 @@ function patchLoginPage() {
   const loginOptions = window.ThemedLocalData.loginOptions;
 
   if (loginOptions.hideDummy) {
-    sdk.patchFunction('LoginRun', {
-      'DrawCharacter(LoginCharacter, 1400, 100, 0.9);': '',
-    });
+      sdk.patchFunction('LoginRun', {
+        'DrawCharacter(/** @type {NPCCharacter} */ (LoginCharacter), 1400, 100, 0.9);': '',
+      });
 
-    sdk.patchFunction('LoginDoNextThankYou', {
-      'CharacterRelease(LoginCharacter, false);': '',
-      'CharacterAppearanceFullRandom(LoginCharacter);': '',
-      'if (InventoryGet(LoginCharacter, "ItemNeck") != null) InventoryRemove(LoginCharacter, "ItemNeck", false);': '',
-      'CharacterFullRandomRestrain(LoginCharacter)': '',
-    });
+      sdk.patchFunction('LoginDoNextThankYou', {
+        'CharacterRelease(char, false);': '',
+        'CharacterAppearanceFullRandom(char);': '',
+        'if (InventoryGet(char, "ItemNeck") != null) InventoryRemove(char, "ItemNeck", false);': '',
+        'CharacterFullRandomRestrain(char)': '',
+      });
   }
 
   if (loginOptions.hideCredits) {
@@ -124,7 +124,7 @@ function patchLoginPage() {
     });
 
     sdk.patchFunction('LoginDoNextThankYou', {
-      'LoginThankYou = CommonRandomItemFromList(LoginThankYou, LoginThankYouList)': '',
+      'LoginThankYou = CommonRandomItemFromList(LoginThankYou, LoginThankYouList);': '',
     });
   }
 }
