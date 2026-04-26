@@ -3,9 +3,6 @@ import { settingsReset } from '../utilities/data';
 import { ColorsModule } from '../modules/colors';
 
 export class GuiReset extends BaseSubscreen {
-  get name(): string {
-    return 'reset';
-  }
 
   protected static override subscreenOptions: SubscreenOptions = {
     drawCharacter: false,
