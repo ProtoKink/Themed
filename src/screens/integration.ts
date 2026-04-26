@@ -26,7 +26,7 @@ export class GuiIntegration extends BaseSubscreen {
         type: 'checkbox',
         label: getText(`integration.setting.${key}.name`),
         description: getText(`integration.setting.${key}.desc`),
-        setElementValue: () => value ?? defaultSettings[typedKey],
+        setElementValue: () => (value ?? defaultSettings[typedKey]) as boolean,
         setSettingValue: (val) => {
           this.settings[typedKey] = val;
           ColorsModule.reloadTheme();

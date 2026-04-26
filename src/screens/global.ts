@@ -16,7 +16,7 @@ export class GuiGlobal extends BaseSubscreen {
   }
 
   get pageStructure(): SettingElement[][] {
-    const defaultSettings = getModule<GlobalModule>('GlobalModule').defaultSettings;
+    const defaultSettings = getModule('GlobalModule').defaultSettings;
 
     return [Object.entries(this.settings).map(([key, value]) => {
       const typedKey = key as keyof GlobalSettingsModel;
@@ -25,7 +25,7 @@ export class GuiGlobal extends BaseSubscreen {
         type: 'checkbox',
         label: getText(`settings.setting.${typedKey}.name`),
         description: getText(`settings.setting.${typedKey}.desc`),
-        setElementValue: () => value ?? defaultSettings[typedKey],
+        setElementValue: () => (value ?? defaultSettings[typedKey]) as boolean,
         setSettingValue: (val) => {
           this.settings[typedKey] = val;
           ColorsModule.reloadTheme();
