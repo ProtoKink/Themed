@@ -130,7 +130,7 @@ var Themed = (() => {
         _a2.menu.append(r);
       }
       if (this.options.doShowTitle) {
-        let n = c.createLabel({ id: "deeplib-subscreen-title", label: d(`${this.options.name}.title`).replace("$ModVersion", "1.8.0") });
+        let n = c.createLabel({ id: "deeplib-subscreen-title", label: d(`${this.options.name}.title`).replace("$ModVersion", "1.8.1") });
         g.appendToSubscreen(n);
       }
       if (this.options.doShowExitButton) {
@@ -633,7 +633,7 @@ var Themed = (() => {
   var w;
   function st(t) {
     import("https://cdn.jsdelivr.net/npm/bondage-club-mod-sdk@1.2.0/+esm").then(() => {
-      if (I = new E({ name: t.modName, fullName: t.modName, version: "1.8.0", repository: t.modRepository }), w = t.modName, u = new X(t.modName), p = new V(w), N.injectInline("deeplib-style", $), p.debug("Init wait"), !CurrentScreen || CurrentScreen === "Login") {
+      if (I = new E({ name: t.modName, fullName: t.modName, version: "1.8.1", repository: t.modRepository }), w = t.modName, u = new X(t.modName), p = new V(w), N.injectInline("deeplib-style", $), p.debug("Init wait"), !CurrentScreen || CurrentScreen === "Login") {
         t.beforeLogin?.();
         let i = I.hookFunction("LoginResponse", 0, (n, o) => {
           p.debug("Init! LoginResponse caught: ", n), o(n);
@@ -654,7 +654,7 @@ var Themed = (() => {
       be();
       return;
     }
-    await t.initFunction?.(), t.mainMenuOptions && x("GUI") && k.setOptions({ ...t.mainMenuOptions, repoLink: t.modRepository }), window[t.modName + "Loaded"] = true, p.log(`Loaded! Version: ${"1.8.0"}`);
+    await t.initFunction?.(), t.mainMenuOptions && x("GUI") && k.setOptions({ ...t.mainMenuOptions, repoLink: t.modRepository }), window[t.modName + "Loaded"] = true, p.log(`Loaded! Version: ${"1.8.1"}`);
   }
   __name(te, "te");
   s(te, "init");
@@ -741,7 +741,7 @@ var Themed = (() => {
       super(), e ?? (e = {}), _a6.newVersionMessage = e.newVersionMessage, e.migrators && (_a6.migrators = e.migrators, _a6.migrators.sort((i, n) => i.migrationVersion.localeCompare(n.migrationVersion))), _a6.beforeEach = e.beforeEach, _a6.afterEach = e.afterEach, _a6.beforeAll = e.beforeAll, _a6.afterAll = e.afterAll;
     }
     load() {
-      _a6.version = "1.8.0", _a6.checkVersionUpdate(), u.playerStorage.GlobalModule.doShowNewVersionMessage && _a6.isItNewVersion && _a6.sendNewVersionMessage();
+      _a6.version = "1.8.1", _a6.checkVersionUpdate(), u.playerStorage.GlobalModule.doShowNewVersionMessage && _a6.isItNewVersion && _a6.sendNewVersionMessage();
     }
     static checkVersionUpdate() {
       let e = _a6.loadVersion(), i = _a6.version;
@@ -1436,7 +1436,7 @@ var Themed = (() => {
     load() {
       if (this.extensionStorage) {
         let e = _a12.dataDecompress(this.extensionStorage || "");
-        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.8.0" } : this.playerStorage = e;
+        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.8.1" } : this.playerStorage = e;
       } else this.playerStorage = {};
     }
     save() {
@@ -1826,13 +1826,13 @@ var Themed = (() => {
     const loginOptions = window.ThemedLocalData.loginOptions;
     if (loginOptions.hideDummy) {
       I.patchFunction("LoginRun", {
-        "DrawCharacter(LoginCharacter, 1400, 100, 0.9);": ""
+        "DrawCharacter(/** @type {NPCCharacter} */ (LoginCharacter), 1400, 100, 0.9);": ""
       });
       I.patchFunction("LoginDoNextThankYou", {
-        "CharacterRelease(LoginCharacter, false);": "",
-        "CharacterAppearanceFullRandom(LoginCharacter);": "",
-        'if (InventoryGet(LoginCharacter, "ItemNeck") != null) InventoryRemove(LoginCharacter, "ItemNeck", false);': "",
-        "CharacterFullRandomRestrain(LoginCharacter)": ""
+        "CharacterRelease(char, false);": "",
+        "CharacterAppearanceFullRandom(char);": "",
+        'if (InventoryGet(char, "ItemNeck") != null) InventoryRemove(char, "ItemNeck", false);': "",
+        "CharacterFullRandomRestrain(char)": ""
       });
     }
     if (loginOptions.hideCredits) {
@@ -1842,7 +1842,7 @@ var Themed = (() => {
         'DrawText(TextGet("ThankYou") + " " + LoginThankYou, 1625, 53, "Black", "Gray");': ""
       });
       I.patchFunction("LoginDoNextThankYou", {
-        "LoginThankYou = CommonRandomItemFromList(LoginThankYou, LoginThankYouList)": ""
+        "LoginThankYou = CommonRandomItemFromList(LoginThankYou, LoginThankYouList);": ""
       });
     }
   }
@@ -3661,7 +3661,7 @@ var Themed = (() => {
           this.pageStructure.forEach((page) => {
             page.forEach((elm) => {
               if (elm.type == "color" || elm.type == "text") {
-                const e = document.getElementById(elm.id);
+                const e = ElementWrap(elm?.id ?? "");
                 if (!e) return;
                 const elementType = e.getAttribute("type");
                 if (elementType == "color") {
@@ -3812,31 +3812,26 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/appearance_get_preview_image_color.ts
   function hookAppearanceGetPreviewImageColor() {
-    I.hookFunction(
-      "AppearanceGetPreviewImageColor",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        const [c2, item, hover] = args;
-        if (DialogMenuMode === "permissions" && c2.IsPlayer()) {
-          let permission = "allowed";
-          if (InventoryIsPermissionBlocked(c2, item.Asset.Name, item.Asset.Group.Name)) permission = "blocked";
-          else if (InventoryIsPermissionLimited(c2, item.Asset.Name, item.Asset.Group.Name)) permission = "limited";
-          return item.Worn ? specialColors.equipped[hover ? 1 : 0] : specialColors[permission][hover ? 1 : 0];
-        } else {
-          const unusable = item.SortOrder.startsWith(DialogSortOrder.Unusable.toString()) || item.SortOrder.startsWith(DialogSortOrder.TargetFavoriteUnusable.toString()) || item.SortOrder.startsWith(DialogSortOrder.PlayerFavoriteUnusable.toString());
-          const blocked = item.SortOrder.startsWith(DialogSortOrder.Blocked.toString());
-          const limited = item.Icons.includes("AllowedLimited");
-          if (blocked) return specialColors.blocked[hover ? 1 : 0];
-          else if (item.Worn) return specialColors.equipped[hover ? 1 : 0];
-          else if (item.Craft != null && item.Craft.Name != null) return specialColors.crafted[hover ? 1 : 0];
-          else if (unusable) return plainColors.elementDisabled;
-          else if (limited) return specialColors.limited[hover ? 1 : 0];
-          else return hover ? plainColors.elementHover : plainColors.element;
-        }
-      },
-      ModuleCategory.GuiRedraw
-    );
+    I.hookFunction("AppearanceGetPreviewImageColor", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      const [c2, item, hover] = args;
+      if (DialogMenuMode === "permissions" && c2.IsPlayer()) {
+        let permission = "allowed";
+        if (InventoryIsPermissionBlocked(c2, item.Asset.Name, item.Asset.Group.Name)) permission = "blocked";
+        else if (InventoryIsPermissionLimited(c2, item.Asset.Name, item.Asset.Group.Name)) permission = "limited";
+        return item.Worn ? specialColors.equipped[hover ? 1 : 0] : specialColors[permission][hover ? 1 : 0];
+      } else {
+        const unusable = item.SortOrder.startsWith(DialogSortOrder.Unusable.toString()) || item.SortOrder.startsWith(DialogSortOrder.TargetFavoriteUnusable.toString()) || item.SortOrder.startsWith(DialogSortOrder.PlayerFavoriteUnusable.toString());
+        const blocked = item.SortOrder.startsWith(DialogSortOrder.Blocked.toString());
+        const limited = item.Icons.includes("AllowedLimited");
+        if (blocked) return specialColors.blocked[hover ? 1 : 0];
+        else if (item.Worn) return specialColors.equipped[hover ? 1 : 0];
+        else if (item.Craft != null && item.Craft.Name != null) return specialColors.crafted[hover ? 1 : 0];
+        else if (unusable) return plainColors.elementDisabled;
+        else if (limited) return specialColors.limited[hover ? 1 : 0];
+        else return hover ? plainColors.elementHover : plainColors.element;
+      }
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookAppearanceGetPreviewImageColor, "hookAppearanceGetPreviewImageColor");
 
@@ -3858,73 +3853,68 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_back_next_button.ts
   function hookDrawBackNextButton() {
-    I.hookFunction(
-      "DrawBackNextButton",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        const [Left, Top, Width, Height, Label, Color2, Image, , , Disabled] = args;
-        let [, , , , , , , BackText, NextText, , ArrowWidth] = args;
-        if (ArrowWidth == null || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
-        const LeftSplit = Left + ArrowWidth;
-        const RightSplit = Left + Width - ArrowWidth;
-        ControllerAddActiveArea(Left, Top);
-        ControllerAddActiveArea(Left + Width - ArrowWidth, Top);
-        MainCanvas.save();
-        MainCanvas.textAlign = "center";
-        MainCanvas.beginPath();
-        MainCanvas.rect(Left, Top, Width, Height);
-        MainCanvas.fillStyle = plainColors.element;
-        MainCanvas.fillRect(Left, Top, Width, Height);
-        if (MouseIn(Left, Top, Width, Height) && !CommonIsMobile && !Disabled) {
-          MainCanvas.fillStyle = plainColors.elementHover;
-          if (MouseX > RightSplit) {
-            MainCanvas.fillRect(RightSplit, Top, ArrowWidth, Height);
-          } else if (MouseX <= LeftSplit) {
-            MainCanvas.fillRect(Left, Top, ArrowWidth, Height);
-          } else {
-            MainCanvas.fillRect(Left + ArrowWidth, Top, Width - ArrowWidth * 2, Height);
-          }
-        } else if (CommonIsMobile && ArrowWidth < Width / 2 && !Disabled) {
-          MainCanvas.fillStyle = plainColors.elementDisabled;
-          MainCanvas.fillRect(Left, Top, ArrowWidth, Height);
+    I.hookFunction("DrawBackNextButton", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      const [Left, Top, Width, Height, Label, Color2, Image, , , Disabled] = args;
+      let [, , , , , , , BackText, NextText, , ArrowWidth] = args;
+      if (ArrowWidth == null || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
+      const LeftSplit = Left + ArrowWidth;
+      const RightSplit = Left + Width - ArrowWidth;
+      ControllerAddActiveArea(Left, Top);
+      ControllerAddActiveArea(Left + Width - ArrowWidth, Top);
+      MainCanvas.save();
+      MainCanvas.textAlign = "center";
+      MainCanvas.beginPath();
+      MainCanvas.rect(Left, Top, Width, Height);
+      MainCanvas.fillStyle = plainColors.element;
+      MainCanvas.fillRect(Left, Top, Width, Height);
+      if (MouseIn(Left, Top, Width, Height) && !CommonIsMobile && !Disabled) {
+        MainCanvas.fillStyle = plainColors.elementHover;
+        if (MouseX > RightSplit) {
           MainCanvas.fillRect(RightSplit, Top, ArrowWidth, Height);
+        } else if (MouseX <= LeftSplit) {
+          MainCanvas.fillRect(Left, Top, ArrowWidth, Height);
+        } else {
+          MainCanvas.fillRect(Left + ArrowWidth, Top, Width - ArrowWidth * 2, Height);
         }
-        MainCanvas.lineWidth = 2;
-        MainCanvas.strokeStyle = plainColors.accent;
-        MainCanvas.stroke();
-        MainCanvas.closePath();
-        DrawTextFit(Label, Left + Width / 2, Top + Height / 2 + 1, CommonIsMobile ? Width - 6 : Width - 36, Color2);
-        DrawTextFit(Label, Left + Width / 2, Top + Height / 2 + 1, CommonIsMobile ? Width - 6 : Width - 36, "Black");
-        if (Image != null && Image != "") {
-          DrawImage(Image, Left + 2, Top + 2);
-        }
-        ControllerAddActiveArea(Left + Width / 2, Top);
-        MainCanvas.beginPath();
-        MainCanvas.fillStyle = "Black";
-        MainCanvas.moveTo(Left + 15, Top + Height / 5);
-        MainCanvas.lineTo(Left + 5, Top + Height / 2);
-        MainCanvas.lineTo(Left + 15, Top + Height - Height / 5);
-        MainCanvas.stroke();
-        MainCanvas.closePath();
-        MainCanvas.beginPath();
-        MainCanvas.fillStyle = "Black";
-        MainCanvas.moveTo(Left + Width - 15, Top + Height / 5);
-        MainCanvas.lineTo(Left + Width - 5, Top + Height / 2);
-        MainCanvas.lineTo(Left + Width - 15, Top + Height - Height / 5);
-        MainCanvas.stroke();
-        MainCanvas.closePath();
-        MainCanvas.restore();
-        if (CommonIsMobile) return;
-        if (BackText == null) BackText = /* @__PURE__ */ __name(() => "MISSING VALUE FOR: BACK TEXT", "BackText");
-        if (NextText == null) NextText = /* @__PURE__ */ __name(() => "MISSING VALUE FOR: NEXT TEXT", "NextText");
-        if (MouseX >= Left && MouseX <= Left + Width && MouseY >= Top && MouseY <= Top + Height && !Disabled)
-          DrawHoverElements.push(() => {
-            DrawButtonHover(Left, Top, Width, Height, MouseX < LeftSplit ? BackText() : MouseX >= RightSplit ? NextText() : "");
-          });
-      },
-      ModuleCategory.GuiRedraw
-    );
+      } else if (CommonIsMobile && ArrowWidth < Width / 2 && !Disabled) {
+        MainCanvas.fillStyle = plainColors.elementDisabled;
+        MainCanvas.fillRect(Left, Top, ArrowWidth, Height);
+        MainCanvas.fillRect(RightSplit, Top, ArrowWidth, Height);
+      }
+      MainCanvas.lineWidth = 2;
+      MainCanvas.strokeStyle = plainColors.accent;
+      MainCanvas.stroke();
+      MainCanvas.closePath();
+      DrawTextFit(Label, Left + Width / 2, Top + Height / 2 + 1, CommonIsMobile ? Width - 6 : Width - 36, Color2);
+      DrawTextFit(Label, Left + Width / 2, Top + Height / 2 + 1, CommonIsMobile ? Width - 6 : Width - 36, "Black");
+      if (Image != null && Image != "") {
+        DrawImage(Image, Left + 2, Top + 2);
+      }
+      ControllerAddActiveArea(Left + Width / 2, Top);
+      MainCanvas.beginPath();
+      MainCanvas.fillStyle = "Black";
+      MainCanvas.moveTo(Left + 15, Top + Height / 5);
+      MainCanvas.lineTo(Left + 5, Top + Height / 2);
+      MainCanvas.lineTo(Left + 15, Top + Height - Height / 5);
+      MainCanvas.stroke();
+      MainCanvas.closePath();
+      MainCanvas.beginPath();
+      MainCanvas.fillStyle = "Black";
+      MainCanvas.moveTo(Left + Width - 15, Top + Height / 5);
+      MainCanvas.lineTo(Left + Width - 5, Top + Height / 2);
+      MainCanvas.lineTo(Left + Width - 15, Top + Height - Height / 5);
+      MainCanvas.stroke();
+      MainCanvas.closePath();
+      MainCanvas.restore();
+      if (CommonIsMobile) return;
+      if (BackText == null) BackText = /* @__PURE__ */ __name(() => "MISSING VALUE FOR: BACK TEXT", "BackText");
+      if (NextText == null) NextText = /* @__PURE__ */ __name(() => "MISSING VALUE FOR: NEXT TEXT", "NextText");
+      if (MouseX >= Left && MouseX <= Left + Width && MouseY >= Top && MouseY <= Top + Height && !Disabled)
+        DrawHoverElements.push(() => {
+          DrawButtonHover(Left, Top, Width, Height, MouseX < LeftSplit ? BackText() : MouseX >= RightSplit ? NextText() : "");
+        });
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawBackNextButton, "hookDrawBackNextButton");
 
@@ -4104,461 +4094,406 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_button.ts
   function hookDrawButton() {
-    I.hookFunction(
-      "DrawButton",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        const [x2, y, width, height, label, , image, hoveringText, isDisabled] = args;
-        let color = args[5];
-        const isHovering = MouseHovering(x2, y, width, height);
-        const buttonStateSymbol = (() => {
-          if (isDisabled) return "=" /* Disabled */;
-          if (isHovering) return "-" /* Hover */;
-          return "~" /* Base */;
-        })();
-        color = "@" /* FromButton */ + buttonStateSymbol + color;
-        ControllerAddActiveArea(x2, y);
-        drawButtonRect(
-          x2,
-          y,
-          width,
-          height,
-          color,
-          color,
-          color,
-          "%border",
-          "%hover",
-          "%disabled",
-          isHovering,
-          isDisabled ?? false
-        );
-        DrawTextFit(label, x2 + width / 2, y + height / 2 + 1, width - 4, plainColors.text);
-        if (image != null && image != "") {
-          DrawImage(image, x2 + 2, y + 2);
-        }
-        if (hoveringText != null && isHovering) {
-          DrawHoverElements.push(() => DrawButtonHover(x2, y, width, height, hoveringText));
-        }
-      },
-      ModuleCategory.GuiRedraw
-    );
+    I.hookFunction("DrawButton", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      const [x2, y, width, height, label, , image, hoveringText, isDisabled] = args;
+      let color = args[5];
+      const isHovering = MouseHovering(x2, y, width, height);
+      const buttonStateSymbol = (() => {
+        if (isDisabled) return "=" /* Disabled */;
+        if (isHovering) return "-" /* Hover */;
+        return "~" /* Base */;
+      })();
+      color = "@" /* FromButton */ + buttonStateSymbol + color;
+      ControllerAddActiveArea(x2, y);
+      drawButtonRect(
+        x2,
+        y,
+        width,
+        height,
+        color,
+        color,
+        color,
+        "%border",
+        "%hover",
+        "%disabled",
+        isHovering,
+        isDisabled ?? false
+      );
+      DrawTextFit(label, x2 + width / 2, y + height / 2 + 1, width - 4, plainColors.text);
+      if (image != null && image != "") {
+        DrawImage(image, x2 + 2, y + 2);
+      }
+      if (hoveringText != null && isHovering) {
+        DrawHoverElements.push(() => DrawButtonHover(x2, y, width, height, hoveringText));
+      }
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawButton, "hookDrawButton");
 
   // src/hooks/gui_redraw/draw_button_hover.ts
   function hookDrawButtonHover() {
-    I.hookFunction(
-      "DrawButtonHover",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        const [, , Width, Height, HoveringText] = args;
-        let [Left, Top] = args;
-        if (HoveringText == null || HoveringText == "") return next(args);
-        Left = MouseX > 1e3 ? Left - 475 : Left + Width + 25;
-        Top = Top + (Height - 65) / 2;
-        MainCanvas.save();
-        MainCanvas.textAlign = "center";
-        drawRect(Left, Top, 450, 65, plainColors.elementHint, plainColors.accent);
-        DrawTextFit(HoveringText, Left + 225, Top + 33, 444, "Black");
-        MainCanvas.restore();
-      },
-      ModuleCategory.GuiRedraw
-    );
+    I.hookFunction("DrawButtonHover", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      const [, , Width, Height, HoveringText] = args;
+      let [Left, Top] = args;
+      if (HoveringText == null || HoveringText == "") return next(args);
+      Left = MouseX > 1e3 ? Left - 475 : Left + Width + 25;
+      Top = Top + (Height - 65) / 2;
+      MainCanvas.save();
+      MainCanvas.textAlign = "center";
+      drawRect(Left, Top, 450, 65, plainColors.elementHint, plainColors.accent);
+      DrawTextFit(HoveringText, Left + 225, Top + 33, 444, "Black");
+      MainCanvas.restore();
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawButtonHover, "hookDrawButtonHover");
 
   // src/hooks/gui_redraw/draw_checkbox.ts
   function hookDrawCheckbox() {
-    I.hookFunction(
-      "DrawCheckbox",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        const [Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = "Black", CheckImage = "Icons/Checked.png"] = args;
-        const backgroundColor = Disabled ? "%disabled" : "%background";
-        DrawText(Text, Left + 100, Top + 33, TextColor, "");
-        DrawButton(Left, Top, Width, Height, "", backgroundColor, IsChecked ? CheckImage : "", void 0, Disabled);
-      },
-      ModuleCategory.GuiRedraw
-    );
+    I.hookFunction("DrawCheckbox", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      const [Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = "Black", CheckImage = "Icons/Checked.png"] = args;
+      const backgroundColor = Disabled ? "%disabled" : "%background";
+      DrawText(Text, Left + 100, Top + 33, TextColor, "");
+      DrawButton(Left, Top, Width, Height, "", backgroundColor, IsChecked ? CheckImage : "", void 0, Disabled);
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawCheckbox, "hookDrawCheckbox");
 
   // src/hooks/gui_redraw/draw_empty_rect.ts
   function hookDrawEmptyRect() {
-    I.hookFunction(
-      "DrawEmptyRect",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        const [Left, Top, Width, Height, Color2, Thickness] = args;
-        const drawEmptyRect = /* @__PURE__ */ __name((color) => {
-          MainCanvas.beginPath();
-          MainCanvas.rect(Left, Top, Width, Height);
-          MainCanvas.lineWidth = Thickness ?? 2;
-          MainCanvas.strokeStyle = color;
-          MainCanvas.stroke();
-        }, "drawEmptyRect");
-        if (Color2?.startsWith("%" /* Custom */)) {
-          switch (Color2.substring(1).toLowerCase()) {
-            case "border":
-              drawEmptyRect(plainColors.accent);
-              break;
-            case "hover":
-              drawEmptyRect(plainColors.accentHover);
-              break;
-            case "disabled":
-              drawEmptyRect(plainColors.accentDisabled);
-              break;
-            default:
-              next(args);
-              break;
-          }
-        } else {
-          switch (_Color.getHexComputed(Color2).toLowerCase()) {
-            case "#ffffff":
-            case "#dddddd":
-            case "#000000":
-              drawEmptyRect(plainColors.accent);
-              break;
-            default:
-              next(args);
-              break;
-          }
+    I.hookFunction("DrawEmptyRect", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      const [Left, Top, Width, Height, Color2, Thickness] = args;
+      const drawEmptyRect = /* @__PURE__ */ __name((color) => {
+        MainCanvas.beginPath();
+        MainCanvas.rect(Left, Top, Width, Height);
+        MainCanvas.lineWidth = Thickness ?? 2;
+        MainCanvas.strokeStyle = color;
+        MainCanvas.stroke();
+      }, "drawEmptyRect");
+      if (Color2?.startsWith("%" /* Custom */)) {
+        switch (Color2.substring(1).toLowerCase()) {
+          case "border":
+            drawEmptyRect(plainColors.accent);
+            break;
+          case "hover":
+            drawEmptyRect(plainColors.accentHover);
+            break;
+          case "disabled":
+            drawEmptyRect(plainColors.accentDisabled);
+            break;
+          default:
+            next(args);
+            break;
         }
-      },
-      ModuleCategory.GuiRedraw
-    );
+      } else {
+        switch (_Color.getHexComputed(Color2).toLowerCase()) {
+          case "#ffffff":
+          case "#dddddd":
+          case "#000000":
+            drawEmptyRect(plainColors.accent);
+            break;
+          default:
+            next(args);
+            break;
+        }
+      }
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawEmptyRect, "hookDrawEmptyRect");
 
   // src/hooks/gui_redraw/draw_image_ex.ts
   function hookDrawImageEx() {
-    I.hookFunction(
-      "DrawImageEx",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        if (typeof args[0] !== "string") return next(args);
-        if (!_Image.doColorizeImage(args[0])) return next(args);
-        const [Source, Canvas, X2, Y] = args;
-        let Options = args[4];
-        Options ?? (Options = {});
-        Options.HexColor = plainColors.accent;
-        Options.FullAlpha = true;
-        return next([Source, Canvas, X2, Y, Options]);
-      },
-      ModuleCategory.GuiRedraw
-    );
+    I.hookFunction("DrawImageEx", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      if (typeof args[0] !== "string") return next(args);
+      if (!_Image.doColorizeImage(args[0])) return next(args);
+      const [Source, Canvas, X2, Y] = args;
+      let Options = args[4];
+      Options ?? (Options = {});
+      Options.HexColor = plainColors.accent;
+      Options.FullAlpha = true;
+      return next([Source, Canvas, X2, Y, Options]);
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawImageEx, "hookDrawImageEx");
 
   // src/hooks/gui_redraw/draw_preview_box.ts
   function hookDrawPreviewBox() {
-    I.hookFunction(
-      "DrawPreviewBox",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        const [X2, Y, Path, Description, Options] = args;
-        const { Vibrating, Icons, Disabled } = Options || {};
-        let { Foreground, Background, Width, Height } = Options || {};
-        Width = Width || DrawAssetPreviewDefaultWidth;
-        Height = Height || DrawAssetPreviewDefaultHeight;
-        const Padding = 2;
-        const TextGutter = Description ? 44 : 0;
-        Foreground = plainColors.text;
-        Background = Background || plainColors.element;
-        const hover = MouseHovering(X2, Y, Width, Height);
-        if (hover) Background = Background || plainColors.elementHover;
-        if (Disabled) Background = Background || plainColors.elementDisabled;
-        let ImageX = X2 + Padding;
-        let ImageY = Y + Padding;
-        let ImageWidth = Width;
-        let ImageHeight = Height - TextGutter;
-        if (ImageWidth > ImageHeight) {
-          const Ratio = ImageHeight / ImageWidth;
-          ImageWidth *= Ratio;
-          ImageX += (Width - ImageWidth) / 2;
-        } else if (ImageWidth < ImageHeight) {
-          const Ratio = ImageWidth / ImageHeight;
-          ImageHeight *= Ratio;
-          ImageY += (Height - ImageHeight - TextGutter) / 2;
-        }
-        ImageWidth -= 2 * Padding;
-        ImageHeight -= 2 * Padding;
-        if (Vibrating) {
-          ImageX += 1 + Math.floor(Math.random() * 3);
-          ImageY += 1 + Math.floor(Math.random() * 3);
-        }
-        DrawRect(X2, Y, Width, Height, Background);
-        ControllerAddActiveArea(X2, Y);
-        DrawEmptyRect(X2, Y, Width, Height, hover ? plainColors.accentHover : plainColors.accent);
-        if (Path !== "") DrawImageResize(Path, ImageX, ImageY, ImageWidth, ImageHeight);
-        DrawPreviewIcons(Icons ?? [], X2, Y);
-        if (Description) DrawTextFit(Description, X2 + Width / 2, Y + Height - 25, Width - 2 * Padding, Foreground);
-      },
-      ModuleCategory.GuiRedraw
-    );
+    I.hookFunction("DrawPreviewBox", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      const [X2, Y, Path, Description, Options] = args;
+      const { Vibrating, Icons, Disabled } = Options || {};
+      let { Foreground, Background, Width, Height } = Options || {};
+      Width = Width || DrawAssetPreviewDefaultWidth;
+      Height = Height || DrawAssetPreviewDefaultHeight;
+      const Padding = 2;
+      const TextGutter = Description ? 44 : 0;
+      Foreground = plainColors.text;
+      Background = Background || plainColors.element;
+      const hover = MouseHovering(X2, Y, Width, Height);
+      if (hover) Background = Background || plainColors.elementHover;
+      if (Disabled) Background = Background || plainColors.elementDisabled;
+      let ImageX = X2 + Padding;
+      let ImageY = Y + Padding;
+      let ImageWidth = Width;
+      let ImageHeight = Height - TextGutter;
+      if (ImageWidth > ImageHeight) {
+        const Ratio = ImageHeight / ImageWidth;
+        ImageWidth *= Ratio;
+        ImageX += (Width - ImageWidth) / 2;
+      } else if (ImageWidth < ImageHeight) {
+        const Ratio = ImageWidth / ImageHeight;
+        ImageHeight *= Ratio;
+        ImageY += (Height - ImageHeight - TextGutter) / 2;
+      }
+      ImageWidth -= 2 * Padding;
+      ImageHeight -= 2 * Padding;
+      if (Vibrating) {
+        ImageX += 1 + Math.floor(Math.random() * 3);
+        ImageY += 1 + Math.floor(Math.random() * 3);
+      }
+      DrawRect(X2, Y, Width, Height, Background);
+      ControllerAddActiveArea(X2, Y);
+      DrawEmptyRect(X2, Y, Width, Height, hover ? plainColors.accentHover : plainColors.accent);
+      if (Path !== "") DrawImageResize(Path, ImageX, ImageY, ImageWidth, ImageHeight);
+      DrawPreviewIcons(Icons ?? [], X2, Y);
+      if (Description) DrawTextFit(Description, X2 + Width / 2, Y + Height - 25, Width - 2 * Padding, Foreground);
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawPreviewBox, "hookDrawPreviewBox");
 
   // src/hooks/gui_redraw/draw_rect.ts
   function hookDrawRect() {
-    I.hookFunction(
-      "DrawRect",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        const [Left, Top, Width, Height] = args;
-        let color = args[4];
-        const drawRect2 = /* @__PURE__ */ __name((color2) => {
-          next([Left, Top, Width, Height, color2]);
-        }, "drawRect");
-        const hover = MouseIn(Left, Top, Width, Height) ? 1 : 0;
-        if (color?.startsWith("!" /* NoDraw */)) {
-          return next([Left, Top, Width, Height, color.substring(1)]);
-        }
-        const buttonStates = ["-" /* Hover */, "=" /* Disabled */, "~" /* Base */];
-        let buttonStateSymbol = color[0];
-        if (color?.startsWith("@" /* FromButton */)) {
-          color = color.substring(1);
-          buttonStateSymbol = color[0];
-          if (buttonStates.includes(buttonStateSymbol)) {
-            color = color.substring(1);
-          }
-        }
-        if (color?.startsWith("%" /* Custom */)) {
-          switch (color.substring(1)) {
-            case "disabled":
-              color = hover ? color_default(plainColors.elementDisabled).lighten(0.2).hex() : plainColors.elementDisabled;
-              break;
-            case "hover":
-              color = plainColors.elementHover;
-              break;
-            case "background":
-              color = hover ? plainColors.elementHover : plainColors.element;
-              break;
-            case "accent":
-              color = hover ? plainColors.accentHover : plainColors.accent;
-              break;
-            case "allowed":
-            case "equipped":
-            case "crafted":
-            case "limited":
-            case "blocked": {
-              const typedColor = color.substring(1);
-              color = specialColors[typedColor][hover];
-              break;
-            }
-            default:
-              return next(args);
-          }
-        } else {
-          let parsedColor = null;
-          try {
-            if (color[0] === "#" && color.length === 9 || color.startsWith("rgba"))
-              parsedColor = color_default(color.toLowerCase()).hexa().toLowerCase();
-            else
-              parsedColor = color_default(color.toLowerCase()).hex().toLowerCase();
-          } catch {
-            parsedColor = null;
-            return next(args);
-          }
-          switch (parsedColor) {
-            case "#eeeeee":
-            case "#dddddd":
-            case "#cccccc":
-            case "#ffffff":
-            case "#ffff88":
-            case "#ffffff88":
-            case "#ffffffcc":
-            case "#d7f6e9":
-            // LSCG Version Tooltip
-            case "#808080":
-              color = plainColors.element;
-              break;
-            case "#00ffff":
-              color = plainColors.elementHover;
-              break;
-            case "#ffc0cb":
-            case "#ddffdd":
-              color = plainColors.accent;
-              break;
-            case "#888888":
-            case "#ebebe4":
-              color = plainColors.elementDisabled;
-              break;
-            default:
-          }
-        }
+    I.hookFunction("DrawRect", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      const [Left, Top, Width, Height] = args;
+      let color = args[4];
+      const drawRect2 = /* @__PURE__ */ __name((color2) => {
+        next([Left, Top, Width, Height, color2]);
+      }, "drawRect");
+      const hover = MouseIn(Left, Top, Width, Height) ? 1 : 0;
+      if (color?.startsWith("!" /* NoDraw */)) {
+        return next([Left, Top, Width, Height, color.substring(1)]);
+      }
+      const buttonStates = ["-" /* Hover */, "=" /* Disabled */, "~" /* Base */];
+      let buttonStateSymbol = color[0];
+      if (color?.startsWith("@" /* FromButton */)) {
+        color = color.substring(1);
+        buttonStateSymbol = color[0];
         if (buttonStates.includes(buttonStateSymbol)) {
-          let parsedColor = null;
-          try {
-            parsedColor = color_default(color.toLowerCase());
-          } catch {
-            parsedColor = null;
-          }
-          if (parsedColor !== null) {
-            if (buttonStateSymbol === "-" /* Hover */) {
-              color = parsedColor.lighten(0.2).hex();
-            } else if (buttonStateSymbol === "=" /* Disabled */) {
-              color = parsedColor.darken(0.2).hex();
-            }
-            return drawRect2(color);
-          }
+          color = color.substring(1);
         }
-        drawRect2(color);
-      },
-      ModuleCategory.GuiRedraw
-    );
+      }
+      if (color?.startsWith("%" /* Custom */)) {
+        switch (color.substring(1)) {
+          case "disabled":
+            color = hover ? color_default(plainColors.elementDisabled).lighten(0.2).hex() : plainColors.elementDisabled;
+            break;
+          case "hover":
+            color = plainColors.elementHover;
+            break;
+          case "background":
+            color = hover ? plainColors.elementHover : plainColors.element;
+            break;
+          case "accent":
+            color = hover ? plainColors.accentHover : plainColors.accent;
+            break;
+          case "allowed":
+          case "equipped":
+          case "crafted":
+          case "limited":
+          case "blocked": {
+            const typedColor = color.substring(1);
+            color = specialColors[typedColor][hover];
+            break;
+          }
+          default:
+            return next(args);
+        }
+      } else {
+        let parsedColor = null;
+        try {
+          if (color[0] === "#" && color.length === 9 || color.startsWith("rgba"))
+            parsedColor = color_default(color.toLowerCase()).hexa().toLowerCase();
+          else
+            parsedColor = color_default(color.toLowerCase()).hex().toLowerCase();
+        } catch {
+          parsedColor = null;
+          return next(args);
+        }
+        switch (parsedColor) {
+          case "#eeeeee":
+          case "#dddddd":
+          case "#cccccc":
+          case "#ffffff":
+          case "#ffff88":
+          case "#ffffff88":
+          case "#ffffffcc":
+          case "#d7f6e9":
+          // LSCG Version Tooltip
+          case "#808080":
+            color = plainColors.element;
+            break;
+          case "#00ffff":
+            color = plainColors.elementHover;
+            break;
+          case "#ffc0cb":
+          case "#ddffdd":
+            color = plainColors.accent;
+            break;
+          case "#888888":
+          case "#ebebe4":
+            color = plainColors.elementDisabled;
+            break;
+          default:
+        }
+      }
+      if (buttonStates.includes(buttonStateSymbol)) {
+        let parsedColor = null;
+        try {
+          parsedColor = color_default(color.toLowerCase());
+        } catch {
+          parsedColor = null;
+        }
+        if (parsedColor !== null) {
+          if (buttonStateSymbol === "-" /* Hover */) {
+            color = parsedColor.lighten(0.2).hex();
+          } else if (buttonStateSymbol === "=" /* Disabled */) {
+            color = parsedColor.darken(0.2).hex();
+          }
+          return drawRect2(color);
+        }
+      }
+      drawRect2(color);
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawRect, "hookDrawRect");
 
   // src/hooks/gui_redraw/draw_room_background.ts
   function hookDrawRoomBackground() {
-    I.hookFunction(
-      "DrawRoomBackground",
-      S.Observe,
-      ([URL2, ...args], next) => {
-        if (!doRedraw()) return next([URL2, ...args]);
-        if (URL2.includes("Sheet.jpg")) {
-          if (u.playerStorage.GlobalModule.doUseFlatColor) {
-            DrawRect(0, 0, 2e3, 1e3, plainColors.main);
-          } else {
-            next([URL2, ...args]);
-            MainCanvas.save();
-            MainCanvas.globalCompositeOperation = "multiply";
-            DrawRect(0, 0, 2e3, 1e3, plainColors.main);
-            MainCanvas.restore();
-          }
+    I.hookFunction("DrawRoomBackground", S.Observe, ([URL2, ...args], next) => {
+      if (!doRedraw()) return next([URL2, ...args]);
+      if (URL2.includes("Sheet.jpg")) {
+        if (u.playerStorage.GlobalModule.doUseFlatColor) {
+          DrawRect(0, 0, 2e3, 1e3, plainColors.main);
         } else {
           next([URL2, ...args]);
+          MainCanvas.save();
+          MainCanvas.globalCompositeOperation = "multiply";
+          DrawRect(0, 0, 2e3, 1e3, plainColors.main);
+          MainCanvas.restore();
         }
-      },
-      ModuleCategory.GuiRedraw
-    );
+      } else {
+        next([URL2, ...args]);
+      }
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawRoomBackground, "hookDrawRoomBackground");
 
   // src/hooks/gui_redraw/draw_text.ts
   function hookDrawText() {
-    I.hookFunction(
-      "DrawText",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        if (!args[0]) return next(args);
-        if (!args[3]) return next(args);
-        const color = args[3];
-        let parsedColor = color;
-        try {
-          parsedColor = color_default(color.toLowerCase()).hex();
-        } catch (e) {
-          parsedColor = color;
-        }
-        if (parsedColor === "#000000") {
-          args[3] = plainColors.text;
-          args[4] = "";
-        } else {
-          args[4] = "";
-        }
-        next(args);
-      },
-      ModuleCategory.GuiRedraw
-    );
+    I.hookFunction("DrawText", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      if (!args[0]) return next(args);
+      if (!args[3]) return next(args);
+      const color = args[3];
+      let parsedColor = color;
+      try {
+        parsedColor = color_default(color.toLowerCase()).hex();
+      } catch (e) {
+        parsedColor = color;
+      }
+      if (parsedColor === "#000000") {
+        args[3] = plainColors.text;
+        args[4] = "";
+      } else {
+        args[4] = "";
+      }
+      next(args);
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawText, "hookDrawText");
 
   // src/hooks/gui_redraw/draw_text_fit.ts
   function hookDrawTextFit() {
-    I.hookFunction(
-      "DrawTextFit",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        if (!args[0]) return next(args);
-        if (!args[4]) return next(args);
-        let parsedColor = args[4];
-        try {
-          parsedColor = color_default(args[4].toLowerCase()).hex();
-        } catch (e) {
-          parsedColor = args[4];
-        }
-        if (parsedColor === "#000000") {
-          args[4] = plainColors.text;
-        }
-        return next(args);
-      },
-      ModuleCategory.GuiRedraw
-    );
+    I.hookFunction("DrawTextFit", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      if (!args[0]) return next(args);
+      if (!args[4]) return next(args);
+      let parsedColor = args[4];
+      try {
+        parsedColor = color_default(args[4].toLowerCase()).hex();
+      } catch (e) {
+        parsedColor = args[4];
+      }
+      if (parsedColor === "#000000") {
+        args[4] = plainColors.text;
+      }
+      return next(args);
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawTextFit, "hookDrawTextFit");
 
   // src/hooks/gui_redraw/draw_text_wrap.ts
   function hookDrawTextWrap() {
-    I.hookFunction(
-      "DrawTextWrap",
-      S.Observe,
-      (args, next) => {
-        if (!doRedraw()) return next(args);
-        if (!args[0]) return next(args);
-        if (!args[5]) return next(args);
-        const [Text, X2, , Width, Height, ForeColor, BackColor, MaxLine, LineSpacing = 23] = args;
-        let [, , Y, , ,] = args;
-        const isHovering = MouseHovering(X2, Y, Width, Height);
-        if (!Text) return;
-        ControllerAddActiveArea(X2, Y);
-        if (BackColor != null) {
-          if (!isHovering) {
-            drawRect(X2, Y, Width, Height, BackColor, plainColors.accent);
+    I.hookFunction("DrawTextWrap", S.Observe, (args, next) => {
+      if (!doRedraw()) return next(args);
+      if (!args[0]) return next(args);
+      if (!args[5]) return next(args);
+      const [Text, X2, , Width, Height, ForeColor, BackColor, MaxLine, LineSpacing = 23] = args;
+      let [, , Y, , ,] = args;
+      const isHovering = MouseHovering(X2, Y, Width, Height);
+      if (!Text) return;
+      ControllerAddActiveArea(X2, Y);
+      if (BackColor != null) {
+        if (!isHovering) {
+          drawRect(X2, Y, Width, Height, BackColor, plainColors.accent);
+        } else {
+          drawRect(X2, Y, Width, Height, plainColors.elementHover, plainColors.accentHover);
+        }
+      }
+      let TextSize;
+      if (MaxLine != null) {
+        TextSize = MainCanvas.font;
+        GetWrapTextSize(Text, Width, MaxLine);
+      }
+      let parsedForeColor = ForeColor;
+      try {
+        parsedForeColor = color_default(ForeColor.toLowerCase()).hex();
+      } catch (e) {
+        parsedForeColor = ForeColor;
+      }
+      MainCanvas.fillStyle = parsedForeColor === "#000000" ? plainColors.text : ForeColor;
+      if (MainCanvas.measureText(Text).width > Width) {
+        const words = fragmentText(Text, Width);
+        let line = "";
+        let LineCount = 1;
+        for (let n = 0; n < words.length; n++) {
+          const testLine = line + words[n] + " ";
+          if (MainCanvas.measureText(testLine).width > Width && n > 0) {
+            line = words[n] + " ";
+            LineCount++;
+          } else line = testLine;
+        }
+        line = "";
+        Y = Y - (LineCount - 1) * LineSpacing + Height / 2;
+        for (let n = 0; n < words.length; n++) {
+          const testLine = line + words[n] + " ";
+          if (MainCanvas.measureText(testLine).width > Width && n > 0) {
+            MainCanvas.fillText(line, X2 + Width / 2, Y);
+            line = words[n] + " ";
+            Y += LineSpacing * 2;
           } else {
-            drawRect(X2, Y, Width, Height, plainColors.elementHover, plainColors.accentHover);
+            line = testLine;
           }
         }
-        let TextSize;
-        if (MaxLine != null) {
-          TextSize = MainCanvas.font;
-          GetWrapTextSize(Text, Width, MaxLine);
-        }
-        let parsedForeColor = ForeColor;
-        try {
-          parsedForeColor = color_default(ForeColor.toLowerCase()).hex();
-        } catch (e) {
-          parsedForeColor = ForeColor;
-        }
-        MainCanvas.fillStyle = parsedForeColor === "#000000" ? plainColors.text : ForeColor;
-        if (MainCanvas.measureText(Text).width > Width) {
-          const words = fragmentText(Text, Width);
-          let line = "";
-          let LineCount = 1;
-          for (let n = 0; n < words.length; n++) {
-            const testLine = line + words[n] + " ";
-            if (MainCanvas.measureText(testLine).width > Width && n > 0) {
-              line = words[n] + " ";
-              LineCount++;
-            } else line = testLine;
-          }
-          line = "";
-          Y = Y - (LineCount - 1) * LineSpacing + Height / 2;
-          for (let n = 0; n < words.length; n++) {
-            const testLine = line + words[n] + " ";
-            if (MainCanvas.measureText(testLine).width > Width && n > 0) {
-              MainCanvas.fillText(line, X2 + Width / 2, Y);
-              line = words[n] + " ";
-              Y += LineSpacing * 2;
-            } else {
-              line = testLine;
-            }
-          }
-          MainCanvas.fillText(line, X2 + Width / 2, Y);
-        } else MainCanvas.fillText(Text, X2 + Width / 2, Y + Height / 2);
-        if (MaxLine != null && TextSize != null) MainCanvas.font = TextSize;
-      },
-      ModuleCategory.GuiRedraw
-    );
+        MainCanvas.fillText(line, X2 + Width / 2, Y);
+      } else MainCanvas.fillText(Text, X2 + Width / 2, Y + Height / 2);
+      if (MaxLine != null && TextSize != null) MainCanvas.font = TextSize;
+    }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawTextWrap, "hookDrawTextWrap");
 
@@ -4637,27 +4572,11 @@ var Themed = (() => {
         'ButtonColor = Hover ? "Cyan" : "LightGreen";': 'ButtonColor = "%allowed";',
         'ButtonColor = Hover ? "Cyan" : "White";': 'ButtonColor = Hover ? "%hover" : "%background";'
       });
-      I.patchFunction("PreferenceSubscreenDifficultyRun", {
-        'DrawButton(500, 320 + 150 * D, 300, 64, TextGet("DifficultyLevel" + D.toString()), (D == Player.GetDifficulty()) ? "#DDFFDD" : "White", "");': 'DrawButton(500, 320 + 150 * D, 300, 64, TextGet("DifficultyLevel" + D.toString()), (D == Player.GetDifficulty()) ? "%accent" : "%background", "");',
-        'DrawButton(500, 825, 300, 64, TextGet("DifficultyChangeMode") + " " + TextGet("DifficultyLevel" + PreferenceDifficultyLevel.toString()), PreferenceDifficultyAccept ? "White" : "#ebebe4", "");': 'DrawButton(500, 825, 300, 64, TextGet("DifficultyChangeMode") + " " + TextGet("DifficultyLevel" + PreferenceDifficultyLevel.toString()), PreferenceDifficultyAccept ? "%background" : "%disabled", "");'
-      });
-      I.patchFunction("ChatAdminRoomCustomizationRun", {
-        'DrawButton(725, 840, 250, 65, TextGet("Clear"), canEditCustom ? "White" : "#ebebe4", null, null, !canEditCustom);': 'DrawButton(725, 840, 250, 65, TextGet("Clear"), canEditCustom ? "%background" : "%disabled", null, null, !canEditCustom);',
-        'DrawButton(1025, 840, 250, 65, TextGet("Save"), canEditCustom ? "White" : "#ebebe4", null, null, !canEditCustom);': 'DrawButton(1025, 840, 250, 65, TextGet("Save"), canEditCustom ? "%background" : "%disabled", null, null, !canEditCustom);'
-      });
       I.patchFunction("Shop2._AssetElementDraw", {
         'options.Background = "cyan";': 'options.Background = "%hover";',
         'options.Background = "white";': 'options.Background = "%background";',
         'options.Background = "gray";': 'options.Background = "%disabled";',
         'options.Background = "pink";': 'options.Background = "%equipped";'
-      });
-      I.patchFunction("ChatRoomMenuDraw", {
-        'let color = "White";': 'let color = "%background";',
-        'color = "White";': 'color = "%background";',
-        'color = "Pink";': 'color = "%blocked";',
-        'color = "Yellow";': 'color = "%limited";',
-        'color = ChatRoomGetUpTimer === 0 ? "Yellow" : "Pink";': 'color = ChatRoomGetUpTimer === 0 ? "%limited" : "%blocked";',
-        'color = Player.IsSlow() ? "Yellow" : "White";': 'color = Player.IsSlow() ? "%limited" : "%background";'
       });
       this.patched = true;
     }
@@ -4668,10 +4587,7 @@ var Themed = (() => {
       I.unpatchFunction("ChatAdminRun");
       I.unpatchFunction("AppearanceRun");
       I.unpatchFunction("ExtendedItemGetButtonColor");
-      I.unpatchFunction("PreferenceSubscreenDifficultyRun");
-      I.unpatchFunction("ChatAdminRoomCustomizationRun");
       I.unpatchFunction("Shop2._AssetElementDraw");
-      I.unpatchFunction("ChatRoomMenuDraw");
       this.patched = false;
     }
     toggleGuiPatches() {
@@ -5496,9 +5412,6 @@ var Themed = (() => {
 
   // src/screens/reset.ts
   var _GuiReset = class _GuiReset extends m {
-    get name() {
-      return "reset";
-    }
     load() {
       super.load();
       let timeToConfirm = 5;

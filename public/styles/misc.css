@@ -17,33 +17,10 @@
 }
 
 /* #endregion Title */
-/* #region Keybindings */
-#keybind-main-content {
-  --border-color: var(--tmd-accent);
-  --text-color: var(--tmd-text);
-}
-
-.keybind-combo:disabled {
-  color: var(--tmd-text-disabled);
-}
-
-#keybind-manager .keybind-combo:not(:disabled) {
-  --button-color: var(--tmd-element);
-  --hover-color: var(--tmd-element-hover);
-  --disabled-color: var(--tmd-element-disabled);
-}
-
-#keybind-help-sheet {
+/* #region AdminCustomization */
+#chatroom-admin-subscreen p, #chatroom-admin-subscreen h1, #chatroom-admin-subscreen label, #chatroom-admin-subscreen span {
   color: var(--tmd-text);
-  background-color: var(--tmd-element-hint);
-  border-color: var(--tmd-accent);
 }
 
-#keybind-modal {
-  color: var(--tmd-text);
-  background-color: color-mix(in srgb, var(--tmd-element-hint) 70%, transparent);
-  border-color: var(--tmd-accent);
-}
-
-/* #endregion Keybindings */
+/* #endregion AdminCustomization */
 /*# sourceMappingURL=misc.css.map */

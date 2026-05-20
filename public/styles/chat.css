@@ -156,4 +156,19 @@
   background-color: var(--tmd-element);
   background-color: color-mix(in srgb, var(--tmd-element-hover) 90%, var(--label-color, var(--tmd-accent)) 10%);
 }
+
+.chat-room-top-menu-btn[data-color=Default] {
+  --button-color: var(--tmd-element);
+  --hover-color: var(--tmd-element-hover);
+}
+
+.chat-room-top-menu-btn[data-color=Limited] {
+  --button-color: var(--tmd-limited);
+  --hover-color: var(--tmd-limited-hover);
+}
+
+.chat-room-top-menu-btn[data-color=Blocked] {
+  --button-color: var(--tmd-blocked);
+  --disabled-color: var(--button-color);
+}
 /*# sourceMappingURL=chat.css.map */
