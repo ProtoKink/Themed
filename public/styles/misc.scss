@@ -21,3 +21,12 @@
 
 /* #endregion Title */
 
+/* #region AdminCustomization */
+
+#chatroom-admin-subscreen {
+  p, h1, label, span {
+    color: var(--tmd-text);
+  }
+}
+
+/* #endregion AdminCustomization */
