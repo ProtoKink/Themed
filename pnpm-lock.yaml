@@ -39,21 +39,6 @@ importers:
       bc-stubs:
         specifier: 129.0.0
         version: 129.0.0
-      chokidar:
-        specifier: ^5.0.0
-        version: 5.0.0
-      esbuild:
-        specifier: ^0.28.1
-        version: 0.28.1
-      esbuild-copy-files-plugin:
-        specifier: ^1.2.1
-        version: 1.2.1
-      esbuild-plugin-progress:
-        specifier: ^1.3.9
-        version: 1.3.9
-      esbuild-plugin-time:
-        specifier: ^1.0.0
-        version: 1.0.0
       eslint:
         specifier: ^10.5.0
         version: 10.5.0
@@ -63,9 +48,6 @@ importers:
       sass:
         specifier: ^1.101.0
         version: 1.101.0
-      simple-git:
-        specifier: ^3.36.0
-        version: 3.36.0
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -635,9 +617,6 @@ packages:
   es-errors@1.3.0:
     resolution: {integrity: sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==}
     engines: {node: '>= 0.4'}
-
-  esbuild-copy-files-plugin@1.2.1:
-    resolution: {integrity: sha512-lTnfQFd66h0D9MaJuLPeWB55CDo5NYREAO0C/UF7uqOqjJGnMehggGb7FmR00mG3QoqPheuCVOdu01neqCyjxw==}
 
   esbuild-plugin-progress@1.3.9:
     resolution: {integrity: sha512-hOccn+7VbZxuK+5Wg+jnEvt79us1qBsVP4Z1n8rBr726iTvxYVH0VtsK4os/aXQNuKk/Y5qGNDFtNTLQpLpQdA==}
@@ -1709,8 +1688,6 @@ snapshots:
   engine.io-parser@5.0.7: {}
 
   es-errors@1.3.0: {}
-
-  esbuild-copy-files-plugin@1.2.1: {}
 
   esbuild-plugin-progress@1.3.9:
     dependencies:
