@@ -1,5 +1,6 @@
 import Color from 'color';
 import { BaseColorsModel, SpecialColorsModel } from '../models/colors';
+import { getModule } from 'bc-deeplib/deeplib';
 
 export const plainColors: BaseColorsModel = {
   main: '',
@@ -15,7 +16,8 @@ export const plainColors: BaseColorsModel = {
   accentDisabled: '',
 };
 
-export const specialColors = {
+export const specialColors: Record<keyof SpecialColorsModel, [string, string]> = {
+  invalid: ['', ''],
   equipped: ['', ''],
   crafted: ['', ''],
   blocked: ['', ''],
@@ -56,8 +58,8 @@ export const _Color = {
   },
 
   composeRoot() {
-    const colorSettings = Player.Themed.ColorsModule;
-    const globalSettings = Player.Themed.GlobalModule;
+    const colorSettings = getModule('ColorsModule').settings;
+    const globalSettings = getModule('GlobalModule').settings;
 
     Object.keys(colorSettings.special).forEach((key) => {
       const typedKey = key as keyof SpecialColorsModel;

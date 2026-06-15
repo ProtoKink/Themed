@@ -229,9 +229,10 @@ export class GuiColors extends BaseSubscreen {
         ColorPicker.defaultShape[2],
         1000 - paddingTop * 2,
       ];
+      const color = CommonIsColor(input.value) ? input.value : '#ffffff';
       ColorPickerInit({
         colorState: {
-          colors: [input.value || '#ffffff'],
+          colors: [color],
           defaultColors: ['#ffffff'],
           opacity: [1],
           editOpacity: false,

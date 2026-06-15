@@ -13,7 +13,7 @@ export function hookDrawImageEx() {
     const [Source, Canvas, X, Y] = args;
     let Options = args[4];
     Options ??= {};
-    Options.HexColor = plainColors.accent;
+    Options.HexColor = plainColors.accent.startsWith('#') ? plainColors.accent as `#${string}` : `#${plainColors.accent}`;
     Options.FullAlpha = true;
 
     return next([Source, Canvas, X, Y, Options]);

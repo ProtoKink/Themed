@@ -1,4 +1,4 @@
-import { BaseMigrator } from 'bc-deeplib/deeplib';
+import { BaseMigrator, getModule } from 'bc-deeplib/deeplib';
 
 export class V140Migrator extends BaseMigrator {
   get migrationVersion(): string {
@@ -6,76 +6,54 @@ export class V140Migrator extends BaseMigrator {
   }
 
   migrate(): boolean {
-    const colorsData = Player.Themed.ColorsModule;
-    const integrationsData = Player.Themed.IntegrationModule;
+    const colorsData = getModule('ColorsModule').settings;
+    const integrationsData = getModule('IntegrationModule').settings;
 
     if (colorsData) {
+      if (colorsData['primaryColor']) {
       // @ts-expect-error migration
-      if (Player.Themed.ColorsModule['primaryColor']) {
-      // @ts-expect-error migration
-        Player.Themed.ColorsModule.base.main = Player.Themed.ColorsModule['primaryColor'];
-        // @ts-expect-error migration
-        delete Player.Themed.ColorsModule['primaryColor'];
+        colorsData.base.main = colorsData['primaryColor'];
+        delete colorsData['primaryColor'];
       }
 
+      if (colorsData['accentColor']) {
       // @ts-expect-error migration
-      if (Player.Themed.ColorsModule['accentColor']) {
-      // @ts-expect-error migration
-        Player.Themed.ColorsModule.base.accent = Player.Themed.ColorsModule['accentColor'];
-        // @ts-expect-error migration
-        delete Player.Themed.ColorsModule['accentColor'];
-      }
-
-      // @ts-expect-error migration
-      if (Player.Themed.ColorsModule['textColor']) {
-      // @ts-expect-error migration
-        Player.Themed.ColorsModule.base.text = Player.Themed.ColorsModule['textColor'];
-        // @ts-expect-error migration
-        delete Player.Themed.ColorsModule['textColor'];
+        colorsData.base.accent = colorsData['accentColor'];
+        delete colorsData['accentColor'];
       }
     }
 
     if (integrationsData) {
+      if (integrationsData['BC']) {
       // @ts-expect-error migration
-      if (Player.Themed.IntegrationModule['BC']) {
-      // @ts-expect-error migration
-        Player.Themed.IntegrationModule.inputs = Player.Themed.IntegrationModule['BC'];
-        // @ts-expect-error migration
-        delete Player.Themed.IntegrationModule['BC'];
+        integrationsData.inputs = integrationsData['BC'];
+        delete integrationsData['BC'];
       }
       
+      if (integrationsData['BC_Chat']) {
       // @ts-expect-error migration
-      if (Player.Themed.IntegrationModule['BC_Chat']) {
-      // @ts-expect-error migration
-        Player.Themed.IntegrationModule.chat = Player.Themed.IntegrationModule['BC_Chat'];
-        // @ts-expect-error migration
-        delete Player.Themed.IntegrationModule['BC_Chat'];
+        integrationsData.chat = integrationsData['BC_Chat'];
+        delete integrationsData['BC_Chat'];
       }
       
+      if (integrationsData['BC_FriendList']) {
       // @ts-expect-error migration
-      if (Player.Themed.IntegrationModule['BC_FriendList']) {
-      // @ts-expect-error migration
-        Player.Themed.IntegrationModule.friendList = Player.Themed.IntegrationModule['BC_FriendList'];
-        // @ts-expect-error migration
-        delete Player.Themed.IntegrationModule['BC_FriendList'];
+        integrationsData.friendList = integrationsData['BC_FriendList'];
+        delete integrationsData['BC_FriendList'];
       }
       
+      if (integrationsData['BC_Other']) {
       // @ts-expect-error migration
-      if (Player.Themed.IntegrationModule['BC_Other']) {
-      // @ts-expect-error migration
-        Player.Themed.IntegrationModule.scrollbar = Player.Themed.IntegrationModule['BC_Other'];
+        integrationsData.scrollbar = integrationsData['BC_Other'];
         // @ts-expect-error migration
-        Player.Themed.IntegrationModule.selection = Player.Themed.IntegrationModule['BC_Other'];
-        // @ts-expect-error migration
-        delete Player.Themed.IntegrationModule['BC_Other'];
+        integrationsData.selection = integrationsData['BC_Other'];
+        delete integrationsData['BC_Other'];
       }
       
+      if (integrationsData['FBC']) {
       // @ts-expect-error migration
-      if (Player.Themed.IntegrationModule['FBC']) {
-      // @ts-expect-error migration
-        Player.Themed.IntegrationModule.WCE = Player.Themed.IntegrationModule['FBC'];
-        // @ts-expect-error migration
-        delete Player.Themed.IntegrationModule['FBC'];
+        integrationsData.WCE = integrationsData['FBC'];
+        delete integrationsData['FBC'];
       }
     }
 

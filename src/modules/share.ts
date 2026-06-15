@@ -1,7 +1,7 @@
 import { ColorsSettingsModel } from '../models/colors';
 import { ColorsModule } from './colors';
 import { GlobalSettingsModel } from '../models/global';
-import { advElement, BaseModule, EventChannel, getText, sendActionMessage as messageSendAction, sendLocalMessage as messageSendLocal, Modal, modStorage } from 'bc-deeplib/deeplib';
+import { advElement, BaseModule, EventChannel, getModule, getText, sendActionMessage as messageSendAction, sendLocalMessage as messageSendLocal, Modal, modStorage } from 'bc-deeplib/deeplib';
 
 interface ThemedMessageModel {
   Settings: GlobalSettingsModel,
@@ -64,7 +64,7 @@ export class ShareModule extends BaseModule {
               label: getText('modal.button.show'),
             },
             onClick: () => {
-              if (!version || version !== Player.Themed.Version) {
+              if (!version || version !== modStorage.playerStorage.Version) {
                 messageSendLocal('theme-not-up-to-date', `Theme sent by ${senderName} is not up-to-date!`);
                 return;
               }
@@ -84,8 +84,8 @@ export class ShareModule extends BaseModule {
   }
 
   acceptShare(data: ColorsSettingsModel, settings: GlobalSettingsModel): void {
-    Player.Themed.ColorsModule = data;
-    Player.Themed.GlobalModule.doUseAdvancedColoring = settings.doUseAdvancedColoring;
+    getModule('ColorsModule').settings = data;
+    getModule('GlobalModule').settings.doUseAdvancedColoring = settings.doUseAdvancedColoring;
     modStorage.save();
 
     ColorsModule.reloadTheme();
@@ -96,9 +96,9 @@ export class ShareModule extends BaseModule {
     messageSendAction(`${CharacterNickname(Player)} shares ${CharacterPronoun(Player, 'Possessive', false)} Themed theme!`, target);
 
     this.channel?.sendEvent('ThemedTheme', {
-      Theme: Player.Themed.ColorsModule,
-      Settings: Player.Themed.GlobalModule,
-      ThemeVersion: Player.Themed.Version
+      Theme: getModule('ColorsModule').settings,
+      Settings: getModule('GlobalModule').settings,
+      ThemeVersion: modStorage.playerStorage.Version
     });
   }
 }

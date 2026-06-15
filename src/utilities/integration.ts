@@ -13,19 +13,19 @@ export function changeModColors() {
 }
 
 function changeBctColors() {
-  if (Player.BCT) {
-    BCT_API.HintBackColor = plainColors.element;
-    BCT_API.HintBorderColor = plainColors.accent;
-    BCT_API.HintForeColor = plainColors.text;
-  }
+  if (typeof BCT_API === 'undefined') return;
+
+  BCT_API.HintBackColor = plainColors.element;
+  BCT_API.HintBorderColor = plainColors.accent;
+  BCT_API.HintForeColor = plainColors.text;
 }
 
 function resetBctColors() {
-  if (Player.BCT) {
-    BCT_API.HintBackColor = 'yellow';
-    BCT_API.HintBorderColor = 'black';
-    BCT_API.HintForeColor = 'black';
-  }
+  if (typeof BCT_API === 'undefined') return;
+
+  BCT_API.HintBackColor = 'yellow';
+  BCT_API.HintBorderColor = 'black';
+  BCT_API.HintForeColor = 'black';
 }
 
 function changeMbsColors() {

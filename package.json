@@ -5,6 +5,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check": "tsc --noEmit && tsc --noEmit -p scripts/tsconfig.json",
     "build": "deeplib",
     "dev": "deeplib --watch --serve",
     "dev:lib": "deeplib --watch --serve --lib-local",
@@ -31,7 +32,6 @@
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/color": "^4.2.1",
     "@types/core-js": "^2.5.8",
-    "@types/lz-string": "1.5.0",
     "@types/node": "^25.9.3",
     "@typescript-eslint/eslint-plugin": "^8.61.1",
     "@typescript-eslint/parser": "^8.61.1",

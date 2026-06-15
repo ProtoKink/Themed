@@ -1,6 +1,6 @@
 import { HookPriority, sdk, Style } from 'bc-deeplib/deeplib';
 import { LocalSettingsModel } from '../models/local';
-import { localSettingsLoad, localSettingsSave } from '../utilities/data';
+import { getLocalSettings, saveLocalSettings } from '../utilities/data';
 
 const ids = {
   optionsOpen: 'tmd-login-options-open',
@@ -16,7 +16,6 @@ const options: Record<keyof LocalSettingsModel['loginOptions'], string> = {
 };
 
 export function loadLoginOptions() {
-  localSettingsLoad();
   patchLoginPage();
 
   Style.injectEmbed(ids.optionsStyle, `${PUBLIC_URL}/styles/login-options.css`);
@@ -44,7 +43,7 @@ export function loadLoginOptions() {
 }
 
 function createUI() {
-  const loginOptions = window.ThemedLocalData.loginOptions;
+  const loginOptions = getLocalSettings().loginOptions;
 
   const optionsButton = ElementButton.Create(ids.optionsOpen, () => optionsSheet.showModal(), {
     tooltip: '[Themed] Login Options',
@@ -73,7 +72,7 @@ function createUI() {
               children: [
                 ElementCheckbox.Create(`tmd-login-options-${key}`, () => {
                   loginOptions[typedKey] = !loginOptions[typedKey];
-                  localSettingsSave();
+                  saveLocalSettings();
                   repatchLoginPage();
                 },
                   {
@@ -101,7 +100,7 @@ function removeUI() {
 }
 
 function patchLoginPage() {
-  const loginOptions = window.ThemedLocalData.loginOptions;
+  const loginOptions = getLocalSettings().loginOptions;
 
   if (loginOptions.hideDummy) {
       sdk.patchFunction('LoginRun', {

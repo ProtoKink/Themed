@@ -1,5 +1,5 @@
 import { LocalSettingsModel } from '../models/local';
-import { modStorage } from 'bc-deeplib/deeplib';
+import { deepMerge, modStorage } from 'bc-deeplib/deeplib';
 import { SettingsModel } from '../models/settings';
 
 export function settingsReset() {
@@ -7,23 +7,32 @@ export function settingsReset() {
   modStorage.save();
 }
 
-export function localSettingsLoad() {
-  const data = modStorage.getLocalStorage('LocalData') as LocalSettingsModel | null;
+const defaultLocalSettings: LocalSettingsModel = {
+  loginOptions: {
+    hideDummy: false,
+    hideCredits: false,
+  },
+};
 
-  if (!data) {
-    window.ThemedLocalData = <LocalSettingsModel>{
-      loginOptions: {
-        hideDummy: false,
-        hideCredits: false
-      }
-    };
+let localSettings: LocalSettingsModel | null = null;
 
-    localSettingsSave();
+export function loadLocalSettings(): LocalSettingsModel {
+  localSettings = modStorage.getLocalStorage('LocalData') as LocalSettingsModel | null;
+
+  if (!localSettings) {
+    modStorage.setLocalStorage('LocalData', defaultLocalSettings);
+    localSettings = defaultLocalSettings;
   } else {
-    window.ThemedLocalData = data;
+    localSettings = deepMerge(defaultLocalSettings, localSettings);
   }
+
+  return localSettings;
 }
 
-export function localSettingsSave() {
-  modStorage.setLocalStorage('LocalData', window.ThemedLocalData);
+export function getLocalSettings(): LocalSettingsModel {
+  return localSettings as LocalSettingsModel;
+}
+
+export function saveLocalSettings() {
+  modStorage.setLocalStorage('LocalData', localSettings as LocalSettingsModel);
 }

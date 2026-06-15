@@ -10,6 +10,7 @@ import { ProfilesModule } from './modules/profiles';
 import { ShareModule } from './modules/share';
 import { DeeplibMigrator } from './migrators/deeplib_migrator';
 import { GuiReset } from './screens/reset';
+import { loadLocalSettings } from './utilities/data';
 
 (async () => {
   const changelog = await fetch(`${PUBLIC_URL}/text/changelog.txt`)
@@ -41,7 +42,10 @@ import { GuiReset } from './screens/reset';
   };
 
   return initMod({
-    beforeLogin: () => loadLoginOptions(),
+    beforeLogin: () => {
+      loadLocalSettings();
+      loadLoginOptions();
+    },
     initFunction: () => {
       ColorsModule.reloadTheme();
     },

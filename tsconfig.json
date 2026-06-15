@@ -1,13 +1,14 @@
 {
   "exclude": [
-    "dist"
+    "dist",
+    "scripts"
   ],
   "include": [
     "node_modules/bc-stubs/bc/**/*.d.ts",
     "node_modules/bc-deeplib/**/*.d.ts",
     ".types/*.d.ts",
-    "**/*.js",
-    "**/*.ts",
+    "src/**/*.js",
+    "src/**/*.ts",
   ],
   "compilerOptions": {
     "target": "ESNext",
@@ -19,6 +20,7 @@
     "removeComments": false,
     "strict": true,
     "skipLibCheck": true,
+    "types": [],
 		"noEmit": true
   }
 }

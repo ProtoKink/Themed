@@ -1,4 +1,4 @@
-import { BaseMigrator } from 'bc-deeplib/deeplib';
+import { BaseMigrator, getModule } from 'bc-deeplib/deeplib';
 import { ColorsModule } from '../modules/colors';
 
 export class DeeplibMigrator extends BaseMigrator {
@@ -7,10 +7,10 @@ export class DeeplibMigrator extends BaseMigrator {
   }
 
   migrate() {
+    const globalModule = getModule('GlobalModule');
     // @ts-expect-error migration
-    Player.Themed.GlobalModule.modEnabled = Player.Themed.GlobalModule.themedEnabled;
-    // @ts-expect-error migration
-    delete Player.Themed.GlobalModule.themedEnabled;
+    globalModule.settings.modEnabled = globalModule.settings['themedEnabled'];
+    delete globalModule.settings['themedEnabled'];
 
     ColorsModule.reloadTheme();
   }
