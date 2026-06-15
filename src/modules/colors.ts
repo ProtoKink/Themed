@@ -74,6 +74,7 @@ export class ColorsModule extends BaseModule {
     modLogger.info('Reloading theme');
     const themeType = getModule('ColorsModule').settings.themeSettings.themeType;
     document.body.dataset.tmdThemeType = themeType
+    ChatRoomTopMenuBuiltSig = '';
     _Color.composeRoot();
     BcStyle.reloadAll();
     changeModColors();
