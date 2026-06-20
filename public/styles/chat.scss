@@ -8,7 +8,7 @@
     border-top: none;
   }
 
-  .ChatMessageName {
+  &[data-colornames="true"] .ChatMessageName {
     text-shadow: 0 0 0.12em var(--label-color);
     transition: color 0.1s ease-in-out;
   }
