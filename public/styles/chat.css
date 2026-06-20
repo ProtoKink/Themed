@@ -8,8 +8,8 @@
 #TextAreaChatLog[data-colortheme^=dark]:has(.chat-room-sep) {
   border-top: none;
 }
-#TextAreaChatLog[data-colortheme^=light] .ChatMessageName,
-#TextAreaChatLog[data-colortheme^=dark] .ChatMessageName {
+#TextAreaChatLog[data-colortheme^=light][data-colornames=true] .ChatMessageName,
+#TextAreaChatLog[data-colortheme^=dark][data-colornames=true] .ChatMessageName {
   text-shadow: 0 0 0.12em var(--label-color);
   transition: color 0.1s ease-in-out;
 }
@@ -170,5 +170,9 @@
 .chat-room-top-menu-btn[data-color=Blocked] {
   --button-color: var(--tmd-blocked);
   --disabled-color: var(--button-color);
+}
+
+.chat-room-friendrequest-buttons .button {
+  color: var(--tmd-text);
 }
 /*# sourceMappingURL=chat.css.map */

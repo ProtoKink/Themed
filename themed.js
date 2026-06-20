@@ -1,42 +1,106 @@
 "use strict";
 var Themed = (() => {
-  var __create = Object.create;
   var __defProp = Object.defineProperty;
-  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __getProtoOf = Object.getPrototypeOf;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
-  var __require = /* @__PURE__ */ ((x2) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x2, {
-    get: (a, b2) => (typeof require !== "undefined" ? require : a)[b2]
-  }) : x2)(function(x2) {
-    if (typeof require !== "undefined") return require.apply(this, arguments);
-    throw Error('Dynamic require of "' + x2 + '" is not supported');
-  });
-  var __copyProps = (to, from, except, desc) => {
-    if (from && typeof from === "object" || typeof from === "function") {
-      for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
-    }
-    return to;
-  };
-  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-    // If the importer is in node compatibility mode or this is not an ESM
-    // file that has been converted to a CommonJS file using a Babel-
-    // compatible transform (i.e. "__esModule" has not been set), then set
-    // "default" to the CommonJS "module.exports" for node compatibility.
-    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-    mod
-  ));
   var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 
-  // node_modules/.pnpm/bc-deeplib@4.0.0_sass-embedded@1.90.0/node_modules/bc-deeplib/dist/deeplib.js
-  var de = Object.defineProperty;
-  var s = /* @__PURE__ */ __name((t, e) => de(t, "name", { value: e, configurable: true }), "s");
+  // <define:MOD_INFO>
+  var define_MOD_INFO_default = { name: "Themed", fullName: "BC Themed", repository: "https://github.com/dDeepLb/Themed-BC" };
+
+  // node_modules/.pnpm/bc-deeplib@5.0.1_sass-embedded@1.100.0/node_modules/bc-deeplib/dist/deeplib.js
+  var ye = Object.create;
+  var J = Object.defineProperty;
+  var xe = Object.getOwnPropertyDescriptor;
+  var Ge = Object.getOwnPropertyNames;
+  var Ce = Object.getPrototypeOf;
+  var Be = Object.prototype.hasOwnProperty;
+  var r = /* @__PURE__ */ __name((t, e) => J(t, "name", { value: e, configurable: true }), "r");
+  var we = /* @__PURE__ */ __name((t, e) => () => (e || t((e = { exports: {} }).exports, e), e.exports), "we");
+  var Te = /* @__PURE__ */ __name((t, e, n, i) => {
+    if (e && typeof e == "object" || typeof e == "function") for (let o of Ge(e)) !Be.call(t, o) && o !== n && J(t, o, { get: /* @__PURE__ */ __name(() => e[o], "get"), enumerable: !(i = xe(e, o)) || i.enumerable });
+    return t;
+  }, "Te");
+  var oe = /* @__PURE__ */ __name((t, e, n) => (n = t != null ? ye(Ce(t)) : {}, Te(e || !t || !t.__esModule ? J(n, "default", { value: t, enumerable: true }) : n, t)), "oe");
+  var $ = we((ce, Q) => {
+    (function(t) {
+      "use strict";
+      var e = {};
+      e.VERSION = "1.6.1";
+      var n, i = {}, o = r(function(a, h) {
+        return function() {
+          return h.apply(a, arguments);
+        };
+      }, "bind"), s = r(function() {
+        var a = arguments, h = a[0], T, v;
+        for (v = 1; v < a.length; v++) for (T in a[v]) !(T in h) && a[v].hasOwnProperty(T) && (h[T] = a[v][T]);
+        return h;
+      }, "merge"), l = r(function(a, h) {
+        return { value: a, name: h };
+      }, "defineLogLevel");
+      e.TRACE = l(1, "TRACE"), e.DEBUG = l(2, "DEBUG"), e.INFO = l(3, "INFO"), e.TIME = l(4, "TIME"), e.WARN = l(5, "WARN"), e.ERROR = l(8, "ERROR"), e.OFF = l(99, "OFF");
+      var c = r(function(a) {
+        this.context = a, this.setLevel(a.filterLevel), this.log = this.info;
+      }, "ContextualLogger");
+      c.prototype = { setLevel: r(function(a) {
+        a && "value" in a && (this.context.filterLevel = a);
+      }, "setLevel"), getLevel: r(function() {
+        return this.context.filterLevel;
+      }, "getLevel"), enabledFor: r(function(a) {
+        var h = this.context.filterLevel;
+        return a.value >= h.value;
+      }, "enabledFor"), trace: r(function() {
+        this.invoke(e.TRACE, arguments);
+      }, "trace"), debug: r(function() {
+        this.invoke(e.DEBUG, arguments);
+      }, "debug"), info: r(function() {
+        this.invoke(e.INFO, arguments);
+      }, "info"), warn: r(function() {
+        this.invoke(e.WARN, arguments);
+      }, "warn"), error: r(function() {
+        this.invoke(e.ERROR, arguments);
+      }, "error"), time: r(function(a) {
+        typeof a == "string" && a.length > 0 && this.invoke(e.TIME, [a, "start"]);
+      }, "time"), timeEnd: r(function(a) {
+        typeof a == "string" && a.length > 0 && this.invoke(e.TIME, [a, "end"]);
+      }, "timeEnd"), invoke: r(function(a, h) {
+        n && this.enabledFor(a) && n(h, s({ level: a }, this.context));
+      }, "invoke") };
+      var d = new c({ filterLevel: e.OFF });
+      (function() {
+        var a = e;
+        a.enabledFor = o(d, d.enabledFor), a.trace = o(d, d.trace), a.debug = o(d, d.debug), a.time = o(d, d.time), a.timeEnd = o(d, d.timeEnd), a.info = o(d, d.info), a.warn = o(d, d.warn), a.error = o(d, d.error), a.log = a.info;
+      })(), e.setHandler = function(a) {
+        n = a;
+      }, e.setLevel = function(a) {
+        d.setLevel(a);
+        for (var h in i) i.hasOwnProperty(h) && i[h].setLevel(a);
+      }, e.getLevel = function() {
+        return d.getLevel();
+      }, e.get = function(a) {
+        return i[a] || (i[a] = new c(s({ name: a }, d.context)));
+      }, e.createDefaultHandler = function(a) {
+        a = a || {}, a.formatter = a.formatter || r(function(y, B) {
+          B.name && y.unshift("[" + B.name + "]");
+        }, "defaultMessageFormatter");
+        var h = {}, T = r(function(v, y) {
+          Function.prototype.apply.call(v, console, y);
+        }, "invokeConsoleMethod");
+        return typeof console > "u" ? function() {
+        } : function(v, y) {
+          v = Array.prototype.slice.call(v);
+          var B = console.log, F;
+          y.level === e.TIME ? (F = (y.name ? "[" + y.name + "] " : "") + v[0], v[1] === "start" ? console.time ? console.time(F) : h[F] = (/* @__PURE__ */ new Date()).getTime() : console.timeEnd ? console.timeEnd(F) : T(B, [F + ": " + ((/* @__PURE__ */ new Date()).getTime() - h[F]) + "ms"])) : (y.level === e.WARN && console.warn ? B = console.warn : y.level === e.ERROR && console.error ? B = console.error : y.level === e.INFO && console.info ? B = console.info : y.level === e.DEBUG && console.debug ? B = console.debug : y.level === e.TRACE && console.trace && (B = console.trace), a.formatter(v, y), T(B, v));
+        };
+      }, e.useDefaults = function(a) {
+        e.setLevel(a && a.defaultLevel || e.DEBUG), e.setHandler(e.createDefaultHandler(a));
+      }, e.setDefaults = e.useDefaults, typeof define == "function" && define.amd ? define(e) : typeof Q < "u" && Q.exports ? Q.exports = e : (e._prevLogger = t.Logger, e.noConflict = function() {
+        return t.Logger = e._prevLogger, e;
+      }, t.Logger = e);
+    })(ce);
+  });
   var _a;
-  var B = (_a = class {
+  var L = (_a = class {
     get settingsScreen() {
       return null;
     }
@@ -44,16 +108,16 @@ var Themed = (() => {
       return this.constructor.name;
     }
     get settings() {
-      return this.settingsStorage ? (u.playerStorage ? u.playerStorage[this.settingsStorage] || this.registerDefaultSettings(u.playerStorage) : this.registerDefaultSettings(u.playerStorage), u.playerStorage[this.settingsStorage]) : null;
+      return this.settingsStorage ? (p.playerStorage ? p.playerStorage[this.settingsStorage] || this.registerDefaultSettings(p.playerStorage) : this.registerDefaultSettings(p.playerStorage), p.playerStorage[this.settingsStorage]) : null;
     }
     set settings(e) {
-      this.settingsStorage && (u.playerStorage ? u.playerStorage[this.settingsStorage] || this.registerDefaultSettings(u.playerStorage) : this.registerDefaultSettings(u.playerStorage), u.playerStorage[this.settingsStorage] = e);
+      this.settingsStorage && (p.playerStorage ? p.playerStorage[this.settingsStorage] || this.registerDefaultSettings(p.playerStorage) : this.registerDefaultSettings(p.playerStorage), p.playerStorage[this.settingsStorage] = e);
     }
     init() {
     }
     registerDefaultSettings(e) {
-      let i = this.settingsStorage, n = this.defaultSettings;
-      !i || !n || Object.entries(this.defaultSettings).length !== 0 && (e[i] = b(this.defaultSettings, e[i], { concatArrays: false, matchingOnly: true }));
+      let n = this.settingsStorage, i = this.defaultSettings;
+      !n || !i || Object.entries(this.defaultSettings).length !== 0 && (e[n] = f(this.defaultSettings, e[n], { concatArrays: false, matchingOnly: true }));
     }
     get defaultSettings() {
       return null;
@@ -64,27 +128,27 @@ var Themed = (() => {
     }
     unload() {
     }
-  }, __name(_a, "B"), s(_a, "BaseModule"), _a);
-  async function T(t) {
-    if (!L.instance) throw new Error("Attempt to set subscreen before init");
-    let e = typeof t == "string" ? t : t?.options.name, i = `${m.id}_${e}`;
-    await CommonSetScreen("DeepLibMod", `${i}`);
+  }, __name(_a, "L"), r(_a, "BaseModule"), _a);
+  async function Z(t) {
+    if (!k.instance) throw new Error("Attempt to set subscreen before init");
+    let e = typeof t == "string" ? t : t?.options.name, n = `${define_MOD_INFO_default.name}_${e}`;
+    await CommonSetScreen("DeepLibMod", `${n}`);
   }
-  __name(T, "T");
-  s(T, "setSubscreen");
+  __name(Z, "Z");
+  r(Z, "setSubscreen");
   var _a2;
-  var m = (_a2 = class {
+  var I = (_a2 = class {
     constructor(e) {
       __publicField(this, "options");
       __publicField(this, "module");
       e && (this.module = e);
-      let i = this.constructor;
-      this.options = { ..._a2.subscreenOptions, ...i.subscreenOptions };
-      let n = this.options.name, o = `${_a2.id}_${n}`;
-      C(`${o}Load`, this.load.bind(this)), C(`${o}Run`, this.run.bind(this)), C(`${o}Click`, this.click.bind(this)), C(`${o}Exit`, this.exit.bind(this)), C(`${o}Unload`, this.unload.bind(this)), C(`${o}Resize`, this.resize.bind(this)), C(`${o}Background`, this.options.background), CommonCSVCache[ScreenFileGetTranslation("DeepLibMod", o)] = [];
+      let n = this.constructor;
+      this.options = { ..._a2.subscreenOptions, ...n.subscreenOptions };
+      let i = this.options.name, o = `${define_MOD_INFO_default.name}_${i}`;
+      O(`${o}Load`, this.load.bind(this)), O(`${o}Run`, this.run.bind(this)), O(`${o}Click`, this.click.bind(this)), O(`${o}Exit`, this.exit.bind(this)), O(`${o}Unload`, this.unload.bind(this)), O(`${o}Resize`, this.resize.bind(this)), O(`${o}Background`, this.options.background), CommonCSVCache[ScreenFileGetTranslation("DeepLibMod", o)] = [];
     }
     async setSubscreen(e) {
-      return await T(e);
+      return await Z(e);
     }
     get settings() {
       return this.module.settings;
@@ -99,72 +163,72 @@ var Themed = (() => {
       return this.pageStructure[Math.min(_a2.currentPage - 1, this.pageStructure.length - 1)];
     }
     getPageLabel() {
-      return CommonStringPartitionReplace(d("settings.page.label"), { $currentPage$: `${_a2.currentPage}`, $totalPages$: `${this.pageStructure.length}` }).join("");
+      return g("settings.page.label", { $currentPage$: _a2.currentPage, $totalPages$: this.pageStructure.length });
     }
-    changePage(e, i) {
-      let n = this.pageStructure.length;
-      e > n && (e = 1), e < 1 && (e = n), _a2.currentPage = e, this.managePageElementsVisibility(), i(this.getPageLabel());
+    changePage(e, n) {
+      let i = this.pageStructure.length;
+      e > i && (e = 1), e < 1 && (e = i), _a2.currentPage = e, this.managePageElementsVisibility(), n(this.getPageLabel());
     }
     managePageElementsVisibility() {
-      this.pageStructure.forEach((e, i) => {
-        e.forEach((n) => {
-          let o = ElementWrap(`${n.id}-container`) ?? ElementWrap(`${n.id}`);
-          i !== _a2.currentPage - 1 ? o && G.hide(o) : o && G.unhide(o);
+      this.pageStructure.forEach((e, n) => {
+        e.forEach((i) => {
+          let o = ElementWrap(`${i.id}-container`) ?? ElementWrap(`${i.id}`);
+          n !== _a2.currentPage - 1 ? o && S.hide(o) : o && S.unhide(o);
         });
       });
     }
     load() {
-      var _a16, _b;
-      for (let n of f()) n.settingsScreen && (!n.settings || !Object.keys(n.settings).length) && n.registerDefaultSettings(u.playerStorage);
-      _a2.currentPage = 1, g.getSubscreen();
-      let e = g.getSettingsDiv();
-      if (g.appendToSubscreen(e), _a2.menu = ElementMenu.Create("deeplib-nav-menu", []), g.appendToSubscreen(_a2.menu), this.pageStructure.length > 1) {
-        let n = c.createBackNext({ id: "deeplib-page-back-next", next: s(({ setLabel: o }) => this.changePage(_a2.currentPage + 1, o), "next"), initialNextTooltip: d("settings.button.next_button_hint"), back: s(({ setLabel: o }) => this.changePage(_a2.currentPage - 1, o), "back"), initialPrevTooltip: d("settings.button.prev_button_hint"), initialLabel: this.getPageLabel() });
-        _a2.menu.prepend(n);
+      var _a15, _b;
+      for (let i of x()) i.settingsScreen && (!i.settings || !Object.keys(i.settings).length) && i.registerDefaultSettings(p.playerStorage);
+      _a2.currentPage = 1, b.getSubscreen();
+      let e = b.getSettingsDiv();
+      if (b.appendToSubscreen(e), _a2.menu = ElementMenu.Create("deeplib-nav-menu", []), b.appendToSubscreen(_a2.menu), this.pageStructure.length > 1) {
+        let i = u.createBackNext({ id: "deeplib-page-back-next", next: r(({ setLabel: o }) => this.changePage(_a2.currentPage + 1, o), "next"), initialNextTooltip: g("settings.button.next_button_hint"), back: r(({ setLabel: o }) => this.changePage(_a2.currentPage - 1, o), "back"), initialPrevTooltip: g("settings.button.prev_button_hint"), initialLabel: this.getPageLabel() });
+        _a2.menu.prepend(i);
       }
       if (this.options.help) {
-        let n = this.options.help.onClick, o = s(() => {
+        let i = this.options.help.onClick, o = r(() => {
         }, "action");
-        typeof n == "string" || n instanceof URL ? o = s(() => window.open(n, "_blank"), "action") : typeof n == "function" ? o = n : n instanceof _a2 && (o = s(async () => await this.setSubscreen(n), "action")), (_a16 = this.options.help).tooltip ?? (_a16.tooltip = d("settings.button.help_button_hint")), (_b = this.options.help).icon ?? (_b.icon = `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/bookmark.svg`);
-        let r = c.createButton({ id: "deeplib-help", size: [90, 90], onClick: o, options: { image: this.options.help.icon, tooltip: this.options.help.tooltip } });
-        _a2.menu.append(r);
+        typeof i == "string" || i instanceof URL ? o = r(() => window.open(i, "_blank"), "action") : typeof i == "function" ? o = i : i instanceof _a2 && (o = r(async () => await this.setSubscreen(i), "action")), (_a15 = this.options.help).tooltip ?? (_a15.tooltip = g("settings.button.help_button_hint")), (_b = this.options.help).icon ?? (_b.icon = `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/bookmark.svg`);
+        let s = u.createButton({ id: "deeplib-help", size: [90, 90], onClick: o, options: { image: this.options.help.icon, tooltip: this.options.help.tooltip } });
+        _a2.menu.append(s);
       }
       if (this.options.doShowTitle) {
-        let n = c.createLabel({ id: "deeplib-subscreen-title", label: d(`${this.options.name}.title`).replace("$ModVersion", "1.8.1") });
-        g.appendToSubscreen(n);
+        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.2" }) });
+        b.appendToSubscreen(i);
       }
       if (this.options.doShowExitButton) {
-        let n = c.createButton({ id: "deeplib-exit", size: [90, 90], onClick: s(() => {
+        let i = u.createButton({ id: "deeplib-exit", size: [90, 90], onClick: r(() => {
           this.exit();
-        }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/exit.svg`, tooltip: d("settings.button.back_button_hint") } });
-        _a2.menu.append(n);
+        }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/exit.svg`, tooltip: g("settings.button.back_button_hint") } });
+        _a2.menu.append(i);
       }
-      let i = c.createTooltip();
-      g.appendToSubscreen(i), this.pageStructure.forEach((n) => n.forEach((o) => {
-        let r;
+      let n = u.createTooltip();
+      b.appendToSubscreen(n), this.pageStructure.forEach((i) => i.forEach((o) => {
+        let s;
         switch (o.type) {
           case "text":
           case "number":
           case "color":
-            r = c.createInput(o);
+            s = u.createInput(o);
             break;
           case "checkbox":
-            r = c.createCheckbox(o);
+            s = u.createCheckbox(o);
             break;
           case "button":
-            r = c.createButton(o);
+            s = u.createButton(o);
             break;
           case "label":
-            r = c.createLabel(o);
+            s = u.createLabel(o);
             break;
           case "custom":
-            r = c.createCustom(o);
+            s = u.createCustom(o);
             break;
           case "dropdown":
-            r = c.createDropdown(o);
+            s = u.createDropdown(o);
             break;
         }
-        g.appendToSettingsDiv(r);
+        s.parentElement && s.parentElement !== e || b.appendToSettingsDiv(s);
       })), this.managePageElementsVisibility(), this.options.drawCharacter && this.options.forceUpCharacter ? CharacterAppearanceForceUpCharacter = Player.MemberNumber : CharacterAppearanceForceUpCharacter = -1;
     }
     run() {
@@ -174,25 +238,25 @@ var Themed = (() => {
     }
     exit() {
       CharacterAppearanceForceUpCharacter = -1, CharacterLoadCanvas(Player);
-      let e = typeof this.options.returnScreen == "function" ? this.options.returnScreen() : this.options.returnScreen;
-      e instanceof _a2 || !e ? T(e ?? "mainmenu").then(() => {
-        u.save();
+      let e = CommonUnwrapThunk(this.options.returnScreen);
+      e instanceof _a2 || !e ? Z(e ?? "mainmenu").then(() => {
+        p.save();
       }) : Array.isArray(e) && CommonSetScreen(...e).then(() => {
-        u.save();
+        p.save();
       });
     }
     resize(e = false) {
-      let i = this.options.drawCharacter ? 0 : 380, n = g.getSubscreen(), o = g.getSettingsDiv();
-      ElementSetPosition(n, 0, 0), ElementSetSize(n, 2e3, 1e3), ElementSetFontSize(n, "auto"), ElementSetPosition(o, 530 - i, 170), ElementSetSize(o, this.options.settingsWidth ?? 1e3 + i, 660), this.options.doShowTitle && (ElementSetPosition("deeplib-subscreen-title", 530 - i, 75), ElementSetSize("deeplib-subscreen-title", 800, 90)), ElementSetPosition("deeplib-nav-menu", 1905, 75, "top-right"), ElementSetSize("deeplib-nav-menu", null, 90), ElementSetSize(c.getTooltip() || "", 1500), _a2.currentElements.forEach((r) => {
-        let a = r[0], l = r[1];
-        G.autoSetPosition(l.id ?? a.id, l.position), G.autoSetSize(l.id ?? a.id, l.size);
-      }), o && (G.hasOverflow(o)?.vertical ? o.classList.add("deeplib-overflow-box") : o.classList.remove("deeplib-overflow-box"));
+      let n = this.options.drawCharacter ? 0 : 380, i = b.getSubscreen(), o = b.getSettingsDiv();
+      ElementSetPosition(i, 0, 0), ElementSetSize(i, 2e3, 1e3), ElementSetFontSize(i, "auto"), ElementSetPosition(o, 530 - n, 170), ElementSetSize(o, this.options.settingsWidth ?? 1e3 + n, 660), this.options.doShowTitle && (ElementSetPosition("deeplib-subscreen-title", 530 - n, 75), ElementSetSize("deeplib-subscreen-title", 800, 90)), ElementSetPosition("deeplib-nav-menu", 1905, 75, "top-right"), ElementSetSize("deeplib-nav-menu", null, 90), ElementSetSize(u.getTooltip() || "", 1500), _a2.currentElements.forEach((s) => {
+        let l = s[0], c = s[1];
+        S.autoSetPosition(c.id ?? l.id, c.position), S.autoSetSize(c.id ?? l.id, c.size);
+      }), o && (S.hasOverflow(o)?.vertical ? o.classList.add("deeplib-overflow-box") : o.classList.remove("deeplib-overflow-box"));
     }
     unload() {
-      _a2.currentElements = [], g.removeSubscreen();
+      _a2.currentElements = [], b.removeSubscreen();
     }
-  }, __name(_a2, "t"), s(_a2, "BaseSubscreen"), __publicField(_a2, "currentElements", []), __publicField(_a2, "currentPage", 1), __publicField(_a2, "id", CommonGenerateUniqueID()), __publicField(_a2, "subscreenOptions", { drawCharacter: true, name: "UNKNOWN", icon: "", background: "Sheet", doShowExitButton: true, doShowTitle: true, settingsWidth: 1e3, forceUpCharacter: false }), __publicField(_a2, "menu", null), _a2);
-  var $ = `.deeplib-subscreen,
+  }, __name(_a2, "t"), r(_a2, "BaseSubscreen"), __publicField(_a2, "currentElements", []), __publicField(_a2, "currentPage", 1), __publicField(_a2, "id", CommonGenerateUniqueID()), __publicField(_a2, "subscreenOptions", { drawCharacter: true, name: "UNKNOWN", background: "Sheet", doShowExitButton: true, doShowTitle: true, settingsWidth: 1e3, forceUpCharacter: false }), __publicField(_a2, "menu", null), _a2);
+  var re = `.deeplib-subscreen,
 .deeplib-modal {
   --deeplib-background-color: var(--tmd-main, white);
   --deeplib-element-color: var(--tmd-element, white);
@@ -242,11 +306,12 @@ var Themed = (() => {
 .deeplib-button .button-label {
   background-color: transparent !important;
   color: var(--deeplib-text-color);
-  font-size: min(3.6dvh, 1.8dvw);
+  font-size: 0.9em;
   display: contents;
 }
 .deeplib-button .button-tooltip {
   border-radius: min(1dvh, 0.5dvw);
+  pointer-events: none;
 }
 
 #deeplib-page-label {
@@ -267,6 +332,12 @@ var Themed = (() => {
 
 .deeplib-text {
   color: var(--deeplib-text-color);
+}
+
+.deeplib-label {
+  color: var(--deeplib-text-color);
+  user-select: none;
+  pointer-events: none;
 }
 
 .deeplib-subscreen {
@@ -354,7 +425,9 @@ var Themed = (() => {
   z-index: 1;
 }
 #deeplib-nav-menu > .deeplib-button {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
+  height: 100%;
+  aspect-ratio: 1;
 }
 
 #deeplib-storage-meter {
@@ -413,10 +486,9 @@ var Themed = (() => {
   margin-top: min(1dvh, 0.5dvw);
 }
 .deeplib-input-container .deeplib-input {
-  font-size: 0.6em;
+  font-size: 0.9em;
   padding: min(1vh, 0.5vw);
   padding: min(1dvh, 0.5dvw);
-  background-color: transparent;
   outline: none;
   min-height: min(5vh, 2.5vw);
   min-height: min(5dvh, 2.5dvw);
@@ -455,6 +527,27 @@ var Themed = (() => {
   user-select: none;
 }
 
+.deeplib-checkbox-container.row,
+.deeplib-input-container.row,
+.deeplib-dropdown-container.row {
+  flex-direction: row;
+}
+.deeplib-checkbox-container.column,
+.deeplib-input-container.column,
+.deeplib-dropdown-container.column {
+  flex-direction: column;
+}
+.deeplib-checkbox-container.rowReverse,
+.deeplib-input-container.rowReverse,
+.deeplib-dropdown-container.rowReverse {
+  flex-direction: row-reverse;
+}
+.deeplib-checkbox-container.columnReverse,
+.deeplib-input-container.columnReverse,
+.deeplib-dropdown-container.columnReverse {
+  flex-direction: column-reverse;
+}
+
 .deeplib-highlight-text {
   font-weight: bold;
   color: rgb(203, 185, 23);
@@ -489,26 +582,27 @@ var Themed = (() => {
 
 .deeplib-modal {
   position: fixed;
-  top: 10%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 1001;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5em;
-  width: max(50dvw, 25dvh);
-  font-size: min(4dvh, 2dvw);
+  min-width: max(50dvw, 25dvh);
+  font-size: 1em;
   padding: min(2dvh, 1dvw);
   background-color: var(--deeplib-element-color);
   border-radius: min(1.2dvh, 0.6dvw);
   border: min(0.2dvh, 0.1dvw) solid var(--deeplib-border-color);
   color: var(--deeplib-text-color);
+  max-width: max(90dvw, 45dvh);
 }
 .deeplib-modal .deeplib-modal-input {
   width: 100%;
-  font-size: min(2.6dvh, 1.8dvw);
+  font-size: 1em;
   border-radius: min(1dvh, 0.5dvw);
   padding: min(1dvh, 0.5dvw);
 }
@@ -554,168 +648,165 @@ var Themed = (() => {
   flex-direction: column;
   gap: var(--half-gap);
 }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvZGVvL0NvZGUvYmMvQkMtRGVlcExpYi9zcmMvc3R5bGVzIiwic291cmNlcyI6WyJ2YXJzLnNjc3MiLCJidXR0b25zLnNjc3MiLCJlbGVtZW50cy5zY3NzIiwiaW5wdXRzLnNjc3MiLCJtZXNzYWdlcy5zY3NzIiwibW9kYWwuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtBQUFBO0VBRUU7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7OztBQ2RGO0VBQ0U7RUFDQTtFQUNBOztBQUVBO0VBRUU7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBRUE7RUFDQTtFQUNBOztBQUdGO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7QUFHRjtFQUNFOzs7QUMzQ0o7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7OztBQUdGO0VBQ0U7OztBQUdGO0VBQ0U7RUFDQTtFQUNBOzs7QUFHRjtFQUNFO0VBQ0E7OztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBOzs7QUFJSjtFQUNFOzs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFHRTtFQUNFO0VBQ0E7O0FBSEo7RUFNRTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBOzs7QUNqSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOzs7QUFLTjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOzs7QUFPUjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7O0FBR0Y7RUFDRTs7O0FDdkZKO0VBQ0U7RUFDQTs7O0FBR0Y7QUFBQTtFQUVFO0VBQ0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7OztBQUdGO0FBQUE7RUFFRTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7OztBQzdCRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7QUFHRjtFQUNFOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBS047RUFDRTtFQUNBO0VBQ0E7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7O0FBSUE7RUFDRTtFQUNBO0VBQ0E7RUFDQSIsInNvdXJjZXNDb250ZW50IjpbIi5kZWVwbGliLXN1YnNjcmVlbixcbi5kZWVwbGliLW1vZGFsIHtcbiAgLS1kZWVwbGliLWJhY2tncm91bmQtY29sb3I6IHZhcigtLXRtZC1tYWluLCB3aGl0ZSk7XG4gIC0tZGVlcGxpYi1lbGVtZW50LWNvbG9yOiB2YXIoLS10bWQtZWxlbWVudCwgd2hpdGUpO1xuICAtLWRlZXBsaWItZWxlbWVudC1ob3Zlci1jb2xvcjogdmFyKC0tdG1kLWVsZW1lbnQtaG92ZXIsIGN5YW4pO1xuICAtLWRlZXBsaWItYWNjZW50LWNvbG9yOiB2YXIoLS10bWQtYWNjZW50LCAjRkZGRjg4KTtcbiAgLS1kZWVwbGliLWJsb2NrZWQtY29sb3I6IHZhcigtLXRtZC1ibG9ja2VkLCByZWQpO1xuICAtLWRlZXBsaWItdGV4dC1jb2xvcjogdmFyKC0tdG1kLXRleHQsIGJsYWNrKTtcbiAgLS1kZWVwbGliLWljb24tY29sb3I6IHZhcigtLXRtZC1hY2NlbnQsIGJsYWNrKTtcbiAgLS1kZWVwbGliLWljb24taG92ZXItY29sb3I6IHZhcigtLXRtZC1hY2NlbnQtaG92ZXIsIGJsYWNrKTtcbiAgLS1kZWVwbGliLWJvcmRlci1jb2xvcjogdmFyKC0tdG1kLWFjY2VudCwgYmxhY2spO1xuICAtLWRlZXBsaWItYm9yZGVyLXdpZHRoOiBtaW4oMC4ydmgsIDAuMXZ3KTtcbiAgLS1kZWVwbGliLWJvcmRlci13aWR0aDogbWluKDAuMmR2aCwgMC4xZHZ3KTtcbiAgLS1kZWVwbGliLWJvcmRlci1yYWRpdXM6IG1pbigxdmgsIDAuNXZ3KTtcbiAgLS1kZWVwbGliLWJvcmRlci1yYWRpdXM6IG1pbigxZHZoLCAwLjVkdncpO1xufVxuIiwiLmRlZXBsaWItYnV0dG9uIHtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG5cbiAgJi5idXR0b24tc3R5bGluZyxcbiAgJi5idXR0b24tc3R5bGluZzo6YmVmb3JlIHtcbiAgICBib3JkZXItcmFkaXVzOiBtaW4oMS4wZHZoLCAwLjVkdncpO1xuICB9XG5cbiAgaW1nIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiAwJTtcbiAgICBsZWZ0OiAwJTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogbGVmdDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1kZWVwbGliLWljb24tY29sb3IpO1xuICAgIGJhY2tncm91bmQtYmxlbmQtbW9kZTogbXVsdGlwbHk7XG4gICAgYmFja2dyb3VuZC1zaXplOiBjb250YWluO1xuICAgIG1hc2stcG9zaXRpb246IGxlZnQ7XG4gICAgbWFzay1zaXplOiBjb250YWluO1xuICAgIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gICAgbWFzay1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgICBjb2xvcjogdHJhbnNwYXJlbnQ7XG5cbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB2YXIoLS1pbWFnZSk7XG4gICAgbWFzay1pbWFnZTogdmFyKC0taW1hZ2UpO1xuICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xuICB9XG5cbiAgJjpob3ZlciBpbWcge1xuICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWRlZXBsaWItaWNvbi1ob3Zlci1jb2xvcik7XG4gIH1cblxuICAuYnV0dG9uLWxhYmVsIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xuICAgIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICAgIGZvbnQtc2l6ZTogbWluKDMuNmR2aCwgMS44ZHZ3KTtcbiAgICBkaXNwbGF5OiBjb250ZW50cztcbiAgfVxuXG4gIC5idXR0b24tdG9vbHRpcCB7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcbiAgfVxufSIsIiNkZWVwbGliLXBhZ2UtbGFiZWwge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59XG5cbiNkZWVwbGliLXN1YnNjcmVlbi10aXRsZSB7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5kZWVwbGliLXRleHQge1xuICBjb2xvcjogdmFyKC0tZGVlcGxpYi10ZXh0LWNvbG9yKTtcbn1cblxuLmRlZXBsaWItc3Vic2NyZWVuIHtcbiAgcGFkZGluZzogMDtcbiAgbWFyZ2luOiAwO1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbn1cblxuLmRlZXBsaWItc3Vic2NyZWVuICoge1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBwb2ludGVyLWV2ZW50czogYWxsO1xufVxuXG4uZGVlcGxpYi1zZXR0aW5ncyB7XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGdyaWQtYXV0by1yb3dzOiBtaW4tY29udGVudDtcbiAgcGFkZGluZzogbWluKDEuMGR2aCwgMC41ZHZ3KTtcbiAgZ2FwOiAwLjNlbTtcbn1cblxuLmRlZXBsaWItbWlzYyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW4tcmV2ZXJzZTtcbiAgZ2FwOiBtaW4oMXZoLCAwLjV2dyk7XG59XG5cbi5kZWVwbGliLXRvb2x0aXAge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1kZWVwbGliLWVsZW1lbnQtY29sb3IpO1xuICBjb2xvcjogdmFyKC0tZGVlcGxpYi10ZXh0LWNvbG9yKTtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGJvcmRlci1yYWRpdXM6IG1pbigxLjBkdmgsIDAuNWR2dyk7XG4gIHBhZGRpbmc6IG1pbigxdmgsIDAuNXZ3KTtcbiAgZm9udC1zaXplOiAwLjhlbTtcbiAgYm9yZGVyOiBtaW4oMC4ydmgsIDAuMXZ3KSBzb2xpZCB2YXIoLS1kZWVwbGliLWJvcmRlci1jb2xvcik7XG4gIHotaW5kZXg6IDE7XG5cbiAgJi5hbmNob3ItdG9wIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiBtaW4oMXZoLCAwLjV2dyk7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcbiAgfVxuXG4gICYuYW5jaG9yLWJvdHRvbSB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGJvdHRvbTogbWluKDF2aCwgMC41dncpO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7XG4gIH1cbn1cblxuLmRlZXBsaWItb3ZlcmZsb3ctYm94IHtcbiAgYm9yZGVyOiB2YXIoLS1kZWVwbGliLWJvcmRlci1jb2xvcikgc29saWQgdmFyKC0tZGVlcGxpYi1ib3JkZXItd2lkdGgpO1xufVxuXG4uZGVlcGxpYi1wcmV2LW5leHQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGdhcDogbWluKDJkdmgsIDFkdncpO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1kZWVwbGliLWVsZW1lbnQtY29sb3IpO1xuICBjb2xvcjogdmFyKC0tZGVlcGxpYi10ZXh0LWNvbG9yKTtcbiAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcbiAgYm9yZGVyOiBtaW4oMC4ydmgsIDAuMXZ3KSBzb2xpZCB2YXIoLS1kZWVwbGliLWJvcmRlci1jb2xvcik7XG5cbiAgLmRlZXBsaWItcHJldi1uZXh0LWJ1dHRvbiB7XG4gICAgJjpob3ZlciB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1kZWVwbGliLWVsZW1lbnQtaG92ZXItY29sb3IpO1xuICAgICAgYm9yZGVyLXJhZGl1czogdmFyKC0tZGVlcGxpYi1ib3JkZXItcmFkaXVzKTtcbiAgICB9XG5cbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgYXNwZWN0LXJhdGlvOiAxO1xuICB9XG5cbiAgLmRlZXBsaWItcHJldi1uZXh0LWxhYmVsIHtcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xuICB9XG59XG5cbiNkZWVwbGliLW5hdi1tZW51IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgZ2FwOiBtaW4oMmR2aCwgMWR2dyk7XG4gIHotaW5kZXg6IDE7XG5cbiAgJj4uZGVlcGxpYi1idXR0b24ge1xuICAgIGZsZXg6IDEgMCBhdXRvO1xuICB9XG59XG5cbiNkZWVwbGliLXN0b3JhZ2UtbWV0ZXIge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMHB4O1xuICBsZWZ0OiAwcHg7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWRlZXBsaWItZWxlbWVudC1jb2xvcik7XG4gIGJvcmRlcjogdmFyKC0tZGVlcGxpYi1ib3JkZXItd2lkdGgpIHNvbGlkIHZhcigtLWRlZXBsaWItYm9yZGVyLWNvbG9yKTtcbiAgYm9yZGVyLXJhZGl1czogdmFyKC0tZGVlcGxpYi1ib3JkZXItcmFkaXVzKTtcbiAgei1pbmRleDogLTE7XG5cbiAgI2RlZXBsaWItc3RvcmFnZS1iYXIge1xuICAgIGhlaWdodDogMTAwJTtcbiAgICB3aWR0aDogMCU7XG4gICAgYmFja2dyb3VuZDogdmFyKC0tZGVlcGxpYi1hY2NlbnQtY29sb3IpO1xuICB9XG59IiwiLmRlZXBsaWItY2hlY2tib3gtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZ2FwOiAwLjNlbTtcbiAgd2lkdGg6IGZpdC1jb250ZW50O1xuXG4gIHNwYW4ge1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xuICB9XG5cbiAgLmRlZXBsaWItaW5wdXQge1xuICAgIHdpZHRoOiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgaGVpZ2h0OiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgd2lkdGg6IG1pbig1ZHZoLCAyLjVkdncpO1xuICAgIGhlaWdodDogbWluKDVkdmgsIDIuNWR2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMHZoLCAwLjV2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcblxuICAgICZbdHlwZT1cImNoZWNrYm94XCJdOmNoZWNrZWQ6OmJlZm9yZSB7XG4gICAgICB3aWR0aDogODAlO1xuICAgICAgaGVpZ2h0OiA4MCU7XG4gICAgfVxuICB9XG59XG5cbi5kZWVwbGliLWlucHV0LWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogMC4zZW07XG4gIHdpZHRoOiBmaXQtY29udGVudDtcblxuICBzcGFuIHtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgfVxuXG4gICY6aGFzKC5kZWVwbGliLXRleHQpIHtcbiAgICBtYXJnaW4tdG9wOiBtaW4oMXZoLCAwLjV2dyk7XG4gICAgbWFyZ2luLXRvcDogbWluKDFkdmgsIDAuNWR2dyk7XG4gIH1cblxuICAuZGVlcGxpYi1pbnB1dCB7XG4gICAgZm9udC1zaXplOiAwLjZlbTtcbiAgICBwYWRkaW5nOiBtaW4oMXZoLCAwLjV2dyk7XG4gICAgcGFkZGluZzogbWluKDFkdmgsIDAuNWR2dyk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICBtaW4taGVpZ2h0OiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgbWluLWhlaWdodDogbWluKDVkdmgsIDIuNWR2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMHZoLCAwLjV2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcblxuICAgICZbdHlwZT1cImNvbG9yXCJdIHtcbiAgICAgIHBhZGRpbmc6IDBweDtcbiAgICAgIHdpZHRoOiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgICBoZWlnaHQ6IG1pbig1dmgsIDIuNXZ3KTtcbiAgICAgIHdpZHRoOiBtaW4oNWR2aCwgMi41ZHZ3KTtcbiAgICAgIGhlaWdodDogbWluKDVkdmgsIDIuNWR2dyk7XG4gICAgICBib3JkZXItcmFkaXVzOiAwcHg7XG5cbiAgICAgICY6ZGlzYWJsZWQge1xuICAgICAgICBib3JkZXI6IHZhcigtLWRlZXBsaWItYmxvY2tlZC1jb2xvcikgc29saWQgdmFyKC0tZGVlcGxpYi1ib3JkZXItd2lkdGgpO1xuICAgICAgICBjdXJzb3I6IG5vdC1hbGxvd2VkO1xuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG5cbi5kZWVwbGliLWRyb3Bkb3duLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogbWluKDJ2aCwgMXZ3KTtcbiAgZ2FwOiBtaW4oMmR2aCwgMWR2dyk7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICB3aWR0aDogZml0LWNvbnRlbnQ7XG5cbiAgc2VsZWN0IHtcbiAgICBwYWRkaW5nOiAwIG1pbigxdmgsIDAuNXZ3KTtcbiAgICBwYWRkaW5nOiAwIG1pbigxZHZoLCAwLjVkdncpO1xuICAgIGJvcmRlci1yYWRpdXM6IG1pbigxdmgsIDAuNXZ3KTtcbiAgICBib3JkZXItcmFkaXVzOiBtaW4oMWR2aCwgMC41ZHZ3KTtcbiAgfVxuXG4gIHNwYW4ge1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xuICB9XG59IiwiLmRlZXBsaWItaGlnaGxpZ2h0LXRleHQge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgY29sb3I6IHJnYigyMDMsIDE4NSwgMjMpO1xufVxuXG4jVGV4dEFyZWFDaGF0TG9nW2RhdGEtY29sb3J0aGVtZT0nZGFyayddIGRpdi5DaGF0TWVzc2FnZS5kZWVwbGliLW1lc3NhZ2UsXG4jVGV4dEFyZWFDaGF0TG9nW2RhdGEtY29sb3J0aGVtZT0nZGFyazInXSBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1lbGVtZW50LWNvbG9yKTtcbiAgYm9yZGVyOiBtaW4oMC4yZHZoLCAwLjFkdncpIHNvbGlkIHZhcigtLWRlZXBsaWItYm9yZGVyLWNvbG9yKTtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG59XG5cbiNUZXh0QXJlYUNoYXRMb2cgZGl2LkNoYXRNZXNzYWdlLmRlZXBsaWItbWVzc2FnZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlZWU7XG4gIGJvcmRlcjogbWluKDAuMmR2aCwgMC4xZHZ3KSBzb2xpZCAjNDQwMTcxO1xuICBjb2xvcjogIzExMTtcbiAgcGFkZGluZy1sZWZ0OiBtaW4oMC42ZHZoLCAwLjNkdncpO1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbn1cblxuI1RleHRBcmVhQ2hhdExvZ1tkYXRhLWNvbG9ydGhlbWU9J2RhcmsnXSBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIGEsXG4jVGV4dEFyZWFDaGF0TG9nW2RhdGEtY29sb3J0aGVtZT0nZGFyazInXSBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIGEge1xuICBjb2xvcjogdmFyKC0tZGVlcGxpYi10ZXh0LWNvbG9yKTtcbn1cblxuI1RleHRBcmVhQ2hhdExvZyBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIGEge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBjb2xvcjogIzExMTtcbn1cbiIsIi5kZWVwbGliLW1vZGFsIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDEwJTtcbiAgbGVmdDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7XG4gIHotaW5kZXg6IDEwMDE7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBnYXA6IDAuNWVtO1xuICB3aWR0aDogbWF4KDUwZHZ3LCAyNWR2aCk7XG4gIGZvbnQtc2l6ZTogbWluKDRkdmgsIDJkdncpO1xuICBwYWRkaW5nOiBtaW4oMmR2aCwgMWR2dyk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWRlZXBsaWItZWxlbWVudC1jb2xvcik7XG4gIGJvcmRlci1yYWRpdXM6IG1pbigxLjJkdmgsIDAuNmR2dyk7XG4gIGJvcmRlcjogbWluKDAuMmR2aCwgMC4xZHZ3KSBzb2xpZCB2YXIoLS1kZWVwbGliLWJvcmRlci1jb2xvcik7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuXG4gIC5kZWVwbGliLW1vZGFsLWlucHV0IHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBmb250LXNpemU6IG1pbigyLjZkdmgsIDEuOGR2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcbiAgICBwYWRkaW5nOiBtaW4oMWR2aCwgMC41ZHZ3KTtcbiAgfVxuXG4gIGlucHV0LmRlZXBsaWItbW9kYWwtaW5wdXQge1xuICAgIG1heC13aWR0aDogbWF4KDUwZHZoLCAyNWR2dyk7XG4gIH1cblxuICAuZGVlcGxpYi1tb2RhbC1idXR0b24tY29udGFpbmVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gICAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcbiAgICBnYXA6IDAuNWVtO1xuICAgIHdpZHRoOiAxMDAlO1xuXG4gICAgLmRlZXBsaWItYnV0dG9uIHtcbiAgICAgIGZvbnQtc2l6ZTogMC44ZW07XG4gICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgd2lkdGg6IGF1dG87XG4gICAgICBwYWRkaW5nOiBtaW4oMC40dmgsIDAuMnZ3KSBtaW4oMnZoLCAxdncpO1xuXG4gICAgICAuYnV0dG9uLWxhYmVsIHtcbiAgICAgICAgZGlzcGxheTogY29udGVudHM7XG4gICAgICB9XG4gICAgfVxuICB9XG5cbiAgLmRlZXBsaWItbW9kYWwtcHJvbXB0LWNvbnRhaW5lciB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIH1cbn1cblxuLmRlZXBsaWItbW9kYWwtYmxvY2tlciB7XG4gIHotaW5kZXg6IDEwMDA7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiAwO1xuICBsZWZ0OiAwO1xuICB3aWR0aDogMTAwZHZ3O1xuICBoZWlnaHQ6IDEwMGR2aDtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLCAwLCAwLCAwLjUpO1xufVxuXG4jZGVlcGxpYi1tb2RhbC1pbXBvcnRfZXhwb3J0IHtcbiAgLmRlZXBsaWItbW9kYWwtY2hlY2tib3gtY29udGFpbmVyIHtcbiAgICBtYXJnaW4tdG9wOiAwLjVlbTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgZ2FwOiB2YXIoLS1oYWxmLWdhcCk7XG4gIH1cbn0iXX0= */`;
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZhcnMuc2NzcyIsImJ1dHRvbnMuc2NzcyIsImVsZW1lbnRzLnNjc3MiLCJpbnB1dHMuc2NzcyIsIm1lc3NhZ2VzLnNjc3MiLCJtb2RhbC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7RUFFRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7O0FDZEY7RUFDRTtFQUNBO0VBQ0E7O0FBRUE7RUFFRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFFQTtFQUNBO0VBQ0E7O0FBR0Y7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7O0FDNUNKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOzs7QUFHRjtFQUNFOzs7QUFHRjtFQUNFO0VBQ0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7OztBQUdGO0VBQ0U7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUlKO0VBQ0U7OztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUdFO0VBQ0U7RUFDQTs7QUFISjtFQU1FO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBOzs7QUN6SUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOzs7QUFLTjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7O0FBT1I7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUdGO0VBQ0U7OztBQU9GO0FBQUE7QUFBQTtFQUNFOztBQUdGO0FBQUE7QUFBQTtFQUNFOztBQUdGO0FBQUE7QUFBQTtFQUNFOztBQUdGO0FBQUE7QUFBQTtFQUNFOzs7QUMxR0o7RUFDRTtFQUNBOzs7QUFHRjtBQUFBO0VBRUU7RUFDQTtFQUNBOzs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7O0FBR0Y7QUFBQTtFQUVFOzs7QUFHRjtFQUNFO0VBQ0E7RUFDQTs7O0FDN0JGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7O0FBR0Y7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUtOO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7OztBQUlBO0VBQ0U7RUFDQTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZGVlcGxpYi1zdWJzY3JlZW4sXG4uZGVlcGxpYi1tb2RhbCB7XG4gIC0tZGVlcGxpYi1iYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10bWQtbWFpbiwgd2hpdGUpO1xuICAtLWRlZXBsaWItZWxlbWVudC1jb2xvcjogdmFyKC0tdG1kLWVsZW1lbnQsIHdoaXRlKTtcbiAgLS1kZWVwbGliLWVsZW1lbnQtaG92ZXItY29sb3I6IHZhcigtLXRtZC1lbGVtZW50LWhvdmVyLCBjeWFuKTtcbiAgLS1kZWVwbGliLWFjY2VudC1jb2xvcjogdmFyKC0tdG1kLWFjY2VudCwgI0ZGRkY4OCk7XG4gIC0tZGVlcGxpYi1ibG9ja2VkLWNvbG9yOiB2YXIoLS10bWQtYmxvY2tlZCwgcmVkKTtcbiAgLS1kZWVwbGliLXRleHQtY29sb3I6IHZhcigtLXRtZC10ZXh0LCBibGFjayk7XG4gIC0tZGVlcGxpYi1pY29uLWNvbG9yOiB2YXIoLS10bWQtYWNjZW50LCBibGFjayk7XG4gIC0tZGVlcGxpYi1pY29uLWhvdmVyLWNvbG9yOiB2YXIoLS10bWQtYWNjZW50LWhvdmVyLCBibGFjayk7XG4gIC0tZGVlcGxpYi1ib3JkZXItY29sb3I6IHZhcigtLXRtZC1hY2NlbnQsIGJsYWNrKTtcbiAgLS1kZWVwbGliLWJvcmRlci13aWR0aDogbWluKDAuMnZoLCAwLjF2dyk7XG4gIC0tZGVlcGxpYi1ib3JkZXItd2lkdGg6IG1pbigwLjJkdmgsIDAuMWR2dyk7XG4gIC0tZGVlcGxpYi1ib3JkZXItcmFkaXVzOiBtaW4oMXZoLCAwLjV2dyk7XG4gIC0tZGVlcGxpYi1ib3JkZXItcmFkaXVzOiBtaW4oMWR2aCwgMC41ZHZ3KTtcbn1cbiIsIi5kZWVwbGliLWJ1dHRvbiB7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuXG4gICYuYnV0dG9uLXN0eWxpbmcsXG4gICYuYnV0dG9uLXN0eWxpbmc6OmJlZm9yZSB7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcbiAgfVxuXG4gIGltZyB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMCU7XG4gICAgbGVmdDogMCU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGxlZnQ7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1pY29uLWNvbG9yKTtcbiAgICBiYWNrZ3JvdW5kLWJsZW5kLW1vZGU6IG11bHRpcGx5O1xuICAgIGJhY2tncm91bmQtc2l6ZTogY29udGFpbjtcbiAgICBtYXNrLXBvc2l0aW9uOiBsZWZ0O1xuICAgIG1hc2stc2l6ZTogY29udGFpbjtcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIG1hc2stcmVwZWF0OiBuby1yZXBlYXQ7XG4gICAgY29sb3I6IHRyYW5zcGFyZW50O1xuXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdmFyKC0taW1hZ2UpO1xuICAgIG1hc2staW1hZ2U6IHZhcigtLWltYWdlKTtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgfVxuXG4gICY6aG92ZXIgaW1nIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1kZWVwbGliLWljb24taG92ZXItY29sb3IpO1xuICB9XG5cbiAgLmJ1dHRvbi1sYWJlbCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgICBjb2xvcjogdmFyKC0tZGVlcGxpYi10ZXh0LWNvbG9yKTtcbiAgICBmb250LXNpemU6IDAuOWVtO1xuICAgIGRpc3BsYXk6IGNvbnRlbnRzO1xuICB9XG5cbiAgLmJ1dHRvbi10b29sdGlwIHtcbiAgICBib3JkZXItcmFkaXVzOiBtaW4oMS4wZHZoLCAwLjVkdncpO1xuICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xuICB9XG59IiwiI2RlZXBsaWItcGFnZS1sYWJlbCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbn1cblxuI2RlZXBsaWItc3Vic2NyZWVuLXRpdGxlIHtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLmRlZXBsaWItdGV4dCB7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xufVxuXG4uZGVlcGxpYi1sYWJlbCB7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59XG5cbi5kZWVwbGliLXN1YnNjcmVlbiB7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59XG5cbi5kZWVwbGliLXN1YnNjcmVlbiAqIHtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgcG9pbnRlci1ldmVudHM6IGFsbDtcbn1cblxuLmRlZXBsaWItc2V0dGluZ3Mge1xuICBkaXNwbGF5OiBncmlkO1xuICBncmlkLWF1dG8tcm93czogbWluLWNvbnRlbnQ7XG4gIHBhZGRpbmc6IG1pbigxLjBkdmgsIDAuNWR2dyk7XG4gIGdhcDogMC4zZW07XG59XG5cbi5kZWVwbGliLW1pc2Mge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uLXJldmVyc2U7XG4gIGdhcDogbWluKDF2aCwgMC41dncpO1xufVxuXG4uZGVlcGxpYi10b29sdGlwIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1lbGVtZW50LWNvbG9yKTtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBib3JkZXItcmFkaXVzOiBtaW4oMS4wZHZoLCAwLjVkdncpO1xuICBwYWRkaW5nOiBtaW4oMXZoLCAwLjV2dyk7XG4gIGZvbnQtc2l6ZTogMC44ZW07XG4gIGJvcmRlcjogbWluKDAuMnZoLCAwLjF2dykgc29saWQgdmFyKC0tZGVlcGxpYi1ib3JkZXItY29sb3IpO1xuICB6LWluZGV4OiAxO1xuXG4gICYuYW5jaG9yLXRvcCB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogbWluKDF2aCwgMC41dncpO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7XG4gIH1cblxuICAmLmFuY2hvci1ib3R0b20ge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBib3R0b206IG1pbigxdmgsIDAuNXZ3KTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICB9XG59XG5cbi5kZWVwbGliLW92ZXJmbG93LWJveCB7XG4gIGJvcmRlcjogdmFyKC0tZGVlcGxpYi1ib3JkZXItY29sb3IpIHNvbGlkIHZhcigtLWRlZXBsaWItYm9yZGVyLXdpZHRoKTtcbn1cblxuLmRlZXBsaWItcHJldi1uZXh0IHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICBnYXA6IG1pbigyZHZoLCAxZHZ3KTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1lbGVtZW50LWNvbG9yKTtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG4gIGJvcmRlci1yYWRpdXM6IG1pbigxLjBkdmgsIDAuNWR2dyk7XG4gIGJvcmRlcjogbWluKDAuMnZoLCAwLjF2dykgc29saWQgdmFyKC0tZGVlcGxpYi1ib3JkZXItY29sb3IpO1xuXG4gIC5kZWVwbGliLXByZXYtbmV4dC1idXR0b24ge1xuICAgICY6aG92ZXIge1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1lbGVtZW50LWhvdmVyLWNvbG9yKTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IHZhcigtLWRlZXBsaWItYm9yZGVyLXJhZGl1cyk7XG4gICAgfVxuXG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIGFzcGVjdC1yYXRpbzogMTtcbiAgfVxuXG4gIC5kZWVwbGliLXByZXYtbmV4dC1sYWJlbCB7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgfVxufVxuXG4jZGVlcGxpYi1uYXYtbWVudSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGdhcDogbWluKDJkdmgsIDFkdncpO1xuICB6LWluZGV4OiAxO1xuXG4gICY+LmRlZXBsaWItYnV0dG9uIHtcbiAgICBmbGV4OiAxIDEgYXV0bztcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgYXNwZWN0LXJhdGlvOiAxO1xuICB9XG59XG5cbiNkZWVwbGliLXN0b3JhZ2UtbWV0ZXIge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMHB4O1xuICBsZWZ0OiAwcHg7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWRlZXBsaWItZWxlbWVudC1jb2xvcik7XG4gIGJvcmRlcjogdmFyKC0tZGVlcGxpYi1ib3JkZXItd2lkdGgpIHNvbGlkIHZhcigtLWRlZXBsaWItYm9yZGVyLWNvbG9yKTtcbiAgYm9yZGVyLXJhZGl1czogdmFyKC0tZGVlcGxpYi1ib3JkZXItcmFkaXVzKTtcbiAgei1pbmRleDogLTE7XG5cbiAgI2RlZXBsaWItc3RvcmFnZS1iYXIge1xuICAgIGhlaWdodDogMTAwJTtcbiAgICB3aWR0aDogMCU7XG4gICAgYmFja2dyb3VuZDogdmFyKC0tZGVlcGxpYi1hY2NlbnQtY29sb3IpO1xuICB9XG59IiwiLmRlZXBsaWItY2hlY2tib3gtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZ2FwOiAwLjNlbTtcbiAgd2lkdGg6IGZpdC1jb250ZW50O1xuXG4gIHNwYW4ge1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xuICB9XG5cbiAgLmRlZXBsaWItaW5wdXQge1xuICAgIHdpZHRoOiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgaGVpZ2h0OiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgd2lkdGg6IG1pbig1ZHZoLCAyLjVkdncpO1xuICAgIGhlaWdodDogbWluKDVkdmgsIDIuNWR2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMHZoLCAwLjV2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcblxuICAgICZbdHlwZT1cImNoZWNrYm94XCJdOmNoZWNrZWQ6OmJlZm9yZSB7XG4gICAgICB3aWR0aDogODAlO1xuICAgICAgaGVpZ2h0OiA4MCU7XG4gICAgfVxuICB9XG59XG5cbi5kZWVwbGliLWlucHV0LWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogMC4zZW07XG4gIHdpZHRoOiBmaXQtY29udGVudDtcblxuICBzcGFuIHtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgfVxuXG4gICY6aGFzKC5kZWVwbGliLXRleHQpIHtcbiAgICBtYXJnaW4tdG9wOiBtaW4oMXZoLCAwLjV2dyk7XG4gICAgbWFyZ2luLXRvcDogbWluKDFkdmgsIDAuNWR2dyk7XG4gIH1cblxuICAuZGVlcGxpYi1pbnB1dCB7XG4gICAgZm9udC1zaXplOiAwLjllbTtcbiAgICBwYWRkaW5nOiBtaW4oMXZoLCAwLjV2dyk7XG4gICAgcGFkZGluZzogbWluKDFkdmgsIDAuNWR2dyk7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICBtaW4taGVpZ2h0OiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgbWluLWhlaWdodDogbWluKDVkdmgsIDIuNWR2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMHZoLCAwLjV2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcblxuICAgICZbdHlwZT1cImNvbG9yXCJdIHtcbiAgICAgIHBhZGRpbmc6IDBweDtcbiAgICAgIHdpZHRoOiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgICBoZWlnaHQ6IG1pbig1dmgsIDIuNXZ3KTtcbiAgICAgIHdpZHRoOiBtaW4oNWR2aCwgMi41ZHZ3KTtcbiAgICAgIGhlaWdodDogbWluKDVkdmgsIDIuNWR2dyk7XG4gICAgICBib3JkZXItcmFkaXVzOiAwcHg7XG5cbiAgICAgICY6ZGlzYWJsZWQge1xuICAgICAgICBib3JkZXI6IHZhcigtLWRlZXBsaWItYmxvY2tlZC1jb2xvcikgc29saWQgdmFyKC0tZGVlcGxpYi1ib3JkZXItd2lkdGgpO1xuICAgICAgICBjdXJzb3I6IG5vdC1hbGxvd2VkO1xuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG5cbi5kZWVwbGliLWRyb3Bkb3duLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogbWluKDJ2aCwgMXZ3KTtcbiAgZ2FwOiBtaW4oMmR2aCwgMWR2dyk7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICB3aWR0aDogZml0LWNvbnRlbnQ7XG5cbiAgc2VsZWN0IHtcbiAgICBwYWRkaW5nOiAwIG1pbigxdmgsIDAuNXZ3KTtcbiAgICBwYWRkaW5nOiAwIG1pbigxZHZoLCAwLjVkdncpO1xuICAgIGJvcmRlci1yYWRpdXM6IG1pbigxdmgsIDAuNXZ3KTtcbiAgICBib3JkZXItcmFkaXVzOiBtaW4oMWR2aCwgMC41ZHZ3KTtcbiAgfVxuXG4gIHNwYW4ge1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xuICB9XG59XG5cbi5kZWVwbGliLWNoZWNrYm94LWNvbnRhaW5lcixcbi5kZWVwbGliLWlucHV0LWNvbnRhaW5lcixcbi5kZWVwbGliLWRyb3Bkb3duLWNvbnRhaW5lciB7XG4gICYucm93IHtcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICB9XG5cbiAgJi5jb2x1bW4ge1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIH1cblxuICAmLnJvd1JldmVyc2Uge1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3ctcmV2ZXJzZTtcbiAgfVxuXG4gICYuY29sdW1uUmV2ZXJzZSB7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbi1yZXZlcnNlO1xuICB9XG59IiwiLmRlZXBsaWItaGlnaGxpZ2h0LXRleHQge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgY29sb3I6IHJnYigyMDMsIDE4NSwgMjMpO1xufVxuXG4jVGV4dEFyZWFDaGF0TG9nW2RhdGEtY29sb3J0aGVtZT0nZGFyayddIGRpdi5DaGF0TWVzc2FnZS5kZWVwbGliLW1lc3NhZ2UsXG4jVGV4dEFyZWFDaGF0TG9nW2RhdGEtY29sb3J0aGVtZT0nZGFyazInXSBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1lbGVtZW50LWNvbG9yKTtcbiAgYm9yZGVyOiBtaW4oMC4yZHZoLCAwLjFkdncpIHNvbGlkIHZhcigtLWRlZXBsaWItYm9yZGVyLWNvbG9yKTtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG59XG5cbiNUZXh0QXJlYUNoYXRMb2cgZGl2LkNoYXRNZXNzYWdlLmRlZXBsaWItbWVzc2FnZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlZWU7XG4gIGJvcmRlcjogbWluKDAuMmR2aCwgMC4xZHZ3KSBzb2xpZCAjNDQwMTcxO1xuICBjb2xvcjogIzExMTtcbiAgcGFkZGluZy1sZWZ0OiBtaW4oMC42ZHZoLCAwLjNkdncpO1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbn1cblxuI1RleHRBcmVhQ2hhdExvZ1tkYXRhLWNvbG9ydGhlbWU9J2RhcmsnXSBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIGEsXG4jVGV4dEFyZWFDaGF0TG9nW2RhdGEtY29sb3J0aGVtZT0nZGFyazInXSBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIGEge1xuICBjb2xvcjogdmFyKC0tZGVlcGxpYi10ZXh0LWNvbG9yKTtcbn1cblxuI1RleHRBcmVhQ2hhdExvZyBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIGEge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBjb2xvcjogIzExMTtcbn1cbiIsIi5kZWVwbGliLW1vZGFsIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDUwJTtcbiAgbGVmdDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgei1pbmRleDogMTAwMTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogMC41ZW07XG4gIG1pbi13aWR0aDogbWF4KDUwZHZ3LCAyNWR2aCk7XG4gIGZvbnQtc2l6ZTogMWVtO1xuICBwYWRkaW5nOiBtaW4oMmR2aCwgMWR2dyk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWRlZXBsaWItZWxlbWVudC1jb2xvcik7XG4gIGJvcmRlci1yYWRpdXM6IG1pbigxLjJkdmgsIDAuNmR2dyk7XG4gIGJvcmRlcjogbWluKDAuMmR2aCwgMC4xZHZ3KSBzb2xpZCB2YXIoLS1kZWVwbGliLWJvcmRlci1jb2xvcik7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICBtYXgtd2lkdGg6IG1heCg5MGR2dywgNDVkdmgpO1xuXG4gIC5kZWVwbGliLW1vZGFsLWlucHV0IHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBmb250LXNpemU6IDFlbTtcbiAgICBib3JkZXItcmFkaXVzOiBtaW4oMS4wZHZoLCAwLjVkdncpO1xuICAgIHBhZGRpbmc6IG1pbigxZHZoLCAwLjVkdncpO1xuICB9XG5cbiAgaW5wdXQuZGVlcGxpYi1tb2RhbC1pbnB1dCB7XG4gICAgbWF4LXdpZHRoOiBtYXgoNTBkdmgsIDI1ZHZ3KTtcbiAgfVxuXG4gIC5kZWVwbGliLW1vZGFsLWJ1dHRvbi1jb250YWluZXIge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgIGdhcDogMC41ZW07XG4gICAgd2lkdGg6IDEwMCU7XG5cbiAgICAuZGVlcGxpYi1idXR0b24ge1xuICAgICAgZm9udC1zaXplOiAwLjhlbTtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICB3aWR0aDogYXV0bztcbiAgICAgIHBhZGRpbmc6IG1pbigwLjR2aCwgMC4ydncpIG1pbigydmgsIDF2dyk7XG5cbiAgICAgIC5idXR0b24tbGFiZWwge1xuICAgICAgICBkaXNwbGF5OiBjb250ZW50cztcbiAgICAgIH1cbiAgICB9XG4gIH1cblxuICAuZGVlcGxpYi1tb2RhbC1wcm9tcHQtY29udGFpbmVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgfVxufVxuXG4uZGVlcGxpYi1tb2RhbC1ibG9ja2VyIHtcbiAgei1pbmRleDogMTAwMDtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHdpZHRoOiAxMDBkdnc7XG4gIGhlaWdodDogMTAwZHZoO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG59XG5cbiNkZWVwbGliLW1vZGFsLWltcG9ydF9leHBvcnQge1xuICAuZGVlcGxpYi1tb2RhbC1jaGVja2JveC1jb250YWluZXIge1xuICAgIG1hcmdpbi10b3A6IDAuNWVtO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBnYXA6IHZhcigtLWhhbGYtZ2FwKTtcbiAgfVxufSJdfQ== */`;
   var _a3;
-  var F = (_a3 = class extends B {
+  var X = (_a3 = class extends L {
     constructor() {
       super(...arguments);
       __publicField(this, "debugSettings", { showRawTranslations: false, showFileNames: false, showIncomingServerTransactions: false, incomingMessageFilterMode: "exclude", incomingMessageTypes: "", showOutcomingServerTransactions: false, outcomingMessageFilterMode: "exclude", outcomingMessageTypes: "", showRawActivityNames: false, showRawAssetNames: false });
     }
     load() {
-      let e = u.getLocalStorage("debugOptions");
-      e && (this.debugSettings = Object.assign(this.debugSettings, e)), ue(), I.hookFunction("TextGet", S.ModifyBehavior, (i, n) => {
-        if (!this.debugSettings.showRawTranslations) return n(i);
-        let [o] = i, r = TextScreenCache?.fileName() ?? "[unknown]";
-        return this.debugSettings.showFileNames ? `${r}::${o}` : o;
-      }), I.hookFunction("TextGetInScope", S.ModifyBehavior, (i, n) => {
-        if (!this.debugSettings.showRawTranslations) return n(i);
-        let [o, r] = i, a = o.lastIndexOf("/");
-        a === -1 ? a = 0 : a = a + 1;
-        let l = o.substring(a);
-        return this.debugSettings.showFileNames ? `${l}::${r}` : r;
-      }), I.hookFunction("InterfaceTextGet", S.ModifyBehavior, (i, n) => {
-        if (!this.debugSettings.showRawTranslations) return n(i);
-        let [o] = i, r = InterfaceStringsPath.lastIndexOf("/");
-        r === -1 ? r = 0 : r = r + 1;
-        let a = InterfaceStringsPath.substring(r);
-        return this.debugSettings.showFileNames ? `${a}::${o}` : o;
-      }), I.hookFunction("ActivityDictionaryText", S.ModifyBehavior, (i, n) => {
-        if (!this.debugSettings.showRawActivityNames) return n(i);
-        let [o] = i;
+      let e = p.getLocalStorage("debugOptions");
+      e && (this.debugSettings = Object.assign(this.debugSettings, e)), Le(), w.hookFunction("TextGet", E.ModifyBehavior, (n, i) => {
+        if (!this.debugSettings.showRawTranslations) return i(n);
+        let [o] = n, s = TextScreenCache?.fileName() ?? "[unknown]";
+        return this.debugSettings.showFileNames ? `${s}::${o}` : o;
+      }), w.hookFunction("TextGetInScope", E.ModifyBehavior, (n, i) => {
+        if (!this.debugSettings.showRawTranslations) return i(n);
+        let [o, s] = n, l = o.lastIndexOf("/");
+        l === -1 ? l = 0 : l = l + 1;
+        let c = o.substring(l);
+        return this.debugSettings.showFileNames ? `${c}::${s}` : s;
+      }), w.hookFunction("InterfaceTextGet", E.ModifyBehavior, (n, i) => {
+        if (!this.debugSettings.showRawTranslations) return i(n);
+        let [o] = n, s = InterfaceStringsPath.lastIndexOf("/");
+        s === -1 ? s = 0 : s = s + 1;
+        let l = InterfaceStringsPath.substring(s);
+        return this.debugSettings.showFileNames ? `${l}::${o}` : o;
+      }), w.hookFunction("ActivityDictionaryText", E.ModifyBehavior, (n, i) => {
+        if (!this.debugSettings.showRawActivityNames) return i(n);
+        let [o] = n;
         return o;
-      }), I.hookFunction("ElementButton.CreateForAsset", S.ModifyBehavior, (i, n) => {
-        if (!this.debugSettings.showRawAssetNames) return n(i);
-        let [, o, , , r] = i;
-        return o = ("Asset" in o ? o : { Asset: o }).Asset, r ?? (r = {}), r.label = o.Name, n(i);
+      }), w.hookFunction("ElementButton.CreateForAsset", E.ModifyBehavior, (n, i) => {
+        if (!this.debugSettings.showRawAssetNames) return i(n);
+        let [, o, , , s] = n;
+        return o = ("Asset" in o ? o : { Asset: o }).Asset, s ?? (s = {}), s.label = o.Name, i(n);
       });
     }
     unload() {
-      ge();
+      Oe();
     }
     saveDebugSettings() {
-      u.setLocalStorage("debugOptions", this.debugSettings);
+      p.setLocalStorage("debugOptions", this.debugSettings);
     }
-  }, __name(_a3, "F"), s(_a3, "DebugModule"), _a3);
-  var Z;
-  function _(...t) {
-    let e = Array.isArray(t[0]) && typeof t[0][0] == "string" ? t[0][0] : "[unknown]", i = Array.isArray(t[0]) ? t[0].slice(1) : [], n = x("DebugModule");
-    return n.debugSettings.showIncomingServerTransactions && ee(e, n.debugSettings.incomingMessageTypes, n.debugSettings.incomingMessageFilterMode) && p.debug("\u25BC Receive", e, ...i), Z?.apply(this, t);
+  }, __name(_a3, "X"), r(_a3, "DebugModule"), _a3);
+  var M;
+  function se(...t) {
+    let e = Array.isArray(t[0]) && typeof t[0][0] == "string" ? t[0][0] : "[unknown]", n = Array.isArray(t[0]) ? t[0].slice(1) : [], i = C("DebugModule");
+    return i.debugSettings.showIncomingServerTransactions && le(e, i.debugSettings.incomingMessageTypes, i.debugSettings.incomingMessageFilterMode) && m.debug("\u25BC Receive", e, ...n), M?.apply(this, t);
   }
-  __name(_, "_");
-  s(_, "processIncomingTransaction");
-  var O;
-  function q(...t) {
-    let e = typeof t[0] == "string" ? t[0] : "[unknown]", i = Array.isArray(t[1]) ? t[1] : [t[1]], n = x("DebugModule");
-    return n.debugSettings.showOutcomingServerTransactions && ee(e, n.debugSettings.outcomingMessageTypes, n.debugSettings.outcomingMessageFilterMode) && p.debug("\u25B2 Send", e, ...i), O?.apply(this, t);
+  __name(se, "se");
+  r(se, "processIncomingTransaction");
+  var V;
+  function ae(...t) {
+    let e = typeof t[0] == "string" ? t[0] : "[unknown]", n = Array.isArray(t[1]) ? t[1] : [t[1]], i = C("DebugModule");
+    return i.debugSettings.showOutcomingServerTransactions && le(e, i.debugSettings.outcomingMessageTypes, i.debugSettings.outcomingMessageFilterMode) && m.debug("\u25B2 Send", e, ...n), V?.apply(this, t);
   }
-  __name(q, "q");
-  s(q, "processOutcomingTransaction");
-  function ee(t, e, i) {
+  __name(ae, "ae");
+  r(ae, "processOutcomingTransaction");
+  function le(t, e, n) {
     if (!e.trim()) return true;
-    let o = e.split(",").map((r) => r.trim()).filter((r) => r.length > 0).some((r) => t === r);
-    return i === "include" ? o : !o;
+    let o = e.split(",").map((s) => s.trim()).filter((s) => s.length > 0).some((s) => t === s);
+    return n === "include" ? o : !o;
   }
-  __name(ee, "ee");
-  s(ee, "shouldLogMessage");
-  function ue() {
-    Z === void 0 && typeof ServerSocket?.__proto__?.emitEvent == "function" && (Z = ServerSocket.__proto__.emitEvent, ServerSocket.__proto__.emitEvent = _), O === void 0 && typeof ServerSocket?.__proto__?.emit == "function" && (O = ServerSocket.__proto__.emit, ServerSocket.__proto__.emit = q);
+  __name(le, "le");
+  r(le, "shouldLogMessage");
+  function Le() {
+    M === void 0 && typeof ServerSocket?.__proto__?.emitEvent == "function" && (M = ServerSocket.__proto__.emitEvent, ServerSocket.__proto__.emitEvent = se), V === void 0 && typeof ServerSocket?.__proto__?.emit == "function" && (V = ServerSocket.__proto__.emit, ServerSocket.__proto__.emit = ae);
   }
-  __name(ue, "ue");
-  s(ue, "loadServerTransactions");
-  function ge() {
-    Z && ServerSocket.__proto__.emitEvent === _ && (ServerSocket.__proto__.emitEvent = Z, Z = void 0), O && ServerSocket.__proto__.emit === q && (ServerSocket.__proto__.emit = O, O = void 0);
+  __name(Le, "Le");
+  r(Le, "loadServerTransactions");
+  function Oe() {
+    M && ServerSocket.__proto__.emitEvent === se && (ServerSocket.__proto__.emitEvent = M, M = void 0), V && ServerSocket.__proto__.emit === ae && (ServerSocket.__proto__.emit = V, V = void 0);
   }
-  __name(ge, "ge");
-  s(ge, "unloadServerTransactions");
-  var u;
-  var I;
+  __name(Oe, "Oe");
+  r(Oe, "unloadServerTransactions");
+  var de = oe($(), 1);
   var p;
   var w;
-  function st(t) {
-    import("https://cdn.jsdelivr.net/npm/bondage-club-mod-sdk@1.2.0/+esm").then(() => {
-      if (I = new E({ name: t.modName, fullName: t.modName, version: "1.8.1", repository: t.modRepository }), w = t.modName, u = new X(t.modName), p = new V(w), N.injectInline("deeplib-style", $), p.debug("Init wait"), !CurrentScreen || CurrentScreen === "Login") {
-        t.beforeLogin?.();
-        let i = I.hookFunction("LoginResponse", 0, (n, o) => {
-          p.debug("Init! LoginResponse caught: ", n), o(n);
-          let r = n[0];
-          if (r === "InvalidNamePassword") return o(n);
-          r && typeof r.Name == "string" && typeof r.AccountName == "string" && (te(t), i());
-        });
-      } else p.debug(`Already logged in, initing ${w}`), te(t);
-    });
+  var m;
+  async function wt(t) {
+    w = new W({ name: define_MOD_INFO_default.name, fullName: define_MOD_INFO_default.fullName, version: "1.8.2", repository: define_MOD_INFO_default.repository }), p = new Y(define_MOD_INFO_default.name), m = de.default.get(define_MOD_INFO_default.name), H.injectInline("deeplib-style-5.0.1", re), m.debug("Init wait"), (!CurrentScreen || CurrentScreen === "Login") && t.beforeLogin?.(), await ServerIsLoggedInAsync(), Se(t);
   }
-  __name(st, "st");
-  s(st, "initMod");
-  async function te(t) {
-    if (window[t.modName + "Loaded"]) return;
-    u.load(), await M.init(t.translationOptions);
-    let e = Object.entries(t.modules ?? {}), i = [];
-    if (e.some((n) => n[1] instanceof R) || i.push(["VersionModule", new R()]), false, i.push(...e), !pe(i)) {
-      be();
+  __name(wt, "wt");
+  r(wt, "initMod");
+  async function Se(t) {
+    if (window[define_MOD_INFO_default.name + "Loaded"]) return;
+    let e = N(() => {
+      p.load();
+    }, (s) => s);
+    e.ok || m.error(e.error);
+    let n = await ge(async () => {
+      await A.init(t.translationOptions);
+    }, (s) => s);
+    n.ok || m.error(n.error);
+    let i = Object.entries(t.modules ?? {}), o = [];
+    if (i.some((s) => s[1] instanceof U) || o.push(["VersionModule", new U()]), false, o.push(...i), !Fe(o)) {
+      Ze();
       return;
     }
-    await t.initFunction?.(), t.mainMenuOptions && x("GUI") && k.setOptions({ ...t.mainMenuOptions, repoLink: t.modRepository }), window[t.modName + "Loaded"] = true, p.log(`Loaded! Version: ${"1.8.1"}`);
+    await t.initFunction?.(), t.mainMenuOptions && C("GUI") && R.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.2"}`);
   }
-  __name(te, "te");
-  s(te, "init");
-  function pe(t) {
-    for (let [e, i] of t) ie(e, i);
-    for (let e of f()) {
-      let i = A(() => e.init(), (n) => n);
-      i.ok || p.error(i.error);
+  __name(Se, "Se");
+  r(Se, "init");
+  function Fe(t) {
+    for (let [e, n] of t) ue(e, n);
+    for (let e of x()) {
+      let n = N(() => e.init(), (i) => i);
+      n.ok || m.error(n.error);
     }
-    for (let e of f()) {
-      let i = A(() => e.load(), (n) => n);
-      i.ok || p.error(i.error);
+    for (let e of x()) {
+      let n = N(() => e.load(), (i) => i);
+      n.ok || m.error(n.error);
     }
-    for (let e of f()) {
-      let i = A(() => e.run(), (n) => n);
-      i.ok || p.error(i.error);
+    for (let e of x()) {
+      let n = N(() => e.run(), (i) => i);
+      n.ok || m.error(n.error);
     }
-    for (let e of f()) e.registerDefaultSettings(u.playerStorage);
-    return p.debug("Modules Loaded."), true;
+    for (let e of x()) e.registerDefaultSettings(p.playerStorage);
+    return m.debug("Modules Loaded."), true;
   }
-  __name(pe, "pe");
-  s(pe, "initModules");
-  function be() {
-    return me(), I.unload(), delete window[w + "Loaded"], p.debug("Unloaded."), true;
+  __name(Fe, "Fe");
+  r(Fe, "initModules");
+  function Ze() {
+    return ke(), w.unload(), delete window[define_MOD_INFO_default.name + "Loaded"], m.debug("Unloaded."), true;
   }
-  __name(be, "be");
-  s(be, "unloadMod");
-  function me() {
-    for (let t of f()) t.unload();
+  __name(Ze, "Ze");
+  r(Ze, "unloadMod");
+  function ke() {
+    for (let t of x()) t.unload();
   }
-  __name(me, "me");
-  s(me, "unloadModules");
-  var H = /* @__PURE__ */ new Map();
-  function f() {
-    return [...H.values()];
-  }
-  __name(f, "f");
-  s(f, "modules");
-  function ie(t, e) {
-    return H.set(t, e), e;
-  }
-  __name(ie, "ie");
-  s(ie, "registerModule");
-  function x(t) {
-    return H.get(t);
+  __name(ke, "ke");
+  r(ke, "unloadModules");
+  var _ = /* @__PURE__ */ new Map();
+  function x() {
+    return [..._.values()];
   }
   __name(x, "x");
-  s(x, "getModule");
+  r(x, "modules");
+  function ue(t, e) {
+    return _.set(t, e), e;
+  }
+  __name(ue, "ue");
+  r(ue, "registerModule");
+  function C(t) {
+    return _.get(t);
+  }
+  __name(C, "C");
+  r(C, "getModule");
   var _a4;
-  var ne = (_a4 = class {
-  }, __name(_a4, "ne"), s(_a4, "BaseMigrator"), _a4);
+  var pe = (_a4 = class {
+  }, __name(_a4, "pe"), r(_a4, "BaseMigrator"), _a4);
   var _a5;
-  var L = (_a5 = class extends B {
+  var k = (_a5 = class extends L {
     constructor(e = null) {
       super();
-      __publicField(this, "_subscreens");
-      __publicField(this, "_mainMenu");
+      __publicField(this, "_subscreens", []);
+      __publicField(this, "_mainMenu", null);
       __publicField(this, "_modButtonOptions");
       if (_a5.instance) throw new Error("Duplicate initialization");
-      for (let i of f()) i.settingsScreen;
-      this._mainMenu = e?.mainMenu ? new e.mainMenu(this) : new k(this), this._subscreens = [this._mainMenu], this._modButtonOptions = e, _a5.instance = this;
+      for (let n of x()) n.settingsScreen;
+      this._modButtonOptions = e, _a5.instance = this;
     }
     get subscreens() {
       return this._subscreens;
@@ -724,403 +815,408 @@ var Themed = (() => {
       return this._mainMenu;
     }
     load() {
-      if (this._modButtonOptions) {
-        for (let e of f()) e.settingsScreen && this._subscreens.push(new e.settingsScreen(e));
-        this._mainMenu.subscreens = this._subscreens, PreferenceRegisterExtensionSetting({ Identifier: this._modButtonOptions.identifier, ButtonText: this._modButtonOptions.buttonText, Image: this._modButtonOptions.image, load: s(async () => {
-          await T(this._mainMenu);
-        }, "load"), run: s(() => {
-        }, "run"), click: s(() => {
-        }, "click"), exit: s(() => {
-        }, "exit") });
-      }
+      if (!this._modButtonOptions) return;
+      let e = this._modButtonOptions;
+      this._mainMenu = e?.mainMenu ? new e.mainMenu(this) : new R(this), this._subscreens = [this._mainMenu];
+      for (let n of x()) n.settingsScreen && this._subscreens.push(new n.settingsScreen(n));
+      this._mainMenu.subscreens = this._subscreens, PreferenceRegisterExtensionSetting({ Identifier: this._modButtonOptions.identifier, ButtonText: this._modButtonOptions.buttonText, Image: this._modButtonOptions.image, load: r(async () => {
+        this._mainMenu && await Z(this._mainMenu);
+      }, "load"), run: r(() => {
+      }, "run"), click: r(() => {
+      }, "click"), exit: r(() => {
+      }, "exit") });
     }
-  }, __name(_a5, "t"), s(_a5, "GUI"), __publicField(_a5, "instance", null), _a5);
+  }, __name(_a5, "t"), r(_a5, "GUI"), __publicField(_a5, "instance", null), _a5);
   var _a6;
-  var R = (_a6 = class extends B {
+  var U = (_a6 = class extends L {
     constructor(e) {
-      super(), e ?? (e = {}), _a6.newVersionMessage = e.newVersionMessage, e.migrators && (_a6.migrators = e.migrators, _a6.migrators.sort((i, n) => i.migrationVersion.localeCompare(n.migrationVersion))), _a6.beforeEach = e.beforeEach, _a6.afterEach = e.afterEach, _a6.beforeAll = e.beforeAll, _a6.afterAll = e.afterAll;
+      super(), e ?? (e = {}), _a6.newVersionMessage = e.newVersionMessage, e.migrators && (_a6.migrators = e.migrators, _a6.migrators.sort((n, i) => n.migrationVersion.localeCompare(i.migrationVersion))), _a6.beforeEach = e.beforeEach, _a6.afterEach = e.afterEach, _a6.beforeAll = e.beforeAll, _a6.afterAll = e.afterAll;
     }
     load() {
-      _a6.version = "1.8.1", _a6.checkVersionUpdate(), u.playerStorage.GlobalModule.doShowNewVersionMessage && _a6.isItNewVersion && _a6.sendNewVersionMessage();
+      _a6.version = "1.8.2", _a6.checkVersionUpdate(), p.playerStorage.GlobalModule.doShowNewVersionMessage && _a6.isItNewVersion && _a6.sendNewVersionMessage();
     }
     static checkVersionUpdate() {
-      let e = _a6.loadVersion(), i = _a6.version;
-      _a6.isNewVersion(e, i) && (_a6.isItNewVersion = true, _a6.checkVersionMigration(), _a6.saveVersion()), u.save();
+      let e = _a6.loadVersion(), n = _a6.version;
+      _a6.isNewVersion(e, n) && (_a6.isItNewVersion = true, _a6.checkVersionMigration(), _a6.saveVersion()), p.save();
     }
     static checkVersionMigration() {
-      let e = _a6.loadVersion(), i = _a6.migrators.filter((n) => _a6.isNewVersion(e, n.migrationVersion));
-      if (i.length) {
+      let e = _a6.loadVersion(), n = _a6.migrators.filter((i) => _a6.isNewVersion(e, i.migrationVersion));
+      if (n.length) {
         _a6.beforeAll?.();
-        for (let n of i) _a6.beforeEach?.(), n.migrate(), p.info(`Migrating from ${e} to ${n.migrationVersion} with ${n.constructor.name}`), _a6.afterEach?.();
+        for (let i of n) _a6.beforeEach?.(), i.migrate(), m.info(`Migrating from ${e} to ${i.migrationVersion} with ${i.constructor.name}`), _a6.afterEach?.();
         _a6.afterAll?.();
       }
     }
     static sendNewVersionMessage() {
       if (!_a6.newVersionMessage) return;
-      let i = FriendListBeepLog.push({ MemberNumber: Player.MemberNumber, MemberName: w, ChatRoomName: d("module.version.version_update"), ChatRoomSpace: "X", Private: false, Sent: false, Time: /* @__PURE__ */ new Date(), Message: _a6.newVersionMessage }) - 1, n = CommonStringPartitionReplace(d("module.version.new_version_toast_title"), { $modName$: w, $modVersion$: _a6.version }).join(""), o = FriendListBeepLog[i];
-      ServerShowBeep(_a6.newVersionMessage, 1e4, { memberNumber: o.MemberNumber, memberName: o.MemberName, chatRoomName: o.ChatRoomName, ...o.Message && { onClick: s(() => {
-        FriendListShowBeep(i);
-      }, "onClick") } }, n);
+      let n = FriendListBeepLog.push({ MemberNumber: Player.MemberNumber, MemberName: define_MOD_INFO_default.name, ChatRoomName: g("module.version.version_update"), ChatRoomSpace: "X", Private: false, Sent: false, Time: /* @__PURE__ */ new Date(), Message: _a6.newVersionMessage }) - 1, i = g("module.version.new_version_toast_title", { $modName$: define_MOD_INFO_default.name, $modVersion$: _a6.version }), o = FriendListBeepLog[n];
+      ServerShowBeep(_a6.newVersionMessage, 1e4, { memberNumber: o.MemberNumber, memberName: o.MemberName, chatRoomName: o.ChatRoomName, ...o.Message && { onClick: r(() => {
+        FriendListShowBeep(n);
+      }, "onClick") } }, i);
     }
-    static isNewVersion(e, i) {
+    static isNewVersion(e, n) {
       if (e !== void 0) {
-        let n = e.split("."), o = i.split(".");
-        for (let r = 0; r < 3; r++) if (n[r] !== o[r]) return o[r] > n[r];
+        let i = e.split("."), o = n.split(".");
+        for (let s = 0; s < 3; s++) if (i[s] !== o[s]) return o[s] > i[s];
       }
       return e === void 0 || e === "" || !e;
     }
     static saveVersion() {
-      u.playerStorage && (u.playerStorage.Version = _a6.version);
+      p.playerStorage && (p.playerStorage.Version = _a6.version);
     }
     static loadVersion() {
-      return u.playerStorage?.Version;
+      return p.playerStorage?.Version;
     }
-  }, __name(_a6, "t"), s(_a6, "VersionModule"), __publicField(_a6, "isItNewVersion", false), __publicField(_a6, "version"), __publicField(_a6, "newVersionMessage", ""), __publicField(_a6, "migrators", []), __publicField(_a6, "beforeEach"), __publicField(_a6, "afterEach"), __publicField(_a6, "beforeAll"), __publicField(_a6, "afterAll"), _a6);
+  }, __name(_a6, "t"), r(_a6, "VersionModule"), __publicField(_a6, "isItNewVersion", false), __publicField(_a6, "version"), __publicField(_a6, "newVersionMessage", ""), __publicField(_a6, "migrators", []), __publicField(_a6, "beforeEach"), __publicField(_a6, "afterEach"), __publicField(_a6, "beforeAll"), __publicField(_a6, "afterAll"), _a6);
   var _a7;
-  var D = (_a7 = class extends m {
+  var j = (_a7 = class extends I {
     get pageStructure() {
-      return [[{ type: "checkbox", id: "debug-show-incoming-server-transactions", label: "Show Incoming Server Transactions", setElementValue: s(() => this.module.debugSettings.showIncomingServerTransactions, "setElementValue"), setSettingValue: s((e) => {
+      return [[{ type: "checkbox", id: "debug-show-incoming-server-transactions", label: "Show Incoming Server Transactions", setElementValue: r(() => this.module.debugSettings.showIncomingServerTransactions, "setElementValue"), setSettingValue: r((e) => {
         this.module.debugSettings.showIncomingServerTransactions = e;
-      }, "setSettingValue") }, { type: "dropdown", id: "debug-incoming-filter-mode", label: "Filter Mode", description: ["Configure which incoming message types to show or hide.", ElementCreate({ tag: "br" }), "Include: only show these message types.", ElementCreate({ tag: "br" }), "Exclude: hide these message types."], optionsList: [{ attributes: { value: "include", label: "Include", selected: this.module.debugSettings.incomingMessageFilterMode === "include" } }, { attributes: { value: "exclude", label: "Exclude", selected: this.module.debugSettings.incomingMessageFilterMode === "exclude" } }], setSettingValue: s((e) => {
+      }, "setSettingValue") }, { type: "dropdown", id: "debug-incoming-filter-mode", label: "Filter Mode", description: ["Configure which incoming message types to show or hide.", ElementCreate({ tag: "br" }), "Include: only show these message types.", ElementCreate({ tag: "br" }), "Exclude: hide these message types."], optionsList: [{ attributes: { value: "include", label: "Include", selected: this.module.debugSettings.incomingMessageFilterMode === "include" } }, { attributes: { value: "exclude", label: "Exclude", selected: this.module.debugSettings.incomingMessageFilterMode === "exclude" } }], setSettingValue: r((e) => {
         this.module.debugSettings.incomingMessageFilterMode = e;
-      }, "setSettingValue") }, { type: "text", id: "debug-incoming-message-types", label: "Message Types", description: 'Comma-separated list of message types (e.g., "ChatRoomChat, ChatRoomSync")', setElementValue: s(() => this.module.debugSettings.incomingMessageTypes, "setElementValue"), setSettingValue: s((e) => {
+      }, "setSettingValue") }, { type: "text", id: "debug-incoming-message-types", label: "Message Types", description: 'Comma-separated list of message types (e.g., "ChatRoomChat, ChatRoomSync")', setElementValue: r(() => this.module.debugSettings.incomingMessageTypes, "setElementValue"), setSettingValue: r((e) => {
         this.module.debugSettings.incomingMessageTypes = e;
-      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-outcoming-server-transactions", label: "Show Outcoming Server Transactions", setElementValue: s(() => this.module.debugSettings.showOutcomingServerTransactions, "setElementValue"), setSettingValue: s((e) => {
+      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-outcoming-server-transactions", label: "Show Outcoming Server Transactions", setElementValue: r(() => this.module.debugSettings.showOutcomingServerTransactions, "setElementValue"), setSettingValue: r((e) => {
         this.module.debugSettings.showOutcomingServerTransactions = e;
-      }, "setSettingValue") }, { type: "dropdown", id: "debug-outcoming-filter-mode", label: "Filter Mode", description: ["Configure which outcoming message types to show or hide.", ElementCreate({ tag: "br" }), "Include: only show these message types.", ElementCreate({ tag: "br" }), "Exclude: hide these message types."], optionsList: [{ attributes: { value: "include", label: "Include", selected: this.module.debugSettings.outcomingMessageFilterMode === "include" } }, { attributes: { value: "exclude", label: "Exclude", selected: this.module.debugSettings.outcomingMessageFilterMode === "exclude" } }], setSettingValue: s((e) => {
+      }, "setSettingValue") }, { type: "dropdown", id: "debug-outcoming-filter-mode", label: "Filter Mode", description: ["Configure which outcoming message types to show or hide.", ElementCreate({ tag: "br" }), "Include: only show these message types.", ElementCreate({ tag: "br" }), "Exclude: hide these message types."], optionsList: [{ attributes: { value: "include", label: "Include", selected: this.module.debugSettings.outcomingMessageFilterMode === "include" } }, { attributes: { value: "exclude", label: "Exclude", selected: this.module.debugSettings.outcomingMessageFilterMode === "exclude" } }], setSettingValue: r((e) => {
         this.module.debugSettings.outcomingMessageFilterMode = e;
-      }, "setSettingValue") }, { type: "text", id: "debug-outcoming-message-types", label: "Message Types", description: 'Comma-separated list of message types (e.g., "ChatRoomMessage, AccountUpdate")', setElementValue: s(() => this.module.debugSettings.outcomingMessageTypes, "setElementValue"), setSettingValue: s((e) => {
+      }, "setSettingValue") }, { type: "text", id: "debug-outcoming-message-types", label: "Message Types", description: 'Comma-separated list of message types (e.g., "ChatRoomMessage, AccountUpdate")', setElementValue: r(() => this.module.debugSettings.outcomingMessageTypes, "setElementValue"), setSettingValue: r((e) => {
         this.module.debugSettings.outcomingMessageTypes = e;
-      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-raw-translations", label: "Show Raw Translations", setElementValue: s(() => this.module.debugSettings.showRawTranslations, "setElementValue"), setSettingValue: s((e) => {
+      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-raw-translations", label: "Show Raw Translations", setElementValue: r(() => this.module.debugSettings.showRawTranslations, "setElementValue"), setSettingValue: r((e) => {
         this.module.debugSettings.showRawTranslations = e;
-      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-file-names", label: "Show File Names", description: "Show the file name of the translation in the translation string.", setElementValue: s(() => this.module.debugSettings.showFileNames, "setElementValue"), setSettingValue: s((e) => {
+      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-file-names", label: "Show File Names", description: "Show the file name of the translation in the translation string.", setElementValue: r(() => this.module.debugSettings.showFileNames, "setElementValue"), setSettingValue: r((e) => {
         this.module.debugSettings.showFileNames = e;
-      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-raw-asset-names", label: "Show Raw Asset Names", setElementValue: s(() => this.module.debugSettings.showRawAssetNames, "setElementValue"), setSettingValue: s((e) => {
+      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-raw-asset-names", label: "Show Raw Asset Names", setElementValue: r(() => this.module.debugSettings.showRawAssetNames, "setElementValue"), setSettingValue: r((e) => {
         this.module.debugSettings.showRawAssetNames = e;
-      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-raw-activity-names", label: "Show Raw Activity Names", setElementValue: s(() => this.module.debugSettings.showRawActivityNames, "setElementValue"), setSettingValue: s((e) => {
+      }, "setSettingValue") }, { type: "checkbox", id: "debug-show-raw-activity-names", label: "Show Raw Activity Names", setElementValue: r(() => this.module.debugSettings.showRawActivityNames, "setElementValue"), setSettingValue: r((e) => {
         this.module.debugSettings.showRawActivityNames = e;
       }, "setSettingValue") }], [{ type: "button", id: "test-deeplib-big-button", options: { label: "Big Button", tooltip: "This is a big button", image: "Icons/Exit.png" }, size: [405, 80], onClick() {
-        v.info("Big Button Clicked");
+        G.info("Big Button Clicked");
       } }, { type: "button", id: "test-deeplib-small-button", options: { tooltip: "This is a small button", image: "Icons/Exit.png" }, size: [90, 90], onClick() {
-        v.info("Small Button Clicked");
+        G.info("Small Button Clicked");
       } }, { type: "checkbox", id: "test-deeplib-checkbox", label: "Checkbox", description: "This is a checkbox", setElementValue() {
         return true;
       }, setSettingValue(e) {
-        v.info("Checkbox value:", e);
+        G.info("Checkbox value:", e);
       } }, { type: "text", id: "test-deeplib-text-input", label: "Input", description: "This is a text input", setElementValue() {
         return "Input Value";
       }, setSettingValue(e) {
-        v.info("Input value:", e);
+        G.info("Input value:", e);
       } }, { type: "number", id: "test-deeplib-number-input", label: "Input", description: "This is a number input", setElementValue() {
         return "123";
       }, setSettingValue(e) {
-        v.info("Input value:", e);
+        G.info("Input value:", e);
       } }, { type: "label", id: "test-deeplib-label", label: "Label", description: "This is a label" }], [{ type: "button", id: "test-deeplib-big-button2", options: { label: "Big Button", tooltip: "This is a big button", image: "Icons/Exit.png" }, size: [405, 80], onClick() {
-        v.info("Big Button Clicked");
+        G.info("Big Button Clicked");
       } }, { type: "button", id: "test-deeplib-small-button2", options: { tooltip: "This is a small button", image: "Icons/Next.png" }, size: [90, 90], onClick() {
-        v.info("Small Button Clicked");
+        G.info("Small Button Clicked");
       } }, { type: "checkbox", id: "test-deeplib-checkbox2", label: "Checkbox", description: "This is a checkbox", setElementValue() {
         return true;
       }, setSettingValue(e) {
-        v.info("Checkbox value:", e);
+        G.info("Checkbox value:", e);
       } }, { type: "text", id: "test-deeplib-text-input2", label: "Input", description: "This is a text input", setElementValue() {
         return "Input Value";
       }, setSettingValue(e) {
-        v.info("Input value:", e);
+        G.info("Input value:", e);
       } }, { type: "number", id: "test-deeplib-number-input2", label: "Input", description: "This is a number input", setElementValue() {
         return "123";
       }, setSettingValue(e) {
-        v.info("Input value:", e);
+        G.info("Input value:", e);
       } }, { type: "label", id: "test-deeplib-label2", label: "Label", description: "This is a label" }, { type: "dropdown", id: "test-deeplib-dropdown", label: "Dropdown", description: "This is a dropdown", optionsList: ["Option 1", "Option 2", "Option 3"], setElementValue() {
         return "Option 2";
       }, setSettingValue(e) {
-        v.info("Dropdown value:", e);
+        G.info("Dropdown value:", e);
       } }]];
     }
     exit() {
       this.module.saveDebugSettings(), super.exit();
     }
-  }, __name(_a7, "D"), s(_a7, "GuiDebug"), __publicField(_a7, "subscreenOptions", { name: "debug" }), _a7);
-  function oe(t) {
+  }, __name(_a7, "j"), r(_a7, "GuiDebug"), __publicField(_a7, "subscreenOptions", { name: "debug" }), _a7);
+  function be(t) {
     return t !== null && typeof t == "object" && Object.getPrototypeOf(t) === Object.prototype && !Array.isArray(t);
   }
-  __name(oe, "oe");
-  s(oe, "isPlainObject");
-  function b(t, e, i = { concatArrays: true, matchingOnly: false }) {
+  __name(be, "be");
+  r(be, "isPlainObject");
+  function f(t, e, n = { concatArrays: true, matchingOnly: false }) {
     if (t === void 0) return e;
     if (e === void 0) return t;
-    if (Array.isArray(t) && Array.isArray(e) && i.concatArrays) return [...t, ...e];
-    if (oe(t) && oe(e)) {
-      let n = { ...t }, o = i.matchingOnly ? Object.keys(e).filter((r) => r in t) : Object.keys(e);
-      for (let r of o) r === "__proto__" || r === "constructor" || r === "prototype" || (n[r] = r in t ? b(t[r], e[r], i) : e[r]);
-      return n;
+    if (Array.isArray(t) && Array.isArray(e) && n.concatArrays) return [...t, ...e];
+    if (be(t) && be(e)) {
+      let i = { ...t }, o = Object.keys(t).length === 0, s = n.matchingOnly && !o ? Object.keys(e).filter((l) => l in t) : Object.keys(e);
+      for (let l of s) l === "__proto__" || l === "constructor" || l === "prototype" || (i[l] = l in t ? f(t[l], e[l], n) : e[l]);
+      return i;
     }
     return e;
   }
-  __name(b, "b");
-  s(b, "deepMerge");
-  function Gt(t) {
-    let e = JSON.parse(JSON.stringify(t)), i = [];
+  __name(f, "f");
+  r(f, "deepMerge");
+  function Yt(t) {
+    let e = JSON.parse(JSON.stringify(t)), n = [];
     for (; e.length > 0; ) {
-      let n = Math.floor(Math.random() * e.length);
-      i.push(e[n]), e.splice(n, 1);
+      let i = Math.floor(Math.random() * e.length);
+      n.push(e[i]), e.splice(i, 1);
     }
-    return i;
+    return n;
   }
-  __name(Gt, "Gt");
-  s(Gt, "shuffleArray");
-  function C(t, e) {
-    let i = t.split("."), n = globalThis;
-    for (let o = 0; o < i.length - 1; o++) n[i[o]] || (n[i[o]] = {}), n = n[i[o]];
-    n[i[i.length - 1]] = e;
+  __name(Yt, "Yt");
+  r(Yt, "shuffleArray");
+  function O(t, e) {
+    let n = t.split("."), i = globalThis;
+    for (let o = 0; o < n.length - 1; o++) i[n[o]] || (i[n[o]] = {}), i = i[n[o]];
+    i[n[n.length - 1]] = e;
   }
-  __name(C, "C");
-  s(C, "exportToGlobal");
-  function z(t, e) {
+  __name(O, "O");
+  r(O, "exportToGlobal");
+  function q(t, e) {
     for (; t && t !== Object.prototype; ) {
       if (Object.getOwnPropertyDescriptor(t, e)?.get) return true;
       t = Object.getPrototypeOf(t);
     }
     return false;
   }
-  __name(z, "z");
-  s(z, "hasGetter");
-  function wt(t, e) {
+  __name(q, "q");
+  r(q, "hasGetter");
+  function Ht(t, e) {
     for (; t && t !== Object.prototype; ) {
       if (Object.getOwnPropertyDescriptor(t, e)?.set) return true;
       t = Object.getPrototypeOf(t);
     }
     return false;
   }
-  __name(wt, "wt");
-  s(wt, "hasSetter");
-  var se = s((t) => Math.round(t / 100) / 10, "byteToKB");
-  function A(t, e) {
+  __name(Ht, "Ht");
+  r(Ht, "hasSetter");
+  var me = r((t) => Math.round(t / 100) / 10, "byteToKB");
+  function N(t, e) {
     try {
       return { ok: true, value: t() };
-    } catch (i) {
-      return { ok: false, error: e ? e(i) : i };
+    } catch (n) {
+      return { ok: false, error: e ? e(n) : n };
     }
   }
-  __name(A, "A");
-  s(A, "tryCatch");
-  async function Tt(t, e) {
+  __name(N, "N");
+  r(N, "tryCatch");
+  async function ge(t, e) {
     try {
       return { ok: true, value: await t() };
-    } catch (i) {
-      return { ok: false, error: e ? e(i) : i };
+    } catch (n) {
+      return { ok: false, error: e ? e(n) : n };
     }
   }
-  __name(Tt, "Tt");
-  s(Tt, "tryCatchAsync");
-  var c = { createButton: he, createCheckbox: fe, createInput: ye, createLabel: Ie, createCustom: ve, createDropdown: xe, createTooltip: Be, getTooltip: re, setTooltip: j, createBackNext: Ce };
-  function he(t) {
+  __name(ge, "ge");
+  r(ge, "tryCatchAsync");
+  var u = { createButton: Ee, createCheckbox: Me, createInput: Re, createLabel: Ae, createCustom: Ve, createDropdown: We, createTooltip: De, getTooltip: he, setTooltip: ee, createBackNext: Xe };
+  function Ee(t) {
     t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
     t.type = "button";
-    let i;
-    t.options?.image && (i = t.options.image, t.options.image = void 0);
-    let n = typeof t?.disabled == "function" ? t?.disabled() : t?.disabled, o = ElementButton.Create(t.id, t?.onClick ?? (() => {
-    }), b({ labelPosition: "center" }, t.options), b({ button: { classList: ["deeplib-button"], attributes: { disabled: n }, children: [i ? b({ tag: "img", attributes: { id: `${t.id}-image`, alt: "", decoding: "async", loading: "lazy", src: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" }, style: { "--image": `url("${i}")` } }, t.htmlOptions?.img) : void 0] } }, t.htmlOptions ?? {}));
-    return m.currentElements.push([o, t]), o;
+    let n;
+    t.options?.image && (n = t.options.image, t.options.image = void 0);
+    let i = typeof t?.disabled == "function" ? t?.disabled() : t?.disabled, o = ElementButton.Create(t.id, t?.onClick ?? (() => {
+    }), f({ labelPosition: "center" }, t.options), f({ button: { classList: ["deeplib-button"], attributes: { disabled: i }, children: [n ? f({ tag: "img", attributes: { id: `${t.id}-image`, alt: "", decoding: "async", loading: "lazy", src: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" }, style: { "--image": `url("${n}")` } }, t.htmlOptions?.img) : void 0] } }, t.htmlOptions ?? {}));
+    return I.currentElements.push([o, t]), o;
   }
-  __name(he, "he");
-  s(he, "elementCreateButton");
-  function fe(t) {
+  __name(Ee, "Ee");
+  r(Ee, "elementCreateButton");
+  function Me(t) {
+    t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
     t.type = "checkbox";
-    let i = typeof t?.disabled == "function" ? t?.disabled() : t?.disabled, n = ElementCreate(b({ tag: "label", classList: ["deeplib-checkbox-container"], attributes: { id: `${t.id}-container`, for: t.id }, children: [b({ tag: "input", classList: ["checkbox", "deeplib-input"], attributes: { type: "checkbox", id: t.id, disabled: i, checked: t?.setElementValue?.() || void 0 }, eventListeners: { change: s(function() {
+    let n = typeof t?.disabled == "function" ? t?.disabled() : t?.disabled, i = ElementCreate(f({ tag: "label", classList: ["deeplib-checkbox-container", t?.options?.direction ?? "rowReverse"], attributes: { id: `${t.id}-container`, for: t.id }, children: [t.label ? f({ tag: "span", classList: ["deeplib-text"], attributes: { id: `${t.id}-label` }, children: [t.label] }, t.htmlOptions?.label) : void 0, f({ tag: "input", classList: ["checkbox", "deeplib-input"], attributes: { type: "checkbox", id: t.id, disabled: n, checked: t?.setElementValue?.() || void 0 }, eventListeners: { change: r(function() {
       t?.setSettingValue?.(this.checked);
-    }, "change") } }, t.htmlOptions?.checkbox), b({ tag: "span", classList: ["deeplib-text"], attributes: { id: `${t.id}-label` }, children: [t.label] }, t.htmlOptions?.label)] }, t.htmlOptions?.container));
-    return t.description && (n.addEventListener("mouseover", function(o) {
-      U.call(this, o, t.description || null);
-    }), n.addEventListener("mouseout", function(o) {
-      Q.call(this, o);
-    })), m.currentElements.push([n, t]), n;
+    }, "change") } }, t.htmlOptions?.checkbox)] }, t.htmlOptions?.container));
+    return t.description && (i.addEventListener("mouseover", function(o) {
+      z.call(this, o, t.description || null);
+    }), i.addEventListener("mouseout", function(o) {
+      P.call(this, o);
+    })), I.currentElements.push([i, t]), i;
   }
-  __name(fe, "fe");
-  s(fe, "elementCreateCheckbox");
-  function ve(t) {
-    var _a16, _b;
-    t.id ?? (t.id = ElementGenerateID()), (_a16 = t.htmlOptions).attributes ?? (_a16.attributes = {}), (_b = t.htmlOptions.attributes).id ?? (_b.id = t.id);
+  __name(Me, "Me");
+  r(Me, "elementCreateCheckbox");
+  function Ve(t) {
+    var _a15, _b;
+    t.id ?? (t.id = ElementGenerateID()), (_a15 = t.htmlOptions).attributes ?? (_a15.attributes = {}), (_b = t.htmlOptions.attributes).id ?? (_b.id = t.id);
     let e = document.getElementById(t.htmlOptions.attributes.id);
     if (e) return e;
     t.type = "custom";
-    let i = ElementCreate(t.htmlOptions);
-    return m.currentElements.push([i, t]), i;
+    let n = ElementCreate(t.htmlOptions);
+    return I.currentElements.push([n, t]), n;
   }
-  __name(ve, "ve");
-  s(ve, "elementCreateCustom");
-  function ye(t) {
+  __name(Ve, "Ve");
+  r(Ve, "elementCreateCustom");
+  function Re(t) {
+    t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
-    let i = typeof t?.disabled == "function" ? t?.disabled() : t?.disabled, n = ElementCreate(b({ tag: "label", classList: ["deeplib-input-container"], attributes: { id: `${t.id}-container`, for: t.id }, children: [b({ tag: "input", classList: ["deeplib-input"], attributes: { type: t.type, id: t.id, placeholder: " ", disabled: i, value: t?.setElementValue?.() || void 0 }, eventListeners: { input: s(function() {
+    let n = typeof t?.disabled == "function" ? t?.disabled() : t?.disabled, i = ElementCreate(f({ tag: "label", classList: ["deeplib-input-container", t?.options?.direction ?? void 0], attributes: { id: `${t.id}-container`, for: t.id }, children: [t.label ? f({ tag: "span", classList: ["deeplib-text"], attributes: { id: `${t.id}-label` }, children: [t.label] }, t.htmlOptions?.label) : void 0, f({ tag: "input", classList: ["deeplib-input"], attributes: { type: t.type, id: t.id, placeholder: " ", disabled: n, value: t?.setElementValue?.() || void 0 }, eventListeners: { input: r(function() {
       t?.setSettingValue?.(this.value);
-    }, "input") } }, t.htmlOptions?.input), t.label ? b({ tag: "span", classList: ["deeplib-text"], attributes: { id: `${t.id}-label` }, children: [t.label] }, t.htmlOptions?.label) : void 0] }, t.htmlOptions?.container));
-    return t.description && (n.addEventListener("mouseover", function(o) {
-      U.call(this, o, t.description || null);
-    }), n.addEventListener("mouseout", function(o) {
-      Q.call(this, o);
-    })), m.currentElements.push([n, t]), n;
+    }, "input") } }, t.htmlOptions?.input)] }, t.htmlOptions?.container));
+    return t.description && (i.addEventListener("mouseover", function(o) {
+      z.call(this, o, t.description || null);
+    }), i.addEventListener("mouseout", function(o) {
+      P.call(this, o);
+    })), I.currentElements.push([i, t]), i;
   }
-  __name(ye, "ye");
-  s(ye, "elementCreateInput");
-  function Ie(t) {
+  __name(Re, "Re");
+  r(Re, "elementCreateInput");
+  function Ae(t) {
+    t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
     t.type = "label";
-    let i = ElementCreate(b({ tag: "label", classList: ["deeplib-label", "deeplib-text"], attributes: { id: t.id }, children: [t.label] }, t.htmlOptions));
-    return t.description && (i.addEventListener("mouseover", function(n) {
-      U.call(this, n, t.description || null);
-    }), i.addEventListener("mouseout", function(n) {
-      Q.call(this, n);
-    })), m.currentElements.push([i, t]), i;
+    let n = ElementCreate(f({ tag: "label", classList: ["deeplib-label", "deeplib-text"], attributes: { id: t.id }, children: [t.label] }, t.htmlOptions));
+    return t.description && (n.addEventListener("mouseover", function(i) {
+      z.call(this, i, t.description || null);
+    }), n.addEventListener("mouseout", function(i) {
+      P.call(this, i);
+    })), I.currentElements.push([n, t]), n;
   }
-  __name(Ie, "Ie");
-  s(Ie, "elementCreateLabel");
-  function xe(t) {
+  __name(Ae, "Ae");
+  r(Ae, "elementCreateLabel");
+  function We(t) {
     t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(`${t.id}-container`);
     if (e) return e;
     t.type = "dropdown";
-    let i = ElementCreate(b({ tag: "label", classList: ["deeplib-dropdown-container"], attributes: { id: `${t.id}-container`, for: t.id }, children: [t.label ? b({ tag: "span", classList: ["deeplib-text"], attributes: { id: `${t.id}-label` }, children: [t.label] }, t.htmlOptions?.label) : void 0, ElementCreateDropdown(t.id, t.optionsList, function() {
+    let n = ElementDropdown.CreateLabelled(t.id, t.optionsList, t.label ?? "", t.onChange ?? function() {
       return t.setSettingValue?.(this.value);
-    }, t.options, t.htmlOptions?.select)], eventListeners: { mouseover: s(function(n) {
-      U.call(this, n, t.description || null);
-    }, "mouseover"), mouseout: s(function(n) {
-      Q.call(this, n);
-    }, "mouseout") } }, t.htmlOptions?.container));
-    return m.currentElements.push([i, t]), i;
+    }, t.options, f({ container: { classList: ["deeplib-dropdown-container", t?.options?.direction ?? void 0], attributes: { id: `${t.id}-container`, for: t.id }, eventListeners: { mouseover: r(function(i) {
+      z.call(this, i, t.description || null);
+    }, "mouseover"), mouseout: r(function(i) {
+      P.call(this, i);
+    }, "mouseout") } }, label: { classList: ["deeplib-text"], attributes: { id: `${t.id}-label` } } }, t.htmlOptions));
+    return I.currentElements.push([n, t]), n;
   }
-  __name(xe, "xe");
-  s(xe, "elementCreateDropdown");
-  function Be() {
+  __name(We, "We");
+  r(We, "elementCreateDropdown");
+  function De() {
     return ElementCreate({ tag: "div", classList: ["deeplib-tooltip", "anchor-bottom"], attributes: { id: "deeplib-tooltip" }, style: { display: "none" } });
   }
-  __name(Be, "Be");
-  s(Be, "elementCreateTooltip");
-  function re() {
+  __name(De, "De");
+  r(De, "elementCreateTooltip");
+  function he() {
     return document.getElementById("deeplib-tooltip") ?? void 0;
   }
-  __name(re, "re");
-  s(re, "elementGetTooltip");
-  function U(t, e) {
-    let i = this.getBoundingClientRect();
-    j(e, "bottom");
-    let n = re();
-    if (n) {
-      n.offsetHeight;
-      let o = n.getBoundingClientRect();
-      (G.doRectsOverlap(i, o) ? "top" : "bottom") === "top" && ae("top");
+  __name(he, "he");
+  r(he, "elementGetTooltip");
+  function z(t, e) {
+    let n = this.getBoundingClientRect();
+    ee(e, "bottom");
+    let i = he();
+    if (i) {
+      i.offsetHeight;
+      let o = i.getBoundingClientRect();
+      (S.doRectsOverlap(n, o) ? "top" : "bottom") === "top" && fe("top");
     }
   }
-  __name(U, "U");
-  s(U, "tooltipMouseOver");
-  function Q(t) {
-    j(null);
+  __name(z, "z");
+  r(z, "tooltipMouseOver");
+  function P(t) {
+    ee(null);
   }
-  __name(Q, "Q");
-  s(Q, "tooltipMouseOut");
-  function j(t, e = "bottom") {
-    let i = document.getElementById("deeplib-tooltip");
-    if (!i) return false;
-    ae(e);
-    let n = t == null ? null : CommonIsObject(t) && "tag" in t ? [ElementCreate(t)] : CommonIsArray(t) ? t.map((o) => CommonIsObject(o) && "tag" in o ? ElementCreate(o) : typeof o == "string" || CommonIsObject(t) && "tag" in t || o instanceof HTMLElement ? o : null).filter((o) => o !== null) : typeof t == "string" ? [t] : null;
-    return n === null ? (i.childNodes.forEach((o) => o.remove()), i.style.display = "none", true) : (i.replaceChildren(...n), i.style.display = "", true);
+  __name(P, "P");
+  r(P, "tooltipMouseOut");
+  function ee(t, e = "bottom") {
+    let n = document.getElementById("deeplib-tooltip");
+    if (!n) return false;
+    fe(e);
+    let i = t == null ? null : CommonIsObject(t) && "tag" in t ? [ElementCreate(t)] : CommonIsArray(t) ? t.map((o) => CommonIsObject(o) && "tag" in o ? ElementCreate(o) : typeof o == "string" || CommonIsObject(t) && "tag" in t || o instanceof HTMLElement ? o : null).filter((o) => o !== null) : typeof t == "string" ? [t] : null;
+    return i === null ? (n.childNodes.forEach((o) => o.remove()), n.style.display = "none", true) : (n.replaceChildren(...i), n.style.display = "", true);
   }
-  __name(j, "j");
-  s(j, "elementSetTooltip");
-  function ae(t) {
+  __name(ee, "ee");
+  r(ee, "elementSetTooltip");
+  function fe(t) {
     let e = document.getElementById("deeplib-tooltip");
     if (!e) return false;
     e.classList.toggle("anchor-bottom", t === "bottom"), e.classList.toggle("anchor-top", t === "top");
   }
-  __name(ae, "ae");
-  s(ae, "elementSetTooltipPosition");
-  function Ce(t) {
+  __name(fe, "fe");
+  r(fe, "elementSetTooltipPosition");
+  function Xe(t) {
+    t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
-    let i = s((a) => {
-      let l = document.getElementById(`${t.id}-label`);
-      if (!l) return false;
-      l.textContent = a;
-    }, "setLabel"), n = s((a) => {
-      let l = document.getElementById(`deeplib-prev-next-${t.id}-prev-button-tooltip`);
-      if (!l) return false;
-      l.textContent = a;
-    }, "setPrevTooltip"), o = s((a) => {
-      let l = document.getElementById(`deeplib-prev-next-${t.id}-next-button-tooltip`);
-      if (!l) return false;
-      l.textContent = a;
+    let n = r((l) => {
+      let c = document.getElementById(`${t.id}-label`);
+      if (!c) return false;
+      c.textContent = l;
+    }, "setLabel"), i = r((l) => {
+      let c = document.getElementById(`deeplib-prev-next-${t.id}-prev-button-tooltip`);
+      if (!c) return false;
+      c.textContent = l;
+    }, "setPrevTooltip"), o = r((l) => {
+      let c = document.getElementById(`deeplib-prev-next-${t.id}-next-button-tooltip`);
+      if (!c) return false;
+      c.textContent = l;
     }, "setNextTooltip");
-    return ElementCreate({ tag: "div", classList: ["deeplib-prev-next"], attributes: { id: t.id }, children: [c.createButton({ id: `deeplib-prev-next-${t.id}-prev-button`, onClick: s(() => {
-      t.back({ setLabel: i, setBackTooltip: n, setNextTooltip: o });
-    }, "onClick"), htmlOptions: { button: { classList: ["deeplib-prev-next-button"] } }, options: { noStyling: true, image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/arrow_left.svg`, tooltip: t.initialPrevTooltip } }), c.createLabel({ id: `${t.id}-label`, label: t.initialLabel, htmlOptions: { classList: ["deeplib-prev-next-label"] } }), c.createButton({ id: `deeplib-prev-next-${t.id}-next-button`, onClick: s(() => {
-      t.next({ setLabel: i, setBackTooltip: n, setNextTooltip: o });
+    return ElementCreate({ tag: "div", classList: ["deeplib-prev-next"], attributes: { id: t.id }, children: [u.createButton({ id: `deeplib-prev-next-${t.id}-prev-button`, onClick: r(() => {
+      t.back({ setLabel: n, setBackTooltip: i, setNextTooltip: o });
+    }, "onClick"), htmlOptions: { button: { classList: ["deeplib-prev-next-button"] } }, options: { noStyling: true, image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/arrow_left.svg`, tooltip: t.initialPrevTooltip } }), u.createLabel({ id: `${t.id}-label`, label: t.initialLabel, htmlOptions: { classList: ["deeplib-prev-next-label"] } }), u.createButton({ id: `deeplib-prev-next-${t.id}-next-button`, onClick: r(() => {
+      t.next({ setLabel: n, setBackTooltip: i, setNextTooltip: o });
     }, "onClick"), htmlOptions: { button: { classList: ["deeplib-prev-next-button"] } }, options: { noStyling: true, image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/arrow_right.svg`, tooltip: t.initialNextTooltip } })] });
   }
-  __name(Ce, "Ce");
-  s(Ce, "elementPrevNext");
+  __name(Xe, "Xe");
+  r(Xe, "elementPrevNext");
   var _a8;
-  var k = (_a8 = class extends m {
+  var R = (_a8 = class extends I {
     constructor(e) {
       super(e);
       __publicField(this, "subscreens", []);
       this.subscreens = e.subscreens;
     }
     load() {
-      if (!L.instance || CurrentModule !== "DeepLibMod") {
+      if (!k.instance || CurrentModule !== "DeepLibMod") {
         this.setSubscreen(this);
         return;
       }
       super.load();
-      let e = c.createButton({ id: "exit", size: [90, 90], onClick: s(() => {
+      let e = u.createButton({ id: "exit", size: [90, 90], onClick: r(() => {
         this.exit();
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/exit.svg`, tooltip: d("settings.button.back_button_hint") } }), i = document.getElementById("deeplib-nav-menu");
-      i && i.append(e);
+      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/exit.svg`, tooltip: g("settings.button.back_button_hint") } }), n = document.getElementById("deeplib-nav-menu");
+      n && n.append(e);
       for (let o of this.subscreens) {
         if (o.options.name === "mainmenu") continue;
-        let r = c.createButton({ id: `${o.options.name}-button`, onClick: s(() => {
+        let s = u.createButton({ id: `${o.options.name}-button`, onClick: r(() => {
           this.setSubscreen(o);
-        }, "onClick"), size: [null, 90], options: { image: o.options.icon, label: d(`mainmenu.button.${o.options.name}`) } });
-        g.appendToSettingsDiv(r);
+        }, "onClick"), size: [null, 90], options: { image: o.options.icon, label: g(`mainmenu.button.${o.options.name}`) } });
+        b.appendToSettingsDiv(s);
       }
-      let n = g.getMiscDiv();
-      if (g.appendToSubscreen(n), _a8.options.wikiLink) {
-        let o = c.createButton({ id: "deeplib-wiki-button", onClick: s(() => {
+      let i = b.getMiscDiv();
+      if (b.appendToSubscreen(i), _a8.options.wikiLink) {
+        let o = u.createButton({ id: "deeplib-wiki-button", onClick: r(() => {
           window.open(_a8.options.wikiLink, "_blank");
-        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/notebook.svg`, label: d("mainmenu.button.wiki") } });
-        g.appendToMiscDiv(o);
+        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/notebook.svg`, label: g("mainmenu.button.wiki") } });
+        b.appendToMiscDiv(o);
       }
       if (_a8.options.repoLink) {
-        let o = c.createButton({ id: "deeplib-repo-button", onClick: s(() => {
+        let o = u.createButton({ id: "deeplib-repo-button", onClick: r(() => {
           window.open(_a8.options.repoLink, "_blank");
-        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/git.svg`, label: d("mainmenu.button.repo") } });
-        g.appendToMiscDiv(o);
+        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/git.svg`, label: g("mainmenu.button.repo") } });
+        b.appendToMiscDiv(o);
       }
       if (_a8.options.resetSubscreen) {
-        let o = c.createButton({ id: "deeplib-reset-button", onClick: s(() => {
+        let o = u.createButton({ id: "deeplib-reset-button", onClick: r(() => {
           this.setSubscreen(_a8.options.resetSubscreen);
-        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/trash_bin.svg`, label: d("mainmenu.button.reset") } });
-        g.appendToMiscDiv(o);
+        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/trash_bin.svg`, label: g("mainmenu.button.reset") } });
+        b.appendToMiscDiv(o);
       }
       if (_a8.options.importExportSubscreen) {
-        let o = c.createButton({ id: "deeplib-import-export-button", onClick: s(() => {
+        let o = u.createButton({ id: "deeplib-import-export-button", onClick: r(() => {
           this.setSubscreen(_a8.options.importExportSubscreen);
-        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/transfer.svg`, label: d("mainmenu.button.import_export") } });
-        g.appendToMiscDiv(o);
+        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/transfer.svg`, label: g("mainmenu.button.import_export") } });
+        b.appendToMiscDiv(o);
       }
       if (_a8.options.storageFullnessIndicator) {
-        let r = se(u.storageSize()), a = (r / 180 * 100).toFixed(1), l = c.createButton({ id: CommonGenerateUniqueID(), size: [null, 80], options: { tooltipPosition: "left", noStyling: true, tooltip: CommonStringPartitionReplace(d("mainmenu.meter.storage_hint"), { $percentage$: `${a}` }).join(""), label: CommonStringPartitionReplace(d("mainmenu.meter.storage_label"), { $currentCapacity$: `${r}`, $maxCapacity$: "180" }).join("") }, htmlOptions: { button: { children: [{ tag: "div", attributes: { id: "deeplib-storage-meter" }, children: [{ tag: "div", attributes: { id: "deeplib-storage-bar" }, style: { width: `${a}%` } }] }] } } });
-        g.appendToMiscDiv(l);
+        let s = me(p.storageSize()), l = (s / 180 * 100).toFixed(1), c = u.createButton({ id: CommonGenerateUniqueID(), size: [null, 80], options: { tooltipPosition: "left", noStyling: true, tooltip: g("mainmenu.meter.storage_hint", { $percentage$: l }), label: g("mainmenu.meter.storage_label", { $currentCapacity$: s, $maxCapacity$: 180 }) }, htmlOptions: { button: { children: [{ tag: "div", attributes: { id: "deeplib-storage-meter" }, children: [{ tag: "div", attributes: { id: "deeplib-storage-bar" }, style: { width: `${l}%` } }] }] } } });
+        b.appendToMiscDiv(c);
       }
-      if (x("DebugModule")) {
-        let o = c.createButton({ id: "deeplib-debug-button", onClick: s(() => {
-          this.setSubscreen(new D(x("DebugModule")));
+      if (C("DebugModule")) {
+        let o = u.createButton({ id: "deeplib-debug-button", onClick: r(() => {
+          this.setSubscreen(new j(C("DebugModule")));
         }, "onClick"), size: [90, 90], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/bug.svg` } });
-        i && i.prepend(o);
+        n && n.prepend(o);
       }
     }
     run() {
@@ -1131,7 +1227,7 @@ var Themed = (() => {
     exit() {
       CharacterAppearanceForceUpCharacter = -1, CharacterLoadCanvas(Player);
       let e = typeof this.options.returnScreen == "function" ? this.options.returnScreen() : this.options.returnScreen;
-      e ? e instanceof m ? T(e).then(() => {
+      e ? e instanceof I ? Z(e).then(() => {
       }) : Array.isArray(e) && CommonSetScreen(...e) : PreferenceOpenSubscreen("Extensions").then(() => {
         PreferenceSubscreenExtensionsClear();
       });
@@ -1142,26 +1238,26 @@ var Themed = (() => {
     static setOptions(e) {
       _a8.options = e;
     }
-  }, __name(_a8, "t"), s(_a8, "MainMenu"), __publicField(_a8, "options", {}), __publicField(_a8, "subscreenOptions", { name: "mainmenu", doShowExitButton: false, settingsWidth: 600 }), _a8);
+  }, __name(_a8, "t"), r(_a8, "MainMenu"), __publicField(_a8, "options", {}), __publicField(_a8, "subscreenOptions", { name: "mainmenu", doShowExitButton: false, settingsWidth: 600 }), _a8);
   var _a9;
-  var M = (_a9 = class {
+  var A = (_a9 = class {
     static async init(e) {
       if (_a9.initialized) return;
       _a9.initialized = true, _a9.PathToModTranslation = (() => {
         if (e?.pathToTranslationsFolder) return e.pathToTranslationsFolder.endsWith("/") ? e.pathToTranslationsFolder : `${e.pathToTranslationsFolder}/`;
-      })(), _a9.DefaultLanguage = e?.defaultLanguage || _a9.DefaultLanguage;
-      let i = e?.fixedLanguage ? _a9.DefaultLanguage : TranslationLanguage.toLowerCase(), n = await _a9.fetchLanguageFile(_a9.PathToLibTranslation, i);
-      if (i === _a9.DefaultLanguage) _a9.LibTranslation = n;
+      })(), _a9.DefaultLanguage = e?.defaultLanguage || _a9.DefaultLanguage, _a9.FetchFolder = e?.fetchFolder || _a9.FetchFolder;
+      let n = e?.fixedLanguage ? _a9.DefaultLanguage : TranslationLanguage.toLowerCase(), i = await _a9.fetchTranslation(_a9.PathToLibTranslation, n);
+      if (n === _a9.DefaultLanguage) _a9.LibTranslation = i;
       else {
-        let r = await _a9.fetchLanguageFile(_a9.PathToLibTranslation, _a9.DefaultLanguage);
-        _a9.LibTranslation = { ...r, ...n };
+        let s = await _a9.fetchTranslation(_a9.PathToLibTranslation, _a9.DefaultLanguage);
+        _a9.LibTranslation = { ...s, ...i };
       }
       if (!_a9.PathToModTranslation) return;
-      let o = await _a9.fetchLanguageFile(_a9.PathToModTranslation, i);
-      if (i === _a9.DefaultLanguage) _a9.ModTranslation = o;
+      let o = await _a9.fetchTranslation(_a9.PathToModTranslation, n, _a9.FetchFolder);
+      if (n === _a9.DefaultLanguage) _a9.ModTranslation = o;
       else {
-        let r = await _a9.fetchLanguageFile(_a9.PathToModTranslation, _a9.DefaultLanguage);
-        _a9.ModTranslation = { ...r, ...o };
+        let s = await _a9.fetchTranslation(_a9.PathToModTranslation, _a9.DefaultLanguage, _a9.FetchFolder);
+        _a9.ModTranslation = { ...s, ...o };
       }
     }
     static getTextMod(e) {
@@ -1170,65 +1266,104 @@ var Themed = (() => {
     static getTextLib(e) {
       return _a9.LibTranslation?.[e] || void 0;
     }
-    static async fetchLanguageFile(e, i) {
-      let n = await fetch(`${e}${i}.lang`);
-      if (i !== _a9.DefaultLanguage && !n.ok) return this.fetchLanguageFile(e, _a9.DefaultLanguage);
-      if (!n.ok) return {};
-      let o = await n.text();
-      return this.parseLanguageFile(o);
-    }
-    static parseLanguageFile(e) {
-      let i = {}, n = e.split(`
-`);
-      for (let o of n) {
-        let r = o.trim();
-        if (!r || r.startsWith("#")) continue;
-        let [a, ...l] = r.split("=");
-        i[a.trim()] = l.join("=").trim();
+    static async fetchTranslation(e, n, i = false) {
+      if (i) {
+        let l = `${e}${n}/`, c = await this.fetchLanguageFolder(l);
+        if (Object.keys(c).length > 0) return c;
       }
-      return i;
+      let o = `${e}${n}.lang`, s = await _a9.fetchLanguageFile(o);
+      if (n !== _a9.DefaultLanguage && !s) {
+        let l = `${e}${_a9.DefaultLanguage}.lang`;
+        return await this.fetchLanguageFile(l) || {};
+      }
+      return s || {};
     }
-  }, __name(_a9, "t"), s(_a9, "Localization"), __publicField(_a9, "LibTranslation", {}), __publicField(_a9, "ModTranslation", {}), __publicField(_a9, "PathToModTranslation"), __publicField(_a9, "PathToLibTranslation", `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_translations/`), __publicField(_a9, "DefaultLanguage", "en"), __publicField(_a9, "initialized", false), _a9);
-  var d = s((t) => M.getTextMod(t) || M.getTextLib(t) || t, "getText");
+    static async fetchLanguageFile(e) {
+      let n = await fetch(e).catch((o) => (m.error("Failed to fetch translation file:", o), new Response(null, { status: 500 })));
+      if (!n.ok) return false;
+      let i = await n.text();
+      return this.parseTranslation(i);
+    }
+    static async fetchLanguageFolder(e) {
+      let n = {}, i = "manifest.txt", o = null, s = await fetch(`${e}${i}`).catch((l) => (m.error("Failed to fetch language folder manifest:", l), new Response(null, { status: 500 })));
+      if (s.ok && (o = (await s.text()).trim().split(`
+`).map((c) => c.trim()).filter((c) => c && !c.startsWith("#"))), o && o.length > 0) {
+        let l = o.map(async (d) => {
+          try {
+            let a = await _a9.fetchLanguageFile(`${e}${d}`);
+            if (a) return a;
+          } catch {
+          }
+          return {};
+        }), c = await Promise.all(l);
+        for (let d of c) Object.assign(n, d);
+        if (Object.keys(n).length > 0) return n;
+      }
+      return n;
+    }
+    static parseTranslation(e) {
+      let n = {}, i = e.split(`
+`);
+      for (let o of i) {
+        let s = o.trim();
+        if (!s || s.startsWith("#")) continue;
+        let [l, ...c] = s.split("=");
+        n[l.trim()] = c.join("=").trim();
+      }
+      return n;
+    }
+  }, __name(_a9, "t"), r(_a9, "Localization"), __publicField(_a9, "LibTranslation", {}), __publicField(_a9, "ModTranslation", {}), __publicField(_a9, "PathToModTranslation"), __publicField(_a9, "PathToLibTranslation", `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_translations/`), __publicField(_a9, "DefaultLanguage", "en"), __publicField(_a9, "FetchFolder", false), __publicField(_a9, "initialized", false), _a9);
+  var g = r((t, e) => {
+    let n = A.getTextMod(t) || A.getTextLib(t) || t;
+    if (e) {
+      let i = Object.fromEntries(Object.entries(e).map(([o, s]) => [o, s.toString()]));
+      return CommonStringPartitionReplace(n, i).join("");
+    }
+    return n;
+  }, "getText");
   var _a10;
-  var W = (_a10 = class {
+  var D = (_a10 = class {
     constructor(e) {
+      __publicField(this, "opts");
       __publicField(this, "dialog");
       __publicField(this, "blocker");
       __publicField(this, "inputEl");
       __publicField(this, "timeoutId");
-      __publicField(this, "resolve", s(() => {
+      __publicField(this, "updateIntervalId");
+      __publicField(this, "resolve", r(() => {
       }, "resolve"));
       this.opts = e;
-      e ?? (e = {}), e.closeOnBackdrop ?? (e.closeOnBackdrop = true);
-      let i = `modal-prompt-${Date.now()}`, n = (CommonIsArray(e.prompt) ? e.prompt : [e.prompt]).filter((o) => o !== null) ?? [""];
-      this.dialog = ElementCreate({ tag: "dialog", classList: ["deeplib-modal"], attributes: { id: this.opts.modalId ?? `modal-${Date.now()}`, role: "dialog", "aria-modal": "true", "aria-labelledby": i }, style: { fontFamily: CommonGetFontName() }, children: [{ tag: "div", classList: ["deeplib-modal-prompt-container"], children: [...n] }, { tag: "div", classList: ["deeplib-modal-prompt"], attributes: { id: i }, children: [e.input ? this.renderInput(e.input) : void 0] }, this.renderButtons()] }), this.blocker = this.createBlocker(), this.renderButtons(), document.body.append(this.createBlocker(), this.dialog), this.setupFocusTrap(), e.timeoutMs && (this.timeoutId = window.setTimeout(() => this.close("timeout"), e.timeoutMs));
+      e ?? (e = {}), e.closeOnBackdrop ?? (e.closeOnBackdrop = true), e.modalClassList ?? (e.modalClassList = []);
+      let n = `modal-prompt-${Date.now()}`, i = (CommonIsArray(e.prompt) ? e.prompt : [e.prompt]).filter((o) => o !== null) ?? [""];
+      this.dialog = ElementCreate({ tag: "dialog", classList: ["deeplib-modal", ...e.modalClassList], attributes: { id: this.opts.modalId ?? `modal-${Date.now()}`, role: "dialog", "aria-modal": "true", "aria-labelledby": n }, children: [{ tag: "div", classList: ["deeplib-modal-prompt-container"], children: [...i] }, { tag: "div", classList: ["deeplib-modal-prompt"], attributes: { id: n }, children: [e.input ? this.renderInput(e.input) : void 0] }, this.renderButtons()] }), ElementSetFontSize(this.dialog, "auto"), this.blocker = this.createBlocker(), this.renderButtons(), document.body.append(this.createBlocker(), this.dialog), this.setupFocusTrap(), e.timeoutMs && (this.timeoutId = window.setTimeout(() => this.close("timeout"), e.timeoutMs)), e.onShow && e.onShow.call(this.dialog), this.updateIntervalId = window.setInterval(() => {
+        ElementSetFontSize(this.dialog, "auto");
+      }, 1e3);
     }
     show() {
       return _a10.enqueue(this);
     }
-    static async alert(e, i = {}) {
-      await new _a10({ prompt: e, buttons: [{ action: "close", text: d("modal.button.ok") }], timeoutMs: i.timeoutMs, escapeAction: "close", modalId: i.modalId }).show();
+    static async alert(e, n = {}) {
+      await new _a10({ prompt: e, buttons: [...n.buttons ?? [], { action: "close", text: g("modal.button.ok") }], timeoutMs: n.timeoutMs, escapeAction: "close", modalId: n.modalId, modalClassList: n.modalClassList, onShow: n.onShow }).show();
     }
-    static async confirm(e, i = {}) {
-      let [n] = await new _a10({ prompt: e, buttons: [{ text: d("modal.button.decline"), action: "decline" }, { text: d("modal.button.confirm"), action: "confirm" }], escapeAction: "decline", enterAction: "confirm", modalId: i.modalId }).show();
-      return n === "confirm";
+    static async confirm(e, n = {}) {
+      let [i] = await new _a10({ prompt: e, buttons: [...n.buttons ?? [], { text: g("modal.button.decline"), action: "decline" }, { text: g("modal.button.confirm"), action: "confirm" }], escapeAction: "decline", enterAction: "confirm", modalId: n.modalId, modalClassList: n.modalClassList, onShow: n.onShow }).show();
+      return i === "confirm";
     }
-    static async prompt(e, i = {}) {
-      let [n, o] = await new _a10({ prompt: e, timeoutMs: 0, input: { type: "input", defaultValue: i.defaultValue }, buttons: [{ text: d("modal.button.cancel"), action: "cancel" }, { text: d("modal.button.submit"), action: "submit" }], escapeAction: "cancel", enterAction: "submit", modalId: i.modalId }).show();
-      return n === "submit" ? o : null;
+    static async prompt(e, n = {}) {
+      let [i, o] = await new _a10({ prompt: e, timeoutMs: 0, input: { type: "input", defaultValue: n.defaultValue }, buttons: [...n.buttons ?? [], { text: g("modal.button.cancel"), action: "cancel" }, { text: g("modal.button.submit"), action: "submit" }], escapeAction: "cancel", enterAction: "submit", modalId: n.modalId, modalClassList: n.modalClassList, onShow: n.onShow }).show();
+      return i === "submit" ? o : null;
     }
     renderInput(e) {
-      let i = document.createElement(e.type);
-      return i.classList.add("deeplib-modal-input"), e.placeholder && (i.placeholder = e.placeholder), e.readOnly && (i.readOnly = true), e.defaultValue && (i.value = e.defaultValue), e.type === "textarea" && (i.rows = 5), i.addEventListener("input", () => {
-        let n = e.validate?.(i.value);
-        i.setCustomValidity(n || "");
-      }), this.inputEl = i, i;
+      let n = document.createElement(e.type);
+      return n.classList.add("deeplib-modal-input"), e.placeholder && (n.placeholder = e.placeholder), e.readOnly && (n.readOnly = true), e.defaultValue && (n.value = e.defaultValue), e.type === "textarea" && (n.rows = 5), n.addEventListener("input", () => {
+        let i = e.validate?.(n.value);
+        n.setCustomValidity(i || "");
+      }), this.inputEl = n, n;
     }
     renderButtons() {
       let e = document.createElement("div");
-      return e.classList.add("deeplib-modal-button-container"), (this.opts.buttons ? [...this.opts.buttons] : []).forEach((n) => {
-        let o = c.createButton({ id: `deeplib-modal-${n.action}`, onClick: s(() => this.close(n.action), "onClick"), options: { disabled: n.disabled, label: n.text } });
+      return e.classList.add("deeplib-modal-button-container"), (this.opts.buttons ? [...this.opts.buttons] : []).forEach((i) => {
+        let o = u.createButton({ id: `deeplib-modal-${i.action}`, onClick: r(() => typeof i.action == "function" ? i.action() : this.close(i.action), "onClick"), options: { disabled: i.disabled, label: i.text } });
         e.append(o);
       }), e;
     }
@@ -1237,38 +1372,38 @@ var Themed = (() => {
       return e.classList.add("deeplib-modal-blocker"), e.title = "Click to close", this.opts.closeOnBackdrop !== false && e.addEventListener("click", () => this.close("close")), e;
     }
     setupFocusTrap() {
-      let i = Array.from(this.dialog.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])')), n = i[0], o = i[i.length - 1];
-      this.dialog.addEventListener("keydown", (r) => {
-        if (r.key === "Tab") {
-          if (i.length === 0) {
-            r.preventDefault();
+      let n = Array.from(this.dialog.querySelectorAll('button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])')), i = n[0], o = n[n.length - 1];
+      this.dialog.addEventListener("keydown", (s) => {
+        if (s.key === "Tab") {
+          if (n.length === 0) {
+            s.preventDefault();
             return;
           }
-          r.shiftKey ? document.activeElement === n && (o.focus(), r.preventDefault()) : document.activeElement === o && (n.focus(), r.preventDefault());
-        } else if (r.key === "Escape") r.stopPropagation(), this.close(this.opts.escapeAction ?? "close");
-        else if (r.key === "Enter") {
-          if (i.some((a) => a === document.activeElement) && document.activeElement !== this.inputEl) return;
-          r.preventDefault(), r.stopPropagation(), this.close(this.opts.enterAction ?? "submit");
+          s.shiftKey ? document.activeElement === i && (o.focus(), s.preventDefault()) : document.activeElement === o && (i.focus(), s.preventDefault());
+        } else if (s.key === "Escape") s.stopPropagation(), this.close(this.opts.escapeAction ?? "close");
+        else if (s.key === "Enter") {
+          if (n.some((l) => l === document.activeElement) && document.activeElement !== this.inputEl) return;
+          s.preventDefault(), s.stopPropagation(), this.close(this.opts.enterAction ?? "submit");
         }
       }), window.requestAnimationFrame(() => {
-        (this.inputEl || n)?.focus();
+        (this.inputEl || i)?.focus();
       });
     }
     close(e) {
-      this.timeoutId && clearTimeout(this.timeoutId), this.dialog.close(), this.dialog.remove(), this.blocker.remove(), document.body.querySelector(".deeplib-modal-blocker")?.remove();
-      let i = this.inputEl?.value ?? "";
-      this.resolve([e, i]), _a10.dequeue();
+      this.timeoutId && clearTimeout(this.timeoutId), clearInterval(this.updateIntervalId), this.dialog.close(), this.dialog.remove(), this.blocker.remove(), document.body.querySelector(".deeplib-modal-blocker")?.remove();
+      let n = this.inputEl?.value ?? "";
+      this.resolve([e, n]), _a10.dequeue();
     }
     static enqueue(e) {
-      return _a10.queue.push(e), _a10.processing || _a10.dequeue(), new Promise((i) => e.resolve = i);
+      return _a10.queue.push(e), _a10.processing || _a10.dequeue(), new Promise((n) => e.resolve = n);
     }
     static dequeue() {
       let e = _a10.queue.shift();
       e ? (_a10.processing = true, e.dialog.show()) : _a10.processing = false;
     }
-  }, __name(_a10, "t"), s(_a10, "Modal"), __publicField(_a10, "queue", []), __publicField(_a10, "processing", false), _a10);
+  }, __name(_a10, "t"), r(_a10, "Modal"), __publicField(_a10, "queue", []), __publicField(_a10, "processing", false), _a10);
   var _a11;
-  var le = (_a11 = class extends m {
+  var ve = (_a11 = class extends I {
     constructor(e) {
       super();
       __publicField(this, "importExportOptions");
@@ -1276,140 +1411,144 @@ var Themed = (() => {
     }
     load() {
       super.load();
-      let e = c.createButton({ id: "deeplib-import-file-button", size: [600, 90], onClick: s(() => {
+      let e = u.createButton({ id: "deeplib-import-file-button", size: [600, 90], onClick: r(() => {
         this.dataImport("file");
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/file_import.svg`, label: d("import-export.button.import_file") } });
-      g.appendToSettingsDiv(e);
-      let i = c.createButton({ id: "deeplib-export-file-button", size: [600, 90], onClick: s(() => {
+      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/file_import.svg`, label: g("import-export.button.import_file") } });
+      b.appendToSettingsDiv(e);
+      let n = u.createButton({ id: "deeplib-export-file-button", size: [600, 90], onClick: r(() => {
         this.dataExport("file");
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/file_export.svg`, label: d("import-export.button.export_file") } });
-      g.appendToSettingsDiv(i);
-      let n = c.createButton({ id: "deeplib-import-clipboard-button", size: [600, 90], onClick: s(() => {
+      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/file_export.svg`, label: g("import-export.button.export_file") } });
+      b.appendToSettingsDiv(n);
+      let i = u.createButton({ id: "deeplib-import-clipboard-button", size: [600, 90], onClick: r(() => {
         this.dataImport("clipboard");
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/clipboard_import.svg`, label: d("import-export.button.import_clipboard") } });
-      g.appendToSettingsDiv(n);
-      let o = c.createButton({ id: "deeplib-export-clipboard-button", size: [600, 90], onClick: s(() => {
+      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/clipboard_import.svg`, label: g("import-export.button.import_clipboard") } });
+      b.appendToSettingsDiv(i);
+      let o = u.createButton({ id: "deeplib-export-clipboard-button", size: [600, 90], onClick: r(() => {
         this.dataExport("clipboard");
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/clipboard_export.svg`, label: d("import-export.button.export_clipboard") } });
-      g.appendToSettingsDiv(o);
+      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/clipboard_export.svg`, label: g("import-export.button.export_clipboard") } });
+      b.appendToSettingsDiv(o);
     }
     resize() {
       super.resize();
     }
     async dataExport(e) {
       try {
-        let i = await this.getSelectedModules(f(), "export");
-        if (!i) return;
-        if (i.length === 0) {
+        let n = await this.getSelectedModules(x(), "export");
+        if (!n) return;
+        if (n.length === 0) {
           ToastManager.error("No modules selected for export.");
           return;
         }
-        let n = this.buildExportPayload(i);
-        if (e === "clipboard") await this.exportToClipboard(n);
-        else if (e === "file" && !await this.exportToFile(n, "settings")) return;
+        let i = this.buildExportPayload(n);
+        if (e === "clipboard") await this.exportToClipboard(i);
+        else if (e === "file" && !await this.exportToFile(i, "settings")) return;
         this.importExportOptions.onExport?.(), ToastManager.success("Data exported successfully.");
-      } catch (i) {
-        ToastManager.error("Data export failed."), p.error("Data export failed.", i);
+      } catch (n) {
+        ToastManager.error("Data export failed."), m.error("Data export failed.", n);
       }
     }
     async dataImport(e) {
       try {
-        let i = e === "clipboard" ? await this.importFromClipboard() : await this.importFromFile();
-        if (i === null) return;
-        if (!i) throw new Error("No data");
-        if (!await this.applyImportPayload(i)) return;
+        let n = e === "clipboard" ? await this.importFromClipboard() : await this.importFromFile();
+        if (n === null) return;
+        if (!n) throw new Error("No data");
+        if (!await this.applyImportPayload(n)) return;
         this.importExportOptions.onImport?.(), ToastManager.success("Data imported successfully.");
-      } catch (i) {
-        ToastManager.error("Data import failed."), p.error("Data import failed.", i);
+      } catch (n) {
+        ToastManager.error("Data import failed."), m.error("Data import failed.", n);
       }
     }
-    async exportToFile(e, i) {
-      let n = this.importExportOptions.customFileExtension.startsWith(".") ? this.importExportOptions.customFileExtension : "." + this.importExportOptions.customFileExtension, o = i.endsWith(n) ? i : i + n;
+    async exportToFile(e, n) {
+      let i = this.importExportOptions.customFileExtension.startsWith(".") ? this.importExportOptions.customFileExtension : "." + this.importExportOptions.customFileExtension;
       if ("showSaveFilePicker" in window) try {
-        let a = await (await window.showSaveFilePicker({ suggestedName: o, types: [{ description: "Custom Data Files", accept: { "text/plain": [n] } }] })).createWritable();
-        return await a.write(e), await a.close(), true;
-      } catch (r) {
-        throw new Error("File save cancelled or failed: " + r.message);
+        let s = await (await window.showSaveFilePicker({ suggestedName: n + i, types: [{ description: "Custom Data Files", accept: { "text/plain": [i] } }] })).createWritable();
+        return await s.write(e), await s.close(), true;
+      } catch (o) {
+        let s = o instanceof Error ? o.message : String(o);
+        throw new Error(`File save cancelled or failed: ${s}`, { cause: o });
       }
       else {
-        let r = await W.prompt("Enter file name", { defaultValue: o });
-        if (r === null) return false;
-        if (r === "") throw new Error("File name cannot be empty.");
-        let a = new Blob([e], { type: "text/plain" }), l = ElementCreate({ tag: "a", attributes: { href: URL.createObjectURL(a), download: r.endsWith(n) ? r : r + n } });
+        let o = await D.prompt("Enter file name", { defaultValue: n });
+        if (o === null) return false;
+        if (o === "") throw new Error("File name cannot be empty.");
+        let s = new Blob([e], { type: "text/plain" }), l = ElementCreate({ tag: "a", attributes: { href: URL.createObjectURL(s), download: o + i } });
         return l.click(), URL.revokeObjectURL(l.href), true;
       }
     }
     async importFromFile() {
       let e = this.importExportOptions.customFileExtension.startsWith(".") ? this.importExportOptions.customFileExtension : "." + this.importExportOptions.customFileExtension;
-      async function i(n) {
-        if (!n.name.endsWith(e)) throw new Error(`Invalid file type. Expected a ${e} file.`);
-        return new Promise((o, r) => {
-          let a = new FileReader();
-          a.onload = () => o(a.result), a.onerror = () => r(new Error("Failed to read file.")), a.readAsText(n);
+      async function n(i) {
+        if (!i.name.endsWith(e)) throw new Error(`Invalid file type. Expected a ${e} file.`);
+        return new Promise((o, s) => {
+          let l = new FileReader();
+          l.onload = () => o(l.result), l.onerror = () => s(new Error("Failed to read file.")), l.readAsText(i);
         });
       }
-      __name(i, "i");
-      if (s(i, "importFromFileInternal"), "showOpenFilePicker" in window) try {
-        let [n] = await window.showOpenFilePicker({ types: [{ description: "Custom Data Files", accept: { "text/plain": [e] } }], multiple: false }), o = await n.getFile();
-        return await i(o);
-      } catch (n) {
-        throw new Error("File selection cancelled or failed: " + n.message);
+      __name(n, "n");
+      if (r(n, "importFromFileInternal"), "showOpenFilePicker" in window) try {
+        let [i] = await window.showOpenFilePicker({ types: [{ description: "Custom Data Files", accept: { "text/plain": [e] } }], multiple: false }), o = await i.getFile();
+        return await n(o);
+      } catch (i) {
+        let o = i instanceof Error ? i.message : String(i);
+        throw new Error(`File selection cancelled or failed: ${o}`, { cause: i });
       }
-      else return new Promise((n, o) => {
-        let r = document.createElement("input");
-        r.type = "file", r.accept = e, r.onchange = async (a) => {
-          let l = a.target.files?.[0];
-          if (l) try {
-            let y = await i(l);
-            n(y);
-          } catch (y) {
-            o(y);
+      else return new Promise((i, o) => {
+        let s = document.createElement("input");
+        s.type = "file", s.accept = e, s.onchange = async (l) => {
+          let c = l.target.files?.[0];
+          if (c) try {
+            let d = await n(c);
+            i(d);
+          } catch (d) {
+            o(d);
           }
           else o(new Error("No file selected."));
-        }, r.click();
+        }, s.click();
       });
     }
     async exportToClipboard(e) {
-      return navigator.clipboard.writeText(e).catch((i) => {
-        throw new Error("Failed to copy data to clipboard." + i);
+      return navigator.clipboard.writeText(e).catch((n) => {
+        let i = n instanceof Error ? n.message : String(n);
+        throw new Error(`Failed to copy data to clipboard: ${i}`, { cause: n });
       });
     }
     async importFromClipboard() {
-      return W.prompt("Enter data to import").catch((e) => {
-        throw new Error("Failed to read data from clipboard." + e);
+      return D.prompt("Enter data to import").catch((e) => {
+        let n = e instanceof Error ? e.message : String(e);
+        throw new Error(`Failed to read data from clipboard: ${n}`, { cause: e });
       });
     }
-    async getSelectedModules(e, i) {
-      let n = e.filter((h) => z(h, "settings") && !!h.settings), o = Object.fromEntries(n.map((h) => [h.constructor.name, true]));
-      if (n.length === 0) throw new Error("No modules to choose from.");
-      let r = n.map((h) => c.createCheckbox({ id: h.constructor.name, label: d(h.constructor.name), setElementValue: s(() => o[h.constructor.name], "setElementValue"), setSettingValue: s((Y) => o[h.constructor.name] = Y, "setSettingValue") })), a = i === "import" ? "import_export.import.select_modules" : "import_export.export.select_modules";
-      if (!await W.confirm([d(a), ElementCreate({ tag: "br" }), d("import_export.text.not_sure"), { tag: "div", classList: ["deeplib-modal-checkbox-container"], children: r }], { modalId: "deeplib-modal-import_export" })) return null;
-      let y = Object.entries(o).filter(([h, Y]) => Y).map(([h]) => x(h)).filter((h) => !!h);
-      if (y.length === 0) throw new Error("No modules selected.");
-      return y;
+    async getSelectedModules(e, n) {
+      let i = e.filter((a) => q(a, "settings") && !!a.settings), o = Object.fromEntries(i.map((a) => [a.constructor.name, true]));
+      if (i.length === 0) throw new Error("No modules to choose from.");
+      let s = i.map((a) => u.createCheckbox({ id: a.constructor.name, label: g(a.constructor.name), setElementValue: r(() => o[a.constructor.name], "setElementValue"), setSettingValue: r((h) => o[a.constructor.name] = h, "setSettingValue") })), l = n === "import" ? "import_export.import.select_modules" : "import_export.export.select_modules";
+      if (!await D.confirm([g(l), ElementCreate({ tag: "br" }), g("import_export.text.not_sure"), { tag: "div", classList: ["deeplib-modal-checkbox-container"], children: s }], { modalId: "deeplib-modal-import_export" })) return null;
+      let d = Object.entries(o).filter(([a, h]) => h).map(([a]) => C(a)).filter((a) => !!a);
+      if (d.length === 0) throw new Error("No modules selected.");
+      return d;
     }
     buildExportPayload(e) {
-      let i = {};
-      for (let n of e) !z(n, "settings") || n.settings === null || (i[n.constructor.name] = n.settings);
-      return LZString.compressToBase64(JSON.stringify(i));
+      let n = {};
+      for (let i of e) !q(i, "settings") || i.settings === null || (n[i.constructor.name] = i.settings);
+      return LZString.compressToBase64(JSON.stringify(n));
     }
     async applyImportPayload(e) {
-      let i = JSON.parse(LZString.decompressFromBase64(e) ?? "");
-      if (!i) throw new Error("Invalid import format.");
-      let n = Object.keys(i).map((r) => x(r)).filter((r) => !!r), o = await this.getSelectedModules(n, "import");
+      let n = JSON.parse(LZString.decompressFromBase64(e) ?? "");
+      if (!n) throw new Error("Invalid import format.");
+      let i = Object.keys(n).map((s) => C(s)).filter((s) => !!s), o = await this.getSelectedModules(i, "import");
       if (!o) return false;
       if (o.length === 0) throw new Error("No modules selected.");
-      for (let r of o) {
-        let a = i[r.constructor.name];
-        if (!a) continue;
-        let l = b(r.defaultSettings, a);
-        l && (r.settings = l);
+      for (let s of o) {
+        let l = n[s.constructor.name];
+        if (!l) continue;
+        let c = f(s.defaultSettings, l);
+        c && (s.settings = c);
       }
       return true;
     }
-  }, __name(_a11, "le"), s(_a11, "GuiImportExport"), __publicField(_a11, "subscreenOptions", { name: "import-export" }), _a11);
+  }, __name(_a11, "ve"), r(_a11, "GuiImportExport"), __publicField(_a11, "subscreenOptions", { name: "import-export" }), _a11);
   var _a12;
-  var X = (_a12 = class {
+  var Y = (_a12 = class {
     constructor(e) {
       __publicField(this, "modName");
       return _a12._instance || (_a12._instance = this, this.modName = e), this.modName ?? (this.modName = e), _a12._instance;
@@ -1426,17 +1565,17 @@ var Themed = (() => {
     set extensionStorage(e) {
       Player.ExtensionSettings[this.modName] = e;
     }
-    setLocalStorage(e, i) {
-      localStorage.setItem(`${this.modName}_${e}`, _a12.dataCompress(i));
+    setLocalStorage(e, n) {
+      localStorage.setItem(`${this.modName}_${e}`, _a12.dataCompress(n));
     }
     getLocalStorage(e) {
-      let i = localStorage.getItem(`${this.modName}_${e}`);
-      return i ? _a12.dataDecompress(i) : null;
+      let n = localStorage.getItem(`${this.modName}_${e}`);
+      return n ? _a12.dataDecompress(n) : null;
     }
     load() {
       if (this.extensionStorage) {
         let e = _a12.dataDecompress(this.extensionStorage || "");
-        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.8.1" } : this.playerStorage = e;
+        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.8.2" } : this.playerStorage = e;
       } else this.playerStorage = {};
     }
     save() {
@@ -1446,13 +1585,13 @@ var Themed = (() => {
       return _a12.measureSize(this.extensionStorage);
     }
     static dataDecompress(e) {
-      let i = LZString.decompressFromBase64(e), n = null;
+      let n = LZString.decompressFromBase64(e), i = null;
       try {
-        n = JSON.parse(i);
+        i = JSON.parse(n);
       } catch (o) {
-        p.error(o);
+        m.error(o);
       }
-      return n;
+      return i;
     }
     static dataCompress(e) {
       return LZString.compressToBase64(JSON.stringify(e));
@@ -1465,270 +1604,255 @@ var Themed = (() => {
         return NaN;
       }
     }
-  }, __name(_a12, "t"), s(_a12, "ModStorage"), __publicField(_a12, "_instance", null), _a12);
-  var G = { autoSetPosition: Ge, autoSetSize: we, hide: Te, unhide: Le, hasOverflow: Se, doRectsOverlap: Ze };
-  function Ge(t, e) {
-    let i, n, o;
-    if (Array.isArray(e)) i = e[0], n = e[1], o = e[2];
+  }, __name(_a12, "t"), r(_a12, "ModStorage"), __publicField(_a12, "_instance", null), _a12);
+  var S = { autoSetPosition: Ne, autoSetSize: Ue, hide: Qe, unhide: Ye, hasOverflow: He, doRectsOverlap: je };
+  function Ne(t, e) {
+    let n, i, o;
+    if (Array.isArray(e)) n = e[0], i = e[1], o = e[2];
     else if (typeof e == "function") {
-      let r = e();
-      i = r[0], n = r[1], o = r[2];
+      let s = e();
+      n = s[0], i = s[1], o = s[2];
     }
-    i !== void 0 && n !== void 0 && ElementSetPosition(t, i, n, o);
+    n !== void 0 && i !== void 0 && ElementSetPosition(t, n, i, o);
   }
-  __name(Ge, "Ge");
-  s(Ge, "autoSetPosition");
-  function we(t, e) {
-    let i, n;
-    if (Array.isArray(e)) i = e[0], n = e[1];
+  __name(Ne, "Ne");
+  r(Ne, "autoSetPosition");
+  function Ue(t, e) {
+    let n, i;
+    if (Array.isArray(e)) n = e[0], i = e[1];
     else if (typeof e == "function") {
       let o = e();
-      i = o[0], n = o[1];
+      n = o[0], i = o[1];
     }
-    i !== void 0 && n !== void 0 && ElementSetSize(t, i, n);
+    n !== void 0 && i !== void 0 && ElementSetSize(t, n, i);
   }
-  __name(we, "we");
-  s(we, "autoSetSize");
-  function Te(t) {
+  __name(Ue, "Ue");
+  r(Ue, "autoSetSize");
+  function Qe(t) {
     let e = ElementWrap(t);
     e && (e.style.display = "none");
   }
-  __name(Te, "Te");
-  s(Te, "hide");
-  function Le(t) {
+  __name(Qe, "Qe");
+  r(Qe, "hide");
+  function Ye(t) {
     let e = ElementWrap(t);
     e && (e.style.display = "");
   }
-  __name(Le, "Le");
-  s(Le, "unhide");
-  function Se(t) {
+  __name(Ye, "Ye");
+  r(Ye, "unhide");
+  function He(t) {
     let e = ElementWrap(t);
     if (!e) return null;
-    let i = e.scrollHeight > e.clientHeight, n = e.scrollWidth > e.clientWidth;
-    return { any: i || n, vertical: i, horizontal: n };
+    let n = e.scrollHeight > e.clientHeight, i = e.scrollWidth > e.clientWidth;
+    return { any: n || i, vertical: n, horizontal: i };
   }
-  __name(Se, "Se");
-  s(Se, "hasOverflow");
-  function Ze(t, e) {
+  __name(He, "He");
+  r(He, "hasOverflow");
+  function je(t, e) {
     return !(t.right < e.left || t.left > e.right || t.bottom < e.top || t.top > e.bottom);
   }
-  __name(Ze, "Ze");
-  s(Ze, "doRectsOverlap");
-  var g = { getSubscreen: P, appendToSubscreen: ke, removeSubscreen: Oe, getSettingsDiv: K, appendToSettingsDiv: Me, removeSettingsDiv: Ee, getMiscDiv: J, appendToMiscDiv: We, removeMiscDiv: Fe };
-  function P() {
+  __name(je, "je");
+  r(je, "doRectsOverlap");
+  var b = { getSubscreen: te, appendToSubscreen: Pe, removeSubscreen: ze, getSettingsDiv: ne, appendToSettingsDiv: Ke, removeSettingsDiv: Je, getMiscDiv: ie, appendToMiscDiv: $e, removeMiscDiv: _e };
+  function te() {
     let t = ElementWrap("deeplib-subscreen");
     if (t) return t;
     let e = ElementCreate({ tag: "div", classList: ["deeplib-subscreen", "HideOnPopup"], attributes: { id: "deeplib-subscreen" } });
     return document.body.appendChild(e);
   }
-  __name(P, "P");
-  s(P, "elementGetSubscreenDiv");
-  function Oe() {
-    return P()?.remove();
+  __name(te, "te");
+  r(te, "elementGetSubscreenDiv");
+  function ze() {
+    return te()?.remove();
   }
-  __name(Oe, "Oe");
-  s(Oe, "elementRemoveSubscreenDiv");
-  function ke(...t) {
-    return P()?.append(...t);
+  __name(ze, "ze");
+  r(ze, "elementRemoveSubscreenDiv");
+  function Pe(...t) {
+    return te()?.append(...t);
   }
-  __name(ke, "ke");
-  s(ke, "elementAppendToSubscreenDiv");
-  function K() {
+  __name(Pe, "Pe");
+  r(Pe, "elementAppendToSubscreenDiv");
+  function ne() {
     let t = ElementWrap("deeplib-settings");
     return t || ElementCreate({ tag: "div", classList: ["deeplib-settings", "scroll-box"], attributes: { id: "deeplib-settings" } });
   }
-  __name(K, "K");
-  s(K, "elementGetSettingsDiv");
-  function Me(...t) {
-    return K()?.append(...t);
+  __name(ne, "ne");
+  r(ne, "elementGetSettingsDiv");
+  function Ke(...t) {
+    return ne()?.append(...t);
   }
-  __name(Me, "Me");
-  s(Me, "elementAppendToSettingsDiv");
-  function Ee() {
-    return K()?.remove();
+  __name(Ke, "Ke");
+  r(Ke, "elementAppendToSettingsDiv");
+  function Je() {
+    return ne()?.remove();
   }
-  __name(Ee, "Ee");
-  s(Ee, "elementRemoveSettingsDiv");
-  function J() {
+  __name(Je, "Je");
+  r(Je, "elementRemoveSettingsDiv");
+  function ie() {
     let t = ElementWrap("deeplib-misc");
     return t || ElementCreate({ tag: "div", classList: ["deeplib-misc"], attributes: { id: "deeplib-misc" } });
   }
-  __name(J, "J");
-  s(J, "elementGetMiscDiv");
-  function We(...t) {
-    return J()?.append(...t);
+  __name(ie, "ie");
+  r(ie, "elementGetMiscDiv");
+  function $e(...t) {
+    return ie()?.append(...t);
   }
-  __name(We, "We");
-  s(We, "elementAppendToMiscDiv");
-  function Fe() {
-    return J()?.remove();
+  __name($e, "$e");
+  r($e, "elementAppendToMiscDiv");
+  function _e() {
+    return ie()?.remove();
   }
-  __name(Fe, "Fe");
-  s(Fe, "elementRemoveMiscDiv");
-  var _a13;
-  var V = (_a13 = class extends Array {
-    constructor(e) {
-      super();
-      __publicField(this, "ModName", "DeepLib");
-      e && (this.ModName = e);
-    }
-    _Log(e, ...i) {
-      let n = { logLevel: e, args: [...i], date: new Date(Date.now()) }, o = navigator.userAgent.toLowerCase();
-      if (o.includes("chrome") || o.includes("firefox")) {
-        let r = _a13.colorizeLog(e);
-        i.forEach((a) => {
-          typeof a == "string" && (a = `
-%c${a}`);
-        }), console.log(`%c${this.ModName}:`, r, ...i);
-      } else console.log(`${this.ModName}:`, ...i);
-      this.push(n);
-    }
-    info(...e) {
-      this._Log("info", ...e);
-    }
-    log(...e) {
-      this._Log("log", ...e);
-    }
-    warn(...e) {
-      this._Log("warn", ...e);
-    }
-    error(...e) {
-      this._Log("error", ...e);
-    }
-    debug(...e) {
-      this._Log("debug", ...e);
-    }
-    static colorizeLog(e) {
-      return { info: "color: #32CCCC", log: "color: #CCCC32", warn: "color: #eec355", error: "color: #750b0b", debug: "color: #9E4BCF" }[e];
-    }
-  }, __name(_a13, "t"), s(_a13, "Logger"), _a13);
-  var v = new V();
-  function ci(t, e, i) {
-    let n = ElementCreate({ tag: "div", classList: ["ChatMessage", "deeplib-message", "ChatMessageNonDialogue"], attributes: { id: t ?? `DEEPLIB_LOCAL_MESSAGE_${Date.now()}`, "data-time": ChatRoomCurrentTime(), "data-sender": Player.MemberNumber?.toString() }, children: [{ tag: "span", classList: ["deeplib-text"], innerHTML: e.replaceAll(`
-	`, "") }, { tag: "br" }, { tag: "a", classList: ["deeplib-text"], attributes: { href: "#" }, innerHTML: "<b>Close (Click)</b>", eventListeners: { click: s(() => {
-      n.remove();
+  __name(_e, "_e");
+  r(_e, "elementRemoveMiscDiv");
+  var K = oe($(), 1);
+  function qe(t) {
+    let e = t.name;
+    return { INFO: "color: #32CCCC", TRACE: "color: #CCCC32", WARN: "color: #eec355", ERROR: "color: #750b0b", DEBUG: "color: #9E4BCF", TIME: "color: #CCCC32" }[e];
+  }
+  __name(qe, "qe");
+  r(qe, "colorizeLog");
+  var G = K.default.get("DeepLib");
+  K.default.useDefaults({ defaultLevel: K.default.DEBUG, formatter: r(function(t, e) {
+    let n = e.name || "DeepLib", i = navigator.userAgent.toLowerCase();
+    if (i.includes("chrome") || i.includes("firefox")) {
+      let o = qe(e.level);
+      t.unshift(`%c${n}:`, o);
+    } else t.unshift(`${n}:`);
+  }, "formatter") });
+  function Zn(t, e, n) {
+    let i = ElementCreate({ tag: "div", classList: ["ChatMessage", "deeplib-message", "ChatMessageNonDialogue"], attributes: { id: t ?? `DEEPLIB_LOCAL_MESSAGE_${Date.now()}`, "data-time": ChatRoomCurrentTime(), "data-sender": Player.MemberNumber?.toString() }, children: [{ tag: "span", classList: ["deeplib-text"], innerHTML: e.replaceAll(`
+	`, "") }, { tag: "br" }, { tag: "a", classList: ["deeplib-text"], attributes: { href: "#" }, innerHTML: "<b>Close (Click)</b>", eventListeners: { click: r(() => {
+      i.remove();
     }, "click") } }] });
-    ChatRoomAppendChat(n), i && setTimeout(() => n.remove(), i * 1e3);
+    ChatRoomAppendChat(i), n && setTimeout(() => i.remove(), n * 1e3);
   }
-  __name(ci, "ci");
-  s(ci, "sendLocalMessage");
-  function di(t, e = void 0, i = []) {
-    t && ServerSend("ChatRoomChat", { Content: "DEEPLIB_CUSTOM_ACTION", Type: "Action", Target: e ?? void 0, Dictionary: [{ Tag: 'MISSING TEXT IN "Interface.csv": DEEPLIB_CUSTOM_ACTION', Text: t }, ...i] });
+  __name(Zn, "Zn");
+  r(Zn, "sendLocalMessage");
+  function kn(t, e = void 0, n = []) {
+    t && ServerSend("ChatRoomChat", { Content: "DEEPLIB_CUSTOM_ACTION", Type: "Action", Target: e ?? void 0, Dictionary: [{ Tag: 'MISSING TEXT IN "Interface.csv": DEEPLIB_CUSTOM_ACTION', Text: t }, ...n] });
   }
-  __name(di, "di");
-  s(di, "sendActionMessage");
-  var S = { Observe: 0, AddBehavior: 1, ModifyBehavior: 5, OverrideBehavior: 10, Top: 100 };
-  var _a14;
-  var E = (_a14 = class {
-    constructor(e, i) {
+  __name(kn, "kn");
+  r(kn, "sendActionMessage");
+  var E = { Observe: 0, AddBehavior: 1, ModifyBehavior: 5, OverrideBehavior: 10, Top: 100 };
+  var _a13;
+  var W = (_a13 = class {
+    constructor(e, n) {
       __publicField(this, "SDK");
       __publicField(this, "patchedFunctions", /* @__PURE__ */ new Map());
-      this.SDK = bcModSdk.registerMod(e, i);
+      this.SDK = bcModSdk.registerMod(e, n);
     }
     initPatchableFunction(e) {
-      let i = this.patchedFunctions.get(e);
-      return i || (i = { name: e, hooks: [] }, this.patchedFunctions.set(e, i)), i;
+      let n = this.patchedFunctions.get(e);
+      return n || (n = { name: e, hooks: [] }, this.patchedFunctions.set(e, n)), n;
     }
-    hookFunction(e, i, n, o = null) {
-      let r = this.initPatchableFunction(e);
-      if (r.hooks.some((l) => l.hook === n)) return () => null;
-      let a = this.SDK.hookFunction(e, i, n);
-      return r.hooks.push({ hook: n, priority: i, module: o, removeCallback: a }), r.hooks.sort((l, y) => y.priority - l.priority), a;
+    hookFunction(e, n, i, o = null) {
+      let s = this.initPatchableFunction(e);
+      if (s.hooks.some((c) => c.hook === i)) return () => null;
+      let l = this.SDK.hookFunction(e, n, i);
+      return s.hooks.push({ hook: i, priority: n, module: o, removeCallback: l }), s.hooks.sort((c, d) => d.priority - c.priority), l;
     }
-    patchFunction(e, i) {
-      this.SDK.patchFunction(e, i);
+    patchFunction(e, n) {
+      this.SDK.patchFunction(e, n);
     }
     unpatchFunction(e) {
       this.SDK.removePatches(e);
     }
-    removeHookByModule(e, i) {
-      let n = this.initPatchableFunction(e);
-      for (let o = n.hooks.length - 1; o >= 0; o--) n.hooks[o].module === i && (n.hooks[o].removeCallback(), n.hooks.splice(o, 1));
+    removeHookByModule(e, n) {
+      let i = this.initPatchableFunction(e);
+      for (let o = i.hooks.length - 1; o >= 0; o--) i.hooks[o].module === n && (i.hooks[o].removeCallback(), i.hooks.splice(o, 1));
       return true;
     }
     removeAllHooksByModule(e) {
-      for (let i of this.patchedFunctions.values()) for (let n = i.hooks.length - 1; n >= 0; n--) i.hooks[n].module === e && (i.hooks[n].removeCallback(), i.hooks.splice(n, 1));
+      for (let n of this.patchedFunctions.values()) for (let i = n.hooks.length - 1; i >= 0; i--) n.hooks[i].module === e && (n.hooks[i].removeCallback(), n.hooks.splice(i, 1));
       return true;
     }
     unload() {
       this.SDK.unload();
     }
-  }, __name(_a14, "E"), s(_a14, "ModSdkManager"), _a14);
-  var N = { injectInline(t, e) {
+  }, __name(_a13, "W"), r(_a13, "ModSdkManager"), _a13);
+  var H = { injectInline(t, e) {
     if (document.getElementById(t)) return;
-    let n = document.createElement("style");
-    n.id = t, n.appendChild(document.createTextNode(e)), document.head.appendChild(n);
+    let i = document.createElement("style");
+    i.id = t, i.appendChild(document.createTextNode(e)), document.head.appendChild(i);
   }, injectEmbed(t, e) {
     if (document.getElementById(t)) return;
-    let n = document.createElement("link");
-    n.id = t, n.rel = "stylesheet", n.href = e, document.head.appendChild(n);
+    let i = document.createElement("link");
+    i.id = t, i.rel = "stylesheet", i.href = e, document.head.appendChild(i);
   }, eject(t) {
     let e = document.getElementById(t);
     e && e.remove();
   }, reload(t, e) {
-    N.eject(t), N.injectInline(t, e);
+    H.eject(t), H.injectInline(t, e);
   }, async fetch(t) {
-    return fetch(t).then((e) => e.text());
+    return fetch(t).then((e) => e.text()).catch((e) => (m.error("Failed to fetch stylesheet:", e), ""));
   } };
-  var _a15;
-  var ce = (_a15 = class {
+  var _a14;
+  var Ie = (_a14 = class {
     constructor(e) {
+      __publicField(this, "channelName");
       __publicField(this, "listeners", {});
       this.channelName = e;
-      I.hookFunction("ChatRoomMessageProcessHidden", 0, (i, n) => {
-        if (!this.isChannelMessage(i[0])) return n(i);
-        let [o, r] = i, { type: a, data: l } = o.Dictionary[0], y = this.listeners[a];
-        return y && y.forEach((h) => h(l, r)), n(i);
+      w.hookFunction("ChatRoomMessageProcessHidden", 0, (n, i) => {
+        if (!this.isChannelMessage(n[0])) return i(n);
+        let [o, s] = n, { type: l, data: c } = o.Dictionary[0], d = this.listeners[l];
+        return d && d.forEach((a) => a(c, s)), i(n);
       }, `EventChannel-${e}`);
     }
     unload() {
-      Object.keys(this.listeners).forEach((e) => delete this.listeners[e]), E.prototype.removeHookByModule("ChatRoomMessageProcessHidden", `EventChannel-${this.channelName}`);
+      Object.keys(this.listeners).forEach((e) => delete this.listeners[e]), W.prototype.removeHookByModule("ChatRoomMessageProcessHidden", `EventChannel-${this.channelName}`);
     }
-    sendEvent(e, i, n = null) {
-      let o = { Type: "Hidden", Content: this.channelName, Sender: Player.MemberNumber, ...n ? { Target: n } : {}, Dictionary: [{ type: e, data: i }] };
+    sendEvent(e, n, i = null) {
+      let o = { Type: "Hidden", Content: this.channelName, Sender: Player.MemberNumber, ...i ? { Target: i } : {}, Dictionary: [{ type: e, data: n }] };
       ServerSend("ChatRoomChat", o);
     }
-    registerListener(e, i) {
-      let n = this.listeners[e] ?? [];
-      return n.push(i), this.listeners[e] = n, () => this.unregisterListener(e, i);
+    registerListener(e, n) {
+      let i = this.listeners[e] ?? [];
+      return i.push(n), this.listeners[e] = i, () => this.unregisterListener(e, n);
     }
-    unregisterListener(e, i) {
-      let n = this.listeners[e];
-      if (n) {
-        let o = n.indexOf(i);
-        o !== -1 && n.splice(o, 1);
+    unregisterListener(e, n) {
+      let i = this.listeners[e];
+      if (i) {
+        let o = i.indexOf(n);
+        o !== -1 && i.splice(o, 1);
       }
     }
     isChannelMessage(e) {
       return e && e.Type === "Hidden" && e.Content === this.channelName && e.Sender && e.Sender !== Player.MemberNumber && e.Dictionary && !!e.Dictionary[0]?.data && !!e.Dictionary[0]?.type || false;
     }
-  }, __name(_a15, "ce"), s(_a15, "EventChannel"), _a15);
+  }, __name(_a14, "Ie"), r(_a14, "EventChannel"), _a14);
 
   // src/utilities/data.ts
   function settingsReset() {
-    u.playerStorage = {};
-    u.save();
+    p.playerStorage = {};
+    p.save();
   }
   __name(settingsReset, "settingsReset");
-  function localSettingsLoad() {
-    const data = u.getLocalStorage("LocalData");
-    if (!data) {
-      window.ThemedLocalData = {
-        loginOptions: {
-          hideDummy: false,
-          hideCredits: false
-        }
-      };
-      localSettingsSave();
-    } else {
-      window.ThemedLocalData = data;
+  var defaultLocalSettings = {
+    loginOptions: {
+      hideDummy: false,
+      hideCredits: false
     }
+  };
+  var localSettings = null;
+  function loadLocalSettings() {
+    localSettings = p.getLocalStorage("LocalData");
+    if (!localSettings) {
+      p.setLocalStorage("LocalData", defaultLocalSettings);
+      localSettings = defaultLocalSettings;
+    } else {
+      localSettings = f(defaultLocalSettings, localSettings);
+    }
+    return localSettings;
   }
-  __name(localSettingsLoad, "localSettingsLoad");
-  function localSettingsSave() {
-    u.setLocalStorage("LocalData", window.ThemedLocalData);
+  __name(loadLocalSettings, "loadLocalSettings");
+  function getLocalSettings() {
+    return localSettings;
   }
-  __name(localSettingsSave, "localSettingsSave");
+  __name(getLocalSettings, "getLocalSettings");
+  function saveLocalSettings() {
+    p.setLocalStorage("LocalData", localSettings);
+  }
+  __name(saveLocalSettings, "saveLocalSettings");
 
   // src/hooks/login_options.ts
   var ids = {
@@ -1743,28 +1867,27 @@ var Themed = (() => {
     hideDummy: "Hide Dummy"
   };
   function loadLoginOptions() {
-    localSettingsLoad();
     patchLoginPage();
-    N.injectEmbed(ids.optionsStyle, `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/login-options.css`);
+    H.injectEmbed(ids.optionsStyle, `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/login-options.css`);
     createUI();
-    const loginRunHook = I.hookFunction("LoginRun", S.Observe, (args, next) => {
+    const loginRunHook = w.hookFunction("LoginRun", E.Observe, (args, next) => {
       next(args);
       ElementSetPosition(ids.optionsOpen, 2e3, 1e3, "bottom-right");
       ElementSetSize(ids.optionsOpen, 90, 90);
       ElementSetSize(ids.optionsSheet, 1e3, 500);
     });
-    const loginExitHook = I.hookFunction("LoginUnload", S.Observe, (args, next) => {
+    const loginExitHook = w.hookFunction("LoginUnload", E.Observe, (args, next) => {
       loginExitHook();
       loginRunHook();
       removeUI();
-      N.eject(ids.optionsStyle);
+      H.eject(ids.optionsStyle);
       unpatchLoginPage();
       return next(args);
     });
   }
   __name(loadLoginOptions, "loadLoginOptions");
   function createUI() {
-    const loginOptions = window.ThemedLocalData.loginOptions;
+    const loginOptions = getLocalSettings().loginOptions;
     const optionsButton = ElementButton.Create(ids.optionsOpen, () => optionsSheet.showModal(), {
       tooltip: "[Themed] Login Options",
       image: "./Icons/Preference.png"
@@ -1792,7 +1915,7 @@ var Themed = (() => {
                     `tmd-login-options-${key}`,
                     () => {
                       loginOptions[typedKey] = !loginOptions[typedKey];
-                      localSettingsSave();
+                      saveLocalSettings();
                       repatchLoginPage();
                     },
                     {
@@ -1823,12 +1946,12 @@ var Themed = (() => {
   }
   __name(removeUI, "removeUI");
   function patchLoginPage() {
-    const loginOptions = window.ThemedLocalData.loginOptions;
+    const loginOptions = getLocalSettings().loginOptions;
     if (loginOptions.hideDummy) {
-      I.patchFunction("LoginRun", {
+      w.patchFunction("LoginRun", {
         "DrawCharacter(/** @type {NPCCharacter} */ (LoginCharacter), 1400, 100, 0.9);": ""
       });
-      I.patchFunction("LoginDoNextThankYou", {
+      w.patchFunction("LoginDoNextThankYou", {
         "CharacterRelease(char, false);": "",
         "CharacterAppearanceFullRandom(char);": "",
         'if (InventoryGet(char, "ItemNeck") != null) InventoryRemove(char, "ItemNeck", false);': "",
@@ -1836,20 +1959,20 @@ var Themed = (() => {
       });
     }
     if (loginOptions.hideCredits) {
-      I.patchFunction("LoginRun", {
+      w.patchFunction("LoginRun", {
         "if (LoginCredits) LoginDrawCredits();": "if (false) LoginDrawCredits();",
         'DrawImage("Screens/" + CurrentModule + "/" + CurrentScreen + "/Bubble.png", 1400, 16);': "",
         'DrawText(TextGet("ThankYou") + " " + LoginThankYou, 1625, 53, "Black", "Gray");': ""
       });
-      I.patchFunction("LoginDoNextThankYou", {
+      w.patchFunction("LoginDoNextThankYou", {
         "LoginThankYou = CommonRandomItemFromList(LoginThankYou, LoginThankYouList);": ""
       });
     }
   }
   __name(patchLoginPage, "patchLoginPage");
   function unpatchLoginPage() {
-    I.unpatchFunction("LoginRun");
-    I.unpatchFunction("LoginDoNextThankYou");
+    w.unpatchFunction("LoginRun");
+    w.unpatchFunction("LoginDoNextThankYou");
   }
   __name(unpatchLoginPage, "unpatchLoginPage");
   function repatchLoginPage() {
@@ -1859,48 +1982,44 @@ var Themed = (() => {
   __name(repatchLoginPage, "repatchLoginPage");
 
   // src/migrators/v140_migrator.ts
-  var _V140Migrator = class _V140Migrator extends ne {
+  var _V140Migrator = class _V140Migrator extends pe {
     get migrationVersion() {
       return "1.4.0";
     }
     migrate() {
-      const colorsData = Player.Themed.ColorsModule;
-      const integrationsData = Player.Themed.IntegrationModule;
+      const colorsData = C("ColorsModule").settings;
+      const integrationsData = C("IntegrationModule").settings;
       if (colorsData) {
-        if (Player.Themed.ColorsModule["primaryColor"]) {
-          Player.Themed.ColorsModule.base.main = Player.Themed.ColorsModule["primaryColor"];
-          delete Player.Themed.ColorsModule["primaryColor"];
+        if (colorsData["primaryColor"]) {
+          colorsData.base.main = colorsData["primaryColor"];
+          delete colorsData["primaryColor"];
         }
-        if (Player.Themed.ColorsModule["accentColor"]) {
-          Player.Themed.ColorsModule.base.accent = Player.Themed.ColorsModule["accentColor"];
-          delete Player.Themed.ColorsModule["accentColor"];
-        }
-        if (Player.Themed.ColorsModule["textColor"]) {
-          Player.Themed.ColorsModule.base.text = Player.Themed.ColorsModule["textColor"];
-          delete Player.Themed.ColorsModule["textColor"];
+        if (colorsData["accentColor"]) {
+          colorsData.base.accent = colorsData["accentColor"];
+          delete colorsData["accentColor"];
         }
       }
       if (integrationsData) {
-        if (Player.Themed.IntegrationModule["BC"]) {
-          Player.Themed.IntegrationModule.inputs = Player.Themed.IntegrationModule["BC"];
-          delete Player.Themed.IntegrationModule["BC"];
+        if (integrationsData["BC"]) {
+          integrationsData.inputs = integrationsData["BC"];
+          delete integrationsData["BC"];
         }
-        if (Player.Themed.IntegrationModule["BC_Chat"]) {
-          Player.Themed.IntegrationModule.chat = Player.Themed.IntegrationModule["BC_Chat"];
-          delete Player.Themed.IntegrationModule["BC_Chat"];
+        if (integrationsData["BC_Chat"]) {
+          integrationsData.chat = integrationsData["BC_Chat"];
+          delete integrationsData["BC_Chat"];
         }
-        if (Player.Themed.IntegrationModule["BC_FriendList"]) {
-          Player.Themed.IntegrationModule.friendList = Player.Themed.IntegrationModule["BC_FriendList"];
-          delete Player.Themed.IntegrationModule["BC_FriendList"];
+        if (integrationsData["BC_FriendList"]) {
+          integrationsData.friendList = integrationsData["BC_FriendList"];
+          delete integrationsData["BC_FriendList"];
         }
-        if (Player.Themed.IntegrationModule["BC_Other"]) {
-          Player.Themed.IntegrationModule.scrollbar = Player.Themed.IntegrationModule["BC_Other"];
-          Player.Themed.IntegrationModule.selection = Player.Themed.IntegrationModule["BC_Other"];
-          delete Player.Themed.IntegrationModule["BC_Other"];
+        if (integrationsData["BC_Other"]) {
+          integrationsData.scrollbar = integrationsData["BC_Other"];
+          integrationsData.selection = integrationsData["BC_Other"];
+          delete integrationsData["BC_Other"];
         }
-        if (Player.Themed.IntegrationModule["FBC"]) {
-          Player.Themed.IntegrationModule.WCE = Player.Themed.IntegrationModule["FBC"];
-          delete Player.Themed.IntegrationModule["FBC"];
+        if (integrationsData["FBC"]) {
+          integrationsData.WCE = integrationsData["FBC"];
+          delete integrationsData["FBC"];
         }
       }
       return true;
@@ -1909,8 +2028,8 @@ var Themed = (() => {
   __name(_V140Migrator, "V140Migrator");
   var V140Migrator = _V140Migrator;
 
-  // node_modules/.pnpm/color-name@2.0.0/node_modules/color-name/index.js
-  var color_name_default = {
+  // node_modules/.pnpm/color-name@2.1.0/node_modules/color-name/index.js
+  var colors = {
     aliceblue: [240, 248, 255],
     antiquewhite: [250, 235, 215],
     aqua: [0, 255, 255],
@@ -2060,8 +2179,10 @@ var Themed = (() => {
     yellow: [255, 255, 0],
     yellowgreen: [154, 205, 50]
   };
+  for (const key in colors) Object.freeze(colors[key]);
+  var color_name_default = Object.freeze(colors);
 
-  // node_modules/.pnpm/color-string@2.1.0/node_modules/color-string/index.js
+  // node_modules/.pnpm/color-string@2.1.4/node_modules/color-string/index.js
   var reverseNames = /* @__PURE__ */ Object.create(null);
   for (const name in color_name_default) {
     if (Object.hasOwn(color_name_default, name)) {
@@ -2104,8 +2225,8 @@ var Themed = (() => {
     }
     const abbr = /^#([a-f\d]{3,4})$/i;
     const hex = /^#([a-f\d]{6})([a-f\d]{2})?$/i;
-    const rgba = /^rgba?\(\s*([+-]?\d+)(?=[\s,])\s*(?:,\s*)?([+-]?\d+)(?=[\s,])\s*(?:,\s*)?([+-]?\d+)\s*(?:[\s,|/]\s*([+-]?[\d.]+)(%?)\s*)?\)$/;
-    const per = /^rgba?\(\s*([+-]?[\d.]+)%\s*,?\s*([+-]?[\d.]+)%\s*,?\s*([+-]?[\d.]+)%\s*(?:[\s,|/]\s*([+-]?[\d.]+)(%?)\s*)?\)$/;
+    const rgba = /^rgba?\(\s*([+-]?(?:\d*\.)?\d+(?:e\d+)?)(?=[\s,])\s*(?:,\s*)?([+-]?(?:\d*\.)?\d+(?:e\d+)?)(?=[\s,])\s*(?:,\s*)?([+-]?(?:\d*\.)?\d+(?:e\d+)?)\s*(?:[\s,|/]\s*([+-]?(?:\d*\.)?\d+(?:e\d+)?)(%?)\s*)?\)$/i;
+    const per = /^rgba?\(\s*([+-]?[\d.]+)%\s*,?\s*([+-]?[\d.]+)%\s*,?\s*([+-]?[\d.]+)%\s*(?:[\s,|/]\s*([+-]?[\d.]+)(%?)\s*)?\)$/i;
     const keyword = /^(\w+)$/;
     let rgb = [0, 0, 0, 1];
     let match;
@@ -2132,7 +2253,7 @@ var Themed = (() => {
       }
     } else if (match = string.match(rgba)) {
       for (i = 0; i < 3; i++) {
-        rgb[i] = Number.parseInt(match[i + 1], 10);
+        rgb[i] = Number.parseFloat(match[i + 1]);
       }
       if (match[4]) {
         rgb[3] = match[5] ? Number.parseFloat(match[4]) * 0.01 : Number.parseFloat(match[4]);
@@ -2144,14 +2265,14 @@ var Themed = (() => {
       if (match[4]) {
         rgb[3] = match[5] ? Number.parseFloat(match[4]) * 0.01 : Number.parseFloat(match[4]);
       }
-    } else if (match = string.match(keyword)) {
+    } else if (match = string.toLowerCase().match(keyword)) {
       if (match[1] === "transparent") {
         return [0, 0, 0, 0];
       }
       if (!Object.hasOwn(color_name_default, match[1])) {
         return null;
       }
-      rgb = color_name_default[match[1]];
+      rgb = color_name_default[match[1]].slice();
       rgb[3] = 1;
       return rgb;
     } else {
@@ -2167,15 +2288,15 @@ var Themed = (() => {
     if (!string) {
       return null;
     }
-    const hsl = /^hsla?\(\s*([+-]?(?:\d{0,3}\.)?\d+)(?:deg)?\s*,?\s*([+-]?[\d.]+)%\s*,?\s*([+-]?[\d.]+)%\s*(?:[,|/]\s*([+-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d*)?(?:[eE][+-]?\d+)?)\s*)?\)$/;
+    const hsl = /^hsla?\(\s*([+-]?(?:\d{0,3}\.)?\d+)(?:deg)?\s*,?\s*([+-]?[\d.]+)%\s*,?\s*([+-]?[\d.]+)%\s*(?:[,|/]\s*([+-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d*)?(?:e[+-]?\d+)?)\s*)?\)$/i;
     const match = string.match(hsl);
     if (match) {
       const alpha = Number.parseFloat(match[4]);
       const h = (Number.parseFloat(match[1]) % 360 + 360) % 360;
-      const s2 = clamp(Number.parseFloat(match[2]), 0, 100);
+      const s = clamp(Number.parseFloat(match[2]), 0, 100);
       const l = clamp(Number.parseFloat(match[3]), 0, 100);
       const a = clamp(Number.isNaN(alpha) ? 1 : alpha, 0, 1);
-      return [h, s2, l, a];
+      return [h, s, l, a];
     }
     return null;
   };
@@ -2183,7 +2304,7 @@ var Themed = (() => {
     if (!string) {
       return null;
     }
-    const hwb = /^hwb\(\s*([+-]?\d{0,3}(?:\.\d+)?)(?:deg)?\s*[\s,]\s*([+-]?[\d.]+)%\s*[\s,]\s*([+-]?[\d.]+)%\s*(?:[\s,]\s*([+-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d*)?(?:[eE][+-]?\d+)?)\s*)?\)$/;
+    const hwb = /^hwb\(\s*([+-]?\d{0,3}(?:\.\d+)?)(?:deg)?\s*[\s,]\s*([+-]?[\d.]+)%\s*[\s,]\s*([+-]?[\d.]+)%\s*(?:[\s,]\s*([+-]?(?=\.\d|\d)(?:0|[1-9]\d*)?(?:\.\d*)?(?:e[+-]?\d+)?)\s*)?\)$/i;
     const match = string.match(hwb);
     if (match) {
       const alpha = Number.parseFloat(match[4]);
@@ -2202,10 +2323,10 @@ var Themed = (() => {
     return rgba.length < 4 || rgba[3] === 1 ? "rgb(" + Math.round(rgba[0]) + ", " + Math.round(rgba[1]) + ", " + Math.round(rgba[2]) + ")" : "rgba(" + Math.round(rgba[0]) + ", " + Math.round(rgba[1]) + ", " + Math.round(rgba[2]) + ", " + rgba[3] + ")";
   };
   cs.to.rgb.percent = function(...rgba) {
-    const r = Math.round(rgba[0] / 255 * 100);
+    const r2 = Math.round(rgba[0] / 255 * 100);
     const g2 = Math.round(rgba[1] / 255 * 100);
     const b2 = Math.round(rgba[2] / 255 * 100);
-    return rgba.length < 4 || rgba[3] === 1 ? "rgb(" + r + "%, " + g2 + "%, " + b2 + "%)" : "rgba(" + r + "%, " + g2 + "%, " + b2 + "%, " + rgba[3] + ")";
+    return rgba.length < 4 || rgba[3] === 1 ? "rgb(" + r2 + "%, " + g2 + "%, " + b2 + "%)" : "rgba(" + r2 + "%, " + g2 + "%, " + b2 + "%, " + rgba[3] + ")";
   };
   cs.to.hsl = function(...hsla) {
     return hsla.length < 4 || hsla[3] === 1 ? "hsl(" + hsla[0] + ", " + hsla[1] + "%, " + hsla[2] + "%)" : "hsla(" + hsla[0] + ", " + hsla[1] + "%, " + hsla[2] + "%, " + hsla[3] + ")";
@@ -2231,7 +2352,7 @@ var Themed = (() => {
   __name(hexDouble, "hexDouble");
   var color_string_default = cs;
 
-  // node_modules/.pnpm/color-convert@3.1.0/node_modules/color-convert/conversions.js
+  // node_modules/.pnpm/color-convert@3.1.3/node_modules/color-convert/conversions.js
   var reverseKeywords = {};
   for (const key of Object.keys(color_name_default)) {
     reverseKeywords[color_name_default[key]] = key;
@@ -2257,13 +2378,13 @@ var Themed = (() => {
   };
   var conversions_default = convert;
   var LAB_FT = (6 / 29) ** 3;
-  function srgbNonlinearTransform(c2) {
-    const cc = c2 > 31308e-7 ? 1.055 * c2 ** (1 / 2.4) - 0.055 : c2 * 12.92;
+  function srgbNonlinearTransform(c) {
+    const cc = c > 31308e-7 ? 1.055 * c ** (1 / 2.4) - 0.055 : c * 12.92;
     return Math.min(Math.max(0, cc), 1);
   }
   __name(srgbNonlinearTransform, "srgbNonlinearTransform");
-  function srgbNonlinearTransformInv(c2) {
-    return c2 > 0.04045 ? ((c2 + 0.055) / 1.055) ** 2.4 : c2 / 12.92;
+  function srgbNonlinearTransformInv(c) {
+    return c > 0.04045 ? ((c + 0.055) / 1.055) ** 2.4 : c / 12.92;
   }
   __name(srgbNonlinearTransformInv, "srgbNonlinearTransformInv");
   for (const model of Object.keys(convert)) {
@@ -2283,29 +2404,29 @@ var Themed = (() => {
     Object.defineProperty(convert[model], "labels", { value: labels });
   }
   convert.rgb.hsl = function(rgb) {
-    const r = rgb[0] / 255;
+    const r2 = rgb[0] / 255;
     const g2 = rgb[1] / 255;
     const b2 = rgb[2] / 255;
-    const min = Math.min(r, g2, b2);
-    const max = Math.max(r, g2, b2);
+    const min = Math.min(r2, g2, b2);
+    const max = Math.max(r2, g2, b2);
     const delta = max - min;
     let h;
-    let s2;
+    let s;
     switch (max) {
       case min: {
         h = 0;
         break;
       }
-      case r: {
+      case r2: {
         h = (g2 - b2) / delta;
         break;
       }
       case g2: {
-        h = 2 + (b2 - r) / delta;
+        h = 2 + (b2 - r2) / delta;
         break;
       }
       case b2: {
-        h = 4 + (r - g2) / delta;
+        h = 4 + (r2 - g2) / delta;
         break;
       }
     }
@@ -2315,38 +2436,38 @@ var Themed = (() => {
     }
     const l = (min + max) / 2;
     if (max === min) {
-      s2 = 0;
+      s = 0;
     } else if (l <= 0.5) {
-      s2 = delta / (max + min);
+      s = delta / (max + min);
     } else {
-      s2 = delta / (2 - max - min);
+      s = delta / (2 - max - min);
     }
-    return [h, s2 * 100, l * 100];
+    return [h, s * 100, l * 100];
   };
   convert.rgb.hsv = function(rgb) {
     let rdif;
     let gdif;
     let bdif;
     let h;
-    let s2;
-    const r = rgb[0] / 255;
+    let s;
+    const r2 = rgb[0] / 255;
     const g2 = rgb[1] / 255;
     const b2 = rgb[2] / 255;
-    const v2 = Math.max(r, g2, b2);
-    const diff = v2 - Math.min(r, g2, b2);
-    const diffc = /* @__PURE__ */ __name(function(c2) {
-      return (v2 - c2) / 6 / diff + 1 / 2;
+    const v = Math.max(r2, g2, b2);
+    const diff = v - Math.min(r2, g2, b2);
+    const diffc = /* @__PURE__ */ __name(function(c) {
+      return (v - c) / 6 / diff + 1 / 2;
     }, "diffc");
     if (diff === 0) {
       h = 0;
-      s2 = 0;
+      s = 0;
     } else {
-      s2 = diff / v2;
-      rdif = diffc(r);
+      s = diff / v;
+      rdif = diffc(r2);
       gdif = diffc(g2);
       bdif = diffc(b2);
-      switch (v2) {
-        case r: {
+      switch (v) {
+        case r2: {
           h = bdif - gdif;
           break;
         }
@@ -2367,40 +2488,40 @@ var Themed = (() => {
     }
     return [
       h * 360,
-      s2 * 100,
-      v2 * 100
+      s * 100,
+      v * 100
     ];
   };
   convert.rgb.hwb = function(rgb) {
-    const r = rgb[0];
+    const r2 = rgb[0];
     const g2 = rgb[1];
     let b2 = rgb[2];
     const h = convert.rgb.hsl(rgb)[0];
-    const w2 = 1 / 255 * Math.min(r, Math.min(g2, b2));
-    b2 = 1 - 1 / 255 * Math.max(r, Math.max(g2, b2));
+    const w2 = 1 / 255 * Math.min(r2, Math.min(g2, b2));
+    b2 = 1 - 1 / 255 * Math.max(r2, Math.max(g2, b2));
     return [h, w2 * 100, b2 * 100];
   };
   convert.rgb.oklab = function(rgb) {
-    const r = srgbNonlinearTransformInv(rgb[0] / 255);
+    const r2 = srgbNonlinearTransformInv(rgb[0] / 255);
     const g2 = srgbNonlinearTransformInv(rgb[1] / 255);
     const b2 = srgbNonlinearTransformInv(rgb[2] / 255);
-    const lp = Math.cbrt(0.4122214708 * r + 0.5363325363 * g2 + 0.0514459929 * b2);
-    const mp = Math.cbrt(0.2119034982 * r + 0.6806995451 * g2 + 0.1073969566 * b2);
-    const sp = Math.cbrt(0.0883024619 * r + 0.2817188376 * g2 + 0.6299787005 * b2);
+    const lp = Math.cbrt(0.4122214708 * r2 + 0.5363325363 * g2 + 0.0514459929 * b2);
+    const mp = Math.cbrt(0.2119034982 * r2 + 0.6806995451 * g2 + 0.1073969566 * b2);
+    const sp = Math.cbrt(0.0883024619 * r2 + 0.2817188376 * g2 + 0.6299787005 * b2);
     const l = 0.2104542553 * lp + 0.793617785 * mp - 0.0040720468 * sp;
     const aa = 1.9779984951 * lp - 2.428592205 * mp + 0.4505937099 * sp;
     const bb = 0.0259040371 * lp + 0.7827717662 * mp - 0.808675766 * sp;
     return [l * 100, aa * 100, bb * 100];
   };
   convert.rgb.cmyk = function(rgb) {
-    const r = rgb[0] / 255;
+    const r2 = rgb[0] / 255;
     const g2 = rgb[1] / 255;
     const b2 = rgb[2] / 255;
-    const k2 = Math.min(1 - r, 1 - g2, 1 - b2);
-    const c2 = (1 - r - k2) / (1 - k2) || 0;
+    const k2 = Math.min(1 - r2, 1 - g2, 1 - b2);
+    const c = (1 - r2 - k2) / (1 - k2) || 0;
     const m2 = (1 - g2 - k2) / (1 - k2) || 0;
     const y = (1 - b2 - k2) / (1 - k2) || 0;
-    return [c2 * 100, m2 * 100, y * 100, k2 * 100];
+    return [c * 100, m2 * 100, y * 100, k2 * 100];
   };
   function comparativeDistance(x2, y) {
     return (x2[0] - y[0]) ** 2 + (x2[1] - y[1]) ** 2 + (x2[2] - y[2]) ** 2;
@@ -2424,15 +2545,15 @@ var Themed = (() => {
     return currentClosestKeyword;
   };
   convert.keyword.rgb = function(keyword) {
-    return color_name_default[keyword];
+    return [...color_name_default[keyword]];
   };
   convert.rgb.xyz = function(rgb) {
-    const r = srgbNonlinearTransformInv(rgb[0] / 255);
+    const r2 = srgbNonlinearTransformInv(rgb[0] / 255);
     const g2 = srgbNonlinearTransformInv(rgb[1] / 255);
     const b2 = srgbNonlinearTransformInv(rgb[2] / 255);
-    const x2 = r * 0.4124564 + g2 * 0.3575761 + b2 * 0.1804375;
-    const y = r * 0.2126729 + g2 * 0.7151522 + b2 * 0.072175;
-    const z2 = r * 0.0193339 + g2 * 0.119192 + b2 * 0.9503041;
+    const x2 = r2 * 0.4124564 + g2 * 0.3575761 + b2 * 0.1804375;
+    const y = r2 * 0.2126729 + g2 * 0.7151522 + b2 * 0.072175;
+    const z2 = r2 * 0.0193339 + g2 * 0.119192 + b2 * 0.9503041;
     return [x2 * 100, y * 100, z2 * 100];
   };
   convert.rgb.lab = function(rgb) {
@@ -2453,15 +2574,15 @@ var Themed = (() => {
   };
   convert.hsl.rgb = function(hsl) {
     const h = hsl[0] / 360;
-    const s2 = hsl[1] / 100;
+    const s = hsl[1] / 100;
     const l = hsl[2] / 100;
     let t3;
     let value;
-    if (s2 === 0) {
+    if (s === 0) {
       value = l * 255;
       return [value, value, value];
     }
-    const t2 = l < 0.5 ? l * (1 + s2) : l + s2 - l * s2;
+    const t2 = l < 0.5 ? l * (1 + s) : l + s - l * s;
     const t1 = 2 * l - t2;
     const rgb = [0, 0, 0];
     for (let i = 0; i < 3; i++) {
@@ -2487,58 +2608,58 @@ var Themed = (() => {
   };
   convert.hsl.hsv = function(hsl) {
     const h = hsl[0];
-    let s2 = hsl[1] / 100;
+    let s = hsl[1] / 100;
     let l = hsl[2] / 100;
-    let smin = s2;
+    let smin = s;
     const lmin = Math.max(l, 0.01);
     l *= 2;
-    s2 *= l <= 1 ? l : 2 - l;
+    s *= l <= 1 ? l : 2 - l;
     smin *= lmin <= 1 ? lmin : 2 - lmin;
-    const v2 = (l + s2) / 2;
-    const sv = l === 0 ? 2 * smin / (lmin + smin) : 2 * s2 / (l + s2);
-    return [h, sv * 100, v2 * 100];
+    const v = (l + s) / 2;
+    const sv = l === 0 ? 2 * smin / (lmin + smin) : 2 * s / (l + s);
+    return [h, sv * 100, v * 100];
   };
   convert.hsv.rgb = function(hsv) {
     const h = hsv[0] / 60;
-    const s2 = hsv[1] / 100;
-    let v2 = hsv[2] / 100;
+    const s = hsv[1] / 100;
+    let v = hsv[2] / 100;
     const hi = Math.floor(h) % 6;
     const f2 = h - Math.floor(h);
-    const p2 = 255 * v2 * (1 - s2);
-    const q2 = 255 * v2 * (1 - s2 * f2);
-    const t = 255 * v2 * (1 - s2 * (1 - f2));
-    v2 *= 255;
+    const p2 = 255 * v * (1 - s);
+    const q2 = 255 * v * (1 - s * f2);
+    const t = 255 * v * (1 - s * (1 - f2));
+    v *= 255;
     switch (hi) {
       case 0: {
-        return [v2, t, p2];
+        return [v, t, p2];
       }
       case 1: {
-        return [q2, v2, p2];
+        return [q2, v, p2];
       }
       case 2: {
-        return [p2, v2, t];
+        return [p2, v, t];
       }
       case 3: {
-        return [p2, q2, v2];
+        return [p2, q2, v];
       }
       case 4: {
-        return [t, p2, v2];
+        return [t, p2, v];
       }
       case 5: {
-        return [v2, p2, q2];
+        return [v, p2, q2];
       }
     }
   };
   convert.hsv.hsl = function(hsv) {
     const h = hsv[0];
-    const s2 = hsv[1] / 100;
-    const v2 = hsv[2] / 100;
-    const vmin = Math.max(v2, 0.01);
+    const s = hsv[1] / 100;
+    const v = hsv[2] / 100;
+    const vmin = Math.max(v, 0.01);
     let sl;
     let l;
-    l = (2 - s2) * v2;
-    const lmin = (2 - s2) * vmin;
-    sl = s2 * vmin;
+    l = (2 - s) * v;
+    const lmin = (2 - s) * vmin;
+    sl = s * vmin;
     sl /= lmin <= 1 ? lmin : 2 - lmin;
     sl = sl || 0;
     l /= 2;
@@ -2555,81 +2676,81 @@ var Themed = (() => {
       bl /= ratio;
     }
     const i = Math.floor(6 * h);
-    const v2 = 1 - bl;
+    const v = 1 - bl;
     f2 = 6 * h - i;
     if ((i & 1) !== 0) {
       f2 = 1 - f2;
     }
-    const n = wh + f2 * (v2 - wh);
-    let r;
+    const n = wh + f2 * (v - wh);
+    let r2;
     let g2;
     let b2;
     switch (i) {
       default:
       case 6:
       case 0: {
-        r = v2;
+        r2 = v;
         g2 = n;
         b2 = wh;
         break;
       }
       case 1: {
-        r = n;
-        g2 = v2;
+        r2 = n;
+        g2 = v;
         b2 = wh;
         break;
       }
       case 2: {
-        r = wh;
-        g2 = v2;
+        r2 = wh;
+        g2 = v;
         b2 = n;
         break;
       }
       case 3: {
-        r = wh;
+        r2 = wh;
         g2 = n;
-        b2 = v2;
+        b2 = v;
         break;
       }
       case 4: {
-        r = n;
+        r2 = n;
         g2 = wh;
-        b2 = v2;
+        b2 = v;
         break;
       }
       case 5: {
-        r = v2;
+        r2 = v;
         g2 = wh;
         b2 = n;
         break;
       }
     }
-    return [r * 255, g2 * 255, b2 * 255];
+    return [r2 * 255, g2 * 255, b2 * 255];
   };
   convert.cmyk.rgb = function(cmyk) {
-    const c2 = cmyk[0] / 100;
+    const c = cmyk[0] / 100;
     const m2 = cmyk[1] / 100;
     const y = cmyk[2] / 100;
     const k2 = cmyk[3] / 100;
-    const r = 1 - Math.min(1, c2 * (1 - k2) + k2);
+    const r2 = 1 - Math.min(1, c * (1 - k2) + k2);
     const g2 = 1 - Math.min(1, m2 * (1 - k2) + k2);
     const b2 = 1 - Math.min(1, y * (1 - k2) + k2);
-    return [r * 255, g2 * 255, b2 * 255];
+    return [r2 * 255, g2 * 255, b2 * 255];
   };
   convert.xyz.rgb = function(xyz) {
     const x2 = xyz[0] / 100;
     const y = xyz[1] / 100;
     const z2 = xyz[2] / 100;
-    let r;
+    let r2;
     let g2;
     let b2;
-    r = x2 * 3.2404542 + y * -1.5371385 + z2 * -0.4985314;
+    r2 = x2 * 3.2404542 + y * -1.5371385 + z2 * -0.4985314;
     g2 = x2 * -0.969266 + y * 1.8760108 + z2 * 0.041556;
     b2 = x2 * 0.0556434 + y * -0.2040259 + z2 * 1.0572252;
-    r = srgbNonlinearTransform(r);
+    r2 = srgbNonlinearTransform(r2);
     g2 = srgbNonlinearTransform(g2);
     b2 = srgbNonlinearTransform(b2);
-    return [r * 255, g2 * 255, b2 * 255];
+    return [r2 * 255, g2 * 255, b2 * 255];
   };
   convert.xyz.lab = function(xyz) {
     let x2 = xyz[0];
@@ -2667,10 +2788,10 @@ var Themed = (() => {
     const b2 = oklab[2] / 100;
     const l = (0.999999998 * ll + 0.396337792 * a + 0.215803758 * b2) ** 3;
     const m2 = (1.000000008 * ll - 0.105561342 * a - 0.063854175 * b2) ** 3;
-    const s2 = (1.000000055 * ll - 0.089484182 * a - 1.291485538 * b2) ** 3;
-    const x2 = 1.227013851 * l - 0.55779998 * m2 + 0.281256149 * s2;
-    const y = -0.040580178 * l + 1.11225687 * m2 - 0.071676679 * s2;
-    const z2 = -0.076381285 * l - 0.421481978 * m2 + 1.58616322 * s2;
+    const s = (1.000000055 * ll - 0.089484182 * a - 1.291485538 * b2) ** 3;
+    const x2 = 1.227013851 * l - 0.55779998 * m2 + 0.281256149 * s;
+    const y = -0.040580178 * l + 1.11225687 * m2 - 0.071676679 * s;
+    const z2 = -0.076381285 * l - 0.421481978 * m2 + 1.58616322 * s;
     return [x2 * 100, y * 100, z2 * 100];
   };
   convert.oklab.rgb = function(oklab) {
@@ -2679,11 +2800,11 @@ var Themed = (() => {
     const bb = oklab[2] / 100;
     const l = (ll + 0.3963377774 * aa + 0.2158037573 * bb) ** 3;
     const m2 = (ll - 0.1055613458 * aa - 0.0638541728 * bb) ** 3;
-    const s2 = (ll - 0.0894841775 * aa - 1.291485548 * bb) ** 3;
-    const r = srgbNonlinearTransform(4.0767416621 * l - 3.3077115913 * m2 + 0.2309699292 * s2);
-    const g2 = srgbNonlinearTransform(-1.2684380046 * l + 2.6097574011 * m2 - 0.3413193965 * s2);
-    const b2 = srgbNonlinearTransform(-0.0041960863 * l - 0.7034186147 * m2 + 1.707614701 * s2);
-    return [r * 255, g2 * 255, b2 * 255];
+    const s = (ll - 0.0894841775 * aa - 1.291485548 * bb) ** 3;
+    const r2 = srgbNonlinearTransform(4.0767416621 * l - 3.3077115913 * m2 + 0.2309699292 * s);
+    const g2 = srgbNonlinearTransform(-1.2684380046 * l + 2.6097574011 * m2 - 0.3413193965 * s);
+    const b2 = srgbNonlinearTransform(-0.0041960863 * l - 0.7034186147 * m2 + 1.707614701 * s);
+    return [r2 * 255, g2 * 255, b2 * 255];
   };
   convert.oklch.oklab = function(oklch) {
     return convert.lch.lab(oklch);
@@ -2719,26 +2840,26 @@ var Themed = (() => {
     if (h < 0) {
       h += 360;
     }
-    const c2 = Math.sqrt(a * a + b2 * b2);
-    return [l, c2, h];
+    const c = Math.sqrt(a * a + b2 * b2);
+    return [l, c, h];
   };
   convert.lch.lab = function(lch) {
     const l = lch[0];
-    const c2 = lch[1];
+    const c = lch[1];
     const h = lch[2];
     const hr = h / 360 * 2 * Math.PI;
-    const a = c2 * Math.cos(hr);
-    const b2 = c2 * Math.sin(hr);
+    const a = c * Math.cos(hr);
+    const b2 = c * Math.sin(hr);
     return [l, a, b2];
   };
   convert.rgb.ansi16 = function(args, saturation = null) {
-    const [r, g2, b2] = args;
+    const [r2, g2, b2] = args;
     let value = saturation === null ? convert.rgb.hsv(args)[2] : saturation;
     value = Math.round(value / 50);
     if (value === 0) {
       return 30;
     }
-    let ansi = 30 + (Math.round(b2 / 255) << 2 | Math.round(g2 / 255) << 1 | Math.round(r / 255));
+    let ansi = 30 + (Math.round(b2 / 255) << 2 | Math.round(g2 / 255) << 1 | Math.round(r2 / 255));
     if (value === 2) {
       ansi += 60;
     }
@@ -2748,19 +2869,19 @@ var Themed = (() => {
     return convert.rgb.ansi16(convert.hsv.rgb(args), args[2]);
   };
   convert.rgb.ansi256 = function(args) {
-    const r = args[0];
+    const r2 = args[0];
     const g2 = args[1];
     const b2 = args[2];
-    if (r >> 4 === g2 >> 4 && g2 >> 4 === b2 >> 4) {
-      if (r < 8) {
+    if (r2 >> 4 === g2 >> 4 && g2 >> 4 === b2 >> 4) {
+      if (r2 < 8) {
         return 16;
       }
-      if (r > 248) {
+      if (r2 > 248) {
         return 231;
       }
-      return Math.round((r - 8) / 247 * 24) + 232;
+      return Math.round((r2 - 8) / 247 * 24) + 232;
     }
-    const ansi = 16 + 36 * Math.round(r / 255 * 5) + 6 * Math.round(g2 / 255 * 5) + Math.round(b2 / 255 * 5);
+    const ansi = 16 + 36 * Math.round(r2 / 255 * 5) + 6 * Math.round(g2 / 255 * 5) + Math.round(b2 / 255 * 5);
     return ansi;
   };
   convert.ansi16.rgb = function(args) {
@@ -2774,23 +2895,23 @@ var Themed = (() => {
       return [color, color, color];
     }
     const mult = (Math.trunc(args > 50) + 1) * 0.5;
-    const r = (color & 1) * mult * 255;
+    const r2 = (color & 1) * mult * 255;
     const g2 = (color >> 1 & 1) * mult * 255;
     const b2 = (color >> 2 & 1) * mult * 255;
-    return [r, g2, b2];
+    return [r2, g2, b2];
   };
   convert.ansi256.rgb = function(args) {
     args = args[0];
     if (args >= 232) {
-      const c2 = (args - 232) * 10 + 8;
-      return [c2, c2, c2];
+      const c = (args - 232) * 10 + 8;
+      return [c, c, c];
     }
     args -= 16;
     let rem;
-    const r = Math.floor(args / 36) / 5 * 255;
+    const r2 = Math.floor(args / 36) / 5 * 255;
     const g2 = Math.floor((rem = args % 36) / 6) / 5 * 255;
     const b2 = rem % 6 / 5 * 255;
-    return [r, g2, b2];
+    return [r2, g2, b2];
   };
   convert.rgb.hex = function(args) {
     const integer = ((Math.round(args[0]) & 255) << 16) + ((Math.round(args[1]) & 255) << 8) + (Math.round(args[2]) & 255);
@@ -2807,69 +2928,69 @@ var Themed = (() => {
       colorString = [...colorString].map((char) => char + char).join("");
     }
     const integer = Number.parseInt(colorString, 16);
-    const r = integer >> 16 & 255;
+    const r2 = integer >> 16 & 255;
     const g2 = integer >> 8 & 255;
     const b2 = integer & 255;
-    return [r, g2, b2];
+    return [r2, g2, b2];
   };
   convert.rgb.hcg = function(rgb) {
-    const r = rgb[0] / 255;
+    const r2 = rgb[0] / 255;
     const g2 = rgb[1] / 255;
     const b2 = rgb[2] / 255;
-    const max = Math.max(Math.max(r, g2), b2);
-    const min = Math.min(Math.min(r, g2), b2);
+    const max = Math.max(Math.max(r2, g2), b2);
+    const min = Math.min(Math.min(r2, g2), b2);
     const chroma = max - min;
     let hue;
     const grayscale = chroma < 1 ? min / (1 - chroma) : 0;
     if (chroma <= 0) {
       hue = 0;
-    } else if (max === r) {
+    } else if (max === r2) {
       hue = (g2 - b2) / chroma % 6;
     } else if (max === g2) {
-      hue = 2 + (b2 - r) / chroma;
+      hue = 2 + (b2 - r2) / chroma;
     } else {
-      hue = 4 + (r - g2) / chroma;
+      hue = 4 + (r2 - g2) / chroma;
     }
     hue /= 6;
     hue %= 1;
     return [hue * 360, chroma * 100, grayscale * 100];
   };
   convert.hsl.hcg = function(hsl) {
-    const s2 = hsl[1] / 100;
+    const s = hsl[1] / 100;
     const l = hsl[2] / 100;
-    const c2 = l < 0.5 ? 2 * s2 * l : 2 * s2 * (1 - l);
+    const c = l < 0.5 ? 2 * s * l : 2 * s * (1 - l);
     let f2 = 0;
-    if (c2 < 1) {
-      f2 = (l - 0.5 * c2) / (1 - c2);
+    if (c < 1) {
+      f2 = (l - 0.5 * c) / (1 - c);
     }
-    return [hsl[0], c2 * 100, f2 * 100];
+    return [hsl[0], c * 100, f2 * 100];
   };
   convert.hsv.hcg = function(hsv) {
-    const s2 = hsv[1] / 100;
-    const v2 = hsv[2] / 100;
-    const c2 = s2 * v2;
+    const s = hsv[1] / 100;
+    const v = hsv[2] / 100;
+    const c = s * v;
     let f2 = 0;
-    if (c2 < 1) {
-      f2 = (v2 - c2) / (1 - c2);
+    if (c < 1) {
+      f2 = (v - c) / (1 - c);
     }
-    return [hsv[0], c2 * 100, f2 * 100];
+    return [hsv[0], c * 100, f2 * 100];
   };
   convert.hcg.rgb = function(hcg) {
     const h = hcg[0] / 360;
-    const c2 = hcg[1] / 100;
+    const c = hcg[1] / 100;
     const g2 = hcg[2] / 100;
-    if (c2 === 0) {
+    if (c === 0) {
       return [g2 * 255, g2 * 255, g2 * 255];
     }
     const pure = [0, 0, 0];
     const hi = h % 1 * 6;
-    const v2 = hi % 1;
-    const w2 = 1 - v2;
+    const v = hi % 1;
+    const w2 = 1 - v;
     let mg = 0;
     switch (Math.floor(hi)) {
       case 0: {
         pure[0] = 1;
-        pure[1] = v2;
+        pure[1] = v;
         pure[2] = 0;
         break;
       }
@@ -2882,7 +3003,7 @@ var Themed = (() => {
       case 2: {
         pure[0] = 0;
         pure[1] = 1;
-        pure[2] = v2;
+        pure[2] = v;
         break;
       }
       case 3: {
@@ -2892,7 +3013,7 @@ var Themed = (() => {
         break;
       }
       case 4: {
-        pure[0] = v2;
+        pure[0] = v;
         pure[1] = 0;
         pure[2] = 1;
         break;
@@ -2903,51 +3024,51 @@ var Themed = (() => {
         pure[2] = w2;
       }
     }
-    mg = (1 - c2) * g2;
+    mg = (1 - c) * g2;
     return [
-      (c2 * pure[0] + mg) * 255,
-      (c2 * pure[1] + mg) * 255,
-      (c2 * pure[2] + mg) * 255
+      (c * pure[0] + mg) * 255,
+      (c * pure[1] + mg) * 255,
+      (c * pure[2] + mg) * 255
     ];
   };
   convert.hcg.hsv = function(hcg) {
-    const c2 = hcg[1] / 100;
+    const c = hcg[1] / 100;
     const g2 = hcg[2] / 100;
-    const v2 = c2 + g2 * (1 - c2);
+    const v = c + g2 * (1 - c);
     let f2 = 0;
-    if (v2 > 0) {
-      f2 = c2 / v2;
+    if (v > 0) {
+      f2 = c / v;
     }
-    return [hcg[0], f2 * 100, v2 * 100];
+    return [hcg[0], f2 * 100, v * 100];
   };
   convert.hcg.hsl = function(hcg) {
-    const c2 = hcg[1] / 100;
+    const c = hcg[1] / 100;
     const g2 = hcg[2] / 100;
-    const l = g2 * (1 - c2) + 0.5 * c2;
-    let s2 = 0;
+    const l = g2 * (1 - c) + 0.5 * c;
+    let s = 0;
     if (l > 0 && l < 0.5) {
-      s2 = c2 / (2 * l);
+      s = c / (2 * l);
     } else if (l >= 0.5 && l < 1) {
-      s2 = c2 / (2 * (1 - l));
+      s = c / (2 * (1 - l));
     }
-    return [hcg[0], s2 * 100, l * 100];
+    return [hcg[0], s * 100, l * 100];
   };
   convert.hcg.hwb = function(hcg) {
-    const c2 = hcg[1] / 100;
+    const c = hcg[1] / 100;
     const g2 = hcg[2] / 100;
-    const v2 = c2 + g2 * (1 - c2);
-    return [hcg[0], (v2 - c2) * 100, (1 - v2) * 100];
+    const v = c + g2 * (1 - c);
+    return [hcg[0], (v - c) * 100, (1 - v) * 100];
   };
   convert.hwb.hcg = function(hwb) {
     const w2 = hwb[1] / 100;
     const b2 = hwb[2] / 100;
-    const v2 = 1 - b2;
-    const c2 = v2 - w2;
+    const v = 1 - b2;
+    const c = v - w2;
     let g2 = 0;
-    if (c2 < 1) {
-      g2 = (v2 - c2) / (1 - c2);
+    if (c < 1) {
+      g2 = (v - c) / (1 - c);
     }
-    return [hwb[0], c2 * 100, g2 * 100];
+    return [hwb[0], c * 100, g2 * 100];
   };
   convert.apple.rgb = function(apple) {
     return [apple[0] / 65535 * 255, apple[1] / 65535 * 255, apple[2] / 65535 * 255];
@@ -2982,7 +3103,7 @@ var Themed = (() => {
     return [value / 255 * 100];
   };
 
-  // node_modules/.pnpm/color-convert@3.1.0/node_modules/color-convert/route.js
+  // node_modules/.pnpm/color-convert@3.1.3/node_modules/color-convert/route.js
   function buildGraph() {
     const graph = {};
     const models2 = Object.keys(conversions_default);
@@ -3053,7 +3174,7 @@ var Themed = (() => {
   __name(route, "route");
   var route_default = route;
 
-  // node_modules/.pnpm/color-convert@3.1.0/node_modules/color-convert/index.js
+  // node_modules/.pnpm/color-convert@3.1.3/node_modules/color-convert/index.js
   var convert2 = {};
   var models = Object.keys(conversions_default);
   function wrapRaw(fn) {
@@ -3110,7 +3231,7 @@ var Themed = (() => {
   }
   var color_convert_default = convert2;
 
-  // node_modules/.pnpm/color@5.0.0/node_modules/color/index.js
+  // node_modules/.pnpm/color@5.0.3/node_modules/color/index.js
   var skippedModels = [
     // To be honest, I don't really feel like keyword belongs in color convert, but eh.
     "keyword",
@@ -3478,8 +3599,8 @@ var Themed = (() => {
   }
   __name(getset, "getset");
   function maxfn(max) {
-    return function(v2) {
-      return Math.max(0, Math.min(max, v2));
+    return function(v) {
+      return Math.max(0, Math.min(max, v));
     };
   }
   __name(maxfn, "maxfn");
@@ -3513,6 +3634,7 @@ var Themed = (() => {
     accentDisabled: ""
   };
   var specialColors = {
+    invalid: ["", ""],
     equipped: ["", ""],
     crafted: ["", ""],
     blocked: ["", ""],
@@ -3538,8 +3660,8 @@ var Themed = (() => {
       return /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(color);
     },
     composeRoot() {
-      const colorSettings = Player.Themed.ColorsModule;
-      const globalSettings = Player.Themed.GlobalModule;
+      const colorSettings = C("ColorsModule").settings;
+      const globalSettings = C("GlobalModule").settings;
       Object.keys(colorSettings.special).forEach((key) => {
         const typedKey = key;
         const clr = color_default(colorSettings.special[typedKey]);
@@ -3571,9 +3693,9 @@ var Themed = (() => {
   };
 
   // src/screens/colors.ts
-  var _GuiColors = class _GuiColors extends m {
+  var _GuiColors = class _GuiColors extends I {
     constructor() {
-      super(x("ColorsModule"));
+      super(C("ColorsModule"));
       __publicField(this, "settingsBackup", {});
       __publicField(this, "colorPickerInput", false);
       _GuiColors.instance = this;
@@ -3583,14 +3705,14 @@ var Themed = (() => {
     }
     get pageStructure() {
       const settings = this.settings;
-      const defaultSettings = x("ColorsModule").defaultSettings;
-      const isBaseMode = !u.playerStorage.GlobalModule.doUseAdvancedColoring;
+      const defaultSettings = C("ColorsModule").defaultSettings;
+      const isBaseMode = !p.playerStorage.GlobalModule.doUseAdvancedColoring;
       const baseModeKey = /* @__PURE__ */ __name((key) => ["main", "accent", "text"].includes(key), "baseModeKey");
       const ret = [[], []];
       const themeDropdownOptions = ["dark", "light"].map((e) => ({
         attributes: {
           value: e,
-          label: d("colors.setting.theme-type-" + e),
+          label: g("colors.setting.theme-type-" + e),
           selected: e === this.settings.themeSettings.themeType
         }
       }));
@@ -3598,8 +3720,8 @@ var Themed = (() => {
         id: "tmd-theme-type",
         type: "dropdown",
         optionsList: themeDropdownOptions,
-        label: d("colors.setting.theme-type.name"),
-        description: d("colors.setting.theme-type.desc"),
+        label: g("colors.setting.theme-type.name"),
+        description: g("colors.setting.theme-type.desc"),
         setSettingValue(val) {
           settings.themeSettings.themeType = val;
           ColorsModule.reloadTheme();
@@ -3611,8 +3733,8 @@ var Themed = (() => {
         return {
           id: key,
           type: "color",
-          label: d(`colors.setting.${key}.name`),
-          description: d(`colors.setting.${key}.desc`),
+          label: g(`colors.setting.${key}.name`),
+          description: g(`colors.setting.${key}.desc`),
           setElementValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.base[typedKey], "setElementValue"),
           setSettingValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.base[typedKey], "setSettingValue"),
           disabled: isBaseMode && !baseModeKey(typedKey),
@@ -3622,7 +3744,7 @@ var Themed = (() => {
                 click: /* @__PURE__ */ __name(function(ev) {
                   if (this.type !== "color") return;
                   ev.preventDefault();
-                  _GuiColors.instance.colorPickerToggle(this, d(`colors.setting.${key}.name`));
+                  _GuiColors.instance.colorPickerToggle(this, g(`colors.setting.${key}.name`));
                 }, "click")
               }
             }
@@ -3634,8 +3756,8 @@ var Themed = (() => {
         return {
           id: key,
           type: "color",
-          label: d(`colors.setting.${key}.name`),
-          description: d(`colors.setting.${key}.desc`),
+          label: g(`colors.setting.${key}.name`),
+          description: g(`colors.setting.${key}.desc`),
           setElementValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.special[typedKey], "setElementValue"),
           setSettingValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.special[typedKey], "setSettingValue"),
           htmlOptions: {
@@ -3644,7 +3766,7 @@ var Themed = (() => {
                 click: /* @__PURE__ */ __name(function(ev) {
                   if (this.type !== "color") return;
                   ev.preventDefault();
-                  _GuiColors.instance.colorPickerToggle(this, d(`colors.setting.${key}.name`));
+                  _GuiColors.instance.colorPickerToggle(this, g(`colors.setting.${key}.name`));
                 }, "click")
               }
             }
@@ -3655,7 +3777,7 @@ var Themed = (() => {
     }
     load() {
       super.load();
-      const typeToggleButton = c.createButton({
+      const typeToggleButton = u.createButton({
         id: "tmd-inputs-type-toggle",
         onClick: /* @__PURE__ */ __name(() => {
           this.pageStructure.forEach((page) => {
@@ -3677,7 +3799,7 @@ var Themed = (() => {
         size: [90, 90],
         options: {
           image: `${"https://ddeeplb.github.io/Themed-BC/public"}/images/refresh.svg`,
-          tooltip: d("colors.button.change_input_type")
+          tooltip: g("colors.button.change_input_type")
         }
       });
       const menu = document.getElementById("deeplib-nav-menu");
@@ -3685,7 +3807,7 @@ var Themed = (() => {
         menu.prepend(typeToggleButton);
       }
       this.settingsBackup = CommonCloneDeep(this.settings);
-      const settings = x("ColorsModule").settings;
+      const settings = C("ColorsModule").settings;
       Object.entries(this.settings.base).forEach(([key]) => {
         document.getElementById(key)?.addEventListener("input", function() {
           if (!_Color.isValidHex(this.value)) {
@@ -3718,7 +3840,7 @@ var Themed = (() => {
         this.colorPickerInput = false;
         return;
       }
-      const settings = x("ColorsModule").settings;
+      const settings = C("ColorsModule").settings;
       Object.entries(this.settings.base).forEach(([key]) => {
         const input = document.getElementById(key);
         if (!input) return;
@@ -3755,9 +3877,10 @@ var Themed = (() => {
           ColorPicker.defaultShape[2],
           1e3 - paddingTop * 2
         ];
+        const color = CommonIsColor(input.value) ? input.value : "#ffffff";
         ColorPickerInit({
           colorState: {
-            colors: [input.value || "#ffffff"],
+            colors: [color],
             defaultColors: ["#ffffff"],
             opacity: [1],
             editOpacity: false
@@ -3765,9 +3888,9 @@ var Themed = (() => {
           heading: title,
           shape,
           onInput: /* @__PURE__ */ __name(() => null, "onInput"),
-          onExit: /* @__PURE__ */ __name(({ colors }, save) => {
+          onExit: /* @__PURE__ */ __name(({ colors: colors2 }, save) => {
             if (save) {
-              ElementValue(input.id, colors[0]);
+              ElementValue(input.id, colors2[0]);
             }
             this.colorPickerInput = false;
             document.getElementById("tmd-colors-color-picker-backdrop")?.toggleAttribute("hidden", true);
@@ -3812,13 +3935,13 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/appearance_get_preview_image_color.ts
   function hookAppearanceGetPreviewImageColor() {
-    I.hookFunction("AppearanceGetPreviewImageColor", S.Observe, (args, next) => {
+    w.hookFunction("AppearanceGetPreviewImageColor", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
-      const [c2, item, hover] = args;
-      if (DialogMenuMode === "permissions" && c2.IsPlayer()) {
+      const [c, item, hover] = args;
+      if (DialogMenuMode === "permissions" && c.IsPlayer()) {
         let permission = "allowed";
-        if (InventoryIsPermissionBlocked(c2, item.Asset.Name, item.Asset.Group.Name)) permission = "blocked";
-        else if (InventoryIsPermissionLimited(c2, item.Asset.Name, item.Asset.Group.Name)) permission = "limited";
+        if (InventoryIsPermissionBlocked(c, item.Asset.Name, item.Asset.Group.Name)) permission = "blocked";
+        else if (InventoryIsPermissionLimited(c, item.Asset.Name, item.Asset.Group.Name)) permission = "limited";
         return item.Worn ? specialColors.equipped[hover ? 1 : 0] : specialColors[permission][hover ? 1 : 0];
       } else {
         const unusable = item.SortOrder.startsWith(DialogSortOrder.Unusable.toString()) || item.SortOrder.startsWith(DialogSortOrder.TargetFavoriteUnusable.toString()) || item.SortOrder.startsWith(DialogSortOrder.PlayerFavoriteUnusable.toString());
@@ -3837,7 +3960,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/dialog_get_menu_button_color.ts
   function hookDialogGetMenuButtonColor() {
-    I.hookFunction("DialogGetMenuButtonColor", 0, (args, next) => {
+    w.hookFunction("DialogGetMenuButtonColor", 0, (args, next) => {
       if (!doRedraw()) return next(args);
       const [buttonName] = args;
       if (DialogIsMenuButtonDisabled(buttonName)) {
@@ -3853,7 +3976,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_back_next_button.ts
   function hookDrawBackNextButton() {
-    I.hookFunction("DrawBackNextButton", S.Observe, (args, next) => {
+    w.hookFunction("DrawBackNextButton", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [Left, Top, Width, Height, Label, Color2, Image, , , Disabled] = args;
       let [, , , , , , , BackText, NextText, , ArrowWidth] = args;
@@ -4094,7 +4217,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_button.ts
   function hookDrawButton() {
-    I.hookFunction("DrawButton", S.Observe, (args, next) => {
+    w.hookFunction("DrawButton", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [x2, y, width, height, label, , image, hoveringText, isDisabled] = args;
       let color = args[5];
@@ -4133,7 +4256,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_button_hover.ts
   function hookDrawButtonHover() {
-    I.hookFunction("DrawButtonHover", S.Observe, (args, next) => {
+    w.hookFunction("DrawButtonHover", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [, , Width, Height, HoveringText] = args;
       let [Left, Top] = args;
@@ -4151,7 +4274,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_checkbox.ts
   function hookDrawCheckbox() {
-    I.hookFunction("DrawCheckbox", S.Observe, (args, next) => {
+    w.hookFunction("DrawCheckbox", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = "Black", CheckImage = "Icons/Checked.png"] = args;
       const backgroundColor = Disabled ? "%disabled" : "%background";
@@ -4163,7 +4286,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_empty_rect.ts
   function hookDrawEmptyRect() {
-    I.hookFunction("DrawEmptyRect", S.Observe, (args, next) => {
+    w.hookFunction("DrawEmptyRect", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [Left, Top, Width, Height, Color2, Thickness] = args;
       const drawEmptyRect = /* @__PURE__ */ __name((color) => {
@@ -4206,25 +4329,25 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_image_ex.ts
   function hookDrawImageEx() {
-    I.hookFunction("DrawImageEx", S.Observe, (args, next) => {
+    w.hookFunction("DrawImageEx", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       if (typeof args[0] !== "string") return next(args);
       if (!_Image.doColorizeImage(args[0])) return next(args);
-      const [Source, Canvas, X2, Y] = args;
+      const [Source, Canvas, X2, Y2] = args;
       let Options = args[4];
       Options ?? (Options = {});
-      Options.HexColor = plainColors.accent;
+      Options.HexColor = plainColors.accent.startsWith("#") ? plainColors.accent : `#${plainColors.accent}`;
       Options.FullAlpha = true;
-      return next([Source, Canvas, X2, Y, Options]);
+      return next([Source, Canvas, X2, Y2, Options]);
     }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawImageEx, "hookDrawImageEx");
 
   // src/hooks/gui_redraw/draw_preview_box.ts
   function hookDrawPreviewBox() {
-    I.hookFunction("DrawPreviewBox", S.Observe, (args, next) => {
+    w.hookFunction("DrawPreviewBox", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
-      const [X2, Y, Path, Description, Options] = args;
+      const [X2, Y2, Path, Description, Options] = args;
       const { Vibrating, Icons, Disabled } = Options || {};
       let { Foreground, Background, Width, Height } = Options || {};
       Width = Width || DrawAssetPreviewDefaultWidth;
@@ -4233,11 +4356,11 @@ var Themed = (() => {
       const TextGutter = Description ? 44 : 0;
       Foreground = plainColors.text;
       Background = Background || plainColors.element;
-      const hover = MouseHovering(X2, Y, Width, Height);
+      const hover = MouseHovering(X2, Y2, Width, Height);
       if (hover) Background = Background || plainColors.elementHover;
       if (Disabled) Background = Background || plainColors.elementDisabled;
       let ImageX = X2 + Padding;
-      let ImageY = Y + Padding;
+      let ImageY = Y2 + Padding;
       let ImageWidth = Width;
       let ImageHeight = Height - TextGutter;
       if (ImageWidth > ImageHeight) {
@@ -4255,19 +4378,19 @@ var Themed = (() => {
         ImageX += 1 + Math.floor(Math.random() * 3);
         ImageY += 1 + Math.floor(Math.random() * 3);
       }
-      DrawRect(X2, Y, Width, Height, Background);
-      ControllerAddActiveArea(X2, Y);
-      DrawEmptyRect(X2, Y, Width, Height, hover ? plainColors.accentHover : plainColors.accent);
+      DrawRect(X2, Y2, Width, Height, Background);
+      ControllerAddActiveArea(X2, Y2);
+      DrawEmptyRect(X2, Y2, Width, Height, hover ? plainColors.accentHover : plainColors.accent);
       if (Path !== "") DrawImageResize(Path, ImageX, ImageY, ImageWidth, ImageHeight);
-      DrawPreviewIcons(Icons ?? [], X2, Y);
-      if (Description) DrawTextFit(Description, X2 + Width / 2, Y + Height - 25, Width - 2 * Padding, Foreground);
+      DrawPreviewIcons(Icons ?? [], X2, Y2);
+      if (Description) DrawTextFit(Description, X2 + Width / 2, Y2 + Height - 25, Width - 2 * Padding, Foreground);
     }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawPreviewBox, "hookDrawPreviewBox");
 
   // src/hooks/gui_redraw/draw_rect.ts
   function hookDrawRect() {
-    I.hookFunction("DrawRect", S.Observe, (args, next) => {
+    w.hookFunction("DrawRect", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [Left, Top, Width, Height] = args;
       let color = args[4];
@@ -4374,10 +4497,10 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_room_background.ts
   function hookDrawRoomBackground() {
-    I.hookFunction("DrawRoomBackground", S.Observe, ([URL2, ...args], next) => {
+    w.hookFunction("DrawRoomBackground", E.Observe, ([URL2, ...args], next) => {
       if (!doRedraw()) return next([URL2, ...args]);
       if (URL2.includes("Sheet.jpg")) {
-        if (u.playerStorage.GlobalModule.doUseFlatColor) {
+        if (p.playerStorage.GlobalModule.doUseFlatColor) {
           DrawRect(0, 0, 2e3, 1e3, plainColors.main);
         } else {
           next([URL2, ...args]);
@@ -4395,7 +4518,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_text.ts
   function hookDrawText() {
-    I.hookFunction("DrawText", S.Observe, (args, next) => {
+    w.hookFunction("DrawText", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       if (!args[0]) return next(args);
       if (!args[3]) return next(args);
@@ -4419,7 +4542,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_text_fit.ts
   function hookDrawTextFit() {
-    I.hookFunction("DrawTextFit", S.Observe, (args, next) => {
+    w.hookFunction("DrawTextFit", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       if (!args[0]) return next(args);
       if (!args[4]) return next(args);
@@ -4439,20 +4562,20 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_text_wrap.ts
   function hookDrawTextWrap() {
-    I.hookFunction("DrawTextWrap", S.Observe, (args, next) => {
+    w.hookFunction("DrawTextWrap", E.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       if (!args[0]) return next(args);
       if (!args[5]) return next(args);
       const [Text, X2, , Width, Height, ForeColor, BackColor, MaxLine, LineSpacing = 23] = args;
-      let [, , Y, , ,] = args;
-      const isHovering = MouseHovering(X2, Y, Width, Height);
+      let [, , Y2, , ,] = args;
+      const isHovering = MouseHovering(X2, Y2, Width, Height);
       if (!Text) return;
-      ControllerAddActiveArea(X2, Y);
+      ControllerAddActiveArea(X2, Y2);
       if (BackColor != null) {
         if (!isHovering) {
-          drawRect(X2, Y, Width, Height, BackColor, plainColors.accent);
+          drawRect(X2, Y2, Width, Height, BackColor, plainColors.accent);
         } else {
-          drawRect(X2, Y, Width, Height, plainColors.elementHover, plainColors.accentHover);
+          drawRect(X2, Y2, Width, Height, plainColors.elementHover, plainColors.accentHover);
         }
       }
       let TextSize;
@@ -4479,19 +4602,19 @@ var Themed = (() => {
           } else line = testLine;
         }
         line = "";
-        Y = Y - (LineCount - 1) * LineSpacing + Height / 2;
+        Y2 = Y2 - (LineCount - 1) * LineSpacing + Height / 2;
         for (let n = 0; n < words.length; n++) {
           const testLine = line + words[n] + " ";
           if (MainCanvas.measureText(testLine).width > Width && n > 0) {
-            MainCanvas.fillText(line, X2 + Width / 2, Y);
+            MainCanvas.fillText(line, X2 + Width / 2, Y2);
             line = words[n] + " ";
-            Y += LineSpacing * 2;
+            Y2 += LineSpacing * 2;
           } else {
             line = testLine;
           }
         }
-        MainCanvas.fillText(line, X2 + Width / 2, Y);
-      } else MainCanvas.fillText(Text, X2 + Width / 2, Y + Height / 2);
+        MainCanvas.fillText(line, X2 + Width / 2, Y2);
+      } else MainCanvas.fillText(Text, X2 + Width / 2, Y2 + Height / 2);
       if (MaxLine != null && TextSize != null) MainCanvas.font = TextSize;
     }, ModuleCategory.GuiRedraw);
   }
@@ -4499,9 +4622,9 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/element_button_create.ts
   function hookElementButtonCreate() {
-    I.hookFunction(
+    w.hookFunction(
       "ElementButton.Create",
-      S.Observe,
+      E.Observe,
       (args, next) => {
         if (!doRedraw()) return next(args);
         let [, , options2] = args;
@@ -4518,9 +4641,9 @@ var Themed = (() => {
 
   // src/modules/gui_redraw.ts
   var doRedraw = /* @__PURE__ */ __name(() => {
-    return u.playerStorage?.GlobalModule?.modEnabled && u.playerStorage.GlobalModule?.doVanillaGuiOverhaul && CurrentScreen !== "ClubCard";
+    return p.playerStorage?.GlobalModule?.modEnabled && p.playerStorage.GlobalModule?.doVanillaGuiOverhaul && CurrentScreen !== "ClubCard";
   }, "doRedraw");
-  var _GuiRedrawModule = class _GuiRedrawModule extends B {
+  var _GuiRedrawModule = class _GuiRedrawModule extends L {
     constructor() {
       super(...arguments);
       __publicField(this, "patched", false);
@@ -4545,24 +4668,24 @@ var Themed = (() => {
     }
     patchGui() {
       if (this.patched) return false;
-      I.patchFunction("DialogDraw", {
+      w.patchFunction("DialogDraw", {
         "DrawRect(1087 + offset, 550, 225, 275, bgColor);": 'DrawRect(1087 + offset, 550, 225, 275, disabled ? "%disabled" : (hover ? "%hover" : "%background"));DrawEmptyRect(1087 + offset, 550, 225, 275, "%border");',
         'const bgColor = disabled ? "Gray" : (hover ? "aqua" : "white");': 'const bgColor = disabled ? "%disabled" : (hover ? "%hover" : "%background");'
       });
-      I.patchFunction("DrawProcessScreenFlash", {
+      w.patchFunction("DrawProcessScreenFlash", {
         'DrawRect(0, 0, 2000, 1000, "#ffffff" + DrawGetScreenFlashAlpha(FlashTime / Math.max(1, 4 - DrawLastDarkFactor)));': 'DrawRect(0, 0, 2000, 1000, "!#ffffff" + DrawGetScreenFlashAlpha(FlashTime / Math.max(1, 4 - DrawLastDarkFactor)));',
         "DrawRect(0, 0, 2000, 1000, DrawScreenFlashColor + PinkFlashAlpha);": 'DrawRect(0, 0, 2000, 1000, "!" + DrawScreenFlashColor + PinkFlashAlpha);'
       });
-      I.patchFunction("ChatAdminRun", {
+      w.patchFunction("ChatAdminRun", {
         'const ButtonBackground = canEdit ? "White" : "#ebebe4";': 'const ButtonBackground = canEdit ? "%background" : "%disabled";'
       });
-      I.patchFunction("AppearanceRun", {
+      w.patchFunction("AppearanceRun", {
         'const ButtonColor = canAccess ? "White" : "#888";': 'const ButtonColor = canAccess ? "%background" : "%disabled";',
         'DrawButton(1635, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", layeringEnabled ? "#fff" : "#aaa", "Icons/Small/Layering.png", TextGet("Layering"), !layeringEnabled);': 'DrawButton(1635, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", layeringEnabled ? "%background" : "%disabled", "Icons/Small/Layering.png", TextGet("Layering"), !layeringEnabled);',
         'DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "#aaa", undefined, undefined, !CanCycleColors);': 'DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "%disabled", undefined, undefined, !CanCycleColors);',
         'DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "#fff" : "#aaa", CanPickColor ? ColorIsSimple ? "Icons/Small/ColorChange.png" : "Icons/Small/ColorChangeMulti.png" : "Icons/Small/ColorBlocked.png", undefined, !CanPickColor);': 'DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "%background" : "%disabled", CanPickColor ? ColorIsSimple ? "Icons/Small/ColorChange.png" : "Icons/Small/ColorChangeMulti.png" : "Icons/Small/ColorBlocked.png", undefined, !CanPickColor);'
       });
-      I.patchFunction("ExtendedItemGetButtonColor", {
+      w.patchFunction("ExtendedItemGetButtonColor", {
         'ButtonColor = "#888888";': 'ButtonColor = "%accent";',
         'ButtonColor = Hover ? "red" : "pink";': 'ButtonColor = "%blocked";',
         'ButtonColor = Hover ? "orange" : "#fed8b1";': 'ButtonColor = "%limited";',
@@ -4572,7 +4695,7 @@ var Themed = (() => {
         'ButtonColor = Hover ? "Cyan" : "LightGreen";': 'ButtonColor = "%allowed";',
         'ButtonColor = Hover ? "Cyan" : "White";': 'ButtonColor = Hover ? "%hover" : "%background";'
       });
-      I.patchFunction("Shop2._AssetElementDraw", {
+      w.patchFunction("Shop2._AssetElementDraw", {
         'options.Background = "cyan";': 'options.Background = "%hover";',
         'options.Background = "white";': 'options.Background = "%background";',
         'options.Background = "gray";': 'options.Background = "%disabled";',
@@ -4582,12 +4705,12 @@ var Themed = (() => {
     }
     unpatchGui() {
       if (!this.patched) return false;
-      I.unpatchFunction("DialogDraw");
-      I.unpatchFunction("DrawProcessScreenFlash");
-      I.unpatchFunction("ChatAdminRun");
-      I.unpatchFunction("AppearanceRun");
-      I.unpatchFunction("ExtendedItemGetButtonColor");
-      I.unpatchFunction("Shop2._AssetElementDraw");
+      w.unpatchFunction("DialogDraw");
+      w.unpatchFunction("DrawProcessScreenFlash");
+      w.unpatchFunction("ChatAdminRun");
+      w.unpatchFunction("AppearanceRun");
+      w.unpatchFunction("ExtendedItemGetButtonColor");
+      w.unpatchFunction("Shop2._AssetElementDraw");
       this.patched = false;
     }
     toggleGuiPatches() {
@@ -4613,24 +4736,22 @@ var Themed = (() => {
   }
   __name(changeModColors, "changeModColors");
   function changeBctColors() {
-    if (Player.BCT) {
-      BCT_API.HintBackColor = plainColors.element;
-      BCT_API.HintBorderColor = plainColors.accent;
-      BCT_API.HintForeColor = plainColors.text;
-    }
+    if (typeof BCT_API === "undefined") return;
+    BCT_API.HintBackColor = plainColors.element;
+    BCT_API.HintBorderColor = plainColors.accent;
+    BCT_API.HintForeColor = plainColors.text;
   }
   __name(changeBctColors, "changeBctColors");
   function resetBctColors() {
-    if (Player.BCT) {
-      BCT_API.HintBackColor = "yellow";
-      BCT_API.HintBorderColor = "black";
-      BCT_API.HintForeColor = "black";
-    }
+    if (typeof BCT_API === "undefined") return;
+    BCT_API.HintBackColor = "yellow";
+    BCT_API.HintBorderColor = "black";
+    BCT_API.HintForeColor = "black";
   }
   __name(resetBctColors, "resetBctColors");
   function changeMbsColors() {
     if (typeof mbs !== "undefined" && mbs.API_VERSION.major === 1 && mbs.API_VERSION.minor >= 3) {
-      if (!u.playerStorage.IntegrationModule.MBS) return;
+      if (!p.playerStorage.IntegrationModule.MBS) return;
       return mbs.css.setStyle({
         backgroundColor: plainColors.main,
         buttonColor: plainColors.element,
@@ -4644,7 +4765,7 @@ var Themed = (() => {
   __name(changeMbsColors, "changeMbsColors");
   function resetMbsColors() {
     if (typeof mbs !== "undefined" && mbs.API_VERSION.major === 1 && mbs.API_VERSION.minor >= 3) {
-      if (!u.playerStorage.IntegrationModule.MBS)
+      if (!p.playerStorage.IntegrationModule.MBS)
         mbs.css.setStyle({
           backgroundColor: mbs.css.DEFAULT_STYLE.backgroundColor,
           buttonColor: mbs.css.DEFAULT_STYLE.buttonColor,
@@ -4678,28 +4799,28 @@ var Themed = (() => {
   };
   var BcStyle = {
     injectAll() {
-      const isEnabled = u.playerStorage.GlobalModule.modEnabled;
-      N.injectEmbed("tmd-style", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/themed.css`);
+      const isEnabled = p.playerStorage.GlobalModule.modEnabled;
+      H.injectEmbed("tmd-style", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/themed.css`);
       if (!isEnabled) return;
-      N.injectInline("tmd-root", composeRoot());
-      N.injectEmbed("tmd-chat-room-search", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/chatroom_search.css`);
-      N.injectEmbed("tmd-preference", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/preference.css`);
-      N.injectEmbed("tmd-misc", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/misc.css`);
+      H.injectInline("tmd-root", composeRoot());
+      H.injectEmbed("tmd-chat-room-search", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/chatroom_search.css`);
+      H.injectEmbed("tmd-preference", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/preference.css`);
+      H.injectEmbed("tmd-misc", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/misc.css`);
       const styleIDs = Object.keys(styles);
       styleIDs.forEach((id) => {
-        if (!u.playerStorage.IntegrationModule[id]) return;
-        N.injectEmbed(id, `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/${id}.css`);
+        if (!p.playerStorage.IntegrationModule[id]) return;
+        H.injectEmbed(id, `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/${id}.css`);
       });
     },
     ejectAll() {
-      N.eject("tmd-root");
-      N.eject("tmd-style");
-      N.eject("tmd-chat-room-search");
-      N.eject("tmd-preference");
-      N.eject("tmd-misc");
+      H.eject("tmd-root");
+      H.eject("tmd-style");
+      H.eject("tmd-chat-room-search");
+      H.eject("tmd-preference");
+      H.eject("tmd-misc");
       const styleIDs = Object.keys(styles);
       styleIDs.forEach((id) => {
-        N.eject(id);
+        H.eject(id);
       });
     },
     reloadAll() {
@@ -4756,7 +4877,7 @@ var Themed = (() => {
     roomBlocked: color_default("#870c0c"),
     roomGame: color_default("#3575b5")
   };
-  var _ColorsModule = class _ColorsModule extends B {
+  var _ColorsModule = class _ColorsModule extends L {
     get settingsScreen() {
       return GuiColors;
     }
@@ -4800,33 +4921,34 @@ var Themed = (() => {
     load() {
     }
     static reloadTheme() {
-      p.info("Reloading theme");
-      const themeType = x("ColorsModule").settings.themeSettings.themeType;
+      m.info("Reloading theme");
+      const themeType = C("ColorsModule").settings.themeSettings.themeType;
       document.body.dataset.tmdThemeType = themeType;
+      ChatRoomTopMenuBuiltSig = "";
       _Color.composeRoot();
       BcStyle.reloadAll();
       changeModColors();
-      x("GuiRedrawModule").toggleGuiPatches();
+      C("GuiRedrawModule").toggleGuiPatches();
     }
   };
   __name(_ColorsModule, "ColorsModule");
   var ColorsModule = _ColorsModule;
 
   // src/modules/commands.ts
-  var _CommandsModule = class _CommandsModule extends B {
+  var _CommandsModule = class _CommandsModule extends L {
     load() {
       CommandCombine([
         {
           Tag: "share-theme",
           Description: "[member number]: Shares your theme with other people that have Themed installed!",
           Action(args) {
-            if (!args) return x("ShareModule").share(void 0);
+            if (!args) return C("ShareModule").share(void 0);
             const targetNumber = parseInt(args, 10);
-            const target = ChatRoomCharacter.find((c2) => c2.MemberNumber == targetNumber);
+            const target = ChatRoomCharacter.find((c) => c.MemberNumber == targetNumber);
             if (!target)
-              ci("theme-share-error", `No character with MemberNumber ${targetNumber} found!`);
+              Zn("theme-share-error", `No character with MemberNumber ${targetNumber} found!`);
             else
-              x("ShareModule").share(target.MemberNumber);
+              C("ShareModule").share(target.MemberNumber);
           }
         }
       ]);
@@ -4838,19 +4960,19 @@ var Themed = (() => {
   var CommandsModule = _CommandsModule;
 
   // src/screens/global.ts
-  var _GuiGlobal = class _GuiGlobal extends m {
+  var _GuiGlobal = class _GuiGlobal extends I {
     get settings() {
       return super.settings;
     }
     get pageStructure() {
-      const defaultSettings = x("GlobalModule").defaultSettings;
+      const defaultSettings = C("GlobalModule").defaultSettings;
       return [Object.entries(this.settings).map(([key, value]) => {
         const typedKey = key;
         return {
           id: `tmd-global-${key}`,
           type: "checkbox",
-          label: d(`settings.setting.${typedKey}.name`),
-          description: d(`settings.setting.${typedKey}.desc`),
+          label: g(`settings.setting.${typedKey}.name`),
+          description: g(`settings.setting.${typedKey}.desc`),
           setElementValue: /* @__PURE__ */ __name(() => value ?? defaultSettings[typedKey], "setElementValue"),
           setSettingValue: /* @__PURE__ */ __name((val) => {
             this.settings[typedKey] = val;
@@ -4871,7 +4993,7 @@ var Themed = (() => {
   var GuiGlobal = _GuiGlobal;
 
   // src/modules/global.ts
-  var _GlobalModule = class _GlobalModule extends B {
+  var _GlobalModule = class _GlobalModule extends L {
     get settingsScreen() {
       return GuiGlobal;
     }
@@ -4900,9 +5022,9 @@ var Themed = (() => {
       }, "reload");
       setTimeout(reload, 6e4);
       setTimeout(reload, 3e5);
-      I.hookFunction(
+      w.hookFunction(
         "ChatRoomCurrentTime",
-        S.Observe,
+        E.Observe,
         (args, next) => {
           if (!this.settings.doShowLocaleTime) return next(args);
           const currentTime = new Date(Date.now());
@@ -4910,9 +5032,9 @@ var Themed = (() => {
         },
         ModuleCategory.Global
       );
-      I.hookFunction(
+      w.hookFunction(
         "DialogDraw",
-        S.Observe,
+        E.Observe,
         (args, next) => {
           if (!this.settings.modEnabled) return next(args);
           if (!this.settings.doIndicateCharacterAbsence) return next(args);
@@ -4948,9 +5070,9 @@ var Themed = (() => {
         },
         ModuleCategory.Global
       );
-      I.hookFunction(
+      w.hookFunction(
         "AppearanceRun",
-        S.Observe,
+        E.Observe,
         (args, next) => {
           if (!this.settings.modEnabled) return next(args);
           if (!this.settings.doIndicateCharacterAbsence) return next(args);
@@ -4986,9 +5108,9 @@ var Themed = (() => {
         },
         ModuleCategory.Global
       );
-      I.hookFunction(
+      w.hookFunction(
         "ChatRoomSync",
-        S.Observe,
+        E.Observe,
         (args, next) => {
           Character.filter((character) => character.IsPlayer() || !_GlobalModule.transparentCharacters?.includes(character.MemberNumber));
           return next(args);
@@ -5004,19 +5126,19 @@ var Themed = (() => {
   var GlobalModule = _GlobalModule;
 
   // src/screens/integration.ts
-  var _GuiIntegration = class _GuiIntegration extends m {
+  var _GuiIntegration = class _GuiIntegration extends I {
     get settings() {
       return super.settings;
     }
     get pageStructure() {
-      const defaultSettings = x("IntegrationModule").defaultSettings;
+      const defaultSettings = C("IntegrationModule").defaultSettings;
       return [Object.entries(this.settings).map(([key, value]) => {
         const typedKey = key;
         return {
           id: `tmd-integration-${key}`,
           type: "checkbox",
-          label: d(`integration.setting.${key}.name`),
-          description: d(`integration.setting.${key}.desc`),
+          label: g(`integration.setting.${key}.name`),
+          description: g(`integration.setting.${key}.desc`),
           setElementValue: /* @__PURE__ */ __name(() => value ?? defaultSettings[typedKey], "setElementValue"),
           setSettingValue: /* @__PURE__ */ __name((val) => {
             this.settings[typedKey] = val;
@@ -5037,7 +5159,7 @@ var Themed = (() => {
   var GuiIntegration = _GuiIntegration;
 
   // src/modules/integration.ts
-  var _IntegrationModule = class _IntegrationModule extends B {
+  var _IntegrationModule = class _IntegrationModule extends L {
     get settingsScreen() {
       return GuiIntegration;
     }
@@ -5068,11 +5190,8 @@ var Themed = (() => {
   __name(_IntegrationModule, "IntegrationModule");
   var IntegrationModule = _IntegrationModule;
 
-  // src/utilities/console.ts
-  var logger = new V("Themed");
-
   // src/screens/profiles.ts
-  var _GuiProfiles = class _GuiProfiles extends m {
+  var _GuiProfiles = class _GuiProfiles extends I {
     get settings() {
       return super.settings;
     }
@@ -5084,11 +5203,11 @@ var Themed = (() => {
         attributes: {
           id: "tmd-profiles-container"
         },
-        parent: g.getSubscreen()
+        parent: b.getSubscreen()
       });
       for (let i = 0; i < 3; i++) {
         const profileId = i + 1;
-        const profileName = this.settings[profileId].name || d("profiles.text.profile") + ` ${profileId}`;
+        const profileName = this.settings[profileId].name || g("profiles.text.profile") + ` ${profileId}`;
         const profileElement = ElementCreate({
           tag: "div",
           attributes: {
@@ -5096,7 +5215,7 @@ var Themed = (() => {
           },
           classList: ["tmd-profile"],
           children: [
-            c.createLabel({
+            u.createLabel({
               id: `tmd-profile-label-${profileId}`,
               label: profileName
             }),
@@ -5105,26 +5224,26 @@ var Themed = (() => {
               tag: "div",
               classList: ["tmd-profile-buttons"],
               children: [
-                c.createButton({
+                u.createButton({
                   id: `tmd-profiles-profile-save-${profileId}`,
                   onClick: /* @__PURE__ */ __name(() => this.handleProfilesSaving(profileId), "onClick"),
                   options: {
-                    label: d("profiles.button.save")
+                    label: g("profiles.button.save")
                   }
                 }),
-                c.createButton({
+                u.createButton({
                   id: `tmd-profiles-profile-load-${profileId}`,
                   onClick: /* @__PURE__ */ __name(() => this.handleProfilesLoading(profileId), "onClick"),
                   options: {
-                    label: d("profiles.button.load"),
+                    label: g("profiles.button.load"),
                     disabled: !this.profileExists(profileId)
                   }
                 }),
-                c.createButton({
+                u.createButton({
                   id: `tmd-profiles-profile-delete-${profileId}`,
                   onClick: /* @__PURE__ */ __name(() => this.handleProfilesDeleting(profileId), "onClick"),
                   options: {
-                    label: d("profiles.button.delete"),
+                    label: g("profiles.button.delete"),
                     disabled: !this.profileExists(profileId)
                   }
                 })
@@ -5141,9 +5260,9 @@ var Themed = (() => {
     }
     async handleProfilesSaving(profileId) {
       if (!this.profileCanBeSaved(profileId)) return;
-      const name = await W.prompt(d("profiles.prompt"));
+      const name = await D.prompt(g("profiles.prompt"));
       if (name === null) return;
-      const storage = u.playerStorage;
+      const storage = p.playerStorage;
       const profile = this.settings[profileId];
       if (!profile || Object.keys(profile).length === 0) {
         this.settings[profileId] = {};
@@ -5157,31 +5276,31 @@ var Themed = (() => {
         }
       });
       const display = name ? `"${name}"` : profileId;
-      ToastManager.success(`${d("profiles.text.profile")} ${display} ${d("profiles.text.has_been_saved")}`);
+      ToastManager.success(`${g("profiles.text.profile")} ${display} ${g("profiles.text.has_been_saved")}`);
       this.updateProfileLabel(profileId);
       this.updateProfileButtons(profileId);
       this.updateProfileColorShowcase(profileId);
     }
     handleProfilesLoading(profileId) {
       if (!this.profileExists(profileId)) {
-        ToastManager.error(`${d("profiles.text.profile")} ${profileId} ${d("profiles.text.doesnt_exist")}`);
+        ToastManager.error(`${g("profiles.text.profile")} ${profileId} ${g("profiles.text.doesnt_exist")}`);
         return;
       }
       const data = this.settings[profileId].data;
-      u.playerStorage = CommonCloneDeep({
-        ...u.playerStorage,
+      p.playerStorage = CommonCloneDeep({
+        ...p.playerStorage,
         GlobalModule: data.GlobalModule,
         ColorsModule: data.ColorsModule,
         IntegrationModule: data.IntegrationModule
       });
       const name = this.settings[profileId].name;
       const display = name ? `"${name}"` : profileId;
-      ToastManager.success(`${d("profiles.text.profile")} ${display} ${d("profiles.text.has_been_loaded")}`);
+      ToastManager.success(`${g("profiles.text.profile")} ${display} ${g("profiles.text.has_been_loaded")}`);
       ColorsModule.reloadTheme();
     }
     handleProfilesDeleting(profileId) {
       if (!this.profileExists(profileId)) {
-        ToastManager.info(`${d("profiles.text.profile")} ${profileId} ${d("profiles.text.doesnt_exist")}`);
+        ToastManager.info(`${g("profiles.text.profile")} ${profileId} ${g("profiles.text.doesnt_exist")}`);
         return;
       }
       const name = this.settings[profileId].name;
@@ -5190,7 +5309,7 @@ var Themed = (() => {
         data: {}
       };
       const display = name ? `"${name}"` : profileId;
-      ToastManager.success(`${d("profiles.text.profile")} ${display} ${d("profiles.text.has_been_deleted")}`);
+      ToastManager.success(`${g("profiles.text.profile")} ${display} ${g("profiles.text.has_been_deleted")}`);
       this.updateProfileLabel(profileId);
       this.updateProfileButtons(profileId);
       this.updateProfileColorShowcase(profileId);
@@ -5206,7 +5325,7 @@ var Themed = (() => {
     }
     updateProfileLabel(profileId) {
       const name = this.settings[profileId].name;
-      const display = name ? name : `${d("profiles.text.profile")} ${profileId}`;
+      const display = name ? name : `${g("profiles.text.profile")} ${profileId}`;
       const profileLabel = ElementWrap(`tmd-profile-label-${profileId}`);
       if (!profileLabel) return;
       profileLabel.textContent = display;
@@ -5222,20 +5341,20 @@ var Themed = (() => {
       const exists = this.profileExists(profileId);
       if (!exists) return null;
       const profile = this.settings[profileId];
-      const colors = Object.entries(profile.data.ColorsModule.base);
+      const colors2 = Object.entries(profile.data.ColorsModule.base);
       return ElementCreate({
         tag: "div",
         classList: ["tmd-profile-color-showcase"],
         attributes: {
           id: `tmd-profile-color-showcase-${profileId}`
         },
-        children: colors.map(([key, value]) => {
+        children: colors2.map(([key, value]) => {
           const isBaseMode = !profile.data.GlobalModule.doUseAdvancedColoring;
           const baseModeKey = /* @__PURE__ */ __name((key2) => ["main", "accent", "text"].includes(key2), "baseModeKey");
           if (isBaseMode && !baseModeKey(key)) {
             return;
           }
-          return c.createButton({
+          return u.createButton({
             id: `tmd-profile-color-showcase-${profileId}-${key}`,
             htmlOptions: {
               button: {
@@ -5247,7 +5366,7 @@ var Themed = (() => {
             },
             options: {
               noStyling: true,
-              tooltip: d(`colors.setting.${key}.name`)
+              tooltip: g(`colors.setting.${key}.name`)
             }
           });
         })
@@ -5255,7 +5374,7 @@ var Themed = (() => {
     }
     isValidProfileId(id) {
       if (id < 1 || id > 3) {
-        logger.warn(`Invalid profile id ${id}`);
+        m.warn(`Invalid profile id ${id}`);
         return false;
       }
       return true;
@@ -5280,7 +5399,7 @@ var Themed = (() => {
   var GuiProfiles = _GuiProfiles;
 
   // src/modules/profiles.ts
-  var _ProfilesModule = class _ProfilesModule extends B {
+  var _ProfilesModule = class _ProfilesModule extends L {
     get settings() {
       return super.settings;
     }
@@ -5292,11 +5411,11 @@ var Themed = (() => {
     }
     get defaultSettings() {
       const profileDefaults = {
-        GlobalModule: x("GlobalModule").defaultSettings,
-        ColorsModule: x("ColorsModule").defaultSettings,
-        IntegrationModule: x("IntegrationModule").defaultSettings
+        GlobalModule: C("GlobalModule").defaultSettings,
+        ColorsModule: C("ColorsModule").defaultSettings,
+        IntegrationModule: C("IntegrationModule").defaultSettings
       };
-      const data = u.playerStorage?.ProfilesModule || {};
+      const data = p.playerStorage?.ProfilesModule || {};
       for (let i = 0; i < 3; i++) {
         const profileIndex = i + 1;
         if (!data[profileIndex] || Object.keys(data[profileIndex]).length === 0) {
@@ -5306,7 +5425,7 @@ var Themed = (() => {
           };
         }
         if (Object.keys(data[profileIndex].data).length > 0)
-          data[profileIndex].data = b(profileDefaults, data[profileIndex].data);
+          data[profileIndex].data = f(profileDefaults, data[profileIndex].data);
       }
       return data;
     }
@@ -5317,23 +5436,23 @@ var Themed = (() => {
   var ProfilesModule = _ProfilesModule;
 
   // src/modules/share.ts
-  var _ShareModule = class _ShareModule extends B {
+  var _ShareModule = class _ShareModule extends L {
     constructor() {
       super(...arguments);
       __publicField(this, "channel", null);
     }
     load() {
-      this.channel = new ce("share");
+      this.channel = new Ie("share");
       this.channel.registerListener("ThemedTheme", (data, sender) => {
         const theme = data.Theme;
         const version = data.ThemeVersion;
         const settings = data.Settings;
         const senderName = CharacterNickname(sender);
-        const prompt = d("modal.prompt.share").replace("$Sender", `${senderName} (${sender.MemberNumber})`).replace("$SenderPronoun", CharacterPronoun(sender, "Possessive", false)).split("<br>").map((str) => ({
+        const prompt = g("modal.prompt.share").replace("$Sender", `${senderName} (${sender.MemberNumber})`).replace("$SenderPronoun", CharacterPronoun(sender, "Possessive", false)).split("<br>").map((str) => ({
           tag: "span",
           children: [str]
         }));
-        const shareNotification = d("modal.prompt.chat_share_notification").replace("$Sender", `${senderName} (${sender.MemberNumber})`);
+        const shareNotification = g("modal.prompt.chat_share_notification").replace("$Sender", `${senderName} (${sender.MemberNumber})`);
         const message = ElementCreate({
           tag: "div",
           classList: ["themed-chat-modal"],
@@ -5350,7 +5469,7 @@ var Themed = (() => {
                 shareNotification
               ]
             },
-            c.createButton({
+            u.createButton({
               id: ElementGenerateID(),
               htmlOptions: {
                 button: {
@@ -5358,14 +5477,14 @@ var Themed = (() => {
                 }
               },
               options: {
-                label: d("modal.button.show")
+                label: g("modal.button.show")
               },
               onClick: /* @__PURE__ */ __name(() => {
-                if (!version || version !== Player.Themed.Version) {
-                  ci("theme-not-up-to-date", `Theme sent by ${senderName} is not up-to-date!`);
+                if (!version || version !== p.playerStorage.Version) {
+                  Zn("theme-not-up-to-date", `Theme sent by ${senderName} is not up-to-date!`);
                   return;
                 }
-                W.confirm(prompt).then((result) => {
+                D.confirm(prompt).then((result) => {
                   if (result) {
                     this.acceptShare(theme, settings);
                   }
@@ -5378,18 +5497,18 @@ var Themed = (() => {
       });
     }
     acceptShare(data, settings) {
-      Player.Themed.ColorsModule = data;
-      Player.Themed.GlobalModule.doUseAdvancedColoring = settings.doUseAdvancedColoring;
-      u.save();
+      C("ColorsModule").settings = data;
+      C("GlobalModule").settings.doUseAdvancedColoring = settings.doUseAdvancedColoring;
+      p.save();
       ColorsModule.reloadTheme();
     }
     share(target) {
-      ci("theme-share", "Shared theme with " + (target ? CharacterNickname(ChatRoomCharacter.find((c2) => c2.MemberNumber == target)) : "everyone"));
-      di(`${CharacterNickname(Player)} shares ${CharacterPronoun(Player, "Possessive", false)} Themed theme!`, target);
+      Zn("theme-share", "Shared theme with " + (target ? CharacterNickname(ChatRoomCharacter.find((c) => c.MemberNumber == target)) : "everyone"));
+      kn(`${CharacterNickname(Player)} shares ${CharacterPronoun(Player, "Possessive", false)} Themed theme!`, target);
       this.channel?.sendEvent("ThemedTheme", {
-        Theme: Player.Themed.ColorsModule,
-        Settings: Player.Themed.GlobalModule,
-        ThemeVersion: Player.Themed.Version
+        Theme: C("ColorsModule").settings,
+        Settings: C("GlobalModule").settings,
+        ThemeVersion: p.playerStorage.Version
       });
     }
   };
@@ -5397,13 +5516,14 @@ var Themed = (() => {
   var ShareModule = _ShareModule;
 
   // src/migrators/deeplib_migrator.ts
-  var _DeeplibMigrator = class _DeeplibMigrator extends ne {
+  var _DeeplibMigrator = class _DeeplibMigrator extends pe {
     get migrationVersion() {
       return "1.6.0";
     }
     migrate() {
-      Player.Themed.GlobalModule.modEnabled = Player.Themed.GlobalModule.themedEnabled;
-      delete Player.Themed.GlobalModule.themedEnabled;
+      const globalModule = C("GlobalModule");
+      globalModule.settings.modEnabled = globalModule.settings["themedEnabled"];
+      delete globalModule.settings["themedEnabled"];
       ColorsModule.reloadTheme();
     }
   };
@@ -5411,7 +5531,7 @@ var Themed = (() => {
   var DeeplibMigrator = _DeeplibMigrator;
 
   // src/screens/reset.ts
-  var _GuiReset = class _GuiReset extends m {
+  var _GuiReset = class _GuiReset extends I {
     load() {
       super.load();
       let timeToConfirm = 5;
@@ -5422,34 +5542,34 @@ var Themed = (() => {
           id: "tmd-reset-container"
         },
         children: [
-          c.createLabel({
+          u.createLabel({
             id: "themed-reset-label-perma_reset_of_mod_data",
-            label: d("reset.label.perma_reset_of_mod_data")
+            label: g("reset.label.perma_reset_of_mod_data")
           }),
           {
             tag: "br"
           },
-          c.createLabel({
+          u.createLabel({
             id: "themed-reset-label-warning",
-            label: d("reset.label.warning")
+            label: g("reset.label.warning")
           }),
-          c.createLabel({
+          u.createLabel({
             id: "themed-reset-label-if_u_confirm_perma_reset",
-            label: d("reset.label.if_u_confirm_perma_reset")
+            label: g("reset.label.if_u_confirm_perma_reset")
           }),
           {
             tag: "br"
           },
-          c.createLabel({
+          u.createLabel({
             id: "themed-reset-label-youll_able_to_use_mod",
-            label: d("reset.label.youll_able_to_use_mod")
+            label: g("reset.label.youll_able_to_use_mod")
           }),
           {
             tag: "br"
           },
-          c.createLabel({
+          u.createLabel({
             id: "themed-reset-label-action_cannot_be_undone",
-            label: d("reset.label.action_cannot_be_undone")
+            label: g("reset.label.action_cannot_be_undone")
           }),
           {
             tag: "br"
@@ -5460,43 +5580,43 @@ var Themed = (() => {
               id: "tmd-reset-buttons-container"
             },
             children: [
-              c.createButton({
+              u.createButton({
                 id: "tmd-reset-button",
                 onClick: /* @__PURE__ */ __name(() => {
                   this.confirm();
                   timer?.();
                 }, "onClick"),
                 options: {
-                  label: `${d("reset.button.confirm")} (${timeToConfirm})`
+                  label: `${g("reset.button.confirm")} (${timeToConfirm})`
                 },
                 disabled: true
               }),
-              c.createButton({
+              u.createButton({
                 id: "tmd-cancel-button",
                 onClick: /* @__PURE__ */ __name(() => {
                   this.exit();
                   timer?.();
                 }, "onClick"),
                 options: {
-                  label: d("reset.button.cancel")
+                  label: g("reset.button.cancel")
                 }
               })
             ]
           }
         ],
-        parent: g.getSubscreen()
+        parent: b.getSubscreen()
       });
       const timer = TimerCreate(() => {
         timeToConfirm--;
         const button = ElementWrap("tmd-reset-button");
         const buttonLabel = button?.querySelector(".button-label");
         if (buttonLabel) {
-          buttonLabel.textContent = `${d("reset.button.confirm")} (${timeToConfirm})`;
+          buttonLabel.textContent = `${g("reset.button.confirm")} (${timeToConfirm})`;
         }
         if (timeToConfirm <= 0) {
           if (button && buttonLabel) {
             button.disabled = false;
-            buttonLabel.textContent = d("reset.button.confirm");
+            buttonLabel.textContent = g("reset.button.confirm");
           }
           timer();
         }
@@ -5509,8 +5629,8 @@ var Themed = (() => {
     }
     confirm() {
       settingsReset();
-      for (const module of f()) {
-        module.registerDefaultSettings(u.playerStorage);
+      for (const module of x()) {
+        module.registerDefaultSettings(p.playerStorage);
       }
       ColorsModule.reloadTheme();
       PreferenceOpenSubscreen("Extensions").then(() => {
@@ -5535,7 +5655,7 @@ var Themed = (() => {
       new DeeplibMigrator()
     ];
     const modules = {
-      GUI: new L({
+      GUI: new k({
         buttonText: "Themed",
         identifier: "Themed",
         image: `${"https://ddeeplb.github.io/Themed-BC/public"}/images/mod.png`
@@ -5547,23 +5667,24 @@ var Themed = (() => {
       ProfilesModule: new ProfilesModule(),
       CommandsModule: new CommandsModule(),
       ShareModule: new ShareModule(),
-      VersionModule: new R({
+      VersionModule: new U({
         newVersionMessage: changelog,
         migrators
       })
     };
-    return st({
-      beforeLogin: /* @__PURE__ */ __name(() => loadLoginOptions(), "beforeLogin"),
+    return wt({
+      beforeLogin: /* @__PURE__ */ __name(() => {
+        loadLocalSettings();
+        loadLoginOptions();
+      }, "beforeLogin"),
       initFunction: /* @__PURE__ */ __name(() => {
         ColorsModule.reloadTheme();
       }, "initFunction"),
-      modName: "Themed",
-      modRepository: "https://github.com/dDeepLb/Themed-BC",
       mainMenuOptions: {
-        importExportSubscreen: new le({
+        importExportSubscreen: new ve({
           customFileExtension: ".tmd",
           onImport() {
-            u.save();
+            p.save();
             ColorsModule.reloadTheme();
           }
         }),
@@ -5577,4 +5698,17 @@ var Themed = (() => {
     });
   })();
 })();
+/*! Bundled license information:
+
+bc-deeplib/dist/deeplib.js:
+  (*! Bundled license information:
+  
+  js-logger/src/logger.js:
+    (*!
+     * js-logger - http://github.com/jonnyreeves/js-logger
+     * Jonny Reeves, http://jonnyreeves.co.uk/
+     * js-logger may be freely distributed under the MIT license.
+     *)
+  *)
+*/
 //# sourceMappingURL=themed.js.map
