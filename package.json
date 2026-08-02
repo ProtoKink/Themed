@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dDeepLb/Themed-BC.git"
+    "url": "git+https://github.com/ProtoKink/Themed.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dDeepLb/Themed-BC/issues"
+    "url": "https://github.com/ProtoKink/Themed/issues"
   },
-  "homepage": "https://github.com/dDeepLb/Themed-BC#readme",
+  "homepage": "https://github.com/ProtoKink/Themed#readme",
   "dependencies": {
     "bc-deeplib": "^5.0.1",
     "color": "^5.0.3"

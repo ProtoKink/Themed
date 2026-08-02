@@ -6,13 +6,13 @@ export default defineConfig({
   modInfo: {
     name: 'Themed',
     fullName: 'BC Themed',
-    repository: 'https://github.com/dDeepLb/Themed-BC',
+    repository: 'https://github.com/ProtoKink/Themed',
   },
   distDirName: 'dist',
   publicDirName: 'public',
   scripts: ['./scripts/compile_scss.js', './scripts/copy_files.js'],
-  prodRemoteURL: 'https://ddeeplb.github.io/Themed-BC',
-  devRemoteURL: 'https://ddeeplb.github.io/Themed-BC/dev',
+  prodRemoteURL: 'https://protokink.github.io/Themed',
+  devRemoteURL: 'https://protokink.github.io/Themed/dev',
   host: 'localhost',
   port: 45001,
   esbuildOptions: {

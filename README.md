@@ -1,1 +1,1 @@
-# Read the [Wiki](https://github.com/dDeepLb/Themed-BC/wiki) for installation instruction, theme examples and other.
+# Read the [Wiki](https://github.com/ProtoKink/Themed/wiki) for installation instruction, theme examples and other.

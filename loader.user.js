@@ -20,7 +20,7 @@
 (function () {
   'use strict';
   const ending = 'themed.js';
-  const prodPath = 'https://ddeeplb.github.io/Themed-BC/';
+  const prodPath = 'https://protokink.github.io/Themed/';
   const devPath = `${prodPath}dev/`;
   const localPath = 'http://localhost:45001/';
 
