@@ -6,7 +6,7 @@ var Themed = (() => {
   var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 
   // <define:MOD_INFO>
-  var define_MOD_INFO_default = { name: "Themed", fullName: "BC Themed", repository: "https://github.com/dDeepLb/Themed-BC" };
+  var define_MOD_INFO_default = { name: "Themed", fullName: "BC Themed", repository: "https://github.com/ProtoKink/Themed" };
 
   // node_modules/.pnpm/bc-deeplib@5.0.1_sass-embedded@1.100.0/node_modules/bc-deeplib/dist/deeplib.js
   var ye = Object.create;
@@ -189,7 +189,7 @@ var Themed = (() => {
       if (this.options.help) {
         let i = this.options.help.onClick, o = r(() => {
         }, "action");
-        typeof i == "string" || i instanceof URL ? o = r(() => window.open(i, "_blank"), "action") : typeof i == "function" ? o = i : i instanceof _a2 && (o = r(async () => await this.setSubscreen(i), "action")), (_a15 = this.options.help).tooltip ?? (_a15.tooltip = g("settings.button.help_button_hint")), (_b = this.options.help).icon ?? (_b.icon = `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/bookmark.svg`);
+        typeof i == "string" || i instanceof URL ? o = r(() => window.open(i, "_blank"), "action") : typeof i == "function" ? o = i : i instanceof _a2 && (o = r(async () => await this.setSubscreen(i), "action")), (_a15 = this.options.help).tooltip ?? (_a15.tooltip = g("settings.button.help_button_hint")), (_b = this.options.help).icon ?? (_b.icon = `${"https://protokink.github.io/Themed/public"}/dl_images/bookmark.svg`);
         let s = u.createButton({ id: "deeplib-help", size: [90, 90], onClick: o, options: { image: this.options.help.icon, tooltip: this.options.help.tooltip } });
         _a2.menu.append(s);
       }
@@ -200,7 +200,7 @@ var Themed = (() => {
       if (this.options.doShowExitButton) {
         let i = u.createButton({ id: "deeplib-exit", size: [90, 90], onClick: r(() => {
           this.exit();
-        }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/exit.svg`, tooltip: g("settings.button.back_button_hint") } });
+        }, "onClick"), options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/exit.svg`, tooltip: g("settings.button.back_button_hint") } });
         _a2.menu.append(i);
       }
       let n = u.createTooltip();
@@ -1153,9 +1153,9 @@ var Themed = (() => {
     }, "setNextTooltip");
     return ElementCreate({ tag: "div", classList: ["deeplib-prev-next"], attributes: { id: t.id }, children: [u.createButton({ id: `deeplib-prev-next-${t.id}-prev-button`, onClick: r(() => {
       t.back({ setLabel: n, setBackTooltip: i, setNextTooltip: o });
-    }, "onClick"), htmlOptions: { button: { classList: ["deeplib-prev-next-button"] } }, options: { noStyling: true, image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/arrow_left.svg`, tooltip: t.initialPrevTooltip } }), u.createLabel({ id: `${t.id}-label`, label: t.initialLabel, htmlOptions: { classList: ["deeplib-prev-next-label"] } }), u.createButton({ id: `deeplib-prev-next-${t.id}-next-button`, onClick: r(() => {
+    }, "onClick"), htmlOptions: { button: { classList: ["deeplib-prev-next-button"] } }, options: { noStyling: true, image: `${"https://protokink.github.io/Themed/public"}/dl_images/arrow_left.svg`, tooltip: t.initialPrevTooltip } }), u.createLabel({ id: `${t.id}-label`, label: t.initialLabel, htmlOptions: { classList: ["deeplib-prev-next-label"] } }), u.createButton({ id: `deeplib-prev-next-${t.id}-next-button`, onClick: r(() => {
       t.next({ setLabel: n, setBackTooltip: i, setNextTooltip: o });
-    }, "onClick"), htmlOptions: { button: { classList: ["deeplib-prev-next-button"] } }, options: { noStyling: true, image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/arrow_right.svg`, tooltip: t.initialNextTooltip } })] });
+    }, "onClick"), htmlOptions: { button: { classList: ["deeplib-prev-next-button"] } }, options: { noStyling: true, image: `${"https://protokink.github.io/Themed/public"}/dl_images/arrow_right.svg`, tooltip: t.initialNextTooltip } })] });
   }
   __name(Xe, "Xe");
   r(Xe, "elementPrevNext");
@@ -1174,7 +1174,7 @@ var Themed = (() => {
       super.load();
       let e = u.createButton({ id: "exit", size: [90, 90], onClick: r(() => {
         this.exit();
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/exit.svg`, tooltip: g("settings.button.back_button_hint") } }), n = document.getElementById("deeplib-nav-menu");
+      }, "onClick"), options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/exit.svg`, tooltip: g("settings.button.back_button_hint") } }), n = document.getElementById("deeplib-nav-menu");
       n && n.append(e);
       for (let o of this.subscreens) {
         if (o.options.name === "mainmenu") continue;
@@ -1187,25 +1187,25 @@ var Themed = (() => {
       if (b.appendToSubscreen(i), _a8.options.wikiLink) {
         let o = u.createButton({ id: "deeplib-wiki-button", onClick: r(() => {
           window.open(_a8.options.wikiLink, "_blank");
-        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/notebook.svg`, label: g("mainmenu.button.wiki") } });
+        }, "onClick"), size: [null, 80], options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/notebook.svg`, label: g("mainmenu.button.wiki") } });
         b.appendToMiscDiv(o);
       }
       if (_a8.options.repoLink) {
         let o = u.createButton({ id: "deeplib-repo-button", onClick: r(() => {
           window.open(_a8.options.repoLink, "_blank");
-        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/git.svg`, label: g("mainmenu.button.repo") } });
+        }, "onClick"), size: [null, 80], options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/git.svg`, label: g("mainmenu.button.repo") } });
         b.appendToMiscDiv(o);
       }
       if (_a8.options.resetSubscreen) {
         let o = u.createButton({ id: "deeplib-reset-button", onClick: r(() => {
           this.setSubscreen(_a8.options.resetSubscreen);
-        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/trash_bin.svg`, label: g("mainmenu.button.reset") } });
+        }, "onClick"), size: [null, 80], options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/trash_bin.svg`, label: g("mainmenu.button.reset") } });
         b.appendToMiscDiv(o);
       }
       if (_a8.options.importExportSubscreen) {
         let o = u.createButton({ id: "deeplib-import-export-button", onClick: r(() => {
           this.setSubscreen(_a8.options.importExportSubscreen);
-        }, "onClick"), size: [null, 80], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/transfer.svg`, label: g("mainmenu.button.import_export") } });
+        }, "onClick"), size: [null, 80], options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/transfer.svg`, label: g("mainmenu.button.import_export") } });
         b.appendToMiscDiv(o);
       }
       if (_a8.options.storageFullnessIndicator) {
@@ -1215,7 +1215,7 @@ var Themed = (() => {
       if (C("DebugModule")) {
         let o = u.createButton({ id: "deeplib-debug-button", onClick: r(() => {
           this.setSubscreen(new j(C("DebugModule")));
-        }, "onClick"), size: [90, 90], options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/bug.svg` } });
+        }, "onClick"), size: [90, 90], options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/bug.svg` } });
         n && n.prepend(o);
       }
     }
@@ -1312,7 +1312,7 @@ var Themed = (() => {
       }
       return n;
     }
-  }, __name(_a9, "t"), r(_a9, "Localization"), __publicField(_a9, "LibTranslation", {}), __publicField(_a9, "ModTranslation", {}), __publicField(_a9, "PathToModTranslation"), __publicField(_a9, "PathToLibTranslation", `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_translations/`), __publicField(_a9, "DefaultLanguage", "en"), __publicField(_a9, "FetchFolder", false), __publicField(_a9, "initialized", false), _a9);
+  }, __name(_a9, "t"), r(_a9, "Localization"), __publicField(_a9, "LibTranslation", {}), __publicField(_a9, "ModTranslation", {}), __publicField(_a9, "PathToModTranslation"), __publicField(_a9, "PathToLibTranslation", `${"https://protokink.github.io/Themed/public"}/dl_translations/`), __publicField(_a9, "DefaultLanguage", "en"), __publicField(_a9, "FetchFolder", false), __publicField(_a9, "initialized", false), _a9);
   var g = r((t, e) => {
     let n = A.getTextMod(t) || A.getTextLib(t) || t;
     if (e) {
@@ -1413,19 +1413,19 @@ var Themed = (() => {
       super.load();
       let e = u.createButton({ id: "deeplib-import-file-button", size: [600, 90], onClick: r(() => {
         this.dataImport("file");
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/file_import.svg`, label: g("import-export.button.import_file") } });
+      }, "onClick"), options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/file_import.svg`, label: g("import-export.button.import_file") } });
       b.appendToSettingsDiv(e);
       let n = u.createButton({ id: "deeplib-export-file-button", size: [600, 90], onClick: r(() => {
         this.dataExport("file");
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/file_export.svg`, label: g("import-export.button.export_file") } });
+      }, "onClick"), options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/file_export.svg`, label: g("import-export.button.export_file") } });
       b.appendToSettingsDiv(n);
       let i = u.createButton({ id: "deeplib-import-clipboard-button", size: [600, 90], onClick: r(() => {
         this.dataImport("clipboard");
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/clipboard_import.svg`, label: g("import-export.button.import_clipboard") } });
+      }, "onClick"), options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/clipboard_import.svg`, label: g("import-export.button.import_clipboard") } });
       b.appendToSettingsDiv(i);
       let o = u.createButton({ id: "deeplib-export-clipboard-button", size: [600, 90], onClick: r(() => {
         this.dataExport("clipboard");
-      }, "onClick"), options: { image: `${"https://ddeeplb.github.io/Themed-BC/public"}/dl_images/clipboard_export.svg`, label: g("import-export.button.export_clipboard") } });
+      }, "onClick"), options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/clipboard_export.svg`, label: g("import-export.button.export_clipboard") } });
       b.appendToSettingsDiv(o);
     }
     resize() {
@@ -1868,7 +1868,7 @@ var Themed = (() => {
   };
   function loadLoginOptions() {
     patchLoginPage();
-    H.injectEmbed(ids.optionsStyle, `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/login-options.css`);
+    H.injectEmbed(ids.optionsStyle, `${"https://protokink.github.io/Themed/public"}/styles/login-options.css`);
     createUI();
     const loginRunHook = w.hookFunction("LoginRun", E.Observe, (args, next) => {
       next(args);
@@ -3798,7 +3798,7 @@ var Themed = (() => {
         }, "onClick"),
         size: [90, 90],
         options: {
-          image: `${"https://ddeeplb.github.io/Themed-BC/public"}/images/refresh.svg`,
+          image: `${"https://protokink.github.io/Themed/public"}/images/refresh.svg`,
           tooltip: g("colors.button.change_input_type")
         }
       });
@@ -3920,7 +3920,7 @@ var Themed = (() => {
   __publicField(_GuiColors, "instance");
   __publicField(_GuiColors, "subscreenOptions", {
     name: "colors",
-    icon: `${"https://ddeeplb.github.io/Themed-BC/public"}/images/palette.svg`
+    icon: `${"https://protokink.github.io/Themed/public"}/images/palette.svg`
   });
   var GuiColors = _GuiColors;
 
@@ -4053,7 +4053,7 @@ var Themed = (() => {
       "http"
     ],
     doColorizeImageIncludes: [
-      "https://ddeeplb.github.io/Themed-BC/public"
+      "https://protokink.github.io/Themed/public"
     ],
     doNotColorizeImages: [
       "Icons/Accept.png",
@@ -4108,7 +4108,7 @@ var Themed = (() => {
       "data:"
     ],
     doColorizeHTMLImageIncludes: [
-      "https://ddeeplb.github.io/Themed-BC/public"
+      "https://protokink.github.io/Themed/public"
     ],
     doNotColorizeHTMLImages: [
       "Icons/Information.svg",
@@ -4800,16 +4800,16 @@ var Themed = (() => {
   var BcStyle = {
     injectAll() {
       const isEnabled = p.playerStorage.GlobalModule.modEnabled;
-      H.injectEmbed("tmd-style", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/themed.css`);
+      H.injectEmbed("tmd-style", `${"https://protokink.github.io/Themed/public"}/styles/themed.css`);
       if (!isEnabled) return;
       H.injectInline("tmd-root", composeRoot());
-      H.injectEmbed("tmd-chat-room-search", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/chatroom_search.css`);
-      H.injectEmbed("tmd-preference", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/preference.css`);
-      H.injectEmbed("tmd-misc", `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/misc.css`);
+      H.injectEmbed("tmd-chat-room-search", `${"https://protokink.github.io/Themed/public"}/styles/chatroom_search.css`);
+      H.injectEmbed("tmd-preference", `${"https://protokink.github.io/Themed/public"}/styles/preference.css`);
+      H.injectEmbed("tmd-misc", `${"https://protokink.github.io/Themed/public"}/styles/misc.css`);
       const styleIDs = Object.keys(styles);
       styleIDs.forEach((id) => {
         if (!p.playerStorage.IntegrationModule[id]) return;
-        H.injectEmbed(id, `${"https://ddeeplb.github.io/Themed-BC/public"}/styles/${id}.css`);
+        H.injectEmbed(id, `${"https://protokink.github.io/Themed/public"}/styles/${id}.css`);
       });
     },
     ejectAll() {
@@ -4988,7 +4988,7 @@ var Themed = (() => {
   __name(_GuiGlobal, "GuiGlobal");
   __publicField(_GuiGlobal, "subscreenOptions", {
     name: "global",
-    icon: `${"https://ddeeplb.github.io/Themed-BC/public"}/images/cog.svg`
+    icon: `${"https://protokink.github.io/Themed/public"}/images/cog.svg`
   });
   var GuiGlobal = _GuiGlobal;
 
@@ -5154,7 +5154,7 @@ var Themed = (() => {
   __name(_GuiIntegration, "GuiIntegration");
   __publicField(_GuiIntegration, "subscreenOptions", {
     name: "integration",
-    icon: `${"https://ddeeplb.github.io/Themed-BC/public"}/images/stars.svg`
+    icon: `${"https://protokink.github.io/Themed/public"}/images/stars.svg`
   });
   var GuiIntegration = _GuiIntegration;
 
@@ -5393,7 +5393,7 @@ var Themed = (() => {
   __name(_GuiProfiles, "GuiProfiles");
   __publicField(_GuiProfiles, "subscreenOptions", {
     name: "profiles",
-    icon: `${"https://ddeeplb.github.io/Themed-BC/public"}/images/users_group.svg`,
+    icon: `${"https://protokink.github.io/Themed/public"}/images/users_group.svg`,
     drawCharacter: false
   });
   var GuiProfiles = _GuiProfiles;
@@ -5649,7 +5649,7 @@ var Themed = (() => {
 
   // src/themed.ts
   (async () => {
-    const changelog = await fetch(`${"https://ddeeplb.github.io/Themed-BC/public"}/text/changelog.txt`).then((res) => res.text()).then((text) => text.replace(/\r\n/g, "\n"));
+    const changelog = await fetch(`${"https://protokink.github.io/Themed/public"}/text/changelog.txt`).then((res) => res.text()).then((text) => text.replace(/\r\n/g, "\n"));
     const migrators = [
       new V140Migrator(),
       new DeeplibMigrator()
@@ -5658,7 +5658,7 @@ var Themed = (() => {
       GUI: new k({
         buttonText: "Themed",
         identifier: "Themed",
-        image: `${"https://ddeeplb.github.io/Themed-BC/public"}/images/mod.png`
+        image: `${"https://protokink.github.io/Themed/public"}/images/mod.png`
       }),
       GlobalModule: new GlobalModule(),
       ColorsModule: new ColorsModule(),
@@ -5693,7 +5693,7 @@ var Themed = (() => {
       },
       modules,
       translationOptions: {
-        pathToTranslationsFolder: `${"https://ddeeplb.github.io/Themed-BC/public"}/translations/`
+        pathToTranslationsFolder: `${"https://protokink.github.io/Themed/public"}/translations/`
       }
     });
   })();
