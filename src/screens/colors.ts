@@ -1,8 +1,10 @@
-import { advElement, BaseSubscreen, getModule, getText, modStorage, SubscreenOptions } from 'bc-deeplib/deeplib';
-import { BaseColorsModel, ColorsSettingsModel, SpecialColorsModel } from '../models/colors';
+import { BaseSubscreen, getModule, getText, modStorage, SubscreenOptions } from 'bc-deeplib/deeplib';
+import { BaseColorsModel, ColorsSettingsModel } from '../models/colors';
 import { ColorsModule } from '../modules/colors';
 import { _Color } from '../utilities/color';
 import { Dropdown, Input, SettingElement } from 'bc-deeplib/base/elements_typings';
+
+type ColorGroup = 'base' | 'special';
 
 export class GuiColors extends BaseSubscreen {
   static instance: GuiColors;
@@ -25,20 +27,17 @@ export class GuiColors extends BaseSubscreen {
 
   get pageStructure(): SettingElement[][] {
     const settings = this.settings;
-    const defaultSettings = getModule('ColorsModule').defaultSettings;
     const isBaseMode = !modStorage.playerStorage.GlobalModule.doUseAdvancedColoring;
     const baseModeKey = (key: keyof BaseColorsModel) => ['main', 'accent', 'text'].includes(key);
 
-    const ret: SettingElement[][] = [[], []];
-
-    const themeDropdownOptions: Omit<HTMLOptions<"option">, "tag">[] = ['dark', 'light']
+    const themeDropdownOptions: Omit<HTMLOptions<'option'>, 'tag'>[] = ['dark', 'light']
       .map(e => ({
         attributes: {
           value: e,
           label: getText('colors.setting.theme-type-' + e),
           selected: e === this.settings.themeSettings.themeType
         }
-      }))
+      }));
     const themeType: Dropdown = {
       id: 'tmd-theme-type',
       type: 'dropdown',
@@ -49,60 +48,16 @@ export class GuiColors extends BaseSubscreen {
         settings.themeSettings.themeType = val as 'dark' | 'light';
         ColorsModule.reloadTheme();
       },
-    }
-    ret[0].push(themeType)
+    };
 
-    ret[0].push(...Object.entries(this.settings.base).map(([key, value]) => {
-      const typedKey = key as keyof BaseColorsModel;
+    const baseInputs = this.createColorInputs('base', (key) =>
+      isBaseMode && !baseModeKey(key as keyof BaseColorsModel)
+    ).sort((a, b) => (a.disabled ? 1 : 0) - (b.disabled ? 1 : 0));
 
-      return <Input>{
-        id: key,
-        type: 'color',
-        label: getText(`colors.setting.${key}.name`),
-        description: getText(`colors.setting.${key}.desc`),
-        setElementValue: () => value ?? defaultSettings.base[typedKey],
-        setSettingValue: () => value ?? defaultSettings.base[typedKey],
-        disabled: isBaseMode && !baseModeKey(typedKey),
-        htmlOptions: {
-          input: {
-            eventListeners: {
-              click: function(ev) {
-                if (this.type !== 'color') return;
-                ev.preventDefault();
-                GuiColors.instance.colorPickerToggle(this, getText(`colors.setting.${key}.name`), 'base');
-              }
-            }
-          } as Omit<HTMLOptions<'input'>, 'tag'>
-        }
-      }
-    })
-      .sort((a, b) => (a.disabled ? 1 : 0) - (b.disabled ? 1 : 0)) as Input[])
-
-    ret[1].push(...Object.entries(this.settings.special).map(([key, value]) => {
-      const typedKey = key as keyof SpecialColorsModel;
-
-      return <Input>{
-        id: key,
-        type: 'color',
-        label: getText(`colors.setting.${key}.name`),
-        description: getText(`colors.setting.${key}.desc`),
-        setElementValue: () => value ?? defaultSettings.special[typedKey],
-        setSettingValue: () => value ?? defaultSettings.special[typedKey],
-        htmlOptions: {
-          input: {
-            eventListeners: {
-              click: function(ev) {
-                if (this.type !== 'color') return;
-                ev.preventDefault();
-                GuiColors.instance.colorPickerToggle(this, getText(`colors.setting.${key}.name`), 'special');
-              }
-            }
-          } as Omit<HTMLOptions<'input'>, 'tag'>
-        }
-      };
-    }));
-
-    return ret;
+    return [
+      [themeType, ...baseInputs],
+      this.createColorInputs('special'),
+    ];
   }
 
   load(): void {
@@ -110,69 +65,20 @@ export class GuiColors extends BaseSubscreen {
 
     this.settingsBackup = CommonCloneDeep(this.settings);
 
-    const settings = getModule('ColorsModule').settings;
-
-    Object.entries(this.settings.base).forEach(([key]) => {
-      (ElementWrap(key) as HTMLInputElement | null)?.addEventListener('input', function () {
-        if (!_Color.isValidHex(this.value)) {
-          this.setCustomValidity('Invalid hex color');
-          return;
-        }
-
-        this.setCustomValidity('');
-        const typedKey = key as keyof BaseColorsModel;
-        settings.base[typedKey] = this.value;
-        ColorsModule.reloadTheme();
-      });
-    });
-
-    Object.entries(this.settings.special).forEach(([key]) => {
-      (ElementWrap(key) as HTMLInputElement | null)?.addEventListener('input', function () {
-        if (!_Color.isValidHex(this.value)) {
-          this.setCustomValidity('Invalid hex color');
-          return;
-        }
-
-        this.setCustomValidity('');
-        const typedKey = key as keyof SpecialColorsModel;
-        settings.special[typedKey] = this.value;
-        ColorsModule.reloadTheme();
-      });
-    });
+    this.bindColorInputListeners('base');
+    this.bindColorInputListeners('special');
   }
 
   exit(): void {
     if (this.colorPickerInput) {
       ColorPickerExit(true);
-      ElementWrap("tmd-colors-color-picker-backdrop")?.remove();
+      ElementWrap('tmd-colors-color-picker-backdrop')?.remove();
       this.colorPickerInput = false;
       return;
     }
 
-    
-    const settings = getModule('ColorsModule').settings;
-
-    Object.entries(this.settings.base).forEach(([key]) => {
-      const input = ElementWrap(key) as HTMLInputElement;
-
-      if (!input) return;
-
-      if (!_Color.isValidHex(input.value)) {
-        const typedKey = key as keyof BaseColorsModel;
-        settings.base[typedKey] = this.settingsBackup.base[typedKey];
-      }
-    });
-
-    Object.entries(this.settings.special).forEach(([key]) => {
-      const input = ElementWrap(key) as HTMLInputElement;
-
-      if (!input) return;
-
-      if (!_Color.isValidHex(input.value)) {
-        const typedKey = key as keyof SpecialColorsModel;
-        settings.special[typedKey] = this.settingsBackup.special[typedKey];
-      }
-    });
+    this.restoreInvalidColors('base');
+    this.restoreInvalidColors('special');
 
     super.exit();
   }
@@ -187,7 +93,78 @@ export class GuiColors extends BaseSubscreen {
     ColorPickerResize(false);
   }
 
-  private colorPickerToggle(input: HTMLInputElement, title: string, group: 'base' | 'special') {
+  private createColorInputs(group: ColorGroup, isDisabled?: (key: string) => boolean): Input[] {
+    const defaultSettings = getModule('ColorsModule').defaultSettings;
+
+    return Object.entries(this.settings[group]).map(([key, value]) => {
+      const defaults = defaultSettings[group] as Record<string, string>;
+
+      return <Input>{
+        id: key,
+        type: 'color',
+        label: getText(`colors.setting.${key}.name`),
+        description: getText(`colors.setting.${key}.desc`),
+        setElementValue: () => value ?? defaults[key],
+        setSettingValue: () => value ?? defaults[key],
+        disabled: isDisabled?.(key) ?? false,
+        htmlOptions: {
+          input: {
+            eventListeners: {
+              click: function (ev) {
+                if (this.type !== 'color') return;
+                ev.preventDefault();
+                GuiColors.instance.colorPickerToggle(this, getText(`colors.setting.${key}.name`), group);
+              }
+            }
+          } as Omit<HTMLOptions<'input'>, 'tag'>
+        }
+      };
+    });
+  }
+
+  private bindColorInputListeners(group: ColorGroup): void {
+    const settings = getModule('ColorsModule').settings;
+
+    Object.keys(this.settings[group]).forEach((key) => {
+      (ElementWrap(key) as HTMLInputElement | null)?.addEventListener('input', function () {
+        if (!_Color.isValidHex(this.value)) {
+          this.setCustomValidity('Invalid hex color');
+          return;
+        }
+
+        this.setCustomValidity('');
+        (settings[group] as Record<string, string>)[key] = this.value;
+        ColorsModule.reloadTheme();
+      });
+    });
+  }
+
+  private restoreInvalidColors(group: ColorGroup): void {
+    const settings = getModule('ColorsModule').settings;
+
+    Object.keys(this.settings[group]).forEach((key) => {
+      const input = ElementWrap(key) as HTMLInputElement | null;
+      if (!input || _Color.isValidHex(input.value)) return;
+
+      (settings[group] as Record<string, string>)[key] =
+        (this.settingsBackup[group] as Record<string, string>)[key];
+    });
+  }
+
+  private applyPickedColor(input: HTMLInputElement, group: ColorGroup, color: string): void {
+    ElementValue(input.id, color);
+
+    if (!_Color.isValidHex(color)) {
+      input.setCustomValidity('Invalid hex color');
+      return;
+    }
+
+    input.setCustomValidity('');
+    (getModule('ColorsModule').settings[group] as Record<string, string>)[input.id] = color;
+    ColorsModule.reloadTheme();
+  }
+
+  private colorPickerToggle(input: HTMLInputElement, title: string, group: ColorGroup) {
     if (!this.colorPickerInput) {
       const paddingTop = 75;
       const paddingRight = 2000 - (1815 + 90);
@@ -210,20 +187,7 @@ export class GuiColors extends BaseSubscreen {
         onInput: () => null,
         onExit: ({ colors }, save) => {
           if (save) {
-            const color = colors[0];
-            ElementValue(input.id, color);
-            if (_Color.isValidHex(color)) {
-              input.setCustomValidity('');
-              const settings = getModule('ColorsModule').settings;
-              if (group === 'base') {
-                settings.base[input.id as keyof BaseColorsModel] = color;
-              } else {
-                settings.special[input.id as keyof SpecialColorsModel] = color;
-              }
-              ColorsModule.reloadTheme();
-            } else {
-              input.setCustomValidity('Invalid hex color');
-            }
+            this.applyPickedColor(input, group, colors[0]);
           }
           this.colorPickerInput = false;
           ElementWrap('tmd-colors-color-picker-backdrop')?.toggleAttribute('hidden', true);
@@ -250,5 +214,4 @@ export class GuiColors extends BaseSubscreen {
     }
     this.colorPickerInput = !this.colorPickerInput;
   }
-  
 }
