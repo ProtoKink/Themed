@@ -116,12 +116,12 @@ export class GuiColors extends BaseSubscreen {
       (ElementWrap(key) as HTMLInputElement | null)?.addEventListener('input', function () {
         if (!_Color.isValidHex(this.value)) {
           this.setCustomValidity('Invalid hex color');
-        } else {
-          this.setCustomValidity('');
-          const typedKey = key as keyof BaseColorsModel;
-          settings.base[typedKey] = this.value;
+          return;
         }
 
+        this.setCustomValidity('');
+        const typedKey = key as keyof BaseColorsModel;
+        settings.base[typedKey] = this.value;
         ColorsModule.reloadTheme();
       });
     });
@@ -130,12 +130,12 @@ export class GuiColors extends BaseSubscreen {
       (ElementWrap(key) as HTMLInputElement | null)?.addEventListener('input', function () {
         if (!_Color.isValidHex(this.value)) {
           this.setCustomValidity('Invalid hex color');
-        } else {
-          this.setCustomValidity('');
-          const typedKey = key as keyof SpecialColorsModel;
-          settings.special[typedKey] = this.value;
+          return;
         }
 
+        this.setCustomValidity('');
+        const typedKey = key as keyof SpecialColorsModel;
+        settings.special[typedKey] = this.value;
         ColorsModule.reloadTheme();
       });
     });
