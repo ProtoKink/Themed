@@ -3705,10 +3705,8 @@ var Themed = (() => {
     }
     get pageStructure() {
       const settings = this.settings;
-      const defaultSettings = C("ColorsModule").defaultSettings;
       const isBaseMode = !p.playerStorage.GlobalModule.doUseAdvancedColoring;
       const baseModeKey = /* @__PURE__ */ __name((key) => ["main", "accent", "text"].includes(key), "baseModeKey");
-      const ret = [[], []];
       const themeDropdownOptions = ["dark", "light"].map((e) => ({
         attributes: {
           value: e,
@@ -3727,136 +3725,30 @@ var Themed = (() => {
           ColorsModule.reloadTheme();
         }
       };
-      ret[0].push(themeType);
-      ret[0].push(...Object.entries(this.settings.base).map(([key, value]) => {
-        const typedKey = key;
-        return {
-          id: key,
-          type: "color",
-          label: g(`colors.setting.${key}.name`),
-          description: g(`colors.setting.${key}.desc`),
-          setElementValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.base[typedKey], "setElementValue"),
-          setSettingValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.base[typedKey], "setSettingValue"),
-          disabled: isBaseMode && !baseModeKey(typedKey),
-          htmlOptions: {
-            input: {
-              eventListeners: {
-                click: /* @__PURE__ */ __name(function(ev) {
-                  if (this.type !== "color") return;
-                  ev.preventDefault();
-                  _GuiColors.instance.colorPickerToggle(this, g(`colors.setting.${key}.name`));
-                }, "click")
-              }
-            }
-          }
-        };
-      }).sort((a, b2) => (a.disabled ? 1 : 0) - (b2.disabled ? 1 : 0)));
-      ret[1].push(...Object.entries(this.settings.special).map(([key, value]) => {
-        const typedKey = key;
-        return {
-          id: key,
-          type: "color",
-          label: g(`colors.setting.${key}.name`),
-          description: g(`colors.setting.${key}.desc`),
-          setElementValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.special[typedKey], "setElementValue"),
-          setSettingValue: /* @__PURE__ */ __name(() => value ?? defaultSettings.special[typedKey], "setSettingValue"),
-          htmlOptions: {
-            input: {
-              eventListeners: {
-                click: /* @__PURE__ */ __name(function(ev) {
-                  if (this.type !== "color") return;
-                  ev.preventDefault();
-                  _GuiColors.instance.colorPickerToggle(this, g(`colors.setting.${key}.name`));
-                }, "click")
-              }
-            }
-          }
-        };
-      }));
-      return ret;
+      const baseInputs = this.createColorInputs(
+        "base",
+        (key) => isBaseMode && !baseModeKey(key)
+      ).sort((a, b2) => (a.disabled ? 1 : 0) - (b2.disabled ? 1 : 0));
+      return [
+        [themeType, ...baseInputs],
+        this.createColorInputs("special")
+      ];
     }
     load() {
       super.load();
-      const typeToggleButton = u.createButton({
-        id: "tmd-inputs-type-toggle",
-        onClick: /* @__PURE__ */ __name(() => {
-          this.pageStructure.forEach((page) => {
-            page.forEach((elm) => {
-              if (elm.type == "color" || elm.type == "text") {
-                const e = ElementWrap(elm?.id ?? "");
-                if (!e) return;
-                const elementType = e.getAttribute("type");
-                if (elementType == "color") {
-                  e.setAttribute("type", "text");
-                } else {
-                  e.setAttribute("type", "color");
-                }
-              }
-            });
-          });
-          this.resize();
-        }, "onClick"),
-        size: [90, 90],
-        options: {
-          image: `${"https://protokink.github.io/Themed/public"}/images/refresh.svg`,
-          tooltip: g("colors.button.change_input_type")
-        }
-      });
-      const menu = document.getElementById("deeplib-nav-menu");
-      if (menu) {
-        menu.prepend(typeToggleButton);
-      }
       this.settingsBackup = CommonCloneDeep(this.settings);
-      const settings = C("ColorsModule").settings;
-      Object.entries(this.settings.base).forEach(([key]) => {
-        document.getElementById(key)?.addEventListener("input", function() {
-          if (!_Color.isValidHex(this.value)) {
-            this.setCustomValidity("Invalid hex color");
-          } else {
-            this.setCustomValidity("");
-            const typedKey = key;
-            settings.base[typedKey] = this.value;
-          }
-          ColorsModule.reloadTheme();
-        });
-      });
-      Object.entries(this.settings.special).forEach(([key]) => {
-        document.getElementById(key)?.addEventListener("input", function() {
-          if (!_Color.isValidHex(this.value)) {
-            this.setCustomValidity("Invalid hex color");
-          } else {
-            this.setCustomValidity("");
-            const typedKey = key;
-            settings.special[typedKey] = this.value;
-          }
-          ColorsModule.reloadTheme();
-        });
-      });
+      this.bindColorInputListeners("base");
+      this.bindColorInputListeners("special");
     }
     exit() {
       if (this.colorPickerInput) {
         ColorPickerExit(true);
-        document.getElementById("tmd-colors-color-picker-backdrop")?.remove();
+        ElementWrap("tmd-colors-color-picker-backdrop")?.remove();
         this.colorPickerInput = false;
         return;
       }
-      const settings = C("ColorsModule").settings;
-      Object.entries(this.settings.base).forEach(([key]) => {
-        const input = document.getElementById(key);
-        if (!input) return;
-        if (!_Color.isValidHex(input.value)) {
-          const typedKey = key;
-          settings.base[typedKey] = this.settingsBackup.base[typedKey];
-        }
-      });
-      Object.entries(this.settings.special).forEach(([key]) => {
-        const input = document.getElementById(key);
-        if (!input) return;
-        if (!_Color.isValidHex(input.value)) {
-          const typedKey = key;
-          settings.special[typedKey] = this.settingsBackup.special[typedKey];
-        }
-      });
+      this.restoreInvalidColors("base");
+      this.restoreInvalidColors("special");
       super.exit();
     }
     unload() {
@@ -3867,7 +3759,65 @@ var Themed = (() => {
       super.resize();
       ColorPickerResize(false);
     }
-    colorPickerToggle(input, title) {
+    createColorInputs(group, isDisabled) {
+      const defaultSettings = C("ColorsModule").defaultSettings;
+      return Object.entries(this.settings[group]).map(([key, value]) => {
+        const defaults = defaultSettings[group];
+        return {
+          id: key,
+          type: "color",
+          label: g(`colors.setting.${key}.name`),
+          description: g(`colors.setting.${key}.desc`),
+          setElementValue: /* @__PURE__ */ __name(() => value ?? defaults[key], "setElementValue"),
+          setSettingValue: /* @__PURE__ */ __name(() => value ?? defaults[key], "setSettingValue"),
+          disabled: isDisabled?.(key) ?? false,
+          htmlOptions: {
+            input: {
+              eventListeners: {
+                click: /* @__PURE__ */ __name(function(ev) {
+                  if (this.type !== "color") return;
+                  ev.preventDefault();
+                  _GuiColors.instance.colorPickerToggle(this, g(`colors.setting.${key}.name`), group);
+                }, "click")
+              }
+            }
+          }
+        };
+      });
+    }
+    bindColorInputListeners(group) {
+      const settings = C("ColorsModule").settings;
+      Object.keys(this.settings[group]).forEach((key) => {
+        ElementWrap(key)?.addEventListener("input", function() {
+          if (!_Color.isValidHex(this.value)) {
+            this.setCustomValidity("Invalid hex color");
+            return;
+          }
+          this.setCustomValidity("");
+          settings[group][key] = this.value;
+          ColorsModule.reloadTheme();
+        });
+      });
+    }
+    restoreInvalidColors(group) {
+      const settings = C("ColorsModule").settings;
+      Object.keys(this.settings[group]).forEach((key) => {
+        const input = ElementWrap(key);
+        if (!input || _Color.isValidHex(input.value)) return;
+        settings[group][key] = this.settingsBackup[group][key];
+      });
+    }
+    applyPickedColor(input, group, color) {
+      ElementValue(input.id, color);
+      if (!_Color.isValidHex(color)) {
+        input.setCustomValidity("Invalid hex color");
+        return;
+      }
+      input.setCustomValidity("");
+      C("ColorsModule").settings[group][input.id] = color;
+      ColorsModule.reloadTheme();
+    }
+    colorPickerToggle(input, title, group) {
       if (!this.colorPickerInput) {
         const paddingTop = 75;
         const paddingRight = 2e3 - (1815 + 90);
@@ -3890,13 +3840,13 @@ var Themed = (() => {
           onInput: /* @__PURE__ */ __name(() => null, "onInput"),
           onExit: /* @__PURE__ */ __name(({ colors: colors2 }, save) => {
             if (save) {
-              ElementValue(input.id, colors2[0]);
+              this.applyPickedColor(input, group, colors2[0]);
             }
             this.colorPickerInput = false;
-            document.getElementById("tmd-colors-color-picker-backdrop")?.toggleAttribute("hidden", true);
+            ElementWrap("tmd-colors-color-picker-backdrop")?.toggleAttribute("hidden", true);
           }, "onExit")
         }).then((colorPicker) => {
-          let backdrop = document.getElementById("tmd-colors-color-picker-backdrop");
+          let backdrop = ElementWrap("tmd-colors-color-picker-backdrop");
           if (!backdrop) {
             ElementCreate({
               tag: "div",
@@ -3906,12 +3856,14 @@ var Themed = (() => {
               style: { "background-color": "rgba(0, 0, 0, 0.3)", width: "100%", height: "100%", position: "absolute" }
             });
           } else {
+            backdrop.replaceChildren(colorPicker);
             backdrop.toggleAttribute("hidden", false);
           }
+          ColorPickerResize(false);
         });
       } else {
         ColorPickerHide();
-        document.getElementById("tmd-colors-color-picker-backdrop")?.toggleAttribute("hidden", true);
+        ElementWrap("tmd-colors-color-picker-backdrop")?.toggleAttribute("hidden", true);
       }
       this.colorPickerInput = !this.colorPickerInput;
     }
