@@ -113,7 +113,7 @@ export class GuiColors extends BaseSubscreen {
     const settings = getModule('ColorsModule').settings;
 
     Object.entries(this.settings.base).forEach(([key]) => {
-      (document.getElementById(key) as HTMLInputElement)?.addEventListener('input', function () {
+      (ElementWrap(key) as HTMLInputElement | null)?.addEventListener('input', function () {
         if (!_Color.isValidHex(this.value)) {
           this.setCustomValidity('Invalid hex color');
         } else {
@@ -127,7 +127,7 @@ export class GuiColors extends BaseSubscreen {
     });
 
     Object.entries(this.settings.special).forEach(([key]) => {
-      (document.getElementById(key) as HTMLInputElement)?.addEventListener('input', function () {
+      (ElementWrap(key) as HTMLInputElement | null)?.addEventListener('input', function () {
         if (!_Color.isValidHex(this.value)) {
           this.setCustomValidity('Invalid hex color');
         } else {
@@ -144,7 +144,7 @@ export class GuiColors extends BaseSubscreen {
   exit(): void {
     if (this.colorPickerInput) {
       ColorPickerExit(true);
-      document.getElementById("tmd-colors-color-picker-backdrop")?.remove();
+      ElementWrap("tmd-colors-color-picker-backdrop")?.remove();
       this.colorPickerInput = false;
       return;
     }
@@ -153,7 +153,7 @@ export class GuiColors extends BaseSubscreen {
     const settings = getModule('ColorsModule').settings;
 
     Object.entries(this.settings.base).forEach(([key]) => {
-      const input = document.getElementById(key) as HTMLInputElement;
+      const input = ElementWrap(key) as HTMLInputElement;
 
       if (!input) return;
 
@@ -164,7 +164,7 @@ export class GuiColors extends BaseSubscreen {
     });
 
     Object.entries(this.settings.special).forEach(([key]) => {
-      const input = document.getElementById(key) as HTMLInputElement;
+      const input = ElementWrap(key) as HTMLInputElement;
 
       if (!input) return;
 
@@ -213,10 +213,10 @@ export class GuiColors extends BaseSubscreen {
             ElementValue(input.id, colors[0]);
           }
           this.colorPickerInput = false;
-          document.getElementById('tmd-colors-color-picker-backdrop')?.toggleAttribute('hidden', true);
+          ElementWrap('tmd-colors-color-picker-backdrop')?.toggleAttribute('hidden', true);
         },
       }).then(colorPicker => {
-        let backdrop = document.getElementById('tmd-colors-color-picker-backdrop');
+        let backdrop = ElementWrap('tmd-colors-color-picker-backdrop');
         if (!backdrop) {
           ElementCreate({
             tag: 'div',
@@ -232,7 +232,7 @@ export class GuiColors extends BaseSubscreen {
       });
     } else {
       ColorPickerHide();
-      document.getElementById('tmd-colors-color-picker-backdrop')?.toggleAttribute('hidden', true);
+      ElementWrap('tmd-colors-color-picker-backdrop')?.toggleAttribute('hidden', true);
     }
     this.colorPickerInput = !this.colorPickerInput;
   }
