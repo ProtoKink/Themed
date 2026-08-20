@@ -228,6 +228,7 @@ export class GuiColors extends BaseSubscreen {
         } else {
           backdrop.toggleAttribute('hidden', false);
         }
+				ColorPickerResize(false);
       });
     } else {
       ColorPickerHide();
