@@ -69,7 +69,7 @@ export class GuiColors extends BaseSubscreen {
               click: function(ev) {
                 if (this.type !== 'color') return;
                 ev.preventDefault();
-                GuiColors.instance.colorPickerToggle(this, getText(`colors.setting.${key}.name`));
+                GuiColors.instance.colorPickerToggle(this, getText(`colors.setting.${key}.name`), 'base');
               }
             }
           } as Omit<HTMLOptions<'input'>, 'tag'>
@@ -94,7 +94,7 @@ export class GuiColors extends BaseSubscreen {
               click: function(ev) {
                 if (this.type !== 'color') return;
                 ev.preventDefault();
-                GuiColors.instance.colorPickerToggle(this, getText(`colors.setting.${key}.name`));
+                GuiColors.instance.colorPickerToggle(this, getText(`colors.setting.${key}.name`), 'special');
               }
             }
           } as Omit<HTMLOptions<'input'>, 'tag'>
@@ -187,7 +187,7 @@ export class GuiColors extends BaseSubscreen {
     ColorPickerResize(false);
   }
 
-  private colorPickerToggle(input: HTMLInputElement, title: string) {
+  private colorPickerToggle(input: HTMLInputElement, title: string, group: 'base' | 'special') {
     if (!this.colorPickerInput) {
       const paddingTop = 75;
       const paddingRight = 2000 - (1815 + 90);
@@ -210,7 +210,20 @@ export class GuiColors extends BaseSubscreen {
         onInput: () => null,
         onExit: ({ colors }, save) => {
           if (save) {
-            ElementValue(input.id, colors[0]);
+            const color = colors[0];
+            ElementValue(input.id, color);
+            if (_Color.isValidHex(color)) {
+              input.setCustomValidity('');
+              const settings = getModule('ColorsModule').settings;
+              if (group === 'base') {
+                settings.base[input.id as keyof BaseColorsModel] = color;
+              } else {
+                settings.special[input.id as keyof SpecialColorsModel] = color;
+              }
+              ColorsModule.reloadTheme();
+            } else {
+              input.setCustomValidity('Invalid hex color');
+            }
           }
           this.colorPickerInput = false;
           ElementWrap('tmd-colors-color-picker-backdrop')?.toggleAttribute('hidden', true);
