@@ -226,9 +226,10 @@ export class GuiColors extends BaseSubscreen {
             style: { 'background-color': 'rgba(0, 0, 0, 0.3)', width: '100%', height: '100%', position: 'absolute' },
           });
         } else {
+          backdrop.replaceChildren(colorPicker);
           backdrop.toggleAttribute('hidden', false);
         }
-				ColorPickerResize(false);
+        ColorPickerResize(false);
       });
     } else {
       ColorPickerHide();
