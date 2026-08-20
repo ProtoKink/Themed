@@ -108,38 +108,6 @@ export class GuiColors extends BaseSubscreen {
   load(): void {
     super.load();
 
-    const typeToggleButton = advElement.createButton({
-      id: 'tmd-inputs-type-toggle',
-      onClick: () => {
-        this.pageStructure.forEach((page) => {
-          page.forEach((elm) => {
-            if (elm.type == 'color' || elm.type == 'text') {
-              const e = ElementWrap(elm?.id ?? '');
-              if (!e) return;
-              const elementType = e.getAttribute('type');
-
-              if (elementType == 'color') {
-                e.setAttribute('type', 'text');
-              } else {
-                e.setAttribute('type', 'color');
-              }
-            }
-          });
-        });
-        this.resize();
-      },
-      size: [90, 90],
-      options: {
-        image: `${PUBLIC_URL}/images/refresh.svg`,
-        tooltip: getText('colors.button.change_input_type'),
-      }
-    });
-
-    const menu = document.getElementById('deeplib-nav-menu');
-    if (menu) {
-      menu.prepend(typeToggleButton);
-    }
-
     this.settingsBackup = CommonCloneDeep(this.settings);
 
     const settings = getModule('ColorsModule').settings;
