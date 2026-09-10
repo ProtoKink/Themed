@@ -4200,9 +4200,6 @@ var Themed = (() => {
       if (image != null && image != "") {
         DrawImageEx(image, MainCanvas, x2 + buttonPadding, y + buttonPadding, { Width: width - 2 * buttonPadding, Height: height - 2 * buttonPadding });
       }
-      if (hoveringText != null && isHovering) {
-        DrawHoverElements.push(() => DrawButtonHover(x2, y, width, height, hoveringText));
-      }
       if (hoveringText != null && isHovering && !CommonPhotoMode) {
         DrawHoverElements.push(() => {
           const rect = tooltipPosition ?? RectMakeRect(x2, y, width, height);
