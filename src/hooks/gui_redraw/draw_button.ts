@@ -8,7 +8,7 @@ export function hookDrawButton() {
   sdk.hookFunction('DrawButton', HookPriority.Observe, (args, next) => {
     if (!doRedraw()) return next(args);
 
-    const [x, y, width, height, label, , image, hoveringText, isDisabled] = args;
+    const [x, y, width, height, label, , image, hoveringText, isDisabled, tooltipPosition] = args;
     let color = args[5];
     const isHovering = MouseHovering(x, y, width, height);
 
@@ -35,15 +35,23 @@ export function hookDrawButton() {
       isHovering,
       isDisabled ?? false
     );
+		
+		const buttonPadding = 2;
 
-    DrawTextFit(label, x + width / 2, y + height / 2 + 1, width - 4, plainColors.text);
-
-    if (image != null && image != '') {
-      DrawImage(image, x + 2, y + 2);
-    }
+		DrawTextFit(label, x + width / 2, y + (height / 2) + 1, width - 2 * buttonPadding, plainColors.text);
+		if (image != null && image != '') {
+			DrawImageEx(image, MainCanvas, x + buttonPadding, y + buttonPadding, { Width: width - 2 * buttonPadding, Height: height - 2 * buttonPadding });
+		}
 
     if (hoveringText != null && isHovering) {
       DrawHoverElements.push(() => DrawButtonHover(x, y, width, height, hoveringText));
     }
+
+		if (hoveringText != null && isHovering && !CommonPhotoMode) {
+			DrawHoverElements.push(() => {
+				const rect = tooltipPosition ?? RectMakeRect(x, y, width, height);
+				DrawButtonHover(...RectGetFrame(rect), hoveringText);
+			});
+		}
   }, ModuleCategory.GuiRedraw);
 }
