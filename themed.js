@@ -4197,8 +4197,14 @@ var Themed = (() => {
       );
       const buttonPadding = 2;
       DrawTextFit(label, x2 + width / 2, y + height / 2 + 1, width - 2 * buttonPadding, plainColors.text);
-      if (image != null && image != "") {
-        DrawImageEx(image, MainCanvas, x2 + buttonPadding, y + buttonPadding, { Width: width - 2 * buttonPadding, Height: height - 2 * buttonPadding });
+      if (image) {
+        const img = DrawGetImage(image);
+        if (img.complete) {
+          const buttonRect = RectMakeRect(x2 + buttonPadding, y + buttonPadding, width - 2 * buttonPadding, height - 2 * buttonPadding);
+          const baseImageRect = RectMakeRect(x2 + buttonPadding, y + buttonPadding, img.width, img.height);
+          const [, imageRect] = RectFitIntoRect(baseImageRect, buttonRect, DrawingResizeMode.ShowFullOriginalRatio);
+          DrawImageEx(image, MainCanvas, baseImageRect.x, baseImageRect.y, { Width: imageRect[2], Height: imageRect[3] });
+        }
       }
       if (hoveringText != null && isHovering && !CommonPhotoMode) {
         DrawHoverElements.push(() => {
