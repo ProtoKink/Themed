@@ -40,6 +40,9 @@ body:has(button[data-mode=FilterMode]) .chat-search-room .chat-search-room-join-
   --button-color: var(--tmd-search-full-friend);
   --hover-color: var(--tmd-search-full-friend-hover);
 }
+.chat-search-room .chat-search-room-join-button.chat-search-room-join-button .button-tooltip {
+  background-color: transparent;
+}
 .chat-search-room .chat-search-room-page-button {
   --button-color: transparent !important;
   --hover-color: transparent !important;

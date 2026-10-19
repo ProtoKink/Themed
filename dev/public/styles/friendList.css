@@ -15,13 +15,6 @@
 #friend-list-beep-dialog textarea {
   background: var(--tmd-element);
   color: var(--tmd-text);
-  border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
-}
-#friend-list-subscreen input,
-#friend-list-beep-dialog input {
-  background: var(--tmd-element);
-  color: var(--tmd-text);
-  border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
 }
 #friend-list-subscreen textarea:focus,
 #friend-list-subscreen input:focus,
@@ -48,5 +41,13 @@
   background-color: var(--tmd-element-hint);
   color: var(--tmd-text);
   border-color: var(--tmd-accent);
+}
+#friend-list-subscreen .friend-list-beep-chat-input-field,
+#friend-list-beep-dialog .friend-list-beep-chat-input-field {
+  border-color: var(--tmd-accent);
+}
+#friend-list-subscreen .friend-list-beep-chat-send::before,
+#friend-list-beep-dialog .friend-list-beep-chat-send::before {
+  background: var(--tmd-accent);
 }
 /*# sourceMappingURL=friendList.css.map */

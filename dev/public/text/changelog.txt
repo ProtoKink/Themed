@@ -1,10 +1,12 @@
-1.7.0
-• Adapt new DOMified screens to be themeable.
-• Add two more colors: Text Shadow and Text Disabled.
+1.8.3
+• Fix color picker on Colors settings page being broken randomly.
+• Remove the button to toggle types of color buttons, because color picker already allows manual hex colors
 
-1.6.2
-• Small fixes.
+1.8.2
+• Colorize chat message names only when needed.
+• Colorize chat room friend request buttons.
+• Reset chat room top menu when reloading theme.
 
-1.6.1
-• Adapted new preference interface to be themeable.
-• Fixed when in Themed settings the character was unnecessarily forced up.
+1.8.1
+• Colorize chat menu icons.
+• Adapt admin customization screen to be themeable.

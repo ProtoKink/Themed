@@ -19,14 +19,21 @@ import-export.button.export_file = Export to file
 import-export.button.import_file = Import from file
 import-export.button.export_clipboard = Export to clipboard
 import-export.button.import_clipboard = Import from clipboard
+import_export.export.select_modules = Select modules to export.
+import_export.import.select_modules = Select modules to import.
+import_export.text.not_sure = Not sure? Leave all as is.
 
 # Modal
 modal.button.close = Close
 modal.button.ok = OK
 modal.button.cancel = Cancel
 modal.button.submit = Submit
+modal.button.confirm = Confirm
 modal.button.decline = Decline
 
 # Version Module
 module.version.version_update = Version Update
 module.version.new_version_toast_title = New Version: $modName$, v$modVersion$
+
+# Debug
+debug.title = - Debug -
