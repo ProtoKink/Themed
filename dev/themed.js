@@ -198,7 +198,7 @@ var Themed = (() => {
         _a2.menu.append(s);
       }
       if (this.options.doShowTitle) {
-        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.3 - 0adc126b" }) });
+        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.3 - c1245f80" }) });
         b.appendToSubscreen(i);
       }
       if (this.options.doShowExitButton) {
@@ -763,7 +763,7 @@ var Themed = (() => {
       Ze();
       return;
     }
-    await t.initFunction?.(), t.mainMenuOptions && B("GUI") && A.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.3 - 0adc126b"}`);
+    await t.initFunction?.(), t.mainMenuOptions && B("GUI") && A.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.3 - c1245f80"}`);
   }
   __name(ke, "ke");
   r(ke, "init");
@@ -1894,15 +1894,16 @@ var Themed = (() => {
     patchLoginPage();
     H.injectEmbed(ids.optionsStyle, `${"https://protokink.github.io/Themed/dev/public"}/styles/login-options.css`);
     createUI();
-    const loginRunHook = G.hookFunction("LoginRun", k.Observe, (args, next) => {
+    const loginResizeHook = G.hookFunction("LoginResize", k.Observe, (args, next) => {
       next(args);
       ElementSetPosition(ids.optionsOpen, 2e3, 1e3, "bottom-right");
       ElementSetSize(ids.optionsOpen, 90, 90);
       ElementSetSize(ids.optionsSheet, 1e3, 500);
+      ElementSetFontSize(ids.optionsSheet, "auto");
     });
     const loginExitHook = G.hookFunction("LoginUnload", k.Observe, (args, next) => {
       loginExitHook();
-      loginRunHook();
+      loginResizeHook();
       removeUI();
       H.eject(ids.optionsStyle);
       unpatchLoginPage();
