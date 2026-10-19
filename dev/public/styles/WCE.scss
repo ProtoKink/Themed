@@ -1,0 +1,107 @@
+.bce-img {
+  border-color: var(--tmd-accent);
+}
+
+#bceRichOnlineProfile {
+  background: var(--tmd-element) !important;
+  color: var(--tmd-text) !important;
+  border: min(0.2vh, 0.1vw) dashed var(--tmd-accent) !important;
+}
+
+.bce-colors .bce-dark-input {
+  background-color: var(--tmd-element);
+  border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
+  color: var(--tmd-text);
+}
+
+/* #region IM */
+#bce-instant-messenger {
+  top: 0px;
+  left: 0px;
+  box-sizing: border-box;
+  background-color: var(--tmd-main);
+  color: var(--tmd-text);
+  border-color: var(--tmd-accent);
+  max-width: max(100vw, 50vh);
+  max-height: min(90vh, 45vw);
+  min-width: max(15vh, 30vw);
+  min-height: max(30vh, 15vw);
+  width: max(100vw, 50vh);
+}
+
+#bce-friend-list {
+  height: 100%;
+}
+
+#bce-friend-search {
+  background-color: var(--tmd-element);
+  border-bottom-color: var(--tmd-accent);
+  color: var(--tmd-text);
+  height: min(3vh, 1.5vw);
+  font-size: min(1.8vh, 0.9vw);
+}
+
+.bce-friend-list-entry.bce-friend-list-selected {
+  border-top-color: var(--tmd-accent);
+  border-bottom-color: var(--tmd-accent);
+  background-color: var(--tmd-element);
+}
+
+.bce-friend-list-entry:hover {
+  background-color: var(--tmd-element-hover);
+}
+
+#bce-message-right-container {
+  border-left-color: var(--tmd-accent);
+}
+
+#bce-message-input {
+  border-top: min(0.2vh, 0.1vw) solid var(--tmd-accent);
+  border-bottom: min(0.2vh, 0.1vw) solid var(--tmd-accent);
+  background-color: var(--tmd-element);
+  color: var(--tmd-text);
+}
+
+#bce-message-input:disabled {
+  border-top: min(0.2vh, 0.1vw) solid var(--tmd-accent-disabled);
+  border-bottom: min(0.2vh, 0.1vw) solid var(--tmd-accent-disabled);
+  background-color: var(--tmd-element-disabled);
+  color: var(--tmd-text);
+}
+
+.bce-message-divider {
+  border-bottom-color: var(--tmd-accent);
+}
+
+.bce-message-sender {
+  text-shadow: 0.05em 0.05em var(--tmd-text-shadow);
+}
+
+.bce-message-Message .bce-message-sender {
+  text-shadow: 0.05em 0.05em var(--tmd-text-shadow);
+}
+
+/* #endregion */
+
+#TextAreaChatLog[data-colortheme^="dark"]+#chat-room-bot .wce-chat-room-select {
+  color: var(--tmd-text);
+  background-color: var(--tmd-element);
+  border-color: var(--tmd-accent);
+}
+
+#TextAreaChatLog[data-colortheme^="dark"],
+#bceRichOnlineProfile,
+.bce-message {
+  a {
+    color: #a9ceff;
+    text-shadow: 0 0 0.05em var(--tmd-text);
+  }
+
+  a:visited {
+    color: #3d91ff;
+  }
+
+  a:active {
+    color: #d34848;
+  }
+}

@@ -1,0 +1,97 @@
+textarea,
+input:not([type="range"]) {
+  background: var(--tmd-element);
+  color: var(--tmd-text);
+  border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
+
+  &:invalid:not(:disabled):not(:read-only) {
+    border-color: var(--tmd-invalid);
+    background-color: color-mix(in srgb, var(--tmd-element) 80%, var(--tmd-invalid) 20%);
+    box-shadow: 0 0 5px 0px var(--tmd-invalid);
+  }
+}
+
+input[type="range"] {
+  background-color: transparent;
+}
+
+input[type="color"] {
+  padding: 0px;
+}
+
+textarea:focus,
+input:focus {
+  outline: var(--tmd-accent) solid 1px;
+}
+
+:not(:has(.toast-button)) {
+  .button {
+    --button-color: var(--tmd-element);
+    --disabled-color: var(--tmd-element-disabled);
+    --hover-color: var(--tmd-element-hover);
+  }
+
+  .button-styling {
+    border-color: var(--tmd-accent);
+  }
+
+  .button-styling:hover {
+    border-color: var(--tmd-accent-hover);
+  }
+
+  .button-tooltip {
+    background-color: var(--tmd-element-hint);
+    color: var(--tmd-text);
+    border-color: var(--tmd-accent);
+  }
+
+  .button-styling>.button-label {
+    color: var(--tmd-text);
+  }
+}
+
+input[type="checkbox"] {
+  background-color: var(--tmd-element);
+  color: var(--tmd-text);
+  border-color: var(--tmd-accent);
+}
+
+input[type="checkbox"]:hover {
+  background-color: var(--tmd-element-hover);
+}
+
+input[type="checkbox"]:disabled {
+  background-color: var(--tmd-element-disabled);
+}
+
+input[type="checkbox"]::before {
+  background-color: var(--tmd-accent);
+}
+
+input[type=range]::-moz-range-track,
+input[type=range]::-webkit-slider-runnable-track {
+
+  &:not(.hue-input),
+  &:not(.opacity-select) {
+    background-color: var(--tmd-element);
+  }
+}
+
+input[type=range]::-moz-range-thumb,
+input[type=range]::-webkit-slider-thumb {
+  background-color: var(--tmd-accent);
+}
+
+.custom-select {
+	--button-color: var(--tmd-element);
+	--disabled-color: var(--tmd-element-disabled);
+
+  background-color: var(--tmd-element);
+	border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
+	border: min(0.2dvh, 0.1dvw) solid var(--tmd-accent);
+  color: var(--tmd-text);
+}
+
+.custom-select:disabled {
+	background-color: var(--tmd-element-disabled);
+}

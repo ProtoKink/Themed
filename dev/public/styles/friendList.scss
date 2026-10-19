@@ -1,0 +1,157 @@
+#friend-list-subscreen {
+	--border-color: var(--tmd-accent);
+	--image-color: var(--tmd-accent);
+	--text-color: var(--tmd-text);
+	--hint-color: color-mix(in srgb, var(--tmd-text) 62%, transparent);
+	--button-color: var(--tmd-element);
+	--inactive-button-color: var(--tmd-element-disabled);
+}
+
+#friend-list-beep-dialog {
+	--border-color: var(--tmd-accent);
+	--border-style: solid;
+	--hint-color: color-mix(in srgb, var(--tmd-text) 62%, var(--tmd-main));
+
+	background-color: color-mix(in srgb, var(--tmd-main) 90%, transparent);
+	color: var(--tmd-text);
+}
+
+#friend-list-subscreen,
+#friend-list-beep-dialog {
+	textarea {
+		background: var(--tmd-element);
+		color: var(--tmd-text);
+	}
+
+	textarea:focus,
+	input:focus {
+		outline: var(--tmd-accent) solid 1px;
+	}
+
+	.button {
+		--button-color: var(--tmd-element);
+		--disabled-color: var(--tmd-element-disabled);
+		--hover-color: var(--tmd-element-hover);
+	}
+
+	.button-styling {
+		border-color: var(--tmd-accent);
+	}
+
+	.button-styling:hover {
+		border-color: var(--tmd-accent-hover);
+	}
+
+	.button-tooltip {
+		background-color: var(--tmd-element-hint);
+		color: var(--tmd-text);
+		border-color: var(--tmd-accent);
+	}
+}
+
+#friend-list-beep-dialog {
+	.friend-list-beep-textarea:focus {
+		outline: none;
+	}
+
+	.friend-list-beep-chat-input:has(.friend-list-beep-textarea:focus) {
+		outline: 1px solid var(--tmd-accent);
+	}
+
+	.friend-list-beep-chat-log {
+		background-color: var(--tmd-element);
+	}
+
+	.friend-list-beep-chat-input-field,
+	.friend-list-beep-reply-preview {
+		background-color: var(--tmd-element);
+		border-color: var(--tmd-accent);
+	}
+
+	.friend-list-beep-chat-send::before {
+		background: var(--tmd-accent);
+	}
+
+	.friend-list-beep-scroll-btn {
+		background: var(--tmd-element);
+		color: var(--tmd-text);
+
+		:hover {
+			background: var(--tmd-element-hover);
+			color: var(--tmd-text);
+		}
+
+		.button-image {
+			filter: invert(1);
+		}
+	}
+
+	.friend-list-beep-unread-badge {
+		background-color: var(--tmd-accent);
+	}
+
+	.friend-list-beep-chat-actions,
+	.friend-list-beep-reaction-picker {
+		background: var(--tmd-element);
+		border-color: var(--tmd-accent);
+		color: var(--tmd-text);
+	}
+
+	.friend-list-beep-chat-toolbar-btn:not([aria-disabled="true"]):hover,
+	.friend-list-beep-reaction-chip:not([aria-disabled="true"]):hover {
+		background: var(--tmd-element-hover);
+	}
+
+	.friend-list-beep-chat-type-message:hover .friend-list-beep-chat-message,
+	.friend-list-beep-chat-type-message:focus-within .friend-list-beep-chat-message {
+		background-color: color-mix(in srgb, var(--tmd-text) 8%, transparent);
+		box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tmd-accent) 40%, transparent);
+	}
+
+	.friend-list-beep-chat-quote {
+		border-left-color: var(--tmd-accent);
+		background: var(--tmd-element);
+		color: var(--tmd-text);
+	}
+
+	.friend-list-beep-reaction-chip {
+		[aria-checked="true"] {
+			background: var(--tmd-accent);
+			background: color-mix(in srgb, var(--tmd-accent) 32%, transparent);
+			color: var(--tmd-text);
+
+			:not([aria-disabled="true"]):hover {
+				background: color-mix(in srgb, var(--tmd-accent) 48%, transparent);
+			}
+		}
+	}
+
+
+	.friend-list-beep-chat-divider {
+		color: var(--hint-color);
+
+		.friend-list-beep-chat-divider-line {
+			background-color: color-mix(in srgb, var(--tmd-text) 35%, transparent);
+		}
+	}
+
+
+	.friend-list-beep-chat-sender {
+		text-shadow: 0.05em 0.05em var(--tmd-text-shadow);
+	}
+
+	.friend-list-beep-chat-body .friend-list-beep-chat-message {
+		padding-block-end: 0.1em; 
+	}
+}
+
+@keyframes friend-list-beep-chat-highlight-anim {
+	from {
+		background-color: var(--tmd-accent);
+		background-color: color-mix(in srgb, var(--tmd-accent) 45%, transparent);
+	}
+
+	to {
+		background-color: transparent;
+	}
+}

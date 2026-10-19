@@ -1,0 +1,200 @@
+.chat-search-room {
+  .chat-search-room-tooltip-entry {
+    border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
+    color: var(--tmd-text);
+  }
+
+  .chat-search-room-tooltip-friends {
+    background-color: var(--tmd-room-friend);
+    border-color: var(--tmd-room-friend-hover);
+  }
+
+  .chat-search-room-tooltip-game {
+    background-color: var(--tmd-room-game);
+    border-color: var(--tmd-room-game-hover);
+  }
+
+  .chat-search-room-tooltip-blocked {
+    background-color: var(--tmd-room-blocked);
+    border-color: var(--tmd-room-blocked-hover);
+  }
+
+  .chat-search-room-join-button.chat-search-room-join-button {
+    body:has(button[data-mode="FilterMode"]) &[data-temporary-hidden="true"] {
+      background-color: var(--tmd-blocked);
+    }
+
+    body:has(button[data-mode="FilterMode"]) &[data-temporary-hidden="false"] {
+      background-color: var(--tmd-allowed);
+    }
+
+    &[data-blocked=true] {
+      --button-color: var(--tmd-room-blocked);
+      --hover-color: var(--tmd-room-blocked-hover);
+    }
+
+    &[data-with-friends=true] {
+      --button-color: var(--tmd-room-friend);
+      --hover-color: var(--tmd-room-friend-hover);
+    }
+
+    &[data-full=true] {
+      --button-color: var(--tmd-element-disabled);
+      --hover-color: color-mix(in srgb, var(--tmd-element-disabled), var(--tmd-element-hover) 50%);
+
+      &[data-blocked=true] {
+        --button-color: var(--tmd-search-full-blocked);
+        --hover-color: var(--tmd-search-full-blocked-hover);
+      }
+
+      &[data-with-friends=true] {
+        --button-color: var(--tmd-search-full-friend);
+        --hover-color: var(--tmd-search-full-friend-hover);
+      }
+    }
+    
+    .button-tooltip {
+      background-color: transparent;
+    }
+  }
+
+  .chat-search-room-page-button {
+    --button-color: transparent !important;
+    --hover-color: transparent !important;
+    --disabled-color: transparent !important;
+
+    body[data-tmd-theme-type="dark"] & img {
+      filter: brightness(0) invert(1);
+    }
+
+    body[data-tmd-theme-type="light"] & img {
+      filter: brightness(0);
+    }
+  }
+
+  p {
+    color: var(--tmd-text)
+  }
+
+  body[data-tmd-theme-type="dark"] & .chat-search-room-icon {
+    filter: invert(1);
+  }
+
+  body[data-tmd-theme-type="light"] & .chat-search-room-icon {
+    filter: none;
+  }
+}
+
+body[data-tmd-theme-type="dark"] {
+
+  #chat-search-clear-input-search,
+  #chat-search-room-search-button,
+  #chat-search-room-open-search-menu {
+    img {
+      filter: invert(1);
+    }
+  }
+}
+
+body[data-tmd-theme-type="light"] {
+
+  #chat-search-clear-input-search,
+  #chat-search-room-search-button,
+  #chat-search-room-open-search-menu {
+    img {
+      filter: none;
+    }
+  }
+}
+
+#chat-search-room-page {
+  background-color: var(--tmd-element);
+  border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
+
+  .chat-search-room-page-title,
+  .chat-search-room-page-creator,
+  .chat-search-room-page-description,
+  .chat-search-room-page-tag,
+  .chat-search-room-page-member-count,
+  .chat-search-room-page-join-button {
+    color: var(--tmd-text);
+  }
+
+  .chat-search-room-page-tag-friends {
+    color: var(--tmd-room-friend);
+
+    &:hover {
+      color: var(--tmd-room-friend-hover);
+    }
+  }
+
+  .chat-search-room-page-description,
+  .chat-search-room-page-member-count {
+    background-color: var(--tmd-element-hint);
+  }
+
+  .chat-search-room-page-member-count {
+    border: none;
+  }
+
+  body[data-tmd-theme-type="dark"] & #chat-search-room-page-exit img {
+    filter: none;
+  }
+
+  body[data-tmd-theme-type="light"] & #chat-search-room-page-exit img {
+    filter: invert(1);
+  }
+}
+
+#chat-search-search-menu {
+  background-color: var(--tmd-element);
+  border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
+  color: var(--tmd-text);
+
+  .chat-search-search-menu-search-button {
+    color: var(--tmd-text);
+  }
+
+  #chat-search-search-menu-room-type-radio-group,
+  #chat-search-search-menu-room-lobby-radio-group {
+    border-color: var(--tmd-accent);
+
+    .element-button-group-button {
+      --button-color: var(--tmd-element);
+      --hover-color: var(--tmd-element-hover);
+      --disabled-color: var(--tmd-element-disabled);
+      background-color: var(--tmd-element);
+
+      &[aria-checked="true"] {
+        background-color: var(--tmd-element-hint);
+        border-right-color: var(--tmd-accent);
+        border-left-color: var(--tmd-accent);
+
+        &:first-child {
+          border-right-color: var(--tmd-accent);
+        }
+
+        &:last-child {
+          border-left-color: var(--tmd-accent);
+        }
+
+      }
+
+      body[data-tmd-theme-type="dark"] & img {
+        filter: invert(1);
+      }
+
+      body[data-tmd-theme-type="light"] & img {
+        filter: none;
+      }
+
+      body[data-tmd-theme-type="dark"] &[value="None"] img {
+        filter: none;
+      }
+
+      body[data-tmd-theme-type="light"] &[value="None"] img {
+        filter: invert(1);
+      }
+    }
+  }
+}
