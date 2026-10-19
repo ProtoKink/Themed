@@ -198,7 +198,7 @@ var Themed = (() => {
         _a2.menu.append(s);
       }
       if (this.options.doShowTitle) {
-        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.3 - c1245f80" }) });
+        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.3 - 0234f673" }) });
         b.appendToSubscreen(i);
       }
       if (this.options.doShowExitButton) {
@@ -763,7 +763,7 @@ var Themed = (() => {
       Ze();
       return;
     }
-    await t.initFunction?.(), t.mainMenuOptions && B("GUI") && A.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.3 - c1245f80"}`);
+    await t.initFunction?.(), t.mainMenuOptions && B("GUI") && A.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.3 - 0234f673"}`);
   }
   __name(ke, "ke");
   r(ke, "init");
@@ -4787,6 +4787,7 @@ var Themed = (() => {
       H.injectEmbed("tmd-chat-room-search", `${"https://protokink.github.io/Themed/dev/public"}/styles/chatroom_search.css`);
       H.injectEmbed("tmd-preference", `${"https://protokink.github.io/Themed/dev/public"}/styles/preference.css`);
       H.injectEmbed("tmd-misc", `${"https://protokink.github.io/Themed/dev/public"}/styles/misc.css`);
+      H.injectEmbed("tmd-map-view", `${"https://protokink.github.io/Themed/dev/public"}/styles/map_view.css`);
       const styleIDs = Object.keys(styles);
       styleIDs.forEach((id) => {
         if (!p.playerStorage.IntegrationModule[id]) return;
@@ -4799,6 +4800,7 @@ var Themed = (() => {
       H.eject("tmd-chat-room-search");
       H.eject("tmd-preference");
       H.eject("tmd-misc");
+      H.eject("tmd-map-view");
       const styleIDs = Object.keys(styles);
       styleIDs.forEach((id) => {
         H.eject(id);

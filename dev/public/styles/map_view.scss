@@ -1,0 +1,21 @@
+#chat-room-map-view-panel-editor-search,
+#chat-room-map-view-panel-editor-recent-items,
+#chat-room-map-view-panel-editor-selection,
+#chat-room-map-view-panel-editor-recent-items-grid,
+#chat-room-map-view-panel-editor-items-grid {
+	background-color: var(--tmd-main);
+	color: var(--tmd-text);
+	border-color: var(--tmd-accent);
+}
+
+
+#chat-room-map-view-panel-editor-search-input {
+	background-color: var(--tmd-element);
+	color: var(--tmd-text);
+	border: 1px solid var(--tmd-accent);
+}
+
+.chat-room-map-view-item-button,
+.chat-room-map-view-item-selected {
+	background-color: var(--tmd-element);
+}
