@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       bc-deeplib:
-        specifier: ^5.0.1
-        version: 5.0.1(sass-embedded@1.100.0)
+        specifier: ^6.0.0
+        version: 6.0.0(sass-embedded@1.100.0)
       color:
         specifier: ^5.0.3
         version: 5.0.3
@@ -37,8 +37,8 @@ importers:
         specifier: ^8.61.1
         version: 8.61.1(eslint@10.5.0)(typescript@6.0.3)
       bc-stubs:
-        specifier: 129.0.0
-        version: 129.0.0
+        specifier: 132.0.0
+        version: 132.0.0
       eslint:
         specifier: ^10.5.0
         version: 10.5.0
@@ -493,12 +493,12 @@ packages:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
     engines: {node: 18 || 20 || >=22}
 
-  bc-deeplib@5.0.1:
-    resolution: {integrity: sha512-jKAjiebU+Hv/ObCKv1xwKzRfnmFfvUYZPuJiLqMl12DSBuQS9mWf3PVOep498c3EoPmQd2zkPIJH936DnCxFjQ==}
+  bc-deeplib@6.0.0:
+    resolution: {integrity: sha512-raMH1OWe3bs7V07ZfETd+z3NyvW7m4XRDyixalxoWYFeBQFZBFX2BGcpvgX/FdzSOhX16Nzn+57nIm+8cn0Jww==}
     hasBin: true
 
-  bc-stubs@129.0.0:
-    resolution: {integrity: sha512-NxmYlDGRaV1CHpOzPy8o4sTeaFmAksw1TAWmGsg0dRSK6KGWPVhS0meVd09RylV4b7o4qKEIGxcS6auS4CxYpw==}
+  bc-stubs@132.0.0:
+    resolution: {integrity: sha512-mYQx/aBFyZ+Ma4wQ1Sr8hJuxR16czg5Bo2F/w0Ynx6iEMmOMHSwyAXKe5hTCUNirruJTzTQWlMi0vYTFHpQ2GQ==}
 
   brace-expansion@5.0.6:
     resolution: {integrity: sha512-kLpxurY4Z4r9sgMsyG0Z9uzsBlgiU/EFKhj/h91/8yHu0edo7XuixOIH3VcJ8kkxs6/jPzoI6U9Vj3WqbMQ94g==}
@@ -1561,7 +1561,7 @@ snapshots:
 
   balanced-match@4.0.4: {}
 
-  bc-deeplib@5.0.1(sass-embedded@1.100.0):
+  bc-deeplib@6.0.0(sass-embedded@1.100.0):
     dependencies:
       chokidar: 5.0.0
       commander: 14.0.3
@@ -1577,7 +1577,7 @@ snapshots:
       - sass-embedded
       - supports-color
 
-  bc-stubs@129.0.0:
+  bc-stubs@132.0.0:
     dependencies:
       '@total-typescript/ts-reset': 0.6.1
       socket.io-client: 4.6.1
