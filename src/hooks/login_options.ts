@@ -21,18 +21,19 @@ export function loadLoginOptions() {
   Style.injectEmbed(ids.optionsStyle, `${PUBLIC_URL}/styles/login-options.css`);
   createUI();
 
-  const loginRunHook = sdk.hookFunction('LoginRun', HookPriority.Observe, (args, next) => {
+  const loginResizeHook = sdk.hookFunction('LoginResize', HookPriority.Observe, (args, next) => {
     next(args);
 
     ElementSetPosition(ids.optionsOpen, 2000, 1000, 'bottom-right');
     ElementSetSize(ids.optionsOpen, 90, 90);
 
     ElementSetSize(ids.optionsSheet, 1000, 500);
+		ElementSetFontSize(ids.optionsSheet, 'auto');
   });
 
   const loginExitHook = sdk.hookFunction('LoginUnload', HookPriority.Observe, (args, next) => {
     loginExitHook();
-    loginRunHook();
+    loginResizeHook();
 
     removeUI();
     Style.eject(ids.optionsStyle);
