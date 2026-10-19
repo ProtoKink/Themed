@@ -115,20 +115,6 @@
 #friend-list-beep-dialog .friend-list-beep-chat-sender {
   text-shadow: 0.05em 0.05em var(--tmd-text-shadow);
 }
-#friend-list-beep-dialog .friend-list-link,
-#friend-list-beep-dialog .friend-list-link * {
-  color: var(--tmd-text);
-}
-#friend-list-beep-dialog .friend-list-link:hover,
-#friend-list-beep-dialog .friend-list-link:hover * {
-  color: var(--tmd-accent-hover);
-}
-#friend-list-beep-dialog .friend-list-link:disabled,
-#friend-list-beep-dialog .friend-list-link:disabled *,
-#friend-list-beep-dialog .friend-list-link:hover:disabled,
-#friend-list-beep-dialog .friend-list-link:hover:disabled * {
-  color: var(--tmd-text-disabled);
-}
 #friend-list-beep-dialog .friend-list-beep-chat-body .friend-list-beep-chat-message {
   padding-block-end: 0.1em;
 }
