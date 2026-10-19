@@ -23,4 +23,16 @@
 }
 
 /* #endregion AdminCustomization */
+/* #region Wardrobe */
+#wardrobe-preview-overlay {
+  background-color: var(--tmd-main);
+  border-color: var(--tmd-accent);
+  color: var(--tmd-text);
+}
+
+#wardrobe-preview-overlay-close .button-image {
+  filter: none;
+}
+
+/* #endregion Wardrobe */
 /*# sourceMappingURL=misc.css.map */

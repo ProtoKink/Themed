@@ -1,0 +1,46 @@
+/* #region InformationSheet */
+
+#AllowedInteractions-dropdown-label {
+  color: var(--tmd-text);
+}
+
+/* #endregion InformationSheet */
+
+/* #region Title */
+
+#title-subscreen-h1,
+#input-nickname-group {
+  color: var(--tmd-text);
+}
+
+#title-subscreen-titlebuttons .button.title-button[active] {
+  --button-color: var(--tmd-accent);
+  --hover-color: var(--tmd-accent-hover);
+  background-color: var(--tmd-accent);
+}
+
+/* #endregion Title */
+
+/* #region AdminCustomization */
+
+#chatroom-admin-subscreen {
+  p, h1, label, span {
+    color: var(--tmd-text);
+  }
+}
+
+/* #endregion AdminCustomization */
+
+/* #region Wardrobe */
+
+#wardrobe-preview-overlay {
+	background-color: var(--tmd-main);
+	border-color: var(--tmd-accent);
+  color: var(--tmd-text);
+}
+
+#wardrobe-preview-overlay-close .button-image {
+	filter: none;
+}
+
+/* #endregion Wardrobe */

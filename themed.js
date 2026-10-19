@@ -5,50 +5,53 @@ var Themed = (() => {
   var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
   var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 
+  // <define:BUNDLED_PUBLIC_ASSET_MAP>
+  var define_BUNDLED_PUBLIC_ASSET_MAP_default = {};
+
   // <define:MOD_INFO>
   var define_MOD_INFO_default = { name: "Themed", fullName: "BC Themed", repository: "https://github.com/ProtoKink/Themed" };
 
-  // node_modules/.pnpm/bc-deeplib@5.0.1_sass-embedded@1.100.0/node_modules/bc-deeplib/dist/deeplib.js
+  // node_modules/.pnpm/bc-deeplib@6.0.0_sass-embedded@1.100.0/node_modules/bc-deeplib/dist/deeplib.js
   var ye = Object.create;
   var J = Object.defineProperty;
-  var xe = Object.getOwnPropertyDescriptor;
-  var Ge = Object.getOwnPropertyNames;
-  var Ce = Object.getPrototypeOf;
-  var Be = Object.prototype.hasOwnProperty;
+  var Ge = Object.getOwnPropertyDescriptor;
+  var Ce = Object.getOwnPropertyNames;
+  var Be = Object.getPrototypeOf;
+  var we = Object.prototype.hasOwnProperty;
   var r = /* @__PURE__ */ __name((t, e) => J(t, "name", { value: e, configurable: true }), "r");
-  var we = /* @__PURE__ */ __name((t, e) => () => (e || t((e = { exports: {} }).exports, e), e.exports), "we");
-  var Te = /* @__PURE__ */ __name((t, e, n, i) => {
-    if (e && typeof e == "object" || typeof e == "function") for (let o of Ge(e)) !Be.call(t, o) && o !== n && J(t, o, { get: /* @__PURE__ */ __name(() => e[o], "get"), enumerable: !(i = xe(e, o)) || i.enumerable });
+  var Te = /* @__PURE__ */ __name((t, e) => () => (e || t((e = { exports: {} }).exports, e), e.exports), "Te");
+  var Le = /* @__PURE__ */ __name((t, e, n, i) => {
+    if (e && typeof e == "object" || typeof e == "function") for (let o of Ce(e)) !we.call(t, o) && o !== n && J(t, o, { get: /* @__PURE__ */ __name(() => e[o], "get"), enumerable: !(i = Ge(e, o)) || i.enumerable });
     return t;
-  }, "Te");
-  var oe = /* @__PURE__ */ __name((t, e, n) => (n = t != null ? ye(Ce(t)) : {}, Te(e || !t || !t.__esModule ? J(n, "default", { value: t, enumerable: true }) : n, t)), "oe");
-  var $ = we((ce, Q) => {
+  }, "Le");
+  var oe = /* @__PURE__ */ __name((t, e, n) => (n = t != null ? ye(Be(t)) : {}, Le(e || !t || !t.__esModule ? J(n, "default", { value: t, enumerable: true }) : n, t)), "oe");
+  var $ = Te((de, U) => {
     (function(t) {
       "use strict";
       var e = {};
       e.VERSION = "1.6.1";
-      var n, i = {}, o = r(function(a, h) {
+      var n, i = {}, o = r(function(l, h) {
         return function() {
-          return h.apply(a, arguments);
+          return h.apply(l, arguments);
         };
       }, "bind"), s = r(function() {
-        var a = arguments, h = a[0], T, v;
-        for (v = 1; v < a.length; v++) for (T in a[v]) !(T in h) && a[v].hasOwnProperty(T) && (h[T] = a[v][T]);
+        var l = arguments, h = l[0], T, v;
+        for (v = 1; v < l.length; v++) for (T in l[v]) !(T in h) && l[v].hasOwnProperty(T) && (h[T] = l[v][T]);
         return h;
-      }, "merge"), l = r(function(a, h) {
-        return { value: a, name: h };
+      }, "merge"), a = r(function(l, h) {
+        return { value: l, name: h };
       }, "defineLogLevel");
-      e.TRACE = l(1, "TRACE"), e.DEBUG = l(2, "DEBUG"), e.INFO = l(3, "INFO"), e.TIME = l(4, "TIME"), e.WARN = l(5, "WARN"), e.ERROR = l(8, "ERROR"), e.OFF = l(99, "OFF");
-      var c = r(function(a) {
-        this.context = a, this.setLevel(a.filterLevel), this.log = this.info;
+      e.TRACE = a(1, "TRACE"), e.DEBUG = a(2, "DEBUG"), e.INFO = a(3, "INFO"), e.TIME = a(4, "TIME"), e.WARN = a(5, "WARN"), e.ERROR = a(8, "ERROR"), e.OFF = a(99, "OFF");
+      var c = r(function(l) {
+        this.context = l, this.setLevel(l.filterLevel), this.log = this.info;
       }, "ContextualLogger");
-      c.prototype = { setLevel: r(function(a) {
-        a && "value" in a && (this.context.filterLevel = a);
+      c.prototype = { setLevel: r(function(l) {
+        l && "value" in l && (this.context.filterLevel = l);
       }, "setLevel"), getLevel: r(function() {
         return this.context.filterLevel;
-      }, "getLevel"), enabledFor: r(function(a) {
+      }, "getLevel"), enabledFor: r(function(l) {
         var h = this.context.filterLevel;
-        return a.value >= h.value;
+        return l.value >= h.value;
       }, "enabledFor"), trace: r(function() {
         this.invoke(e.TRACE, arguments);
       }, "trace"), debug: r(function() {
@@ -59,45 +62,45 @@ var Themed = (() => {
         this.invoke(e.WARN, arguments);
       }, "warn"), error: r(function() {
         this.invoke(e.ERROR, arguments);
-      }, "error"), time: r(function(a) {
-        typeof a == "string" && a.length > 0 && this.invoke(e.TIME, [a, "start"]);
-      }, "time"), timeEnd: r(function(a) {
-        typeof a == "string" && a.length > 0 && this.invoke(e.TIME, [a, "end"]);
-      }, "timeEnd"), invoke: r(function(a, h) {
-        n && this.enabledFor(a) && n(h, s({ level: a }, this.context));
+      }, "error"), time: r(function(l) {
+        typeof l == "string" && l.length > 0 && this.invoke(e.TIME, [l, "start"]);
+      }, "time"), timeEnd: r(function(l) {
+        typeof l == "string" && l.length > 0 && this.invoke(e.TIME, [l, "end"]);
+      }, "timeEnd"), invoke: r(function(l, h) {
+        n && this.enabledFor(l) && n(h, s({ level: l }, this.context));
       }, "invoke") };
       var d = new c({ filterLevel: e.OFF });
       (function() {
-        var a = e;
-        a.enabledFor = o(d, d.enabledFor), a.trace = o(d, d.trace), a.debug = o(d, d.debug), a.time = o(d, d.time), a.timeEnd = o(d, d.timeEnd), a.info = o(d, d.info), a.warn = o(d, d.warn), a.error = o(d, d.error), a.log = a.info;
-      })(), e.setHandler = function(a) {
-        n = a;
-      }, e.setLevel = function(a) {
-        d.setLevel(a);
-        for (var h in i) i.hasOwnProperty(h) && i[h].setLevel(a);
+        var l = e;
+        l.enabledFor = o(d, d.enabledFor), l.trace = o(d, d.trace), l.debug = o(d, d.debug), l.time = o(d, d.time), l.timeEnd = o(d, d.timeEnd), l.info = o(d, d.info), l.warn = o(d, d.warn), l.error = o(d, d.error), l.log = l.info;
+      })(), e.setHandler = function(l) {
+        n = l;
+      }, e.setLevel = function(l) {
+        d.setLevel(l);
+        for (var h in i) i.hasOwnProperty(h) && i[h].setLevel(l);
       }, e.getLevel = function() {
         return d.getLevel();
-      }, e.get = function(a) {
-        return i[a] || (i[a] = new c(s({ name: a }, d.context)));
-      }, e.createDefaultHandler = function(a) {
-        a = a || {}, a.formatter = a.formatter || r(function(y, B) {
-          B.name && y.unshift("[" + B.name + "]");
+      }, e.get = function(l) {
+        return i[l] || (i[l] = new c(s({ name: l }, d.context)));
+      }, e.createDefaultHandler = function(l) {
+        l = l || {}, l.formatter = l.formatter || r(function(x, w) {
+          w.name && x.unshift("[" + w.name + "]");
         }, "defaultMessageFormatter");
-        var h = {}, T = r(function(v, y) {
-          Function.prototype.apply.call(v, console, y);
+        var h = {}, T = r(function(v, x) {
+          Function.prototype.apply.call(v, console, x);
         }, "invokeConsoleMethod");
         return typeof console > "u" ? function() {
-        } : function(v, y) {
+        } : function(v, x) {
           v = Array.prototype.slice.call(v);
-          var B = console.log, F;
-          y.level === e.TIME ? (F = (y.name ? "[" + y.name + "] " : "") + v[0], v[1] === "start" ? console.time ? console.time(F) : h[F] = (/* @__PURE__ */ new Date()).getTime() : console.timeEnd ? console.timeEnd(F) : T(B, [F + ": " + ((/* @__PURE__ */ new Date()).getTime() - h[F]) + "ms"])) : (y.level === e.WARN && console.warn ? B = console.warn : y.level === e.ERROR && console.error ? B = console.error : y.level === e.INFO && console.info ? B = console.info : y.level === e.DEBUG && console.debug ? B = console.debug : y.level === e.TRACE && console.trace && (B = console.trace), a.formatter(v, y), T(B, v));
+          var w = console.log, Z;
+          x.level === e.TIME ? (Z = (x.name ? "[" + x.name + "] " : "") + v[0], v[1] === "start" ? console.time ? console.time(Z) : h[Z] = (/* @__PURE__ */ new Date()).getTime() : console.timeEnd ? console.timeEnd(Z) : T(w, [Z + ": " + ((/* @__PURE__ */ new Date()).getTime() - h[Z]) + "ms"])) : (x.level === e.WARN && console.warn ? w = console.warn : x.level === e.ERROR && console.error ? w = console.error : x.level === e.INFO && console.info ? w = console.info : x.level === e.DEBUG && console.debug ? w = console.debug : x.level === e.TRACE && console.trace && (w = console.trace), l.formatter(v, x), T(w, v));
         };
-      }, e.useDefaults = function(a) {
-        e.setLevel(a && a.defaultLevel || e.DEBUG), e.setHandler(e.createDefaultHandler(a));
-      }, e.setDefaults = e.useDefaults, typeof define == "function" && define.amd ? define(e) : typeof Q < "u" && Q.exports ? Q.exports = e : (e._prevLogger = t.Logger, e.noConflict = function() {
+      }, e.useDefaults = function(l) {
+        e.setLevel(l && l.defaultLevel || e.DEBUG), e.setHandler(e.createDefaultHandler(l));
+      }, e.setDefaults = e.useDefaults, typeof define == "function" && define.amd ? define(e) : typeof U < "u" && U.exports ? U.exports = e : (e._prevLogger = t.Logger, e.noConflict = function() {
         return t.Logger = e._prevLogger, e;
       }, t.Logger = e);
-    })(ce);
+    })(de);
   });
   var _a;
   var L = (_a = class {
@@ -116,6 +119,7 @@ var Themed = (() => {
     init() {
     }
     registerDefaultSettings(e) {
+      e ?? (e = p.playerStorage ?? {});
       let n = this.settingsStorage, i = this.defaultSettings;
       !n || !i || Object.entries(this.defaultSettings).length !== 0 && (e[n] = f(this.defaultSettings, e[n], { concatArrays: false, matchingOnly: true }));
     }
@@ -129,13 +133,13 @@ var Themed = (() => {
     unload() {
     }
   }, __name(_a, "L"), r(_a, "BaseModule"), _a);
-  async function Z(t) {
-    if (!k.instance) throw new Error("Attempt to set subscreen before init");
+  async function E(t) {
+    if (!M.instance) throw new Error("Attempt to set subscreen before init");
     let e = typeof t == "string" ? t : t?.options.name, n = `${define_MOD_INFO_default.name}_${e}`;
     await CommonSetScreen("DeepLibMod", `${n}`);
   }
-  __name(Z, "Z");
-  r(Z, "setSubscreen");
+  __name(E, "E");
+  r(E, "setSubscreen");
   var _a2;
   var I = (_a2 = class {
     constructor(e) {
@@ -148,7 +152,7 @@ var Themed = (() => {
       O(`${o}Load`, this.load.bind(this)), O(`${o}Run`, this.run.bind(this)), O(`${o}Click`, this.click.bind(this)), O(`${o}Exit`, this.exit.bind(this)), O(`${o}Unload`, this.unload.bind(this)), O(`${o}Resize`, this.resize.bind(this)), O(`${o}Background`, this.options.background), CommonCSVCache[ScreenFileGetTranslation("DeepLibMod", o)] = [];
     }
     async setSubscreen(e) {
-      return await Z(e);
+      return await E(e);
     }
     get settings() {
       return this.module.settings;
@@ -179,7 +183,7 @@ var Themed = (() => {
     }
     load() {
       var _a15, _b;
-      for (let i of x()) i.settingsScreen && (!i.settings || !Object.keys(i.settings).length) && i.registerDefaultSettings(p.playerStorage);
+      for (let i of y()) i.settingsScreen && (!i.settings || !Object.keys(i.settings).length) && i.registerDefaultSettings(p.playerStorage);
       _a2.currentPage = 1, b.getSubscreen();
       let e = b.getSettingsDiv();
       if (b.appendToSubscreen(e), _a2.menu = ElementMenu.Create("deeplib-nav-menu", []), b.appendToSubscreen(_a2.menu), this.pageStructure.length > 1) {
@@ -194,7 +198,7 @@ var Themed = (() => {
         _a2.menu.append(s);
       }
       if (this.options.doShowTitle) {
-        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.3" }) });
+        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.4" }) });
         b.appendToSubscreen(i);
       }
       if (this.options.doShowExitButton) {
@@ -239,7 +243,7 @@ var Themed = (() => {
     exit() {
       CharacterAppearanceForceUpCharacter = -1, CharacterLoadCanvas(Player);
       let e = CommonUnwrapThunk(this.options.returnScreen);
-      e instanceof _a2 || !e ? Z(e ?? "mainmenu").then(() => {
+      e instanceof _a2 || !e ? E(e ?? "mainmenu").then(() => {
         p.save();
       }) : Array.isArray(e) && CommonSetScreen(...e).then(() => {
         p.save();
@@ -248,8 +252,8 @@ var Themed = (() => {
     resize(e = false) {
       let n = this.options.drawCharacter ? 0 : 380, i = b.getSubscreen(), o = b.getSettingsDiv();
       ElementSetPosition(i, 0, 0), ElementSetSize(i, 2e3, 1e3), ElementSetFontSize(i, "auto"), ElementSetPosition(o, 530 - n, 170), ElementSetSize(o, this.options.settingsWidth ?? 1e3 + n, 660), this.options.doShowTitle && (ElementSetPosition("deeplib-subscreen-title", 530 - n, 75), ElementSetSize("deeplib-subscreen-title", 800, 90)), ElementSetPosition("deeplib-nav-menu", 1905, 75, "top-right"), ElementSetSize("deeplib-nav-menu", null, 90), ElementSetSize(u.getTooltip() || "", 1500), _a2.currentElements.forEach((s) => {
-        let l = s[0], c = s[1];
-        S.autoSetPosition(c.id ?? l.id, c.position), S.autoSetSize(c.id ?? l.id, c.size);
+        let a = s[0], c = s[1];
+        S.autoSetPosition(c.id ?? a.id, c.position), S.autoSetSize(c.id ?? a.id, c.size);
       }), o && (S.hasOverflow(o)?.vertical ? o.classList.add("deeplib-overflow-box") : o.classList.remove("deeplib-overflow-box"));
     }
     unload() {
@@ -649,163 +653,177 @@ var Themed = (() => {
   gap: var(--half-gap);
 }
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZhcnMuc2NzcyIsImJ1dHRvbnMuc2NzcyIsImVsZW1lbnRzLnNjc3MiLCJpbnB1dHMuc2NzcyIsIm1lc3NhZ2VzLnNjc3MiLCJtb2RhbC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQUE7RUFFRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7O0FDZEY7RUFDRTtFQUNBO0VBQ0E7O0FBRUE7RUFFRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFFQTtFQUNBO0VBQ0E7O0FBR0Y7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUdGO0VBQ0U7RUFDQTs7O0FDNUNKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOzs7QUFHRjtFQUNFOzs7QUFHRjtFQUNFO0VBQ0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7OztBQUdGO0VBQ0U7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUlKO0VBQ0U7OztBQUdGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUdFO0VBQ0U7RUFDQTs7QUFISjtFQU1FO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBOzs7QUFJSjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBOzs7QUN6SUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBOzs7QUFLTjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7O0FBT1I7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBOztBQUdGO0VBQ0U7OztBQU9GO0FBQUE7QUFBQTtFQUNFOztBQUdGO0FBQUE7QUFBQTtFQUNFOztBQUdGO0FBQUE7QUFBQTtFQUNFOztBQUdGO0FBQUE7QUFBQTtFQUNFOzs7QUMxR0o7RUFDRTtFQUNBOzs7QUFHRjtBQUFBO0VBRUU7RUFDQTtFQUNBOzs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7O0FBR0Y7QUFBQTtFQUVFOzs7QUFHRjtFQUNFO0VBQ0E7RUFDQTs7O0FDN0JGO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7O0FBR0Y7RUFDRTs7QUFHRjtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7O0FBRUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUtOO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7OztBQUlKO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7OztBQUlBO0VBQ0U7RUFDQTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZGVlcGxpYi1zdWJzY3JlZW4sXG4uZGVlcGxpYi1tb2RhbCB7XG4gIC0tZGVlcGxpYi1iYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS10bWQtbWFpbiwgd2hpdGUpO1xuICAtLWRlZXBsaWItZWxlbWVudC1jb2xvcjogdmFyKC0tdG1kLWVsZW1lbnQsIHdoaXRlKTtcbiAgLS1kZWVwbGliLWVsZW1lbnQtaG92ZXItY29sb3I6IHZhcigtLXRtZC1lbGVtZW50LWhvdmVyLCBjeWFuKTtcbiAgLS1kZWVwbGliLWFjY2VudC1jb2xvcjogdmFyKC0tdG1kLWFjY2VudCwgI0ZGRkY4OCk7XG4gIC0tZGVlcGxpYi1ibG9ja2VkLWNvbG9yOiB2YXIoLS10bWQtYmxvY2tlZCwgcmVkKTtcbiAgLS1kZWVwbGliLXRleHQtY29sb3I6IHZhcigtLXRtZC10ZXh0LCBibGFjayk7XG4gIC0tZGVlcGxpYi1pY29uLWNvbG9yOiB2YXIoLS10bWQtYWNjZW50LCBibGFjayk7XG4gIC0tZGVlcGxpYi1pY29uLWhvdmVyLWNvbG9yOiB2YXIoLS10bWQtYWNjZW50LWhvdmVyLCBibGFjayk7XG4gIC0tZGVlcGxpYi1ib3JkZXItY29sb3I6IHZhcigtLXRtZC1hY2NlbnQsIGJsYWNrKTtcbiAgLS1kZWVwbGliLWJvcmRlci13aWR0aDogbWluKDAuMnZoLCAwLjF2dyk7XG4gIC0tZGVlcGxpYi1ib3JkZXItd2lkdGg6IG1pbigwLjJkdmgsIDAuMWR2dyk7XG4gIC0tZGVlcGxpYi1ib3JkZXItcmFkaXVzOiBtaW4oMXZoLCAwLjV2dyk7XG4gIC0tZGVlcGxpYi1ib3JkZXItcmFkaXVzOiBtaW4oMWR2aCwgMC41ZHZ3KTtcbn1cbiIsIi5kZWVwbGliLWJ1dHRvbiB7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuXG4gICYuYnV0dG9uLXN0eWxpbmcsXG4gICYuYnV0dG9uLXN0eWxpbmc6OmJlZm9yZSB7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcbiAgfVxuXG4gIGltZyB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogMCU7XG4gICAgbGVmdDogMCU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGxlZnQ7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1pY29uLWNvbG9yKTtcbiAgICBiYWNrZ3JvdW5kLWJsZW5kLW1vZGU6IG11bHRpcGx5O1xuICAgIGJhY2tncm91bmQtc2l6ZTogY29udGFpbjtcbiAgICBtYXNrLXBvc2l0aW9uOiBsZWZ0O1xuICAgIG1hc2stc2l6ZTogY29udGFpbjtcbiAgICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICAgIG1hc2stcmVwZWF0OiBuby1yZXBlYXQ7XG4gICAgY29sb3I6IHRyYW5zcGFyZW50O1xuXG4gICAgYmFja2dyb3VuZC1pbWFnZTogdmFyKC0taW1hZ2UpO1xuICAgIG1hc2staW1hZ2U6IHZhcigtLWltYWdlKTtcbiAgICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgfVxuXG4gICY6aG92ZXIgaW1nIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1kZWVwbGliLWljb24taG92ZXItY29sb3IpO1xuICB9XG5cbiAgLmJ1dHRvbi1sYWJlbCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgICBjb2xvcjogdmFyKC0tZGVlcGxpYi10ZXh0LWNvbG9yKTtcbiAgICBmb250LXNpemU6IDAuOWVtO1xuICAgIGRpc3BsYXk6IGNvbnRlbnRzO1xuICB9XG5cbiAgLmJ1dHRvbi10b29sdGlwIHtcbiAgICBib3JkZXItcmFkaXVzOiBtaW4oMS4wZHZoLCAwLjVkdncpO1xuICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xuICB9XG59IiwiI2RlZXBsaWItcGFnZS1sYWJlbCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbn1cblxuI2RlZXBsaWItc3Vic2NyZWVuLXRpdGxlIHtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG4gIHVzZXItc2VsZWN0OiBub25lO1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLmRlZXBsaWItdGV4dCB7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xufVxuXG4uZGVlcGxpYi1sYWJlbCB7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59XG5cbi5kZWVwbGliLXN1YnNjcmVlbiB7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMDtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59XG5cbi5kZWVwbGliLXN1YnNjcmVlbiAqIHtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgcG9pbnRlci1ldmVudHM6IGFsbDtcbn1cblxuLmRlZXBsaWItc2V0dGluZ3Mge1xuICBkaXNwbGF5OiBncmlkO1xuICBncmlkLWF1dG8tcm93czogbWluLWNvbnRlbnQ7XG4gIHBhZGRpbmc6IG1pbigxLjBkdmgsIDAuNWR2dyk7XG4gIGdhcDogMC4zZW07XG59XG5cbi5kZWVwbGliLW1pc2Mge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uLXJldmVyc2U7XG4gIGdhcDogbWluKDF2aCwgMC41dncpO1xufVxuXG4uZGVlcGxpYi10b29sdGlwIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1lbGVtZW50LWNvbG9yKTtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBib3JkZXItcmFkaXVzOiBtaW4oMS4wZHZoLCAwLjVkdncpO1xuICBwYWRkaW5nOiBtaW4oMXZoLCAwLjV2dyk7XG4gIGZvbnQtc2l6ZTogMC44ZW07XG4gIGJvcmRlcjogbWluKDAuMnZoLCAwLjF2dykgc29saWQgdmFyKC0tZGVlcGxpYi1ib3JkZXItY29sb3IpO1xuICB6LWluZGV4OiAxO1xuXG4gICYuYW5jaG9yLXRvcCB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogbWluKDF2aCwgMC41dncpO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7XG4gIH1cblxuICAmLmFuY2hvci1ib3R0b20ge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBib3R0b206IG1pbigxdmgsIDAuNXZ3KTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICB9XG59XG5cbi5kZWVwbGliLW92ZXJmbG93LWJveCB7XG4gIGJvcmRlcjogdmFyKC0tZGVlcGxpYi1ib3JkZXItY29sb3IpIHNvbGlkIHZhcigtLWRlZXBsaWItYm9yZGVyLXdpZHRoKTtcbn1cblxuLmRlZXBsaWItcHJldi1uZXh0IHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICBnYXA6IG1pbigyZHZoLCAxZHZ3KTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1lbGVtZW50LWNvbG9yKTtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG4gIGJvcmRlci1yYWRpdXM6IG1pbigxLjBkdmgsIDAuNWR2dyk7XG4gIGJvcmRlcjogbWluKDAuMnZoLCAwLjF2dykgc29saWQgdmFyKC0tZGVlcGxpYi1ib3JkZXItY29sb3IpO1xuXG4gIC5kZWVwbGliLXByZXYtbmV4dC1idXR0b24ge1xuICAgICY6aG92ZXIge1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1lbGVtZW50LWhvdmVyLWNvbG9yKTtcbiAgICAgIGJvcmRlci1yYWRpdXM6IHZhcigtLWRlZXBsaWItYm9yZGVyLXJhZGl1cyk7XG4gICAgfVxuXG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIGFzcGVjdC1yYXRpbzogMTtcbiAgfVxuXG4gIC5kZWVwbGliLXByZXYtbmV4dC1sYWJlbCB7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgfVxufVxuXG4jZGVlcGxpYi1uYXYtbWVudSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGdhcDogbWluKDJkdmgsIDFkdncpO1xuICB6LWluZGV4OiAxO1xuXG4gICY+LmRlZXBsaWItYnV0dG9uIHtcbiAgICBmbGV4OiAxIDEgYXV0bztcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgYXNwZWN0LXJhdGlvOiAxO1xuICB9XG59XG5cbiNkZWVwbGliLXN0b3JhZ2UtbWV0ZXIge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMHB4O1xuICBsZWZ0OiAwcHg7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWRlZXBsaWItZWxlbWVudC1jb2xvcik7XG4gIGJvcmRlcjogdmFyKC0tZGVlcGxpYi1ib3JkZXItd2lkdGgpIHNvbGlkIHZhcigtLWRlZXBsaWItYm9yZGVyLWNvbG9yKTtcbiAgYm9yZGVyLXJhZGl1czogdmFyKC0tZGVlcGxpYi1ib3JkZXItcmFkaXVzKTtcbiAgei1pbmRleDogLTE7XG5cbiAgI2RlZXBsaWItc3RvcmFnZS1iYXIge1xuICAgIGhlaWdodDogMTAwJTtcbiAgICB3aWR0aDogMCU7XG4gICAgYmFja2dyb3VuZDogdmFyKC0tZGVlcGxpYi1hY2NlbnQtY29sb3IpO1xuICB9XG59IiwiLmRlZXBsaWItY2hlY2tib3gtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgZ2FwOiAwLjNlbTtcbiAgd2lkdGg6IGZpdC1jb250ZW50O1xuXG4gIHNwYW4ge1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xuICB9XG5cbiAgLmRlZXBsaWItaW5wdXQge1xuICAgIHdpZHRoOiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgaGVpZ2h0OiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgd2lkdGg6IG1pbig1ZHZoLCAyLjVkdncpO1xuICAgIGhlaWdodDogbWluKDVkdmgsIDIuNWR2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMHZoLCAwLjV2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcblxuICAgICZbdHlwZT1cImNoZWNrYm94XCJdOmNoZWNrZWQ6OmJlZm9yZSB7XG4gICAgICB3aWR0aDogODAlO1xuICAgICAgaGVpZ2h0OiA4MCU7XG4gICAgfVxuICB9XG59XG5cbi5kZWVwbGliLWlucHV0LWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogMC4zZW07XG4gIHdpZHRoOiBmaXQtY29udGVudDtcblxuICBzcGFuIHtcbiAgICB1c2VyLXNlbGVjdDogbm9uZTtcbiAgfVxuXG4gICY6aGFzKC5kZWVwbGliLXRleHQpIHtcbiAgICBtYXJnaW4tdG9wOiBtaW4oMXZoLCAwLjV2dyk7XG4gICAgbWFyZ2luLXRvcDogbWluKDFkdmgsIDAuNWR2dyk7XG4gIH1cblxuICAuZGVlcGxpYi1pbnB1dCB7XG4gICAgZm9udC1zaXplOiAwLjllbTtcbiAgICBwYWRkaW5nOiBtaW4oMXZoLCAwLjV2dyk7XG4gICAgcGFkZGluZzogbWluKDFkdmgsIDAuNWR2dyk7XG4gICAgb3V0bGluZTogbm9uZTtcbiAgICBtaW4taGVpZ2h0OiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgbWluLWhlaWdodDogbWluKDVkdmgsIDIuNWR2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMHZoLCAwLjV2dyk7XG4gICAgYm9yZGVyLXJhZGl1czogbWluKDEuMGR2aCwgMC41ZHZ3KTtcblxuICAgICZbdHlwZT1cImNvbG9yXCJdIHtcbiAgICAgIHBhZGRpbmc6IDBweDtcbiAgICAgIHdpZHRoOiBtaW4oNXZoLCAyLjV2dyk7XG4gICAgICBoZWlnaHQ6IG1pbig1dmgsIDIuNXZ3KTtcbiAgICAgIHdpZHRoOiBtaW4oNWR2aCwgMi41ZHZ3KTtcbiAgICAgIGhlaWdodDogbWluKDVkdmgsIDIuNWR2dyk7XG4gICAgICBib3JkZXItcmFkaXVzOiAwcHg7XG5cbiAgICAgICY6ZGlzYWJsZWQge1xuICAgICAgICBib3JkZXI6IHZhcigtLWRlZXBsaWItYmxvY2tlZC1jb2xvcikgc29saWQgdmFyKC0tZGVlcGxpYi1ib3JkZXItd2lkdGgpO1xuICAgICAgICBjdXJzb3I6IG5vdC1hbGxvd2VkO1xuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG5cbi5kZWVwbGliLWRyb3Bkb3duLWNvbnRhaW5lciB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogbWluKDJ2aCwgMXZ3KTtcbiAgZ2FwOiBtaW4oMmR2aCwgMWR2dyk7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICB3aWR0aDogZml0LWNvbnRlbnQ7XG5cbiAgc2VsZWN0IHtcbiAgICBwYWRkaW5nOiAwIG1pbigxdmgsIDAuNXZ3KTtcbiAgICBwYWRkaW5nOiAwIG1pbigxZHZoLCAwLjVkdncpO1xuICAgIGJvcmRlci1yYWRpdXM6IG1pbigxdmgsIDAuNXZ3KTtcbiAgICBib3JkZXItcmFkaXVzOiBtaW4oMWR2aCwgMC41ZHZ3KTtcbiAgfVxuXG4gIHNwYW4ge1xuICAgIHVzZXItc2VsZWN0OiBub25lO1xuICB9XG59XG5cbi5kZWVwbGliLWNoZWNrYm94LWNvbnRhaW5lcixcbi5kZWVwbGliLWlucHV0LWNvbnRhaW5lcixcbi5kZWVwbGliLWRyb3Bkb3duLWNvbnRhaW5lciB7XG4gICYucm93IHtcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICB9XG5cbiAgJi5jb2x1bW4ge1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIH1cblxuICAmLnJvd1JldmVyc2Uge1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3ctcmV2ZXJzZTtcbiAgfVxuXG4gICYuY29sdW1uUmV2ZXJzZSB7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbi1yZXZlcnNlO1xuICB9XG59IiwiLmRlZXBsaWItaGlnaGxpZ2h0LXRleHQge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgY29sb3I6IHJnYigyMDMsIDE4NSwgMjMpO1xufVxuXG4jVGV4dEFyZWFDaGF0TG9nW2RhdGEtY29sb3J0aGVtZT0nZGFyayddIGRpdi5DaGF0TWVzc2FnZS5kZWVwbGliLW1lc3NhZ2UsXG4jVGV4dEFyZWFDaGF0TG9nW2RhdGEtY29sb3J0aGVtZT0nZGFyazInXSBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tZGVlcGxpYi1lbGVtZW50LWNvbG9yKTtcbiAgYm9yZGVyOiBtaW4oMC4yZHZoLCAwLjFkdncpIHNvbGlkIHZhcigtLWRlZXBsaWItYm9yZGVyLWNvbG9yKTtcbiAgY29sb3I6IHZhcigtLWRlZXBsaWItdGV4dC1jb2xvcik7XG59XG5cbiNUZXh0QXJlYUNoYXRMb2cgZGl2LkNoYXRNZXNzYWdlLmRlZXBsaWItbWVzc2FnZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlZWU7XG4gIGJvcmRlcjogbWluKDAuMmR2aCwgMC4xZHZ3KSBzb2xpZCAjNDQwMTcxO1xuICBjb2xvcjogIzExMTtcbiAgcGFkZGluZy1sZWZ0OiBtaW4oMC42ZHZoLCAwLjNkdncpO1xuICBkaXNwbGF5OiBibG9jaztcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbn1cblxuI1RleHRBcmVhQ2hhdExvZ1tkYXRhLWNvbG9ydGhlbWU9J2RhcmsnXSBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIGEsXG4jVGV4dEFyZWFDaGF0TG9nW2RhdGEtY29sb3J0aGVtZT0nZGFyazInXSBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIGEge1xuICBjb2xvcjogdmFyKC0tZGVlcGxpYi10ZXh0LWNvbG9yKTtcbn1cblxuI1RleHRBcmVhQ2hhdExvZyBkaXYuQ2hhdE1lc3NhZ2UuZGVlcGxpYi1tZXNzYWdlIGEge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBjb2xvcjogIzExMTtcbn1cbiIsIi5kZWVwbGliLW1vZGFsIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDUwJTtcbiAgbGVmdDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgei1pbmRleDogMTAwMTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGdhcDogMC41ZW07XG4gIG1pbi13aWR0aDogbWF4KDUwZHZ3LCAyNWR2aCk7XG4gIGZvbnQtc2l6ZTogMWVtO1xuICBwYWRkaW5nOiBtaW4oMmR2aCwgMWR2dyk7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWRlZXBsaWItZWxlbWVudC1jb2xvcik7XG4gIGJvcmRlci1yYWRpdXM6IG1pbigxLjJkdmgsIDAuNmR2dyk7XG4gIGJvcmRlcjogbWluKDAuMmR2aCwgMC4xZHZ3KSBzb2xpZCB2YXIoLS1kZWVwbGliLWJvcmRlci1jb2xvcik7XG4gIGNvbG9yOiB2YXIoLS1kZWVwbGliLXRleHQtY29sb3IpO1xuICBtYXgtd2lkdGg6IG1heCg5MGR2dywgNDVkdmgpO1xuXG4gIC5kZWVwbGliLW1vZGFsLWlucHV0IHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBmb250LXNpemU6IDFlbTtcbiAgICBib3JkZXItcmFkaXVzOiBtaW4oMS4wZHZoLCAwLjVkdncpO1xuICAgIHBhZGRpbmc6IG1pbigxZHZoLCAwLjVkdncpO1xuICB9XG5cbiAgaW5wdXQuZGVlcGxpYi1tb2RhbC1pbnB1dCB7XG4gICAgbWF4LXdpZHRoOiBtYXgoNTBkdmgsIDI1ZHZ3KTtcbiAgfVxuXG4gIC5kZWVwbGliLW1vZGFsLWJ1dHRvbi1jb250YWluZXIge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtZW5kO1xuICAgIGdhcDogMC41ZW07XG4gICAgd2lkdGg6IDEwMCU7XG5cbiAgICAuZGVlcGxpYi1idXR0b24ge1xuICAgICAgZm9udC1zaXplOiAwLjhlbTtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICB3aWR0aDogYXV0bztcbiAgICAgIHBhZGRpbmc6IG1pbigwLjR2aCwgMC4ydncpIG1pbigydmgsIDF2dyk7XG5cbiAgICAgIC5idXR0b24tbGFiZWwge1xuICAgICAgICBkaXNwbGF5OiBjb250ZW50cztcbiAgICAgIH1cbiAgICB9XG4gIH1cblxuICAuZGVlcGxpYi1tb2RhbC1wcm9tcHQtY29udGFpbmVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgfVxufVxuXG4uZGVlcGxpYi1tb2RhbC1ibG9ja2VyIHtcbiAgei1pbmRleDogMTAwMDtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDA7XG4gIGxlZnQ6IDA7XG4gIHdpZHRoOiAxMDBkdnc7XG4gIGhlaWdodDogMTAwZHZoO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNSk7XG59XG5cbiNkZWVwbGliLW1vZGFsLWltcG9ydF9leHBvcnQge1xuICAuZGVlcGxpYi1tb2RhbC1jaGVja2JveC1jb250YWluZXIge1xuICAgIG1hcmdpbi10b3A6IDAuNWVtO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgICBnYXA6IHZhcigtLWhhbGYtZ2FwKTtcbiAgfVxufSJdfQ== */`;
+  function se() {
+    if (true) return;
+    let t = `${"https://protokink.github.io/Themed/public"}/`;
+    G.hookFunction("fetch", k.ModifyBehavior, (e, n) => {
+      let [i] = e, o = typeof i == "string" ? i : i instanceof URL ? i.href : i.url;
+      if (o.startsWith(t)) {
+        let s = o.slice(t.length), a = define_BUNDLED_PUBLIC_ASSET_MAP_default[s];
+        if (a !== void 0) return a.startsWith("data:") ? fetch(a) : Promise.resolve(new Response(a, { status: 200 }));
+      }
+      return n(e);
+    });
+  }
+  __name(se, "se");
+  r(se, "installBundledPublicAssetFetch");
   var _a3;
-  var X = (_a3 = class extends L {
+  var D = (_a3 = class extends L {
     constructor() {
       super(...arguments);
       __publicField(this, "debugSettings", { showRawTranslations: false, showFileNames: false, showIncomingServerTransactions: false, incomingMessageFilterMode: "exclude", incomingMessageTypes: "", showOutcomingServerTransactions: false, outcomingMessageFilterMode: "exclude", outcomingMessageTypes: "", showRawActivityNames: false, showRawAssetNames: false });
     }
     load() {
       let e = p.getLocalStorage("debugOptions");
-      e && (this.debugSettings = Object.assign(this.debugSettings, e)), Le(), w.hookFunction("TextGet", E.ModifyBehavior, (n, i) => {
+      e && (this.debugSettings = Object.assign(this.debugSettings, e)), Oe(), G.hookFunction("TextGet", k.ModifyBehavior, (n, i) => {
         if (!this.debugSettings.showRawTranslations) return i(n);
         let [o] = n, s = TextScreenCache?.fileName() ?? "[unknown]";
         return this.debugSettings.showFileNames ? `${s}::${o}` : o;
-      }), w.hookFunction("TextGetInScope", E.ModifyBehavior, (n, i) => {
+      }), G.hookFunction("TextGetInScope", k.ModifyBehavior, (n, i) => {
         if (!this.debugSettings.showRawTranslations) return i(n);
-        let [o, s] = n, l = o.lastIndexOf("/");
-        l === -1 ? l = 0 : l = l + 1;
-        let c = o.substring(l);
+        let [o, s] = n, a = o.lastIndexOf("/");
+        a === -1 ? a = 0 : a = a + 1;
+        let c = o.substring(a);
         return this.debugSettings.showFileNames ? `${c}::${s}` : s;
-      }), w.hookFunction("InterfaceTextGet", E.ModifyBehavior, (n, i) => {
+      }), G.hookFunction("InterfaceTextGet", k.ModifyBehavior, (n, i) => {
         if (!this.debugSettings.showRawTranslations) return i(n);
         let [o] = n, s = InterfaceStringsPath.lastIndexOf("/");
         s === -1 ? s = 0 : s = s + 1;
-        let l = InterfaceStringsPath.substring(s);
-        return this.debugSettings.showFileNames ? `${l}::${o}` : o;
-      }), w.hookFunction("ActivityDictionaryText", E.ModifyBehavior, (n, i) => {
+        let a = InterfaceStringsPath.substring(s);
+        return this.debugSettings.showFileNames ? `${a}::${o}` : o;
+      }), G.hookFunction("ActivityDictionaryText", k.ModifyBehavior, (n, i) => {
         if (!this.debugSettings.showRawActivityNames) return i(n);
         let [o] = n;
         return o;
-      }), w.hookFunction("ElementButton.CreateForAsset", E.ModifyBehavior, (n, i) => {
+      }), G.hookFunction("ElementButton.CreateForAsset", k.ModifyBehavior, (n, i) => {
         if (!this.debugSettings.showRawAssetNames) return i(n);
         let [, o, , , s] = n;
-        return o = ("Asset" in o ? o : { Asset: o }).Asset, s ?? (s = {}), s.label = o.Name, i(n);
+        return o = ("Asset" in o ? o : { Asset: o }).Asset, s ?? (s = {}), s.label = o.Name, n[4] = s, i(n);
       });
     }
     unload() {
-      Oe();
+      Se();
     }
     saveDebugSettings() {
       p.setLocalStorage("debugOptions", this.debugSettings);
     }
-  }, __name(_a3, "X"), r(_a3, "DebugModule"), _a3);
-  var M;
-  function se(...t) {
-    let e = Array.isArray(t[0]) && typeof t[0][0] == "string" ? t[0][0] : "[unknown]", n = Array.isArray(t[0]) ? t[0].slice(1) : [], i = C("DebugModule");
-    return i.debugSettings.showIncomingServerTransactions && le(e, i.debugSettings.incomingMessageTypes, i.debugSettings.incomingMessageFilterMode) && m.debug("\u25BC Receive", e, ...n), M?.apply(this, t);
-  }
-  __name(se, "se");
-  r(se, "processIncomingTransaction");
+  }, __name(_a3, "D"), r(_a3, "DebugModule"), _a3);
   var V;
   function ae(...t) {
-    let e = typeof t[0] == "string" ? t[0] : "[unknown]", n = Array.isArray(t[1]) ? t[1] : [t[1]], i = C("DebugModule");
-    return i.debugSettings.showOutcomingServerTransactions && le(e, i.debugSettings.outcomingMessageTypes, i.debugSettings.outcomingMessageFilterMode) && m.debug("\u25B2 Send", e, ...n), V?.apply(this, t);
+    let e = Array.isArray(t[0]) && typeof t[0][0] == "string" ? t[0][0] : "[unknown]", n = Array.isArray(t[0]) ? t[0].slice(1) : [], i = B("DebugModule");
+    return i.debugSettings.showIncomingServerTransactions && ce(e, i.debugSettings.incomingMessageTypes, i.debugSettings.incomingMessageFilterMode) && m.debug("\u25BC Receive", e, ...n), V?.apply(this, t);
   }
   __name(ae, "ae");
-  r(ae, "processOutcomingTransaction");
-  function le(t, e, n) {
+  r(ae, "processIncomingTransaction");
+  var R;
+  function le(...t) {
+    let e = typeof t[0] == "string" ? t[0] : "[unknown]", n = Array.isArray(t[1]) ? t[1] : [t[1]], i = B("DebugModule");
+    return i.debugSettings.showOutcomingServerTransactions && ce(e, i.debugSettings.outcomingMessageTypes, i.debugSettings.outcomingMessageFilterMode) && m.debug("\u25B2 Send", e, ...n), R?.apply(this, t);
+  }
+  __name(le, "le");
+  r(le, "processOutcomingTransaction");
+  function ce(t, e, n) {
     if (!e.trim()) return true;
     let o = e.split(",").map((s) => s.trim()).filter((s) => s.length > 0).some((s) => t === s);
     return n === "include" ? o : !o;
   }
-  __name(le, "le");
-  r(le, "shouldLogMessage");
-  function Le() {
-    M === void 0 && typeof ServerSocket?.__proto__?.emitEvent == "function" && (M = ServerSocket.__proto__.emitEvent, ServerSocket.__proto__.emitEvent = se), V === void 0 && typeof ServerSocket?.__proto__?.emit == "function" && (V = ServerSocket.__proto__.emit, ServerSocket.__proto__.emit = ae);
-  }
-  __name(Le, "Le");
-  r(Le, "loadServerTransactions");
+  __name(ce, "ce");
+  r(ce, "shouldLogMessage");
   function Oe() {
-    M && ServerSocket.__proto__.emitEvent === se && (ServerSocket.__proto__.emitEvent = M, M = void 0), V && ServerSocket.__proto__.emit === ae && (ServerSocket.__proto__.emit = V, V = void 0);
+    V === void 0 && typeof ServerSocket?.__proto__?.emitEvent == "function" && (V = ServerSocket.__proto__.emitEvent, ServerSocket.__proto__.emitEvent = ae), R === void 0 && typeof ServerSocket?.__proto__?.emit == "function" && (R = ServerSocket.__proto__.emit, ServerSocket.__proto__.emit = le);
   }
   __name(Oe, "Oe");
-  r(Oe, "unloadServerTransactions");
-  var de = oe($(), 1);
-  var p;
-  var w;
-  var m;
-  async function wt(t) {
-    w = new W({ name: define_MOD_INFO_default.name, fullName: define_MOD_INFO_default.fullName, version: "1.8.3", repository: define_MOD_INFO_default.repository }), p = new Y(define_MOD_INFO_default.name), m = de.default.get(define_MOD_INFO_default.name), H.injectInline("deeplib-style-5.0.1", re), m.debug("Init wait"), (!CurrentScreen || CurrentScreen === "Login") && t.beforeLogin?.(), await ServerIsLoggedInAsync(), Se(t);
+  r(Oe, "loadServerTransactions");
+  function Se() {
+    V && ServerSocket.__proto__.emitEvent === ae && (ServerSocket.__proto__.emitEvent = V, V = void 0), R && ServerSocket.__proto__.emit === le && (ServerSocket.__proto__.emit = R, R = void 0);
   }
-  __name(wt, "wt");
-  r(wt, "initMod");
-  async function Se(t) {
+  __name(Se, "Se");
+  r(Se, "unloadServerTransactions");
+  var ue = oe($(), 1);
+  var p;
+  var G;
+  var m;
+  async function kt(t) {
+    G = new Y({ name: define_MOD_INFO_default.name, fullName: define_MOD_INFO_default.fullName, version: "1.8.4", repository: define_MOD_INFO_default.repository }), se(), p = new Q(define_MOD_INFO_default.name), m = ue.default.get(define_MOD_INFO_default.name), H.injectInline("deeplib-style-6.0.0", re), m.debug("Init wait"), (!CurrentScreen || CurrentScreen === "Login") && t.beforeLogin?.(), await ServerIsLoggedInAsync(), await ke(t);
+  }
+  __name(kt, "kt");
+  r(kt, "initMod");
+  async function ke(t) {
     if (window[define_MOD_INFO_default.name + "Loaded"]) return;
-    let e = N(() => {
+    let e = X(() => {
       p.load();
     }, (s) => s);
     e.ok || m.error(e.error);
-    let n = await ge(async () => {
-      await A.init(t.translationOptions);
+    let n = await pe(async () => {
+      await F.init(t.translationOptions);
     }, (s) => s);
     n.ok || m.error(n.error);
     let i = Object.entries(t.modules ?? {}), o = [];
-    if (i.some((s) => s[1] instanceof U) || o.push(["VersionModule", new U()]), false, o.push(...i), !Fe(o)) {
+    if (i.some((s) => s[1] instanceof N) || o.push(["VersionModule", new N()]), false, o.push(...i), !Fe(o)) {
       Ze();
       return;
     }
-    await t.initFunction?.(), t.mainMenuOptions && C("GUI") && R.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.3"}`);
+    await t.initFunction?.(), t.mainMenuOptions && B("GUI") && A.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.4"}`);
   }
-  __name(Se, "Se");
-  r(Se, "init");
+  __name(ke, "ke");
+  r(ke, "init");
   function Fe(t) {
-    for (let [e, n] of t) ue(e, n);
-    for (let e of x()) {
-      let n = N(() => e.init(), (i) => i);
+    for (let [e, n] of t) ge(e, n);
+    for (let e of y()) {
+      let n = X(() => e.init(), (i) => i);
       n.ok || m.error(n.error);
     }
-    for (let e of x()) {
-      let n = N(() => e.load(), (i) => i);
+    for (let e of y()) {
+      let n = X(() => e.load(), (i) => i);
       n.ok || m.error(n.error);
     }
-    for (let e of x()) {
-      let n = N(() => e.run(), (i) => i);
+    for (let e of y()) {
+      let n = X(() => e.run(), (i) => i);
       n.ok || m.error(n.error);
     }
-    for (let e of x()) e.registerDefaultSettings(p.playerStorage);
+    for (let e of y()) e.registerDefaultSettings(p.playerStorage);
     return m.debug("Modules Loaded."), true;
   }
   __name(Fe, "Fe");
   r(Fe, "initModules");
   function Ze() {
-    return ke(), w.unload(), delete window[define_MOD_INFO_default.name + "Loaded"], m.debug("Unloaded."), true;
+    return Ee(), G.unload(), F.unload(), delete window[define_MOD_INFO_default.name + "Loaded"], m.debug("Unloaded."), true;
   }
   __name(Ze, "Ze");
   r(Ze, "unloadMod");
-  function ke() {
-    for (let t of x()) t.unload();
+  function Ee() {
+    for (let t of y()) t.unload();
   }
-  __name(ke, "ke");
-  r(ke, "unloadModules");
+  __name(Ee, "Ee");
+  r(Ee, "unloadModules");
   var _ = /* @__PURE__ */ new Map();
-  function x() {
+  function y() {
     return [..._.values()];
   }
-  __name(x, "x");
-  r(x, "modules");
-  function ue(t, e) {
+  __name(y, "y");
+  r(y, "modules");
+  function ge(t, e) {
     return _.set(t, e), e;
   }
-  __name(ue, "ue");
-  r(ue, "registerModule");
-  function C(t) {
+  __name(ge, "ge");
+  r(ge, "registerModule");
+  function B(t) {
     return _.get(t);
   }
-  __name(C, "C");
-  r(C, "getModule");
+  __name(B, "B");
+  r(B, "getModule");
   var _a4;
-  var pe = (_a4 = class {
-  }, __name(_a4, "pe"), r(_a4, "BaseMigrator"), _a4);
+  var be = (_a4 = class {
+  }, __name(_a4, "be"), r(_a4, "BaseMigrator"), _a4);
   var _a5;
-  var k = (_a5 = class extends L {
+  var M = (_a5 = class extends L {
     constructor(e = null) {
       super();
       __publicField(this, "_subscreens", []);
       __publicField(this, "_mainMenu", null);
       __publicField(this, "_modButtonOptions");
       if (_a5.instance) throw new Error("Duplicate initialization");
-      for (let n of x()) n.settingsScreen;
+      for (let n of y()) n.settingsScreen;
       this._modButtonOptions = e, _a5.instance = this;
     }
     get subscreens() {
@@ -817,10 +835,10 @@ var Themed = (() => {
     load() {
       if (!this._modButtonOptions) return;
       let e = this._modButtonOptions;
-      this._mainMenu = e?.mainMenu ? new e.mainMenu(this) : new R(this), this._subscreens = [this._mainMenu];
-      for (let n of x()) n.settingsScreen && this._subscreens.push(new n.settingsScreen(n));
+      this._mainMenu = e?.mainMenu ? new e.mainMenu(this) : new A(this), this._subscreens = [this._mainMenu];
+      for (let n of y()) n.settingsScreen && this._subscreens.push(new n.settingsScreen(n));
       this._mainMenu.subscreens = this._subscreens, PreferenceRegisterExtensionSetting({ Identifier: this._modButtonOptions.identifier, ButtonText: this._modButtonOptions.buttonText, Image: this._modButtonOptions.image, load: r(async () => {
-        this._mainMenu && await Z(this._mainMenu);
+        this._mainMenu && await E(this._mainMenu);
       }, "load"), run: r(() => {
       }, "run"), click: r(() => {
       }, "click"), exit: r(() => {
@@ -828,12 +846,12 @@ var Themed = (() => {
     }
   }, __name(_a5, "t"), r(_a5, "GUI"), __publicField(_a5, "instance", null), _a5);
   var _a6;
-  var U = (_a6 = class extends L {
+  var N = (_a6 = class extends L {
     constructor(e) {
-      super(), e ?? (e = {}), _a6.newVersionMessage = e.newVersionMessage, e.migrators && (_a6.migrators = e.migrators, _a6.migrators.sort((n, i) => n.migrationVersion.localeCompare(i.migrationVersion))), _a6.beforeEach = e.beforeEach, _a6.afterEach = e.afterEach, _a6.beforeAll = e.beforeAll, _a6.afterAll = e.afterAll;
+      super(), e ?? (e = {}), _a6.newVersionMessage = e.newVersionMessage, _a6.showNewVersionMessage = e.showNewVersionMessage, e.migrators && (_a6.migrators = e.migrators, _a6.migrators.sort((n, i) => n.migrationVersion.localeCompare(i.migrationVersion, void 0, { numeric: true }))), _a6.beforeEach = e.beforeEach, _a6.afterEach = e.afterEach, _a6.beforeAll = e.beforeAll, _a6.afterAll = e.afterAll;
     }
     load() {
-      _a6.version = "1.8.3", _a6.checkVersionUpdate(), p.playerStorage.GlobalModule.doShowNewVersionMessage && _a6.isItNewVersion && _a6.sendNewVersionMessage();
+      _a6.version = "1.8.4", _a6.checkVersionUpdate(), CommonUnwrapThunk(_a6.showNewVersionMessage) && _a6.isItNewVersion && _a6.sendNewVersionMessage();
     }
     static checkVersionUpdate() {
       let e = _a6.loadVersion(), n = _a6.version;
@@ -847,19 +865,15 @@ var Themed = (() => {
         _a6.afterAll?.();
       }
     }
-    static sendNewVersionMessage() {
+    static async sendNewVersionMessage() {
       if (!_a6.newVersionMessage) return;
-      let n = FriendListBeepLog.push({ MemberNumber: Player.MemberNumber, MemberName: define_MOD_INFO_default.name, ChatRoomName: g("module.version.version_update"), ChatRoomSpace: "X", Private: false, Sent: false, Time: /* @__PURE__ */ new Date(), Message: _a6.newVersionMessage }) - 1, i = g("module.version.new_version_toast_title", { $modName$: define_MOD_INFO_default.name, $modVersion$: _a6.version }), o = FriendListBeepLog[n];
-      ServerShowBeep(_a6.newVersionMessage, 1e4, { memberNumber: o.MemberNumber, memberName: o.MemberName, chatRoomName: o.ChatRoomName, ...o.Message && { onClick: r(() => {
-        FriendListShowBeep(n);
-      }, "onClick") } }, i);
+      let e = CommonUnwrapThunk(_a6.newVersionMessage), n = e instanceof Promise ? await e : e, o = FriendListBeepLog.push({ MemberNumber: Player.MemberNumber, MemberName: define_MOD_INFO_default.name, ChatRoomName: g("module.version.version_update"), ChatRoomSpace: "X", Private: false, Sent: false, Time: /* @__PURE__ */ new Date(), Message: n }) - 1, s = g("module.version.new_version_toast_title", { $modName$: define_MOD_INFO_default.name, $modVersion$: _a6.version }), a = FriendListBeepLog[o];
+      ServerShowBeep(n, 1e4, { memberNumber: a.MemberNumber, memberName: a.MemberName, chatRoomName: a.ChatRoomName, ...a.Message && { onClick: r(() => {
+        FriendListShowBeep(o);
+      }, "onClick") } }, s);
     }
     static isNewVersion(e, n) {
-      if (e !== void 0) {
-        let i = e.split("."), o = n.split(".");
-        for (let s = 0; s < 3; s++) if (i[s] !== o[s]) return o[s] > i[s];
-      }
-      return e === void 0 || e === "" || !e;
+      return e !== void 0 && e !== "" ? n.localeCompare(e, void 0, { numeric: true }) > 0 : true;
     }
     static saveVersion() {
       p.playerStorage && (p.playerStorage.Version = _a6.version);
@@ -867,7 +881,7 @@ var Themed = (() => {
     static loadVersion() {
       return p.playerStorage?.Version;
     }
-  }, __name(_a6, "t"), r(_a6, "VersionModule"), __publicField(_a6, "isItNewVersion", false), __publicField(_a6, "version"), __publicField(_a6, "newVersionMessage", ""), __publicField(_a6, "migrators", []), __publicField(_a6, "beforeEach"), __publicField(_a6, "afterEach"), __publicField(_a6, "beforeAll"), __publicField(_a6, "afterAll"), _a6);
+  }, __name(_a6, "t"), r(_a6, "VersionModule"), __publicField(_a6, "isItNewVersion", false), __publicField(_a6, "version"), __publicField(_a6, "newVersionMessage"), __publicField(_a6, "showNewVersionMessage"), __publicField(_a6, "migrators", []), __publicField(_a6, "beforeEach"), __publicField(_a6, "afterEach"), __publicField(_a6, "beforeAll"), __publicField(_a6, "afterAll"), _a6);
   var _a7;
   var j = (_a7 = class extends I {
     get pageStructure() {
@@ -892,66 +906,66 @@ var Themed = (() => {
       }, "setSettingValue") }, { type: "checkbox", id: "debug-show-raw-activity-names", label: "Show Raw Activity Names", setElementValue: r(() => this.module.debugSettings.showRawActivityNames, "setElementValue"), setSettingValue: r((e) => {
         this.module.debugSettings.showRawActivityNames = e;
       }, "setSettingValue") }], [{ type: "button", id: "test-deeplib-big-button", options: { label: "Big Button", tooltip: "This is a big button", image: "Icons/Exit.png" }, size: [405, 80], onClick() {
-        G.info("Big Button Clicked");
+        C.info("Big Button Clicked");
       } }, { type: "button", id: "test-deeplib-small-button", options: { tooltip: "This is a small button", image: "Icons/Exit.png" }, size: [90, 90], onClick() {
-        G.info("Small Button Clicked");
+        C.info("Small Button Clicked");
       } }, { type: "checkbox", id: "test-deeplib-checkbox", label: "Checkbox", description: "This is a checkbox", setElementValue() {
         return true;
       }, setSettingValue(e) {
-        G.info("Checkbox value:", e);
+        C.info("Checkbox value:", e);
       } }, { type: "text", id: "test-deeplib-text-input", label: "Input", description: "This is a text input", setElementValue() {
         return "Input Value";
       }, setSettingValue(e) {
-        G.info("Input value:", e);
+        C.info("Input value:", e);
       } }, { type: "number", id: "test-deeplib-number-input", label: "Input", description: "This is a number input", setElementValue() {
         return "123";
       }, setSettingValue(e) {
-        G.info("Input value:", e);
+        C.info("Input value:", e);
       } }, { type: "label", id: "test-deeplib-label", label: "Label", description: "This is a label" }], [{ type: "button", id: "test-deeplib-big-button2", options: { label: "Big Button", tooltip: "This is a big button", image: "Icons/Exit.png" }, size: [405, 80], onClick() {
-        G.info("Big Button Clicked");
+        C.info("Big Button Clicked");
       } }, { type: "button", id: "test-deeplib-small-button2", options: { tooltip: "This is a small button", image: "Icons/Next.png" }, size: [90, 90], onClick() {
-        G.info("Small Button Clicked");
+        C.info("Small Button Clicked");
       } }, { type: "checkbox", id: "test-deeplib-checkbox2", label: "Checkbox", description: "This is a checkbox", setElementValue() {
         return true;
       }, setSettingValue(e) {
-        G.info("Checkbox value:", e);
+        C.info("Checkbox value:", e);
       } }, { type: "text", id: "test-deeplib-text-input2", label: "Input", description: "This is a text input", setElementValue() {
         return "Input Value";
       }, setSettingValue(e) {
-        G.info("Input value:", e);
+        C.info("Input value:", e);
       } }, { type: "number", id: "test-deeplib-number-input2", label: "Input", description: "This is a number input", setElementValue() {
         return "123";
       }, setSettingValue(e) {
-        G.info("Input value:", e);
+        C.info("Input value:", e);
       } }, { type: "label", id: "test-deeplib-label2", label: "Label", description: "This is a label" }, { type: "dropdown", id: "test-deeplib-dropdown", label: "Dropdown", description: "This is a dropdown", optionsList: ["Option 1", "Option 2", "Option 3"], setElementValue() {
         return "Option 2";
       }, setSettingValue(e) {
-        G.info("Dropdown value:", e);
+        C.info("Dropdown value:", e);
       } }]];
     }
     exit() {
       this.module.saveDebugSettings(), super.exit();
     }
   }, __name(_a7, "j"), r(_a7, "GuiDebug"), __publicField(_a7, "subscreenOptions", { name: "debug" }), _a7);
-  function be(t) {
+  function me(t) {
     return t !== null && typeof t == "object" && Object.getPrototypeOf(t) === Object.prototype && !Array.isArray(t);
   }
-  __name(be, "be");
-  r(be, "isPlainObject");
+  __name(me, "me");
+  r(me, "isPlainObject");
   function f(t, e, n = { concatArrays: true, matchingOnly: false }) {
     if (t === void 0) return e;
     if (e === void 0) return t;
     if (Array.isArray(t) && Array.isArray(e) && n.concatArrays) return [...t, ...e];
-    if (be(t) && be(e)) {
-      let i = { ...t }, o = Object.keys(t).length === 0, s = n.matchingOnly && !o ? Object.keys(e).filter((l) => l in t) : Object.keys(e);
-      for (let l of s) l === "__proto__" || l === "constructor" || l === "prototype" || (i[l] = l in t ? f(t[l], e[l], n) : e[l]);
+    if (me(t) && me(e)) {
+      let i = { ...t }, o = Object.keys(t).length === 0, s = n.matchingOnly && !o ? Object.keys(e).filter((a) => a in t) : Object.keys(e);
+      for (let a of s) a === "__proto__" || a === "constructor" || a === "prototype" || (i[a] = a in t ? f(t[a], e[a], n) : e[a]);
       return i;
     }
     return e;
   }
   __name(f, "f");
   r(f, "deepMerge");
-  function Yt(t) {
+  function Kt(t) {
     let e = JSON.parse(JSON.stringify(t)), n = [];
     for (; e.length > 0; ) {
       let i = Math.floor(Math.random() * e.length);
@@ -959,8 +973,8 @@ var Themed = (() => {
     }
     return n;
   }
-  __name(Yt, "Yt");
-  r(Yt, "shuffleArray");
+  __name(Kt, "Kt");
+  r(Kt, "shuffleArray");
   function O(t, e) {
     let n = t.split("."), i = globalThis;
     for (let o = 0; o < n.length - 1; o++) i[n[o]] || (i[n[o]] = {}), i = i[n[o]];
@@ -977,36 +991,36 @@ var Themed = (() => {
   }
   __name(q, "q");
   r(q, "hasGetter");
-  function Ht(t, e) {
+  function Jt(t, e) {
     for (; t && t !== Object.prototype; ) {
       if (Object.getOwnPropertyDescriptor(t, e)?.set) return true;
       t = Object.getPrototypeOf(t);
     }
     return false;
   }
-  __name(Ht, "Ht");
-  r(Ht, "hasSetter");
-  var me = r((t) => Math.round(t / 100) / 10, "byteToKB");
-  function N(t, e) {
+  __name(Jt, "Jt");
+  r(Jt, "hasSetter");
+  var he = r((t) => Math.round(t / 100) / 10, "byteToKB");
+  function X(t, e) {
     try {
       return { ok: true, value: t() };
     } catch (n) {
       return { ok: false, error: e ? e(n) : n };
     }
   }
-  __name(N, "N");
-  r(N, "tryCatch");
-  async function ge(t, e) {
+  __name(X, "X");
+  r(X, "tryCatch");
+  async function pe(t, e) {
     try {
       return { ok: true, value: await t() };
     } catch (n) {
       return { ok: false, error: e ? e(n) : n };
     }
   }
-  __name(ge, "ge");
-  r(ge, "tryCatchAsync");
-  var u = { createButton: Ee, createCheckbox: Me, createInput: Re, createLabel: Ae, createCustom: Ve, createDropdown: We, createTooltip: De, getTooltip: he, setTooltip: ee, createBackNext: Xe };
-  function Ee(t) {
+  __name(pe, "pe");
+  r(pe, "tryCatchAsync");
+  var u = { createButton: Me, createCheckbox: Ve, createInput: Ae, createLabel: We, createCustom: Re, createDropdown: De, createTooltip: Xe, getTooltip: fe, setTooltip: ee, createBackNext: Ne };
+  function Me(t) {
     t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
@@ -1017,9 +1031,9 @@ var Themed = (() => {
     }), f({ labelPosition: "center" }, t.options), f({ button: { classList: ["deeplib-button"], attributes: { disabled: i }, children: [n ? f({ tag: "img", attributes: { id: `${t.id}-image`, alt: "", decoding: "async", loading: "lazy", src: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" }, style: { "--image": `url("${n}")` } }, t.htmlOptions?.img) : void 0] } }, t.htmlOptions ?? {}));
     return I.currentElements.push([o, t]), o;
   }
-  __name(Ee, "Ee");
-  r(Ee, "elementCreateButton");
-  function Me(t) {
+  __name(Me, "Me");
+  r(Me, "elementCreateButton");
+  function Ve(t) {
     t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
@@ -1033,9 +1047,9 @@ var Themed = (() => {
       P.call(this, o);
     })), I.currentElements.push([i, t]), i;
   }
-  __name(Me, "Me");
-  r(Me, "elementCreateCheckbox");
-  function Ve(t) {
+  __name(Ve, "Ve");
+  r(Ve, "elementCreateCheckbox");
+  function Re(t) {
     var _a15, _b;
     t.id ?? (t.id = ElementGenerateID()), (_a15 = t.htmlOptions).attributes ?? (_a15.attributes = {}), (_b = t.htmlOptions.attributes).id ?? (_b.id = t.id);
     let e = document.getElementById(t.htmlOptions.attributes.id);
@@ -1044,9 +1058,9 @@ var Themed = (() => {
     let n = ElementCreate(t.htmlOptions);
     return I.currentElements.push([n, t]), n;
   }
-  __name(Ve, "Ve");
-  r(Ve, "elementCreateCustom");
-  function Re(t) {
+  __name(Re, "Re");
+  r(Re, "elementCreateCustom");
+  function Ae(t) {
     t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
@@ -1059,9 +1073,9 @@ var Themed = (() => {
       P.call(this, o);
     })), I.currentElements.push([i, t]), i;
   }
-  __name(Re, "Re");
-  r(Re, "elementCreateInput");
-  function Ae(t) {
+  __name(Ae, "Ae");
+  r(Ae, "elementCreateInput");
+  function We(t) {
     t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
@@ -1073,9 +1087,9 @@ var Themed = (() => {
       P.call(this, i);
     })), I.currentElements.push([n, t]), n;
   }
-  __name(Ae, "Ae");
-  r(Ae, "elementCreateLabel");
-  function We(t) {
+  __name(We, "We");
+  r(We, "elementCreateLabel");
+  function De(t) {
     t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(`${t.id}-container`);
     if (e) return e;
@@ -1089,26 +1103,26 @@ var Themed = (() => {
     }, "mouseout") } }, label: { classList: ["deeplib-text"], attributes: { id: `${t.id}-label` } } }, t.htmlOptions));
     return I.currentElements.push([n, t]), n;
   }
-  __name(We, "We");
-  r(We, "elementCreateDropdown");
-  function De() {
+  __name(De, "De");
+  r(De, "elementCreateDropdown");
+  function Xe() {
     return ElementCreate({ tag: "div", classList: ["deeplib-tooltip", "anchor-bottom"], attributes: { id: "deeplib-tooltip" }, style: { display: "none" } });
   }
-  __name(De, "De");
-  r(De, "elementCreateTooltip");
-  function he() {
+  __name(Xe, "Xe");
+  r(Xe, "elementCreateTooltip");
+  function fe() {
     return document.getElementById("deeplib-tooltip") ?? void 0;
   }
-  __name(he, "he");
-  r(he, "elementGetTooltip");
+  __name(fe, "fe");
+  r(fe, "elementGetTooltip");
   function z(t, e) {
     let n = this.getBoundingClientRect();
     ee(e, "bottom");
-    let i = he();
+    let i = fe();
     if (i) {
       i.offsetHeight;
       let o = i.getBoundingClientRect();
-      (S.doRectsOverlap(n, o) ? "top" : "bottom") === "top" && fe("top");
+      (S.doRectsOverlap(n, o) ? "top" : "bottom") === "top" && ve("top");
     }
   }
   __name(z, "z");
@@ -1121,35 +1135,35 @@ var Themed = (() => {
   function ee(t, e = "bottom") {
     let n = document.getElementById("deeplib-tooltip");
     if (!n) return false;
-    fe(e);
+    ve(e);
     let i = t == null ? null : CommonIsObject(t) && "tag" in t ? [ElementCreate(t)] : CommonIsArray(t) ? t.map((o) => CommonIsObject(o) && "tag" in o ? ElementCreate(o) : typeof o == "string" || CommonIsObject(t) && "tag" in t || o instanceof HTMLElement ? o : null).filter((o) => o !== null) : typeof t == "string" ? [t] : null;
     return i === null ? (n.childNodes.forEach((o) => o.remove()), n.style.display = "none", true) : (n.replaceChildren(...i), n.style.display = "", true);
   }
   __name(ee, "ee");
   r(ee, "elementSetTooltip");
-  function fe(t) {
+  function ve(t) {
     let e = document.getElementById("deeplib-tooltip");
     if (!e) return false;
     e.classList.toggle("anchor-bottom", t === "bottom"), e.classList.toggle("anchor-top", t === "top");
   }
-  __name(fe, "fe");
-  r(fe, "elementSetTooltipPosition");
-  function Xe(t) {
+  __name(ve, "ve");
+  r(ve, "elementSetTooltipPosition");
+  function Ne(t) {
     t.id ?? (t.id = ElementGenerateID());
     let e = document.getElementById(t.id);
     if (e) return e;
-    let n = r((l) => {
+    let n = r((a) => {
       let c = document.getElementById(`${t.id}-label`);
       if (!c) return false;
-      c.textContent = l;
-    }, "setLabel"), i = r((l) => {
+      c.textContent = a;
+    }, "setLabel"), i = r((a) => {
       let c = document.getElementById(`deeplib-prev-next-${t.id}-prev-button-tooltip`);
       if (!c) return false;
-      c.textContent = l;
-    }, "setPrevTooltip"), o = r((l) => {
+      c.textContent = a;
+    }, "setPrevTooltip"), o = r((a) => {
       let c = document.getElementById(`deeplib-prev-next-${t.id}-next-button-tooltip`);
       if (!c) return false;
-      c.textContent = l;
+      c.textContent = a;
     }, "setNextTooltip");
     return ElementCreate({ tag: "div", classList: ["deeplib-prev-next"], attributes: { id: t.id }, children: [u.createButton({ id: `deeplib-prev-next-${t.id}-prev-button`, onClick: r(() => {
       t.back({ setLabel: n, setBackTooltip: i, setNextTooltip: o });
@@ -1157,17 +1171,17 @@ var Themed = (() => {
       t.next({ setLabel: n, setBackTooltip: i, setNextTooltip: o });
     }, "onClick"), htmlOptions: { button: { classList: ["deeplib-prev-next-button"] } }, options: { noStyling: true, image: `${"https://protokink.github.io/Themed/public"}/dl_images/arrow_right.svg`, tooltip: t.initialNextTooltip } })] });
   }
-  __name(Xe, "Xe");
-  r(Xe, "elementPrevNext");
+  __name(Ne, "Ne");
+  r(Ne, "elementPrevNext");
   var _a8;
-  var R = (_a8 = class extends I {
+  var A = (_a8 = class extends I {
     constructor(e) {
       super(e);
       __publicField(this, "subscreens", []);
       this.subscreens = e.subscreens;
     }
     load() {
-      if (!k.instance || CurrentModule !== "DeepLibMod") {
+      if (!M.instance || CurrentModule !== "DeepLibMod") {
         this.setSubscreen(this);
         return;
       }
@@ -1209,12 +1223,12 @@ var Themed = (() => {
         b.appendToMiscDiv(o);
       }
       if (_a8.options.storageFullnessIndicator) {
-        let s = me(p.storageSize()), l = (s / 180 * 100).toFixed(1), c = u.createButton({ id: CommonGenerateUniqueID(), size: [null, 80], options: { tooltipPosition: "left", noStyling: true, tooltip: g("mainmenu.meter.storage_hint", { $percentage$: l }), label: g("mainmenu.meter.storage_label", { $currentCapacity$: s, $maxCapacity$: 180 }) }, htmlOptions: { button: { children: [{ tag: "div", attributes: { id: "deeplib-storage-meter" }, children: [{ tag: "div", attributes: { id: "deeplib-storage-bar" }, style: { width: `${l}%` } }] }] } } });
+        let s = he(p.storageSize()), a = (s / 180 * 100).toFixed(1), c = u.createButton({ id: CommonGenerateUniqueID(), size: [null, 80], options: { tooltipPosition: "left", noStyling: true, tooltip: g("mainmenu.meter.storage_hint", { $percentage$: a }), label: g("mainmenu.meter.storage_label", { $currentCapacity$: s, $maxCapacity$: 180 }) }, htmlOptions: { button: { children: [{ tag: "div", attributes: { id: "deeplib-storage-meter" }, children: [{ tag: "div", attributes: { id: "deeplib-storage-bar" }, style: { width: `${a}%` } }] }] } } });
         b.appendToMiscDiv(c);
       }
-      if (C("DebugModule")) {
+      if (B("DebugModule")) {
         let o = u.createButton({ id: "deeplib-debug-button", onClick: r(() => {
-          this.setSubscreen(new j(C("DebugModule")));
+          this.setSubscreen(new j(B("DebugModule")));
         }, "onClick"), size: [90, 90], options: { image: `${"https://protokink.github.io/Themed/public"}/dl_images/bug.svg` } });
         n && n.prepend(o);
       }
@@ -1227,7 +1241,7 @@ var Themed = (() => {
     exit() {
       CharacterAppearanceForceUpCharacter = -1, CharacterLoadCanvas(Player);
       let e = typeof this.options.returnScreen == "function" ? this.options.returnScreen() : this.options.returnScreen;
-      e ? e instanceof I ? Z(e).then(() => {
+      e ? e instanceof I ? E(e).then(() => {
       }) : Array.isArray(e) && CommonSetScreen(...e) : PreferenceOpenSubscreen("Extensions").then(() => {
         PreferenceSubscreenExtensionsClear();
       });
@@ -1240,7 +1254,7 @@ var Themed = (() => {
     }
   }, __name(_a8, "t"), r(_a8, "MainMenu"), __publicField(_a8, "options", {}), __publicField(_a8, "subscreenOptions", { name: "mainmenu", doShowExitButton: false, settingsWidth: 600 }), _a8);
   var _a9;
-  var A = (_a9 = class {
+  var F = (_a9 = class {
     static async init(e) {
       if (_a9.initialized) return;
       _a9.initialized = true, _a9.PathToModTranslation = (() => {
@@ -1260,6 +1274,9 @@ var Themed = (() => {
         _a9.ModTranslation = { ...s, ...o };
       }
     }
+    static unload() {
+      _a9.initialized = false, _a9.LibTranslation = {}, _a9.ModTranslation = {}, _a9.PathToModTranslation = void 0, _a9.PathToLibTranslation = `${"https://protokink.github.io/Themed/public"}/dl_translations/`, _a9.DefaultLanguage = "en", _a9.FetchFolder = false;
+    }
     static getTextMod(e) {
       return _a9.ModTranslation?.[e] || void 0;
     }
@@ -1268,13 +1285,13 @@ var Themed = (() => {
     }
     static async fetchTranslation(e, n, i = false) {
       if (i) {
-        let l = `${e}${n}/`, c = await this.fetchLanguageFolder(l);
+        let a = `${e}${n}/`, c = await this.fetchLanguageFolder(a);
         if (Object.keys(c).length > 0) return c;
       }
       let o = `${e}${n}.lang`, s = await _a9.fetchLanguageFile(o);
       if (n !== _a9.DefaultLanguage && !s) {
-        let l = `${e}${_a9.DefaultLanguage}.lang`;
-        return await this.fetchLanguageFile(l) || {};
+        let a = `${e}${_a9.DefaultLanguage}.lang`;
+        return await this.fetchLanguageFile(a) || {};
       }
       return s || {};
     }
@@ -1285,17 +1302,17 @@ var Themed = (() => {
       return this.parseTranslation(i);
     }
     static async fetchLanguageFolder(e) {
-      let n = {}, i = "manifest.txt", o = null, s = await fetch(`${e}${i}`).catch((l) => (m.error("Failed to fetch language folder manifest:", l), new Response(null, { status: 500 })));
+      let n = {}, i = "manifest.txt", o = null, s = await fetch(`${e}${i}`).catch((a) => (m.error("Failed to fetch language folder manifest:", a), new Response(null, { status: 500 })));
       if (s.ok && (o = (await s.text()).trim().split(`
 `).map((c) => c.trim()).filter((c) => c && !c.startsWith("#"))), o && o.length > 0) {
-        let l = o.map(async (d) => {
+        let a = o.map(async (d) => {
           try {
-            let a = await _a9.fetchLanguageFile(`${e}${d}`);
-            if (a) return a;
+            let l = await _a9.fetchLanguageFile(`${e}${d}`);
+            if (l) return l;
           } catch {
           }
           return {};
-        }), c = await Promise.all(l);
+        }), c = await Promise.all(a);
         for (let d of c) Object.assign(n, d);
         if (Object.keys(n).length > 0) return n;
       }
@@ -1307,14 +1324,14 @@ var Themed = (() => {
       for (let o of i) {
         let s = o.trim();
         if (!s || s.startsWith("#")) continue;
-        let [l, ...c] = s.split("=");
-        n[l.trim()] = c.join("=").trim();
+        let [a, ...c] = s.split("=");
+        n[a.trim()] = c.join("=").trim();
       }
       return n;
     }
   }, __name(_a9, "t"), r(_a9, "Localization"), __publicField(_a9, "LibTranslation", {}), __publicField(_a9, "ModTranslation", {}), __publicField(_a9, "PathToModTranslation"), __publicField(_a9, "PathToLibTranslation", `${"https://protokink.github.io/Themed/public"}/dl_translations/`), __publicField(_a9, "DefaultLanguage", "en"), __publicField(_a9, "FetchFolder", false), __publicField(_a9, "initialized", false), _a9);
   var g = r((t, e) => {
-    let n = A.getTextMod(t) || A.getTextLib(t) || t;
+    let n = F.getTextMod(t) || F.getTextLib(t) || t;
     if (e) {
       let i = Object.fromEntries(Object.entries(e).map(([o, s]) => [o, s.toString()]));
       return CommonStringPartitionReplace(n, i).join("");
@@ -1322,7 +1339,7 @@ var Themed = (() => {
     return n;
   }, "getText");
   var _a10;
-  var D = (_a10 = class {
+  var W = (_a10 = class {
     constructor(e) {
       __publicField(this, "opts");
       __publicField(this, "dialog");
@@ -1382,7 +1399,7 @@ var Themed = (() => {
           s.shiftKey ? document.activeElement === i && (o.focus(), s.preventDefault()) : document.activeElement === o && (i.focus(), s.preventDefault());
         } else if (s.key === "Escape") s.stopPropagation(), this.close(this.opts.escapeAction ?? "close");
         else if (s.key === "Enter") {
-          if (n.some((l) => l === document.activeElement) && document.activeElement !== this.inputEl) return;
+          if (n.some((a) => a === document.activeElement) && document.activeElement !== this.inputEl) return;
           s.preventDefault(), s.stopPropagation(), this.close(this.opts.enterAction ?? "submit");
         }
       }), window.requestAnimationFrame(() => {
@@ -1403,7 +1420,7 @@ var Themed = (() => {
     }
   }, __name(_a10, "t"), r(_a10, "Modal"), __publicField(_a10, "queue", []), __publicField(_a10, "processing", false), _a10);
   var _a11;
-  var ve = (_a11 = class extends I {
+  var Ie = (_a11 = class extends I {
     constructor(e) {
       super();
       __publicField(this, "importExportOptions");
@@ -1433,7 +1450,7 @@ var Themed = (() => {
     }
     async dataExport(e) {
       try {
-        let n = await this.getSelectedModules(x(), "export");
+        let n = await this.getSelectedModules(y(), "export");
         if (!n) return;
         if (n.length === 0) {
           ToastManager.error("No modules selected for export.");
@@ -1468,11 +1485,11 @@ var Themed = (() => {
         throw new Error(`File save cancelled or failed: ${s}`, { cause: o });
       }
       else {
-        let o = await D.prompt("Enter file name", { defaultValue: n });
+        let o = await W.prompt("Enter file name", { defaultValue: n });
         if (o === null) return false;
         if (o === "") throw new Error("File name cannot be empty.");
-        let s = new Blob([e], { type: "text/plain" }), l = ElementCreate({ tag: "a", attributes: { href: URL.createObjectURL(s), download: o + i } });
-        return l.click(), URL.revokeObjectURL(l.href), true;
+        let s = new Blob([e], { type: "text/plain" }), a = ElementCreate({ tag: "a", attributes: { href: URL.createObjectURL(s), download: o + i } });
+        return a.click(), URL.revokeObjectURL(a.href), true;
       }
     }
     async importFromFile() {
@@ -1480,8 +1497,8 @@ var Themed = (() => {
       async function n(i) {
         if (!i.name.endsWith(e)) throw new Error(`Invalid file type. Expected a ${e} file.`);
         return new Promise((o, s) => {
-          let l = new FileReader();
-          l.onload = () => o(l.result), l.onerror = () => s(new Error("Failed to read file.")), l.readAsText(i);
+          let a = new FileReader();
+          a.onload = () => o(a.result), a.onerror = () => s(new Error("Failed to read file.")), a.readAsText(i);
         });
       }
       __name(n, "n");
@@ -1494,8 +1511,8 @@ var Themed = (() => {
       }
       else return new Promise((i, o) => {
         let s = document.createElement("input");
-        s.type = "file", s.accept = e, s.onchange = async (l) => {
-          let c = l.target.files?.[0];
+        s.type = "file", s.accept = e, s.onchange = async (a) => {
+          let c = a.target.files?.[0];
           if (c) try {
             let d = await n(c);
             i(d);
@@ -1513,17 +1530,17 @@ var Themed = (() => {
       });
     }
     async importFromClipboard() {
-      return D.prompt("Enter data to import").catch((e) => {
+      return W.prompt("Enter data to import").catch((e) => {
         let n = e instanceof Error ? e.message : String(e);
         throw new Error(`Failed to read data from clipboard: ${n}`, { cause: e });
       });
     }
     async getSelectedModules(e, n) {
-      let i = e.filter((a) => q(a, "settings") && !!a.settings), o = Object.fromEntries(i.map((a) => [a.constructor.name, true]));
+      let i = e.filter((l) => q(l, "settings") && !!l.settings), o = Object.fromEntries(i.map((l) => [l.constructor.name, true]));
       if (i.length === 0) throw new Error("No modules to choose from.");
-      let s = i.map((a) => u.createCheckbox({ id: a.constructor.name, label: g(a.constructor.name), setElementValue: r(() => o[a.constructor.name], "setElementValue"), setSettingValue: r((h) => o[a.constructor.name] = h, "setSettingValue") })), l = n === "import" ? "import_export.import.select_modules" : "import_export.export.select_modules";
-      if (!await D.confirm([g(l), ElementCreate({ tag: "br" }), g("import_export.text.not_sure"), { tag: "div", classList: ["deeplib-modal-checkbox-container"], children: s }], { modalId: "deeplib-modal-import_export" })) return null;
-      let d = Object.entries(o).filter(([a, h]) => h).map(([a]) => C(a)).filter((a) => !!a);
+      let s = i.map((l) => u.createCheckbox({ id: l.constructor.name, label: g(l.constructor.name), setElementValue: r(() => o[l.constructor.name], "setElementValue"), setSettingValue: r((h) => o[l.constructor.name] = h, "setSettingValue") })), a = n === "import" ? "import_export.import.select_modules" : "import_export.export.select_modules";
+      if (!await W.confirm([g(a), ElementCreate({ tag: "br" }), g("import_export.text.not_sure"), { tag: "div", classList: ["deeplib-modal-checkbox-container"], children: s }], { modalId: "deeplib-modal-import_export" })) return null;
+      let d = Object.entries(o).filter(([l, h]) => h).map(([l]) => B(l)).filter((l) => !!l);
       if (d.length === 0) throw new Error("No modules selected.");
       return d;
     }
@@ -1535,20 +1552,20 @@ var Themed = (() => {
     async applyImportPayload(e) {
       let n = JSON.parse(LZString.decompressFromBase64(e) ?? "");
       if (!n) throw new Error("Invalid import format.");
-      let i = Object.keys(n).map((s) => C(s)).filter((s) => !!s), o = await this.getSelectedModules(i, "import");
+      let i = Object.keys(n).map((s) => B(s)).filter((s) => !!s), o = await this.getSelectedModules(i, "import");
       if (!o) return false;
       if (o.length === 0) throw new Error("No modules selected.");
       for (let s of o) {
-        let l = n[s.constructor.name];
-        if (!l) continue;
-        let c = f(s.defaultSettings, l);
+        let a = n[s.constructor.name];
+        if (!a) continue;
+        let c = f(s.defaultSettings, a);
         c && (s.settings = c);
       }
       return true;
     }
-  }, __name(_a11, "ve"), r(_a11, "GuiImportExport"), __publicField(_a11, "subscreenOptions", { name: "import-export" }), _a11);
+  }, __name(_a11, "Ie"), r(_a11, "GuiImportExport"), __publicField(_a11, "subscreenOptions", { name: "import-export" }), _a11);
   var _a12;
-  var Y = (_a12 = class {
+  var Q = (_a12 = class {
     constructor(e) {
       __publicField(this, "modName");
       return _a12._instance || (_a12._instance = this, this.modName = e), this.modName ?? (this.modName = e), _a12._instance;
@@ -1575,7 +1592,7 @@ var Themed = (() => {
     load() {
       if (this.extensionStorage) {
         let e = _a12.dataDecompress(this.extensionStorage || "");
-        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.8.3" } : this.playerStorage = e;
+        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.8.4" } : this.playerStorage = e;
       } else this.playerStorage = {};
     }
     save() {
@@ -1605,8 +1622,8 @@ var Themed = (() => {
       }
     }
   }, __name(_a12, "t"), r(_a12, "ModStorage"), __publicField(_a12, "_instance", null), _a12);
-  var S = { autoSetPosition: Ne, autoSetSize: Ue, hide: Qe, unhide: Ye, hasOverflow: He, doRectsOverlap: je };
-  function Ne(t, e) {
+  var S = { autoSetPosition: Ue, autoSetSize: Qe, hide: Ye, unhide: He, hasOverflow: je, doRectsOverlap: ze };
+  function Ue(t, e) {
     let n, i, o;
     if (Array.isArray(e)) n = e[0], i = e[1], o = e[2];
     else if (typeof e == "function") {
@@ -1615,9 +1632,9 @@ var Themed = (() => {
     }
     n !== void 0 && i !== void 0 && ElementSetPosition(t, n, i, o);
   }
-  __name(Ne, "Ne");
-  r(Ne, "autoSetPosition");
-  function Ue(t, e) {
+  __name(Ue, "Ue");
+  r(Ue, "autoSetPosition");
+  function Qe(t, e) {
     let n, i;
     if (Array.isArray(e)) n = e[0], i = e[1];
     else if (typeof e == "function") {
@@ -1626,34 +1643,34 @@ var Themed = (() => {
     }
     n !== void 0 && i !== void 0 && ElementSetSize(t, n, i);
   }
-  __name(Ue, "Ue");
-  r(Ue, "autoSetSize");
-  function Qe(t) {
+  __name(Qe, "Qe");
+  r(Qe, "autoSetSize");
+  function Ye(t) {
     let e = ElementWrap(t);
     e && (e.style.display = "none");
   }
-  __name(Qe, "Qe");
-  r(Qe, "hide");
-  function Ye(t) {
+  __name(Ye, "Ye");
+  r(Ye, "hide");
+  function He(t) {
     let e = ElementWrap(t);
     e && (e.style.display = "");
   }
-  __name(Ye, "Ye");
-  r(Ye, "unhide");
-  function He(t) {
+  __name(He, "He");
+  r(He, "unhide");
+  function je(t) {
     let e = ElementWrap(t);
     if (!e) return null;
     let n = e.scrollHeight > e.clientHeight, i = e.scrollWidth > e.clientWidth;
     return { any: n || i, vertical: n, horizontal: i };
   }
-  __name(He, "He");
-  r(He, "hasOverflow");
-  function je(t, e) {
+  __name(je, "je");
+  r(je, "hasOverflow");
+  function ze(t, e) {
     return !(t.right < e.left || t.left > e.right || t.bottom < e.top || t.top > e.bottom);
   }
-  __name(je, "je");
-  r(je, "doRectsOverlap");
-  var b = { getSubscreen: te, appendToSubscreen: Pe, removeSubscreen: ze, getSettingsDiv: ne, appendToSettingsDiv: Ke, removeSettingsDiv: Je, getMiscDiv: ie, appendToMiscDiv: $e, removeMiscDiv: _e };
+  __name(ze, "ze");
+  r(ze, "doRectsOverlap");
+  var b = { getSubscreen: te, appendToSubscreen: Ke, removeSubscreen: Pe, getSettingsDiv: ne, appendToSettingsDiv: Je, removeSettingsDiv: $e, getMiscDiv: ie, appendToMiscDiv: _e, removeMiscDiv: qe };
   function te() {
     let t = ElementWrap("deeplib-subscreen");
     if (t) return t;
@@ -1662,94 +1679,90 @@ var Themed = (() => {
   }
   __name(te, "te");
   r(te, "elementGetSubscreenDiv");
-  function ze() {
+  function Pe() {
     return te()?.remove();
   }
-  __name(ze, "ze");
-  r(ze, "elementRemoveSubscreenDiv");
-  function Pe(...t) {
+  __name(Pe, "Pe");
+  r(Pe, "elementRemoveSubscreenDiv");
+  function Ke(...t) {
     return te()?.append(...t);
   }
-  __name(Pe, "Pe");
-  r(Pe, "elementAppendToSubscreenDiv");
+  __name(Ke, "Ke");
+  r(Ke, "elementAppendToSubscreenDiv");
   function ne() {
     let t = ElementWrap("deeplib-settings");
     return t || ElementCreate({ tag: "div", classList: ["deeplib-settings", "scroll-box"], attributes: { id: "deeplib-settings" } });
   }
   __name(ne, "ne");
   r(ne, "elementGetSettingsDiv");
-  function Ke(...t) {
+  function Je(...t) {
     return ne()?.append(...t);
   }
-  __name(Ke, "Ke");
-  r(Ke, "elementAppendToSettingsDiv");
-  function Je() {
+  __name(Je, "Je");
+  r(Je, "elementAppendToSettingsDiv");
+  function $e() {
     return ne()?.remove();
   }
-  __name(Je, "Je");
-  r(Je, "elementRemoveSettingsDiv");
+  __name($e, "$e");
+  r($e, "elementRemoveSettingsDiv");
   function ie() {
     let t = ElementWrap("deeplib-misc");
     return t || ElementCreate({ tag: "div", classList: ["deeplib-misc"], attributes: { id: "deeplib-misc" } });
   }
   __name(ie, "ie");
   r(ie, "elementGetMiscDiv");
-  function $e(...t) {
+  function _e(...t) {
     return ie()?.append(...t);
   }
-  __name($e, "$e");
-  r($e, "elementAppendToMiscDiv");
-  function _e() {
+  __name(_e, "_e");
+  r(_e, "elementAppendToMiscDiv");
+  function qe() {
     return ie()?.remove();
   }
-  __name(_e, "_e");
-  r(_e, "elementRemoveMiscDiv");
+  __name(qe, "qe");
+  r(qe, "elementRemoveMiscDiv");
   var K = oe($(), 1);
-  function qe(t) {
+  function et(t) {
     let e = t.name;
     return { INFO: "color: #32CCCC", TRACE: "color: #CCCC32", WARN: "color: #eec355", ERROR: "color: #750b0b", DEBUG: "color: #9E4BCF", TIME: "color: #CCCC32" }[e];
   }
-  __name(qe, "qe");
-  r(qe, "colorizeLog");
-  var G = K.default.get("DeepLib");
+  __name(et, "et");
+  r(et, "colorizeLog");
+  var C = K.default.get("DeepLib");
   K.default.useDefaults({ defaultLevel: K.default.DEBUG, formatter: r(function(t, e) {
     let n = e.name || "DeepLib", i = navigator.userAgent.toLowerCase();
     if (i.includes("chrome") || i.includes("firefox")) {
-      let o = qe(e.level);
+      let o = et(e.level);
       t.unshift(`%c${n}:`, o);
     } else t.unshift(`${n}:`);
   }, "formatter") });
-  function Zn(t, e, n) {
+  function Rn(t, e, n) {
     let i = ElementCreate({ tag: "div", classList: ["ChatMessage", "deeplib-message", "ChatMessageNonDialogue"], attributes: { id: t ?? `DEEPLIB_LOCAL_MESSAGE_${Date.now()}`, "data-time": ChatRoomCurrentTime(), "data-sender": Player.MemberNumber?.toString() }, children: [{ tag: "span", classList: ["deeplib-text"], innerHTML: e.replaceAll(`
 	`, "") }, { tag: "br" }, { tag: "a", classList: ["deeplib-text"], attributes: { href: "#" }, innerHTML: "<b>Close (Click)</b>", eventListeners: { click: r(() => {
       i.remove();
     }, "click") } }] });
     ChatRoomAppendChat(i), n && setTimeout(() => i.remove(), n * 1e3);
   }
-  __name(Zn, "Zn");
-  r(Zn, "sendLocalMessage");
-  function kn(t, e = void 0, n = []) {
+  __name(Rn, "Rn");
+  r(Rn, "sendLocalMessage");
+  function An(t, e = void 0, n = []) {
     t && ServerSend("ChatRoomChat", { Content: "DEEPLIB_CUSTOM_ACTION", Type: "Action", Target: e ?? void 0, Dictionary: [{ Tag: 'MISSING TEXT IN "Interface.csv": DEEPLIB_CUSTOM_ACTION', Text: t }, ...n] });
   }
-  __name(kn, "kn");
-  r(kn, "sendActionMessage");
-  var E = { Observe: 0, AddBehavior: 1, ModifyBehavior: 5, OverrideBehavior: 10, Top: 100 };
+  __name(An, "An");
+  r(An, "sendActionMessage");
+  var k = { Observe: 0, AddBehavior: 1, ModifyBehavior: 5, OverrideBehavior: 10, Top: 100 };
   var _a13;
-  var W = (_a13 = class {
+  var Y = (_a13 = class {
     constructor(e, n) {
       __publicField(this, "SDK");
       __publicField(this, "patchedFunctions", /* @__PURE__ */ new Map());
       this.SDK = bcModSdk.registerMod(e, n);
     }
-    initPatchableFunction(e) {
-      let n = this.patchedFunctions.get(e);
-      return n || (n = { name: e, hooks: [] }, this.patchedFunctions.set(e, n)), n;
-    }
     hookFunction(e, n, i, o = null) {
-      let s = this.initPatchableFunction(e);
-      if (s.hooks.some((c) => c.hook === i)) return () => null;
-      let l = this.SDK.hookFunction(e, n, i);
-      return s.hooks.push({ hook: i, priority: n, module: o, removeCallback: l }), s.hooks.sort((c, d) => d.priority - c.priority), l;
+      let s = this.initPatchableFunction(e), a = s.hooks.find((d) => d.hook === i);
+      if (a) return console.warn(`Hook already exists for function ${e}:`, i.toString()), a.removeCallback;
+      let c = this.SDK.hookFunction(e, n, i);
+      return s.hooks.push({ hook: i, priority: n, module: o, removeCallback: c }), c;
     }
     patchFunction(e, n) {
       this.SDK.patchFunction(e, n);
@@ -1758,18 +1771,28 @@ var Themed = (() => {
       this.SDK.removePatches(e);
     }
     removeHookByModule(e, n) {
-      let i = this.initPatchableFunction(e);
-      for (let o = i.hooks.length - 1; o >= 0; o--) i.hooks[o].module === n && (i.hooks[o].removeCallback(), i.hooks.splice(o, 1));
-      return true;
+      let i = this.patchedFunctions.get(e);
+      if (!i) return false;
+      let o = false;
+      for (let s = i.hooks.length - 1; s >= 0; s--) i.hooks[s].module === n && (i.hooks[s].removeCallback(), i.hooks.splice(s, 1), o = true);
+      return i.hooks.length === 0 && this.patchedFunctions.delete(e), o;
     }
     removeAllHooksByModule(e) {
-      for (let n of this.patchedFunctions.values()) for (let i = n.hooks.length - 1; i >= 0; i--) n.hooks[i].module === e && (n.hooks[i].removeCallback(), n.hooks.splice(i, 1));
-      return true;
+      let n = false;
+      for (let i of this.patchedFunctions.values()) {
+        for (let o = i.hooks.length - 1; o >= 0; o--) i.hooks[o].module === e && (i.hooks[o].removeCallback(), i.hooks.splice(o, 1), n = true);
+        i.hooks.length === 0 && this.patchedFunctions.delete(i.name);
+      }
+      return n;
     }
     unload() {
-      this.SDK.unload();
+      this.SDK.unload(), this.patchedFunctions.clear();
     }
-  }, __name(_a13, "W"), r(_a13, "ModSdkManager"), _a13);
+    initPatchableFunction(e) {
+      let n = this.patchedFunctions.get(e);
+      return n || (n = { name: e, hooks: [] }, this.patchedFunctions.set(e, n)), n;
+    }
+  }, __name(_a13, "Y"), r(_a13, "ModSdkManager"), _a13);
   var H = { injectInline(t, e) {
     if (document.getElementById(t)) return;
     let i = document.createElement("style");
@@ -1787,19 +1810,20 @@ var Themed = (() => {
     return fetch(t).then((e) => e.text()).catch((e) => (m.error("Failed to fetch stylesheet:", e), ""));
   } };
   var _a14;
-  var Ie = (_a14 = class {
+  var xe = (_a14 = class {
     constructor(e) {
       __publicField(this, "channelName");
       __publicField(this, "listeners", {});
+      __publicField(this, "removeHook");
       this.channelName = e;
-      w.hookFunction("ChatRoomMessageProcessHidden", 0, (n, i) => {
+      this.removeHook = G.hookFunction("ChatRoomMessageProcessHidden", 0, (n, i) => {
         if (!this.isChannelMessage(n[0])) return i(n);
-        let [o, s] = n, { type: l, data: c } = o.Dictionary[0], d = this.listeners[l];
-        return d && d.forEach((a) => a(c, s)), i(n);
+        let [o, s] = n, { type: a, data: c } = o.Dictionary[0], d = this.listeners[a];
+        return d && d.forEach((l) => l(c, s)), i(n);
       }, `EventChannel-${e}`);
     }
     unload() {
-      Object.keys(this.listeners).forEach((e) => delete this.listeners[e]), W.prototype.removeHookByModule("ChatRoomMessageProcessHidden", `EventChannel-${this.channelName}`);
+      Object.keys(this.listeners).forEach((e) => delete this.listeners[e]), this.removeHook();
     }
     sendEvent(e, n, i = null) {
       let o = { Type: "Hidden", Content: this.channelName, Sender: Player.MemberNumber, ...i ? { Target: i } : {}, Dictionary: [{ type: e, data: n }] };
@@ -1817,9 +1841,9 @@ var Themed = (() => {
       }
     }
     isChannelMessage(e) {
-      return e && e.Type === "Hidden" && e.Content === this.channelName && e.Sender && e.Sender !== Player.MemberNumber && e.Dictionary && !!e.Dictionary[0]?.data && !!e.Dictionary[0]?.type || false;
+      return e && e.Type === "Hidden" && e.Content === this.channelName && e.Sender && e.Sender !== Player.MemberNumber && e.Dictionary && e.Dictionary[0]?.data !== void 0 && e.Dictionary[0]?.type !== void 0 || false;
     }
-  }, __name(_a14, "Ie"), r(_a14, "EventChannel"), _a14);
+  }, __name(_a14, "xe"), r(_a14, "EventChannel"), _a14);
 
   // src/utilities/data.ts
   function settingsReset() {
@@ -1870,15 +1894,16 @@ var Themed = (() => {
     patchLoginPage();
     H.injectEmbed(ids.optionsStyle, `${"https://protokink.github.io/Themed/public"}/styles/login-options.css`);
     createUI();
-    const loginRunHook = w.hookFunction("LoginRun", E.Observe, (args, next) => {
+    const loginResizeHook = G.hookFunction("LoginResize", k.Observe, (args, next) => {
       next(args);
       ElementSetPosition(ids.optionsOpen, 2e3, 1e3, "bottom-right");
       ElementSetSize(ids.optionsOpen, 90, 90);
       ElementSetSize(ids.optionsSheet, 1e3, 500);
+      ElementSetFontSize(ids.optionsSheet, "auto");
     });
-    const loginExitHook = w.hookFunction("LoginUnload", E.Observe, (args, next) => {
+    const loginExitHook = G.hookFunction("LoginUnload", k.Observe, (args, next) => {
       loginExitHook();
-      loginRunHook();
+      loginResizeHook();
       removeUI();
       H.eject(ids.optionsStyle);
       unpatchLoginPage();
@@ -1948,10 +1973,10 @@ var Themed = (() => {
   function patchLoginPage() {
     const loginOptions = getLocalSettings().loginOptions;
     if (loginOptions.hideDummy) {
-      w.patchFunction("LoginRun", {
+      G.patchFunction("LoginRun", {
         "DrawCharacter(/** @type {NPCCharacter} */ (LoginCharacter), 1400, 100, 0.9);": ""
       });
-      w.patchFunction("LoginDoNextThankYou", {
+      G.patchFunction("LoginDoNextThankYou", {
         "CharacterRelease(char, false);": "",
         "CharacterAppearanceFullRandom(char);": "",
         'if (InventoryGet(char, "ItemNeck") != null) InventoryRemove(char, "ItemNeck", false);': "",
@@ -1959,20 +1984,20 @@ var Themed = (() => {
       });
     }
     if (loginOptions.hideCredits) {
-      w.patchFunction("LoginRun", {
+      G.patchFunction("LoginRun", {
         "if (LoginCredits) LoginDrawCredits();": "if (false) LoginDrawCredits();",
         'DrawImage("Screens/" + CurrentModule + "/" + CurrentScreen + "/Bubble.png", 1400, 16);': "",
         'DrawText(TextGet("ThankYou") + " " + LoginThankYou, 1625, 53, "Black", "Gray");': ""
       });
-      w.patchFunction("LoginDoNextThankYou", {
+      G.patchFunction("LoginDoNextThankYou", {
         "LoginThankYou = CommonRandomItemFromList(LoginThankYou, LoginThankYouList);": ""
       });
     }
   }
   __name(patchLoginPage, "patchLoginPage");
   function unpatchLoginPage() {
-    w.unpatchFunction("LoginRun");
-    w.unpatchFunction("LoginDoNextThankYou");
+    G.unpatchFunction("LoginRun");
+    G.unpatchFunction("LoginDoNextThankYou");
   }
   __name(unpatchLoginPage, "unpatchLoginPage");
   function repatchLoginPage() {
@@ -1982,13 +2007,13 @@ var Themed = (() => {
   __name(repatchLoginPage, "repatchLoginPage");
 
   // src/migrators/v140_migrator.ts
-  var _V140Migrator = class _V140Migrator extends pe {
+  var _V140Migrator = class _V140Migrator extends be {
     get migrationVersion() {
       return "1.4.0";
     }
     migrate() {
-      const colorsData = C("ColorsModule").settings;
-      const integrationsData = C("IntegrationModule").settings;
+      const colorsData = B("ColorsModule").settings;
+      const integrationsData = B("IntegrationModule").settings;
       if (colorsData) {
         if (colorsData["primaryColor"]) {
           colorsData.base.main = colorsData["primaryColor"];
@@ -2309,10 +2334,10 @@ var Themed = (() => {
     if (match) {
       const alpha = Number.parseFloat(match[4]);
       const h = (Number.parseFloat(match[1]) % 360 + 360) % 360;
-      const w2 = clamp(Number.parseFloat(match[2]), 0, 100);
+      const w = clamp(Number.parseFloat(match[2]), 0, 100);
       const b2 = clamp(Number.parseFloat(match[3]), 0, 100);
       const a = clamp(Number.isNaN(alpha) ? 1 : alpha, 0, 1);
-      return [h, w2, b2, a];
+      return [h, w, b2, a];
     }
     return null;
   };
@@ -2497,9 +2522,9 @@ var Themed = (() => {
     const g2 = rgb[1];
     let b2 = rgb[2];
     const h = convert.rgb.hsl(rgb)[0];
-    const w2 = 1 / 255 * Math.min(r2, Math.min(g2, b2));
+    const w = 1 / 255 * Math.min(r2, Math.min(g2, b2));
     b2 = 1 - 1 / 255 * Math.max(r2, Math.max(g2, b2));
-    return [h, w2 * 100, b2 * 100];
+    return [h, w * 100, b2 * 100];
   };
   convert.rgb.oklab = function(rgb) {
     const r2 = srgbNonlinearTransformInv(rgb[0] / 255);
@@ -2520,11 +2545,11 @@ var Themed = (() => {
     const k2 = Math.min(1 - r2, 1 - g2, 1 - b2);
     const c = (1 - r2 - k2) / (1 - k2) || 0;
     const m2 = (1 - g2 - k2) / (1 - k2) || 0;
-    const y = (1 - b2 - k2) / (1 - k2) || 0;
-    return [c * 100, m2 * 100, y * 100, k2 * 100];
+    const y2 = (1 - b2 - k2) / (1 - k2) || 0;
+    return [c * 100, m2 * 100, y2 * 100, k2 * 100];
   };
-  function comparativeDistance(x2, y) {
-    return (x2[0] - y[0]) ** 2 + (x2[1] - y[1]) ** 2 + (x2[2] - y[2]) ** 2;
+  function comparativeDistance(x, y2) {
+    return (x[0] - y2[0]) ** 2 + (x[1] - y2[1]) ** 2 + (x[2] - y2[2]) ** 2;
   }
   __name(comparativeDistance, "comparativeDistance");
   convert.rgb.keyword = function(rgb) {
@@ -2551,25 +2576,25 @@ var Themed = (() => {
     const r2 = srgbNonlinearTransformInv(rgb[0] / 255);
     const g2 = srgbNonlinearTransformInv(rgb[1] / 255);
     const b2 = srgbNonlinearTransformInv(rgb[2] / 255);
-    const x2 = r2 * 0.4124564 + g2 * 0.3575761 + b2 * 0.1804375;
-    const y = r2 * 0.2126729 + g2 * 0.7151522 + b2 * 0.072175;
+    const x = r2 * 0.4124564 + g2 * 0.3575761 + b2 * 0.1804375;
+    const y2 = r2 * 0.2126729 + g2 * 0.7151522 + b2 * 0.072175;
     const z2 = r2 * 0.0193339 + g2 * 0.119192 + b2 * 0.9503041;
-    return [x2 * 100, y * 100, z2 * 100];
+    return [x * 100, y2 * 100, z2 * 100];
   };
   convert.rgb.lab = function(rgb) {
     const xyz = convert.rgb.xyz(rgb);
-    let x2 = xyz[0];
-    let y = xyz[1];
+    let x = xyz[0];
+    let y2 = xyz[1];
     let z2 = xyz[2];
-    x2 /= 95.047;
-    y /= 100;
+    x /= 95.047;
+    y2 /= 100;
     z2 /= 108.883;
-    x2 = x2 > LAB_FT ? x2 ** (1 / 3) : 7.787 * x2 + 16 / 116;
-    y = y > LAB_FT ? y ** (1 / 3) : 7.787 * y + 16 / 116;
+    x = x > LAB_FT ? x ** (1 / 3) : 7.787 * x + 16 / 116;
+    y2 = y2 > LAB_FT ? y2 ** (1 / 3) : 7.787 * y2 + 16 / 116;
     z2 = z2 > LAB_FT ? z2 ** (1 / 3) : 7.787 * z2 + 16 / 116;
-    const l = 116 * y - 16;
-    const a = 500 * (x2 - y);
-    const b2 = 200 * (y - z2);
+    const l = 116 * y2 - 16;
+    const a = 500 * (x - y2);
+    const b2 = 200 * (y2 - z2);
     return [l, a, b2];
   };
   convert.hsl.rgb = function(hsl) {
@@ -2730,50 +2755,50 @@ var Themed = (() => {
   convert.cmyk.rgb = function(cmyk) {
     const c = cmyk[0] / 100;
     const m2 = cmyk[1] / 100;
-    const y = cmyk[2] / 100;
+    const y2 = cmyk[2] / 100;
     const k2 = cmyk[3] / 100;
     const r2 = 1 - Math.min(1, c * (1 - k2) + k2);
     const g2 = 1 - Math.min(1, m2 * (1 - k2) + k2);
-    const b2 = 1 - Math.min(1, y * (1 - k2) + k2);
+    const b2 = 1 - Math.min(1, y2 * (1 - k2) + k2);
     return [r2 * 255, g2 * 255, b2 * 255];
   };
   convert.xyz.rgb = function(xyz) {
-    const x2 = xyz[0] / 100;
-    const y = xyz[1] / 100;
+    const x = xyz[0] / 100;
+    const y2 = xyz[1] / 100;
     const z2 = xyz[2] / 100;
     let r2;
     let g2;
     let b2;
-    r2 = x2 * 3.2404542 + y * -1.5371385 + z2 * -0.4985314;
-    g2 = x2 * -0.969266 + y * 1.8760108 + z2 * 0.041556;
-    b2 = x2 * 0.0556434 + y * -0.2040259 + z2 * 1.0572252;
+    r2 = x * 3.2404542 + y2 * -1.5371385 + z2 * -0.4985314;
+    g2 = x * -0.969266 + y2 * 1.8760108 + z2 * 0.041556;
+    b2 = x * 0.0556434 + y2 * -0.2040259 + z2 * 1.0572252;
     r2 = srgbNonlinearTransform(r2);
     g2 = srgbNonlinearTransform(g2);
     b2 = srgbNonlinearTransform(b2);
     return [r2 * 255, g2 * 255, b2 * 255];
   };
   convert.xyz.lab = function(xyz) {
-    let x2 = xyz[0];
-    let y = xyz[1];
+    let x = xyz[0];
+    let y2 = xyz[1];
     let z2 = xyz[2];
-    x2 /= 95.047;
-    y /= 100;
+    x /= 95.047;
+    y2 /= 100;
     z2 /= 108.883;
-    x2 = x2 > LAB_FT ? x2 ** (1 / 3) : 7.787 * x2 + 16 / 116;
-    y = y > LAB_FT ? y ** (1 / 3) : 7.787 * y + 16 / 116;
+    x = x > LAB_FT ? x ** (1 / 3) : 7.787 * x + 16 / 116;
+    y2 = y2 > LAB_FT ? y2 ** (1 / 3) : 7.787 * y2 + 16 / 116;
     z2 = z2 > LAB_FT ? z2 ** (1 / 3) : 7.787 * z2 + 16 / 116;
-    const l = 116 * y - 16;
-    const a = 500 * (x2 - y);
-    const b2 = 200 * (y - z2);
+    const l = 116 * y2 - 16;
+    const a = 500 * (x - y2);
+    const b2 = 200 * (y2 - z2);
     return [l, a, b2];
   };
   convert.xyz.oklab = function(xyz) {
-    const x2 = xyz[0] / 100;
-    const y = xyz[1] / 100;
+    const x = xyz[0] / 100;
+    const y2 = xyz[1] / 100;
     const z2 = xyz[2] / 100;
-    const lp = Math.cbrt(0.8189330101 * x2 + 0.3618667424 * y - 0.1288597137 * z2);
-    const mp = Math.cbrt(0.0329845436 * x2 + 0.9293118715 * y + 0.0361456387 * z2);
-    const sp = Math.cbrt(0.0482003018 * x2 + 0.2643662691 * y + 0.633851707 * z2);
+    const lp = Math.cbrt(0.8189330101 * x + 0.3618667424 * y2 - 0.1288597137 * z2);
+    const mp = Math.cbrt(0.0329845436 * x + 0.9293118715 * y2 + 0.0361456387 * z2);
+    const sp = Math.cbrt(0.0482003018 * x + 0.2643662691 * y2 + 0.633851707 * z2);
     const l = 0.2104542553 * lp + 0.793617785 * mp - 0.0040720468 * sp;
     const a = 1.9779984951 * lp - 2.428592205 * mp + 0.4505937099 * sp;
     const b2 = 0.0259040371 * lp + 0.7827717662 * mp - 0.808675766 * sp;
@@ -2789,10 +2814,10 @@ var Themed = (() => {
     const l = (0.999999998 * ll + 0.396337792 * a + 0.215803758 * b2) ** 3;
     const m2 = (1.000000008 * ll - 0.105561342 * a - 0.063854175 * b2) ** 3;
     const s = (1.000000055 * ll - 0.089484182 * a - 1.291485538 * b2) ** 3;
-    const x2 = 1.227013851 * l - 0.55779998 * m2 + 0.281256149 * s;
-    const y = -0.040580178 * l + 1.11225687 * m2 - 0.071676679 * s;
+    const x = 1.227013851 * l - 0.55779998 * m2 + 0.281256149 * s;
+    const y2 = -0.040580178 * l + 1.11225687 * m2 - 0.071676679 * s;
     const z2 = -0.076381285 * l - 0.421481978 * m2 + 1.58616322 * s;
-    return [x2 * 100, y * 100, z2 * 100];
+    return [x * 100, y2 * 100, z2 * 100];
   };
   convert.oklab.rgb = function(oklab) {
     const ll = oklab[0] / 100;
@@ -2813,22 +2838,22 @@ var Themed = (() => {
     const l = lab[0];
     const a = lab[1];
     const b2 = lab[2];
-    let x2;
-    let y;
+    let x;
+    let y2;
     let z2;
-    y = (l + 16) / 116;
-    x2 = a / 500 + y;
-    z2 = y - b2 / 200;
-    const y2 = y ** 3;
-    const x22 = x2 ** 3;
+    y2 = (l + 16) / 116;
+    x = a / 500 + y2;
+    z2 = y2 - b2 / 200;
+    const y22 = y2 ** 3;
+    const x2 = x ** 3;
     const z22 = z2 ** 3;
-    y = y2 > LAB_FT ? y2 : (y - 16 / 116) / 7.787;
-    x2 = x22 > LAB_FT ? x22 : (x2 - 16 / 116) / 7.787;
+    y2 = y22 > LAB_FT ? y22 : (y2 - 16 / 116) / 7.787;
+    x = x2 > LAB_FT ? x2 : (x - 16 / 116) / 7.787;
     z2 = z22 > LAB_FT ? z22 : (z2 - 16 / 116) / 7.787;
-    x2 *= 95.047;
-    y *= 100;
+    x *= 95.047;
+    y2 *= 100;
     z2 *= 108.883;
-    return [x2, y, z2];
+    return [x, y2, z2];
   };
   convert.lab.lch = function(lab) {
     const l = lab[0];
@@ -2985,7 +3010,7 @@ var Themed = (() => {
     const pure = [0, 0, 0];
     const hi = h % 1 * 6;
     const v = hi % 1;
-    const w2 = 1 - v;
+    const w = 1 - v;
     let mg = 0;
     switch (Math.floor(hi)) {
       case 0: {
@@ -2995,7 +3020,7 @@ var Themed = (() => {
         break;
       }
       case 1: {
-        pure[0] = w2;
+        pure[0] = w;
         pure[1] = 1;
         pure[2] = 0;
         break;
@@ -3008,7 +3033,7 @@ var Themed = (() => {
       }
       case 3: {
         pure[0] = 0;
-        pure[1] = w2;
+        pure[1] = w;
         pure[2] = 1;
         break;
       }
@@ -3021,7 +3046,7 @@ var Themed = (() => {
       default: {
         pure[0] = 1;
         pure[1] = 0;
-        pure[2] = w2;
+        pure[2] = w;
       }
     }
     mg = (1 - c) * g2;
@@ -3060,10 +3085,10 @@ var Themed = (() => {
     return [hcg[0], (v - c) * 100, (1 - v) * 100];
   };
   convert.hwb.hcg = function(hwb) {
-    const w2 = hwb[1] / 100;
+    const w = hwb[1] / 100;
     const b2 = hwb[2] / 100;
     const v = 1 - b2;
-    const c = v - w2;
+    const c = v - w;
     let g2 = 0;
     if (c < 1) {
       g2 = (v - c) / (1 - c);
@@ -3530,14 +3555,14 @@ var Themed = (() => {
       const color1 = mixinColor.rgb();
       const color2 = this.rgb();
       const p2 = weight === void 0 ? 0.5 : weight;
-      const w2 = 2 * p2 - 1;
+      const w = 2 * p2 - 1;
       const a = color1.alpha() - color2.alpha();
-      const w1 = ((w2 * a === -1 ? w2 : (w2 + a) / (1 + w2 * a)) + 1) / 2;
-      const w22 = 1 - w1;
+      const w1 = ((w * a === -1 ? w : (w + a) / (1 + w * a)) + 1) / 2;
+      const w2 = 1 - w1;
       return Color.rgb(
-        w1 * color1.red() + w22 * color2.red(),
-        w1 * color1.green() + w22 * color2.green(),
-        w1 * color1.blue() + w22 * color2.blue(),
+        w1 * color1.red() + w2 * color2.red(),
+        w1 * color1.green() + w2 * color2.green(),
+        w1 * color1.blue() + w2 * color2.blue(),
         color1.alpha() * p2 + color2.alpha() * (1 - p2)
       );
     }
@@ -3660,8 +3685,8 @@ var Themed = (() => {
       return /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(color);
     },
     composeRoot() {
-      const colorSettings = C("ColorsModule").settings;
-      const globalSettings = C("GlobalModule").settings;
+      const colorSettings = B("ColorsModule").settings;
+      const globalSettings = B("GlobalModule").settings;
       Object.keys(colorSettings.special).forEach((key) => {
         const typedKey = key;
         const clr = color_default(colorSettings.special[typedKey]);
@@ -3695,7 +3720,7 @@ var Themed = (() => {
   // src/screens/colors.ts
   var _GuiColors = class _GuiColors extends I {
     constructor() {
-      super(C("ColorsModule"));
+      super(B("ColorsModule"));
       __publicField(this, "settingsBackup", {});
       __publicField(this, "colorPickerInput", false);
       _GuiColors.instance = this;
@@ -3760,7 +3785,7 @@ var Themed = (() => {
       ColorPickerResize(false);
     }
     createColorInputs(group, isDisabled) {
-      const defaultSettings = C("ColorsModule").defaultSettings;
+      const defaultSettings = B("ColorsModule").defaultSettings;
       return Object.entries(this.settings[group]).map(([key, value]) => {
         const defaults = defaultSettings[group];
         return {
@@ -3786,7 +3811,7 @@ var Themed = (() => {
       });
     }
     bindColorInputListeners(group) {
-      const settings = C("ColorsModule").settings;
+      const settings = B("ColorsModule").settings;
       Object.keys(this.settings[group]).forEach((key) => {
         ElementWrap(key)?.addEventListener("input", function() {
           if (!_Color.isValidHex(this.value)) {
@@ -3800,7 +3825,7 @@ var Themed = (() => {
       });
     }
     restoreInvalidColors(group) {
-      const settings = C("ColorsModule").settings;
+      const settings = B("ColorsModule").settings;
       Object.keys(this.settings[group]).forEach((key) => {
         const input = ElementWrap(key);
         if (!input || _Color.isValidHex(input.value)) return;
@@ -3814,7 +3839,7 @@ var Themed = (() => {
         return;
       }
       input.setCustomValidity("");
-      C("ColorsModule").settings[group][input.id] = color;
+      B("ColorsModule").settings[group][input.id] = color;
       ColorsModule.reloadTheme();
     }
     colorPickerToggle(input, title, group) {
@@ -3887,7 +3912,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/appearance_get_preview_image_color.ts
   function hookAppearanceGetPreviewImageColor() {
-    w.hookFunction("AppearanceGetPreviewImageColor", E.Observe, (args, next) => {
+    G.hookFunction("AppearanceGetPreviewImageColor", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [c, item, hover] = args;
       if (DialogMenuMode === "permissions" && c.IsPlayer()) {
@@ -3912,7 +3937,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/dialog_get_menu_button_color.ts
   function hookDialogGetMenuButtonColor() {
-    w.hookFunction("DialogGetMenuButtonColor", 0, (args, next) => {
+    G.hookFunction("DialogGetMenuButtonColor", 0, (args, next) => {
       if (!doRedraw()) return next(args);
       const [buttonName] = args;
       if (DialogIsMenuButtonDisabled(buttonName)) {
@@ -3928,7 +3953,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_back_next_button.ts
   function hookDrawBackNextButton() {
-    w.hookFunction("DrawBackNextButton", E.Observe, (args, next) => {
+    G.hookFunction("DrawBackNextButton", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [Left, Top, Width, Height, Label, Color2, Image, , , Disabled] = args;
       let [, , , , , , , BackText, NextText, , ArrowWidth] = args;
@@ -4149,35 +4174,35 @@ var Themed = (() => {
       return doDraw;
     }
   };
-  function drawRect(x2, y, width, height, backgroundColor, borderColor) {
-    DrawRect(x2, y, width, height, backgroundColor);
-    DrawEmptyRect(x2, y, width, height, borderColor, 2);
+  function drawRect(x, y2, width, height, backgroundColor, borderColor) {
+    DrawRect(x, y2, width, height, backgroundColor);
+    DrawEmptyRect(x, y2, width, height, borderColor, 2);
   }
   __name(drawRect, "drawRect");
-  function drawButtonRect(x2, y, width, height, backgroundColor, backgroundHoverColor, backgroundDisabledColor, borderColor, borderHoverColor, borderDisabledColor, isHovering, disabled) {
-    if (!isHovering && !disabled) drawRect(x2, y, width, height, backgroundColor, borderColor);
-    else if (isHovering && !disabled) drawRect(x2, y, width, height, backgroundHoverColor, borderHoverColor);
-    else if (disabled) drawRect(x2, y, width, height, backgroundDisabledColor, borderDisabledColor);
+  function drawButtonRect(x, y2, width, height, backgroundColor, backgroundHoverColor, backgroundDisabledColor, borderColor, borderHoverColor, borderDisabledColor, isHovering, disabled) {
+    if (!isHovering && !disabled) drawRect(x, y2, width, height, backgroundColor, borderColor);
+    else if (isHovering && !disabled) drawRect(x, y2, width, height, backgroundHoverColor, borderHoverColor);
+    else if (disabled) drawRect(x, y2, width, height, backgroundDisabledColor, borderDisabledColor);
   }
   __name(drawButtonRect, "drawButtonRect");
 
   // src/hooks/gui_redraw/draw_button.ts
   function hookDrawButton() {
-    w.hookFunction("DrawButton", E.Observe, (args, next) => {
+    G.hookFunction("DrawButton", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
-      const [x2, y, width, height, label, , image, hoveringText, isDisabled, tooltipPosition] = args;
+      const [x, y2, width, height, label, , image, hoveringText, isDisabled, tooltipPosition] = args;
       let color = args[5];
-      const isHovering = MouseHovering(x2, y, width, height);
+      const isHovering = MouseHovering(x, y2, width, height);
       const buttonStateSymbol = (() => {
         if (isDisabled) return "=" /* Disabled */;
         if (isHovering) return "-" /* Hover */;
         return "~" /* Base */;
       })();
       color = "@" /* FromButton */ + buttonStateSymbol + color;
-      ControllerAddActiveArea(x2, y);
+      ControllerAddActiveArea(x, y2);
       drawButtonRect(
-        x2,
-        y,
+        x,
+        y2,
         width,
         height,
         color,
@@ -4190,19 +4215,19 @@ var Themed = (() => {
         isDisabled ?? false
       );
       const buttonPadding = 2;
-      DrawTextFit(label, x2 + width / 2, y + height / 2 + 1, width - 2 * buttonPadding, plainColors.text);
+      DrawTextFit(label, x + width / 2, y2 + height / 2 + 1, width - 2 * buttonPadding, plainColors.text);
       if (image) {
         const img = DrawGetImage(image);
         if (img?.complete || img) {
-          const buttonRect = RectMakeRect(x2 + buttonPadding, y + buttonPadding, width - 2 * buttonPadding, height - 2 * buttonPadding);
-          const baseImageRect = RectMakeRect(x2 + buttonPadding, y + buttonPadding, img.width, img.height);
+          const buttonRect = RectMakeRect(x + buttonPadding, y2 + buttonPadding, width - 2 * buttonPadding, height - 2 * buttonPadding);
+          const baseImageRect = RectMakeRect(x + buttonPadding, y2 + buttonPadding, img.width, img.height);
           const [, imageRect] = RectFitIntoRect(baseImageRect, buttonRect, DrawingResizeMode.ShowFullOriginalRatio);
           DrawImageEx(image, MainCanvas, baseImageRect.x, baseImageRect.y, { Width: imageRect[2], Height: imageRect[3] });
         }
       }
       if (hoveringText != null && isHovering && !CommonPhotoMode) {
         DrawHoverElements.push(() => {
-          const rect = tooltipPosition ?? RectMakeRect(x2, y, width, height);
+          const rect = tooltipPosition ?? RectMakeRect(x, y2, width, height);
           DrawButtonHover(...RectGetFrame(rect), hoveringText);
         });
       }
@@ -4212,7 +4237,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_button_hover.ts
   function hookDrawButtonHover() {
-    w.hookFunction("DrawButtonHover", E.Observe, (args, next) => {
+    G.hookFunction("DrawButtonHover", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [, , Width, Height, HoveringText] = args;
       let [Left, Top] = args;
@@ -4230,7 +4255,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_checkbox.ts
   function hookDrawCheckbox() {
-    w.hookFunction("DrawCheckbox", E.Observe, (args, next) => {
+    G.hookFunction("DrawCheckbox", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [Left, Top, Width, Height, Text, IsChecked, Disabled = false, TextColor = "Black", CheckImage = "Icons/Checked.png"] = args;
       const backgroundColor = Disabled ? "%disabled" : "%background";
@@ -4242,7 +4267,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_empty_rect.ts
   function hookDrawEmptyRect() {
-    w.hookFunction("DrawEmptyRect", E.Observe, (args, next) => {
+    G.hookFunction("DrawEmptyRect", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [Left, Top, Width, Height, Color2, Thickness] = args;
       const drawEmptyRect = /* @__PURE__ */ __name((color) => {
@@ -4285,7 +4310,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_image_ex.ts
   function hookDrawImageEx() {
-    w.hookFunction("DrawImageEx", E.Observe, (args, next) => {
+    G.hookFunction("DrawImageEx", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       if (typeof args[0] !== "string") return next(args);
       if (!_Image.doColorizeImage(args[0])) return next(args);
@@ -4301,7 +4326,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_preview_box.ts
   function hookDrawPreviewBox() {
-    w.hookFunction("DrawPreviewBox", E.Observe, (args, next) => {
+    G.hookFunction("DrawPreviewBox", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [X2, Y2, Path, Description, Options] = args;
       const { Vibrating, Icons, Disabled } = Options || {};
@@ -4346,7 +4371,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_rect.ts
   function hookDrawRect() {
-    w.hookFunction("DrawRect", E.Observe, (args, next) => {
+    G.hookFunction("DrawRect", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       const [Left, Top, Width, Height] = args;
       let color = args[4];
@@ -4453,7 +4478,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_room_background.ts
   function hookDrawRoomBackground() {
-    w.hookFunction("DrawRoomBackground", E.Observe, ([URL2, ...args], next) => {
+    G.hookFunction("DrawRoomBackground", k.Observe, ([URL2, ...args], next) => {
       if (!doRedraw()) return next([URL2, ...args]);
       if (URL2.includes("Sheet.jpg")) {
         if (p.playerStorage.GlobalModule.doUseFlatColor) {
@@ -4474,7 +4499,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_text.ts
   function hookDrawText() {
-    w.hookFunction("DrawText", E.Observe, (args, next) => {
+    G.hookFunction("DrawText", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       if (!args[0]) return next(args);
       if (!args[3]) return next(args);
@@ -4498,7 +4523,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_text_fit.ts
   function hookDrawTextFit() {
-    w.hookFunction("DrawTextFit", E.Observe, (args, next) => {
+    G.hookFunction("DrawTextFit", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       if (!args[0]) return next(args);
       if (!args[4]) return next(args);
@@ -4518,7 +4543,7 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/draw_text_wrap.ts
   function hookDrawTextWrap() {
-    w.hookFunction("DrawTextWrap", E.Observe, (args, next) => {
+    G.hookFunction("DrawTextWrap", k.Observe, (args, next) => {
       if (!doRedraw()) return next(args);
       if (!args[0]) return next(args);
       if (!args[5]) return next(args);
@@ -4578,9 +4603,9 @@ var Themed = (() => {
 
   // src/hooks/gui_redraw/element_button_create.ts
   function hookElementButtonCreate() {
-    w.hookFunction(
+    G.hookFunction(
       "ElementButton.Create",
-      E.Observe,
+      k.Observe,
       (args, next) => {
         if (!doRedraw()) return next(args);
         let [, , options2] = args;
@@ -4624,24 +4649,24 @@ var Themed = (() => {
     }
     patchGui() {
       if (this.patched) return false;
-      w.patchFunction("DialogDraw", {
+      G.patchFunction("DialogDraw", {
         "DrawRect(1087 + offset, 550, 225, 275, bgColor);": 'DrawRect(1087 + offset, 550, 225, 275, disabled ? "%disabled" : (hover ? "%hover" : "%background"));DrawEmptyRect(1087 + offset, 550, 225, 275, "%border");',
         'const bgColor = disabled ? "Gray" : (hover ? "aqua" : "white");': 'const bgColor = disabled ? "%disabled" : (hover ? "%hover" : "%background");'
       });
-      w.patchFunction("DrawProcessScreenFlash", {
+      G.patchFunction("DrawProcessScreenFlash", {
         'DrawRect(0, 0, 2000, 1000, "#ffffff" + DrawGetScreenFlashAlpha(FlashTime / Math.max(1, 4 - DrawLastDarkFactor)));': 'DrawRect(0, 0, 2000, 1000, "!#ffffff" + DrawGetScreenFlashAlpha(FlashTime / Math.max(1, 4 - DrawLastDarkFactor)));',
         "DrawRect(0, 0, 2000, 1000, DrawScreenFlashColor + PinkFlashAlpha);": 'DrawRect(0, 0, 2000, 1000, "!" + DrawScreenFlashColor + PinkFlashAlpha);'
       });
-      w.patchFunction("ChatAdminRun", {
+      G.patchFunction("ChatAdminRun", {
         'const ButtonBackground = canEdit ? "White" : "#ebebe4";': 'const ButtonBackground = canEdit ? "%background" : "%disabled";'
       });
-      w.patchFunction("AppearanceRun", {
+      G.patchFunction("AppearanceRun", {
         'const ButtonColor = canAccess ? "White" : "#888";': 'const ButtonColor = canAccess ? "%background" : "%disabled";',
         'DrawButton(1635, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", layeringEnabled ? "#fff" : "#aaa", "Icons/Small/Layering.png", TextGet("Layering"), !layeringEnabled);': 'DrawButton(1635, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", layeringEnabled ? "%background" : "%disabled", "Icons/Small/Layering.png", TextGet("Layering"), !layeringEnabled);',
         'DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "#aaa", undefined, undefined, !CanCycleColors);': 'DrawButton(1725, 145 + (A - CharacterAppearanceOffset) * 95, 160, 65, ColorButtonText, CanCycleColors ? ColorButtonColor : "%disabled", undefined, undefined, !CanCycleColors);',
         'DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "#fff" : "#aaa", CanPickColor ? ColorIsSimple ? "Icons/Small/ColorChange.png" : "Icons/Small/ColorChangeMulti.png" : "Icons/Small/ColorBlocked.png", undefined, !CanPickColor);': 'DrawButton(1910, 145 + (A - CharacterAppearanceOffset) * 95, 65, 65, "", CanPickColor ? "%background" : "%disabled", CanPickColor ? ColorIsSimple ? "Icons/Small/ColorChange.png" : "Icons/Small/ColorChangeMulti.png" : "Icons/Small/ColorBlocked.png", undefined, !CanPickColor);'
       });
-      w.patchFunction("ExtendedItemGetButtonColor", {
+      G.patchFunction("ExtendedItemGetButtonColor", {
         'ButtonColor = "#888888";': 'ButtonColor = "%accent";',
         'ButtonColor = Hover ? "red" : "pink";': 'ButtonColor = "%blocked";',
         'ButtonColor = Hover ? "orange" : "#fed8b1";': 'ButtonColor = "%limited";',
@@ -4651,7 +4676,7 @@ var Themed = (() => {
         'ButtonColor = Hover ? "Cyan" : "LightGreen";': 'ButtonColor = "%allowed";',
         'ButtonColor = Hover ? "Cyan" : "White";': 'ButtonColor = Hover ? "%hover" : "%background";'
       });
-      w.patchFunction("Shop2._AssetElementDraw", {
+      G.patchFunction("Shop2._AssetElementDraw", {
         'options.Background = "cyan";': 'options.Background = "%hover";',
         'options.Background = "white";': 'options.Background = "%background";',
         'options.Background = "gray";': 'options.Background = "%disabled";',
@@ -4661,12 +4686,12 @@ var Themed = (() => {
     }
     unpatchGui() {
       if (!this.patched) return false;
-      w.unpatchFunction("DialogDraw");
-      w.unpatchFunction("DrawProcessScreenFlash");
-      w.unpatchFunction("ChatAdminRun");
-      w.unpatchFunction("AppearanceRun");
-      w.unpatchFunction("ExtendedItemGetButtonColor");
-      w.unpatchFunction("Shop2._AssetElementDraw");
+      G.unpatchFunction("DialogDraw");
+      G.unpatchFunction("DrawProcessScreenFlash");
+      G.unpatchFunction("ChatAdminRun");
+      G.unpatchFunction("AppearanceRun");
+      G.unpatchFunction("ExtendedItemGetButtonColor");
+      G.unpatchFunction("Shop2._AssetElementDraw");
       this.patched = false;
     }
     toggleGuiPatches() {
@@ -4762,6 +4787,7 @@ var Themed = (() => {
       H.injectEmbed("tmd-chat-room-search", `${"https://protokink.github.io/Themed/public"}/styles/chatroom_search.css`);
       H.injectEmbed("tmd-preference", `${"https://protokink.github.io/Themed/public"}/styles/preference.css`);
       H.injectEmbed("tmd-misc", `${"https://protokink.github.io/Themed/public"}/styles/misc.css`);
+      H.injectEmbed("tmd-map-view", `${"https://protokink.github.io/Themed/public"}/styles/map_view.css`);
       const styleIDs = Object.keys(styles);
       styleIDs.forEach((id) => {
         if (!p.playerStorage.IntegrationModule[id]) return;
@@ -4774,6 +4800,7 @@ var Themed = (() => {
       H.eject("tmd-chat-room-search");
       H.eject("tmd-preference");
       H.eject("tmd-misc");
+      H.eject("tmd-map-view");
       const styleIDs = Object.keys(styles);
       styleIDs.forEach((id) => {
         H.eject(id);
@@ -4878,13 +4905,13 @@ var Themed = (() => {
     }
     static reloadTheme() {
       m.info("Reloading theme");
-      const themeType = C("ColorsModule").settings.themeSettings.themeType;
+      const themeType = B("ColorsModule").settings.themeSettings.themeType;
       document.body.dataset.tmdThemeType = themeType;
       ChatRoomTopMenuBuiltSig = "";
       _Color.composeRoot();
       BcStyle.reloadAll();
       changeModColors();
-      C("GuiRedrawModule").toggleGuiPatches();
+      B("GuiRedrawModule").toggleGuiPatches();
     }
   };
   __name(_ColorsModule, "ColorsModule");
@@ -4898,13 +4925,13 @@ var Themed = (() => {
           Tag: "share-theme",
           Description: "[member number]: Shares your theme with other people that have Themed installed!",
           Action(args) {
-            if (!args) return C("ShareModule").share(void 0);
+            if (!args) return B("ShareModule").share(void 0);
             const targetNumber = parseInt(args, 10);
             const target = ChatRoomCharacter.find((c) => c.MemberNumber == targetNumber);
             if (!target)
-              Zn("theme-share-error", `No character with MemberNumber ${targetNumber} found!`);
+              Rn("theme-share-error", `No character with MemberNumber ${targetNumber} found!`);
             else
-              C("ShareModule").share(target.MemberNumber);
+              B("ShareModule").share(target.MemberNumber);
           }
         }
       ]);
@@ -4921,7 +4948,7 @@ var Themed = (() => {
       return super.settings;
     }
     get pageStructure() {
-      const defaultSettings = C("GlobalModule").defaultSettings;
+      const defaultSettings = B("GlobalModule").defaultSettings;
       return [Object.entries(this.settings).map(([key, value]) => {
         const typedKey = key;
         return {
@@ -4978,9 +5005,9 @@ var Themed = (() => {
       }, "reload");
       setTimeout(reload, 6e4);
       setTimeout(reload, 3e5);
-      w.hookFunction(
+      G.hookFunction(
         "ChatRoomCurrentTime",
-        E.Observe,
+        k.Observe,
         (args, next) => {
           if (!this.settings.doShowLocaleTime) return next(args);
           const currentTime = new Date(Date.now());
@@ -4988,9 +5015,9 @@ var Themed = (() => {
         },
         ModuleCategory.Global
       );
-      w.hookFunction(
+      G.hookFunction(
         "DialogDraw",
-        E.Observe,
+        k.Observe,
         (args, next) => {
           if (!this.settings.modEnabled) return next(args);
           if (!this.settings.doIndicateCharacterAbsence) return next(args);
@@ -5005,7 +5032,7 @@ var Themed = (() => {
               CurrentCharacter.Canvas.getContext("2d").globalAlpha = 1;
               CurrentCharacter.CanvasBlink.getContext("2d").globalAlpha = 1;
               CharacterAppearanceBuildCanvas(CurrentCharacter);
-              _GlobalModule.transparentCharacters.filter((x2) => x2 !== CurrentCharacter.MemberNumber);
+              _GlobalModule.transparentCharacters.filter((x) => x !== CurrentCharacter.MemberNumber);
             }
           } else {
             MainCanvas.save();
@@ -5026,9 +5053,9 @@ var Themed = (() => {
         },
         ModuleCategory.Global
       );
-      w.hookFunction(
+      G.hookFunction(
         "AppearanceRun",
-        E.Observe,
+        k.Observe,
         (args, next) => {
           if (!this.settings.modEnabled) return next(args);
           if (!this.settings.doIndicateCharacterAbsence) return next(args);
@@ -5043,7 +5070,7 @@ var Themed = (() => {
               CharacterAppearanceSelection.Canvas.getContext("2d").globalAlpha = 1;
               CharacterAppearanceSelection.CanvasBlink.getContext("2d").globalAlpha = 1;
               CharacterAppearanceBuildCanvas(CharacterAppearanceSelection);
-              _GlobalModule.transparentCharacters.filter((x2) => x2 !== CharacterAppearanceSelection.MemberNumber);
+              _GlobalModule.transparentCharacters.filter((x) => x !== CharacterAppearanceSelection.MemberNumber);
             }
           } else {
             MainCanvas.save();
@@ -5064,9 +5091,9 @@ var Themed = (() => {
         },
         ModuleCategory.Global
       );
-      w.hookFunction(
+      G.hookFunction(
         "ChatRoomSync",
-        E.Observe,
+        k.Observe,
         (args, next) => {
           Character.filter((character) => character.IsPlayer() || !_GlobalModule.transparentCharacters?.includes(character.MemberNumber));
           return next(args);
@@ -5087,7 +5114,7 @@ var Themed = (() => {
       return super.settings;
     }
     get pageStructure() {
-      const defaultSettings = C("IntegrationModule").defaultSettings;
+      const defaultSettings = B("IntegrationModule").defaultSettings;
       return [Object.entries(this.settings).map(([key, value]) => {
         const typedKey = key;
         return {
@@ -5216,7 +5243,7 @@ var Themed = (() => {
     }
     async handleProfilesSaving(profileId) {
       if (!this.profileCanBeSaved(profileId)) return;
-      const name = await D.prompt(g("profiles.prompt"));
+      const name = await W.prompt(g("profiles.prompt"));
       if (name === null) return;
       const storage = p.playerStorage;
       const profile = this.settings[profileId];
@@ -5367,9 +5394,9 @@ var Themed = (() => {
     }
     get defaultSettings() {
       const profileDefaults = {
-        GlobalModule: C("GlobalModule").defaultSettings,
-        ColorsModule: C("ColorsModule").defaultSettings,
-        IntegrationModule: C("IntegrationModule").defaultSettings
+        GlobalModule: B("GlobalModule").defaultSettings,
+        ColorsModule: B("ColorsModule").defaultSettings,
+        IntegrationModule: B("IntegrationModule").defaultSettings
       };
       const data = p.playerStorage?.ProfilesModule || {};
       for (let i = 0; i < 3; i++) {
@@ -5398,7 +5425,7 @@ var Themed = (() => {
       __publicField(this, "channel", null);
     }
     load() {
-      this.channel = new Ie("share");
+      this.channel = new xe("share");
       this.channel.registerListener("ThemedTheme", (data, sender) => {
         const theme = data.Theme;
         const version = data.ThemeVersion;
@@ -5437,10 +5464,10 @@ var Themed = (() => {
               },
               onClick: /* @__PURE__ */ __name(() => {
                 if (!version || version !== p.playerStorage.Version) {
-                  Zn("theme-not-up-to-date", `Theme sent by ${senderName} is not up-to-date!`);
+                  Rn("theme-not-up-to-date", `Theme sent by ${senderName} is not up-to-date!`);
                   return;
                 }
-                D.confirm(prompt).then((result) => {
+                W.confirm(prompt).then((result) => {
                   if (result) {
                     this.acceptShare(theme, settings);
                   }
@@ -5453,17 +5480,17 @@ var Themed = (() => {
       });
     }
     acceptShare(data, settings) {
-      C("ColorsModule").settings = data;
-      C("GlobalModule").settings.doUseAdvancedColoring = settings.doUseAdvancedColoring;
+      B("ColorsModule").settings = data;
+      B("GlobalModule").settings.doUseAdvancedColoring = settings.doUseAdvancedColoring;
       p.save();
       ColorsModule.reloadTheme();
     }
     share(target) {
-      Zn("theme-share", "Shared theme with " + (target ? CharacterNickname(ChatRoomCharacter.find((c) => c.MemberNumber == target)) : "everyone"));
-      kn(`${CharacterNickname(Player)} shares ${CharacterPronoun(Player, "Possessive", false)} Themed theme!`, target);
+      Rn("theme-share", "Shared theme with " + (target ? CharacterNickname(ChatRoomCharacter.find((c) => c.MemberNumber == target)) : "everyone"));
+      An(`${CharacterNickname(Player)} shares ${CharacterPronoun(Player, "Possessive", false)} Themed theme!`, target);
       this.channel?.sendEvent("ThemedTheme", {
-        Theme: C("ColorsModule").settings,
-        Settings: C("GlobalModule").settings,
+        Theme: B("ColorsModule").settings,
+        Settings: B("GlobalModule").settings,
         ThemeVersion: p.playerStorage.Version
       });
     }
@@ -5472,12 +5499,12 @@ var Themed = (() => {
   var ShareModule = _ShareModule;
 
   // src/migrators/deeplib_migrator.ts
-  var _DeeplibMigrator = class _DeeplibMigrator extends pe {
+  var _DeeplibMigrator = class _DeeplibMigrator extends be {
     get migrationVersion() {
       return "1.6.0";
     }
     migrate() {
-      const globalModule = C("GlobalModule");
+      const globalModule = B("GlobalModule");
       globalModule.settings.modEnabled = globalModule.settings["themedEnabled"];
       delete globalModule.settings["themedEnabled"];
       ColorsModule.reloadTheme();
@@ -5585,7 +5612,7 @@ var Themed = (() => {
     }
     confirm() {
       settingsReset();
-      for (const module of x()) {
+      for (const module of y()) {
         module.registerDefaultSettings(p.playerStorage);
       }
       ColorsModule.reloadTheme();
@@ -5611,7 +5638,7 @@ var Themed = (() => {
       new DeeplibMigrator()
     ];
     const modules = {
-      GUI: new k({
+      GUI: new M({
         buttonText: "Themed",
         identifier: "Themed",
         image: `${"https://protokink.github.io/Themed/public"}/images/mod.png`
@@ -5623,12 +5650,12 @@ var Themed = (() => {
       ProfilesModule: new ProfilesModule(),
       CommandsModule: new CommandsModule(),
       ShareModule: new ShareModule(),
-      VersionModule: new U({
+      VersionModule: new N({
         newVersionMessage: changelog,
         migrators
       })
     };
-    return wt({
+    return kt({
       beforeLogin: /* @__PURE__ */ __name(() => {
         loadLocalSettings();
         loadLoginOptions();
@@ -5637,7 +5664,7 @@ var Themed = (() => {
         ColorsModule.reloadTheme();
       }, "initFunction"),
       mainMenuOptions: {
-        importExportSubscreen: new ve({
+        importExportSubscreen: new Ie({
           customFileExtension: ".tmd",
           onImport() {
             p.save();

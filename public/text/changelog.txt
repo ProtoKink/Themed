@@ -1,3 +1,7 @@
+1.8.4
+• Adapt CSS for wardrobe, friendlist, and map view.
+• Fix login options dialog looking silly.
+
 1.8.3
 • Fix color picker on Colors settings page being broken randomly.
 • Remove the button to toggle types of color buttons, because color picker already allows manual hex colors
@@ -6,7 +10,3 @@
 • Colorize chat message names only when needed.
 • Colorize chat room friend request buttons.
 • Reset chat room top menu when reloading theme.
-
-1.8.1
-• Colorize chat menu icons.
-• Adapt admin customization screen to be themeable.
