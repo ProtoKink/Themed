@@ -2,12 +2,16 @@
   --border-color: var(--tmd-accent);
   --image-color: var(--tmd-accent);
   --text-color: var(--tmd-text);
+  --hint-color: color-mix(in srgb, var(--tmd-text) 62%, transparent);
   --button-color: var(--tmd-element);
   --inactive-button-color: var(--tmd-element-disabled);
 }
 
 #friend-list-beep-dialog {
-  background-color: color-mix(in srgb, var(--tmd-element) 80%, rgba(255, 255, 255, 0.6666666667) 40%);
+  --border-color: var(--tmd-accent);
+  --border-style: solid;
+  --hint-color: color-mix(in srgb, var(--tmd-text) 62%, var(--tmd-main));
+  background-color: color-mix(in srgb, var(--tmd-main) 90%, transparent);
   color: var(--tmd-text);
 }
 
@@ -42,12 +46,100 @@
   color: var(--tmd-text);
   border-color: var(--tmd-accent);
 }
-#friend-list-subscreen .friend-list-beep-chat-input-field,
-#friend-list-beep-dialog .friend-list-beep-chat-input-field {
+
+#friend-list-beep-dialog .friend-list-beep-textarea:focus {
+  outline: none;
+}
+#friend-list-beep-dialog .friend-list-beep-chat-input:has(.friend-list-beep-textarea:focus) {
+  outline: 1px solid var(--tmd-accent);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-log {
+  background-color: var(--tmd-element);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-input-field,
+#friend-list-beep-dialog .friend-list-beep-reply-preview {
+  background-color: var(--tmd-element);
   border-color: var(--tmd-accent);
 }
-#friend-list-subscreen .friend-list-beep-chat-send::before,
 #friend-list-beep-dialog .friend-list-beep-chat-send::before {
   background: var(--tmd-accent);
+}
+#friend-list-beep-dialog .friend-list-beep-scroll-btn {
+  background: var(--tmd-element);
+  color: var(--tmd-text);
+}
+#friend-list-beep-dialog .friend-list-beep-scroll-btn :hover {
+  background: var(--tmd-element-hover);
+  color: var(--tmd-text);
+}
+#friend-list-beep-dialog .friend-list-beep-scroll-btn .button-image {
+  filter: invert(1);
+}
+#friend-list-beep-dialog .friend-list-beep-unread-badge {
+  background-color: var(--tmd-accent);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-actions,
+#friend-list-beep-dialog .friend-list-beep-reaction-picker {
+  background: var(--tmd-element);
+  border-color: var(--tmd-accent);
+  color: var(--tmd-text);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-toolbar-btn:not([aria-disabled=true]):hover,
+#friend-list-beep-dialog .friend-list-beep-reaction-chip:not([aria-disabled=true]):hover {
+  background: var(--tmd-element-hover);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-type-message:hover .friend-list-beep-chat-message,
+#friend-list-beep-dialog .friend-list-beep-chat-type-message:focus-within .friend-list-beep-chat-message {
+  background-color: color-mix(in srgb, var(--tmd-text) 8%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tmd-accent) 40%, transparent);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-quote {
+  border-left-color: var(--tmd-accent);
+  background: var(--tmd-element);
+  color: var(--tmd-text);
+}
+#friend-list-beep-dialog .friend-list-beep-reaction-chip [aria-checked=true] {
+  background: var(--tmd-accent);
+  background: color-mix(in srgb, var(--tmd-accent) 32%, transparent);
+  color: var(--tmd-text);
+}
+#friend-list-beep-dialog .friend-list-beep-reaction-chip [aria-checked=true] :not([aria-disabled=true]):hover {
+  background: color-mix(in srgb, var(--tmd-accent) 48%, transparent);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-divider {
+  color: var(--hint-color);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-divider .friend-list-beep-chat-divider-line {
+  background-color: color-mix(in srgb, var(--tmd-text) 35%, transparent);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-sender {
+  text-shadow: 0.05em 0.05em var(--tmd-text-shadow);
+}
+#friend-list-beep-dialog .friend-list-link,
+#friend-list-beep-dialog .friend-list-link * {
+  color: var(--tmd-text);
+}
+#friend-list-beep-dialog .friend-list-link:hover,
+#friend-list-beep-dialog .friend-list-link:hover * {
+  color: var(--tmd-accent-hover);
+}
+#friend-list-beep-dialog .friend-list-link:disabled,
+#friend-list-beep-dialog .friend-list-link:disabled *,
+#friend-list-beep-dialog .friend-list-link:hover:disabled,
+#friend-list-beep-dialog .friend-list-link:hover:disabled * {
+  color: var(--tmd-text-disabled);
+}
+#friend-list-beep-dialog .friend-list-beep-chat-body .friend-list-beep-chat-message {
+  padding-block-end: 0.1em;
+}
+
+@keyframes friend-list-beep-chat-highlight-anim {
+  from {
+    background-color: var(--tmd-accent);
+    background-color: color-mix(in srgb, var(--tmd-accent) 45%, transparent);
+  }
+  to {
+    background-color: transparent;
+  }
 }
 /*# sourceMappingURL=friendList.css.map */

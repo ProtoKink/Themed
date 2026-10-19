@@ -194,7 +194,7 @@ var Themed = (() => {
         _a2.menu.append(s);
       }
       if (this.options.doShowTitle) {
-        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.3 - 6da7be8b" }) });
+        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.3 - 7507b58d" }) });
         b.appendToSubscreen(i);
       }
       if (this.options.doShowExitButton) {
@@ -745,7 +745,7 @@ var Themed = (() => {
       Ze();
       return;
     }
-    await t.initFunction?.(), t.mainMenuOptions && C("GUI") && R.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.3 - 6da7be8b"}`);
+    await t.initFunction?.(), t.mainMenuOptions && C("GUI") && R.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.3 - 7507b58d"}`);
   }
   __name(Se, "Se");
   r(Se, "init");
