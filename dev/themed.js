@@ -198,7 +198,7 @@ var Themed = (() => {
         _a2.menu.append(s);
       }
       if (this.options.doShowTitle) {
-        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.3 - 0234f673" }) });
+        let i = u.createLabel({ id: "deeplib-subscreen-title", label: g(`${this.options.name}.title`, { $ModVersion: "1.8.4 - eafb63c0" }) });
         b.appendToSubscreen(i);
       }
       if (this.options.doShowExitButton) {
@@ -744,7 +744,7 @@ var Themed = (() => {
   var G;
   var m;
   async function kt(t) {
-    G = new Y({ name: define_MOD_INFO_default.name, fullName: define_MOD_INFO_default.fullName, version: "1.8.3", repository: define_MOD_INFO_default.repository }), se(), p = new Q(define_MOD_INFO_default.name), m = ue.default.get(define_MOD_INFO_default.name), H.injectInline("deeplib-style-6.0.0", re), m.debug("Init wait"), (!CurrentScreen || CurrentScreen === "Login") && t.beforeLogin?.(), await ServerIsLoggedInAsync(), await ke(t);
+    G = new Y({ name: define_MOD_INFO_default.name, fullName: define_MOD_INFO_default.fullName, version: "1.8.4", repository: define_MOD_INFO_default.repository }), se(), p = new Q(define_MOD_INFO_default.name), m = ue.default.get(define_MOD_INFO_default.name), H.injectInline("deeplib-style-6.0.0", re), m.debug("Init wait"), (!CurrentScreen || CurrentScreen === "Login") && t.beforeLogin?.(), await ServerIsLoggedInAsync(), await ke(t);
   }
   __name(kt, "kt");
   r(kt, "initMod");
@@ -763,7 +763,7 @@ var Themed = (() => {
       Ze();
       return;
     }
-    await t.initFunction?.(), t.mainMenuOptions && B("GUI") && A.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.3 - 0234f673"}`);
+    await t.initFunction?.(), t.mainMenuOptions && B("GUI") && A.setOptions({ ...t.mainMenuOptions, repoLink: define_MOD_INFO_default.repository }), window[define_MOD_INFO_default.name + "Loaded"] = true, m.log(`Loaded! Version: ${"1.8.4 - eafb63c0"}`);
   }
   __name(ke, "ke");
   r(ke, "init");
@@ -851,7 +851,7 @@ var Themed = (() => {
       super(), e ?? (e = {}), _a6.newVersionMessage = e.newVersionMessage, _a6.showNewVersionMessage = e.showNewVersionMessage, e.migrators && (_a6.migrators = e.migrators, _a6.migrators.sort((n, i) => n.migrationVersion.localeCompare(i.migrationVersion, void 0, { numeric: true }))), _a6.beforeEach = e.beforeEach, _a6.afterEach = e.afterEach, _a6.beforeAll = e.beforeAll, _a6.afterAll = e.afterAll;
     }
     load() {
-      _a6.version = "1.8.3", _a6.checkVersionUpdate(), CommonUnwrapThunk(_a6.showNewVersionMessage) && _a6.isItNewVersion && _a6.sendNewVersionMessage();
+      _a6.version = "1.8.4", _a6.checkVersionUpdate(), CommonUnwrapThunk(_a6.showNewVersionMessage) && _a6.isItNewVersion && _a6.sendNewVersionMessage();
     }
     static checkVersionUpdate() {
       let e = _a6.loadVersion(), n = _a6.version;
@@ -1592,7 +1592,7 @@ var Themed = (() => {
     load() {
       if (this.extensionStorage) {
         let e = _a12.dataDecompress(this.extensionStorage || "");
-        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.8.3" } : this.playerStorage = e;
+        e === null || !Object.hasOwn(e, "Version") ? this.playerStorage = { Version: "1.8.4" } : this.playerStorage = e;
       } else this.playerStorage = {};
     }
     save() {
