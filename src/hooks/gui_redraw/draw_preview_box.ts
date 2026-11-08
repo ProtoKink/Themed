@@ -47,7 +47,6 @@ export function hookDrawPreviewBox() {
     }
 
     DrawRect(X, Y, Width, Height, Background);
-    ControllerAddActiveArea(X, Y);
     DrawEmptyRect(X, Y, Width, Height, hover ? plainColors.accentHover : plainColors.accent);
     if (Path !== '') DrawImageResize(Path, ImageX, ImageY, ImageWidth, ImageHeight);
     DrawPreviewIcons(Icons ?? [], X, Y);

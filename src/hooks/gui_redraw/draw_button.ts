@@ -19,8 +19,6 @@ export function hookDrawButton() {
     })();
     color = ColorType.FromButton + buttonStateSymbol + color;
 
-    ControllerAddActiveArea(x, y);
-
     drawButtonRect(
       x,
       y,

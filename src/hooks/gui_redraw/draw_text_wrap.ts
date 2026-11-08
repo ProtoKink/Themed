@@ -17,8 +17,6 @@ export function hookDrawTextWrap() {
 
     if (!Text) return;
 
-    ControllerAddActiveArea(X, Y);
-
     if (BackColor != null) {
       if (!isHovering) {
         drawRect(X, Y, Width, Height, BackColor, plainColors.accent);

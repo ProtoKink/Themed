@@ -50,8 +50,6 @@ export function hookDrawBackNextButton() {
       DrawImage(Image, Left + 2, Top + 2);
     }
 
-    ControllerAddActiveArea(Left + Width / 2, Top);
-
     MainCanvas.beginPath();
     MainCanvas.fillStyle = 'Black';
     MainCanvas.moveTo(Left + 15, Top + Height / 5);
