@@ -111,9 +111,9 @@ function patchLoginPage() {
 
       sdk.patchFunction('LoginDoNextThankYou', {
         'CharacterRelease(char, false);': '',
-        'CharacterAppearanceFullRandom(char);': '',
+        'CharacterAppearanceFullRandom(char, undefined, false);': '',
         'if (InventoryGet(char, "ItemNeck") != null) InventoryRemove(char, "ItemNeck", false);': '',
-        'CharacterFullRandomRestrain(char)': '',
+        'CharacterFullRandomRestrain(char, undefined, false);': '',
       });
   }
 
