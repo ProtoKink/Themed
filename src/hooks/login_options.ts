@@ -48,7 +48,8 @@ function createUI() {
 
   const optionsButton = ElementButton.Create(ids.optionsOpen, () => optionsSheet.showModal(), {
     tooltip: '[Themed] Login Options',
-    image: './Icons/Preference.png',
+    image: `${PUBLIC_URL}/images/mod.png`,
+		imageColor: '#690092'
   });
   document.body.appendChild(optionsButton);
 
