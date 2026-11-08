@@ -4,8 +4,9 @@
 #chatroom-admin-subscreen,
 #chat-block-item-screen,
 #online-profile-screen,
+#information-sheet-screen,
 #title-subscreen {
-  p, h1, h2, label, span {
+  p, h1, h2, h3, label, span {
     color: var(--tmd-text);
   }
 }
@@ -14,8 +15,15 @@
 
 /* #region InformationSheet */
 
-#AllowedInteractions-dropdown-label {
-  color: var(--tmd-text);
+#information-sheet-screen {
+	dt, 
+	dd {
+		color: var(--tmd-text);
+	}
+}
+
+#information-sheet-screen .information-sheet-permissions .dropdown-label {
+	color: var(--tmd-text);
 }
 
 #AllowedInteractions-dropdown-label {
