@@ -4,21 +4,21 @@ import { IntegrationSettingsModel } from './integration';
 import { GlobalSettingsModel } from './global';
 
 export type ProfilesSettingsModel = DL_BaseSettingsModel & {
-  [index: number]: ProfileEntryModel;
+	[index: number]: ProfileEntryModel;
 };
 
 export type ProfileEntryModel = {
-  [index: number]: ProfileEntryModel;
-  name: string;
-  data: ProfileSaveModel;
+	[index: number]: ProfileEntryModel;
+	name: string;
+	data: ProfileSaveModel;
 };
 
 export type ProfileSaveModel = {
-  GlobalModule: GlobalSettingsModel;
-  ColorsModule: ColorsSettingsModel;
-  IntegrationModule: IntegrationSettingsModel;
+	GlobalModule: GlobalSettingsModel;
+	ColorsModule: ColorsSettingsModel;
+	IntegrationModule: IntegrationSettingsModel;
 };
 
 export type ProfileNames = {
-  [index: number]: string | null;
+	[index: number]: string | null;
 };

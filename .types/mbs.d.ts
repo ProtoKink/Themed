@@ -25,12 +25,12 @@
 
 /** An interface for exposing MBS wheel of fortune data */
 interface WheelBundle {
-  /** The (user-specified) name of the item set. */
-  name: string;
-  /** The index of the wheel of fortune item set */
-  index: number;
-  /** A list of the minified items associated with the item set */
-  items: ItemBundle[];
+	/** The (user-specified) name of the item set. */
+	name: string;
+	/** The index of the wheel of fortune item set */
+	index: number;
+	/** A list of the minified items associated with the item set */
+	items: ItemBundle[];
 }
 
 /**
@@ -40,36 +40,36 @@ interface WheelBundle {
  * may by changed at any point in the future without an increment of the API version.
  */
 interface CSSStyles {
-  /**
+	/**
    * The background color used for _most_ `div` elements (if they have a background).
    * @default "white"
    */
-  backgroundColor: string;
-  /**
+	backgroundColor: string;
+	/**
    * The background color used for `button` elements.
    * @default "white"
    */
-  buttonColor: string;
-  /**
+	buttonColor: string;
+	/**
    * The background color used when hovering over `button` elements.
    * @default "cyan"
    */
-  buttonHoverColor: string;
-  /**
+	buttonHoverColor: string;
+	/**
    * The background color used for tooltips.
    * @default "lightyellow"
    */
-  tooltipColor: string;
-  /**
+	tooltipColor: string;
+	/**
    * The color used for borders.
    * @default "black"
    */
-  borderColor: string;
-  /**
+	borderColor: string;
+	/**
    * The color used for borders.
    * @default "black"
    */
-  textColor: string;
+	textColor: string;
 }
 
 /**
@@ -77,15 +77,15 @@ interface CSSStyles {
  * @version 1.3
  */
 declare namespace mbs {
-  /**
+	/**
    * The (semantic) MBS version.
    * Guaranteed to match the `/^([0-9]+)\.([0-9]+)\.([0-9]+)(\.\S+)?$/` regex.
    *
    * @since API version 1.0
    */
-  const MBS_VERSION: `${number}.${number}.${number}${string}`;
+	const MBS_VERSION: `${number}.${number}.${number}${string}`;
 
-  /**
+	/**
    * The version of the MBS API.
    *
    * - Changes or removals are accompanied by a `major` increment (and resetting `minor` back to 0)
@@ -94,22 +94,22 @@ declare namespace mbs {
    *
    * @since API version 1.0
    */
-  const API_VERSION: {
-    /** The major API versions; increments are reserved for changes and removals */
-    readonly major: number;
-    /** The major API versions; increments are reserved for additions */
-    readonly minor: number;
-  };
+	const API_VERSION: {
+		/** The major API versions; increments are reserved for changes and removals */
+		readonly major: number;
+		/** The major API versions; increments are reserved for additions */
+		readonly minor: number;
+	};
 
-  /**
+	/**
    * Run the MBS test suit.
    *
    * @since API version 1.0
    * @returns Whether the test suite succeeded or not
    */
-  function runTests(): boolean;
+	function runTests(): boolean;
 
-  /**
+	/**
    * Return MBS debug output in human-readable, stringified form.
    *
    * Note that the API provides no guarantees regarding the outputs machine readability.
@@ -120,58 +120,58 @@ declare namespace mbs {
    * @since API version 1.1
    * @returns The MBS debug output in stringified form
    */
-  function getDebug(): string;
+	function getDebug(): string;
 
-  /**
+	/**
    * Public MBS API for retrieving wheel outfit data.
    *
    * @since API version 1.0
    */
-  namespace wheelOutfits {
-    /**
+	namespace wheelOutfits {
+		/**
      * Get a record mapping all (user-specified) outfit names to the actual outfit data.
      *
      * @since API version 1.0
      * @returns All MBS outfit data
      */
-    function getAll(): Record<string, WheelBundle>;
+		function getAll(): Record<string, WheelBundle>;
 
-    /**
+		/**
      * Get a single wheel outfit by its name.
      *
      * @since API version 1.0
      * @param name The name of the wheel outfit
      * @returns The wheel outfit or `undefined` if it cannot be found
      */
-    function getByName(name: string): undefined | WheelBundle;
+		function getByName(name: string): undefined | WheelBundle;
 
-    /**
+		/**
      * Get a single wheel outfit by its index.
      *
      * @since API version 1.0
      * @param index The wheel outfit or `undefined` if it cannot be found
      * @returns The MBS outfit data or `undefined`
      */
-    function getByIndex(index: number): undefined | WheelBundle;
+		function getByIndex(index: number): undefined | WheelBundle;
 
-    /**
+		/**
      * Return a list of all the players wheel outfit names.
      *
      * @since API version 1.0
      * @returns The list of wheel outfit names
      */
-    function getNames(): string[];
+		function getNames(): string[];
 
-    /**
+		/**
      * Return a list of all the players wheel outfit indices.
      *
      * @since API version 1.0
      * @returns The list of wheel outfit indices
      */
-    function getIndices(): number[];
-  }
+		function getIndices(): number[];
+	}
 
-  /**
+	/**
    * Public API for modifying MBS's style sheets.
    *
    *
@@ -179,28 +179,28 @@ declare namespace mbs {
    * @since API version 1.3
    * @license LPGL-v3
    */
-  namespace css {
-    /**
+	namespace css {
+		/**
      * Set the passed MBS style options.
      *
      * @since API version 1.3
      * @param style A record with one or more of the to-be assigned style options
      */
-    function setStyle(style: Readonly<Partial<CSSStyles>>): void;
+		function setStyle(style: Readonly<Partial<CSSStyles>>): void;
 
-    /**
+		/**
      * Get the currently assigned MBS style options.
      *
      * @since API version 1.3
      * @returns A record with the currently assigned style options
      */
-    function getStyle(): CSSStyles;
+		function getStyle(): CSSStyles;
 
-    /**
+		/**
      * The default MBS style options.
      *
      * @since API version 1.3
      */
-    const DEFAULT_STYLE: Readonly<CSSStyles>;
-  }
+		const DEFAULT_STYLE: Readonly<CSSStyles>;
+	}
 }

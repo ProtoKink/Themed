@@ -1,6 +1,6 @@
 export interface LocalSettingsModel {
-  loginOptions: {
-    hideDummy: boolean;
-    hideCredits: boolean;
-  }
+	loginOptions: {
+		hideDummy: boolean;
+		hideCredits: boolean;
+	}
 } 
