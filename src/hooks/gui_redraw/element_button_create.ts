@@ -5,22 +5,22 @@ import { ModuleCategory } from '../../utilities/mod_definition';
 import { _Image } from '../../utilities/drawing';
 
 export function hookElementButtonCreate() {
-  sdk.hookFunction(
-    'ElementButton.Create',
-    HookPriority.Observe,
-    (args, next) => {
-      if (!doRedraw()) return next(args);
+	sdk.hookFunction(
+		'ElementButton.Create',
+		HookPriority.Observe,
+		(args, next) => {
+			if (!doRedraw()) return next(args);
 
-      let [, , options] = args;
-      options ??= {};
+			let [, , options] = args;
+			options ??= {};
 
-      if (!options.image || typeof options.image !== 'string') return next(args);
-      if (!_Image.doColorizeHTMLImage(options.image)) return next(args);
+			if (!options.image || typeof options.image !== 'string') return next(args);
+			if (!_Image.doColorizeHTMLImage(options.image)) return next(args);
 
-      options.imageColor = plainColors.accent;
+			options.imageColor = plainColors.accent;
 
-      return next(args);
-    },
-    ModuleCategory.GuiRedraw
-  );
+			return next(args);
+		},
+		ModuleCategory.GuiRedraw
+	);
 }

@@ -5,8 +5,8 @@ import { IntegrationSettingsModel } from './integration';
 import { ProfilesSettingsModel } from './profiles';
 
 export interface SettingsModel extends DL_SettingsModel {
-  GlobalModule: GlobalSettingsModel;
-  ColorsModule: ColorsSettingsModel;
-  IntegrationModule: IntegrationSettingsModel;
-  ProfilesModule: ProfilesSettingsModel;
+	GlobalModule: GlobalSettingsModel;
+	ColorsModule: ColorsSettingsModel;
+	IntegrationModule: IntegrationSettingsModel;
+	ProfilesModule: ProfilesSettingsModel;
 }

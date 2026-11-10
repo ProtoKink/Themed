@@ -5,22 +5,30 @@ import tseslint from 'typescript-eslint';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig(
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  {
-    ignores: ['dist/**/*', 'node_modules/**/*'],
-    plugins: { 
-      '@typescript-eslint': tseslint,
-      'style': stylistic,
-     },
-    rules: {
-      'style/indent': ['warn', 2],
-      'style/quotes': ['warn', 'single'],
-      'style/semi': ['error', 'always'],
-      'style/linebreak-style': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn'],
-    },
-    languageOptions: { globals: { ...globals.browser, ...globals.node } },
-  },
+	{
+		ignores: ['dist/']
+	},
+	{
+		plugins: {
+			'@typescript-eslint': tseslint.plugin,
+			'@stylistic-eslint': stylistic
+		},
+		rules: {
+			'@stylistic-eslint/indent': ['warn', 'tab'],
+			'@stylistic-eslint/quotes': ['warn', 'single'],
+			'@stylistic-eslint/semi': ['warn', 'always'],
+			'@typescript-eslint/no-explicit-any': 'off',
+			'@typescript-eslint/no-unused-vars': ['warn', {
+				'args': 'all',
+				'argsIgnorePattern': '^_',
+				'caughtErrors': 'all',
+				'caughtErrorsIgnorePattern': '^_',
+				'destructuredArrayIgnorePattern': '^_',
+				'varsIgnorePattern': '^_',
+			}],
+			'eqeqeq': ['warn', 'always'],
+		},
+		languageOptions: { globals: { ...globals.browser } },
+		extends: [eslint.configs.recommended, tseslint.configs.recommended],
+	},
 );

@@ -1,4 +1,30 @@
+/* #region Screens */
+
+#chat-admin-screen,
+#chatroom-admin-subscreen,
+#chat-block-item-screen,
+#online-profile-screen,
+#information-sheet-screen,
+#title-subscreen {
+  p, h1, h2, h3, label, span {
+    color: var(--tmd-text);
+  }
+}
+
+/* #endregion Screens */
+
 /* #region InformationSheet */
+
+#information-sheet-screen {
+	dt, 
+	dd {
+		color: var(--tmd-text);
+	}
+}
+
+#information-sheet-screen .information-sheet-permissions .dropdown-label {
+	color: var(--tmd-text);
+}
 
 #AllowedInteractions-dropdown-label {
   color: var(--tmd-text);
@@ -7,11 +33,6 @@
 /* #endregion InformationSheet */
 
 /* #region Title */
-
-#title-subscreen-h1,
-#input-nickname-group {
-  color: var(--tmd-text);
-}
 
 #title-subscreen-titlebuttons .button.title-button[active] {
   --button-color: var(--tmd-accent);
@@ -23,10 +44,21 @@
 
 /* #region AdminCustomization */
 
-#chatroom-admin-subscreen {
-  p, h1, label, span {
-    color: var(--tmd-text);
-  }
+#chatroom-admin-subscreen-grid {
+	border-color: var(--tmd-accent);
+}
+
+.room-custom-section h2 {
+	border-color: var(--tmd-accent);
+}
+
+#room-custom-preview-frame {
+	background-color: var(--tmd-element);
+	border-color: var(--tmd-accent);
+}
+
+.room-custom-empty {
+	color: var(--tmd-text);
 }
 
 /* #endregion AdminCustomization */
