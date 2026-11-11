@@ -20,6 +20,10 @@
 	dd {
 		color: var(--tmd-text);
 	}
+
+	.information-sheet-column h3 {
+		border-bottom-color: rgba(255, 255, 255, 0.35);
+	}
 }
 
 #information-sheet-screen .information-sheet-permissions .dropdown-label {
