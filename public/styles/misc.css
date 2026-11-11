@@ -1,15 +1,55 @@
+/* #region Screens */
+#chat-admin-screen p, #chat-admin-screen h1, #chat-admin-screen h2, #chat-admin-screen h3, #chat-admin-screen label, #chat-admin-screen span,
+#chatroom-admin-subscreen p,
+#chatroom-admin-subscreen h1,
+#chatroom-admin-subscreen h2,
+#chatroom-admin-subscreen h3,
+#chatroom-admin-subscreen label,
+#chatroom-admin-subscreen span,
+#chat-block-item-screen p,
+#chat-block-item-screen h1,
+#chat-block-item-screen h2,
+#chat-block-item-screen h3,
+#chat-block-item-screen label,
+#chat-block-item-screen span,
+#online-profile-screen p,
+#online-profile-screen h1,
+#online-profile-screen h2,
+#online-profile-screen h3,
+#online-profile-screen label,
+#online-profile-screen span,
+#information-sheet-screen p,
+#information-sheet-screen h1,
+#information-sheet-screen h2,
+#information-sheet-screen h3,
+#information-sheet-screen label,
+#information-sheet-screen span,
+#title-subscreen p,
+#title-subscreen h1,
+#title-subscreen h2,
+#title-subscreen h3,
+#title-subscreen label,
+#title-subscreen span {
+  color: var(--tmd-text);
+}
+
+/* #endregion Screens */
 /* #region InformationSheet */
+#information-sheet-screen dt,
+#information-sheet-screen dd {
+  color: var(--tmd-text);
+}
+
+#information-sheet-screen .information-sheet-permissions .dropdown-label {
+  color: var(--tmd-text);
+}
+
 #AllowedInteractions-dropdown-label {
   color: var(--tmd-text);
 }
 
 /* #endregion InformationSheet */
 /* #region Title */
-#title-subscreen-h1,
-#input-nickname-group {
-  color: var(--tmd-text);
-}
-
 #title-subscreen-titlebuttons .button.title-button[active] {
   --button-color: var(--tmd-accent);
   --hover-color: var(--tmd-accent-hover);
@@ -18,7 +58,20 @@
 
 /* #endregion Title */
 /* #region AdminCustomization */
-#chatroom-admin-subscreen p, #chatroom-admin-subscreen h1, #chatroom-admin-subscreen label, #chatroom-admin-subscreen span {
+#chatroom-admin-subscreen-grid {
+  border-color: var(--tmd-accent);
+}
+
+.room-custom-section h2 {
+  border-color: var(--tmd-accent);
+}
+
+#room-custom-preview-frame {
+  background-color: var(--tmd-element);
+  border-color: var(--tmd-accent);
+}
+
+.room-custom-empty {
   color: var(--tmd-text);
 }
 

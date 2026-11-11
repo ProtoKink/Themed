@@ -1,9 +1,11 @@
+.element-input,
 textarea,
 input:not([type=range]) {
   background: var(--tmd-element);
   color: var(--tmd-text);
   border: min(0.2vh, 0.1vw) solid var(--tmd-accent);
 }
+.element-input:invalid:not(:disabled):not(:read-only),
 textarea:invalid:not(:disabled):not(:read-only),
 input:not([type=range]):invalid:not(:disabled):not(:read-only) {
   border-color: var(--tmd-invalid);

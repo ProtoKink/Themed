@@ -1915,7 +1915,8 @@ var Themed = (() => {
     const loginOptions = getLocalSettings().loginOptions;
     const optionsButton = ElementButton.Create(ids.optionsOpen, () => optionsSheet.showModal(), {
       tooltip: "[Themed] Login Options",
-      image: "./Icons/Preference.png"
+      image: `${"https://protokink.github.io/Themed/public"}/images/mod.png`,
+      imageColor: "#690092"
     });
     document.body.appendChild(optionsButton);
     const optionsSheet = ElementCreate({
@@ -1978,9 +1979,9 @@ var Themed = (() => {
       });
       G.patchFunction("LoginDoNextThankYou", {
         "CharacterRelease(char, false);": "",
-        "CharacterAppearanceFullRandom(char);": "",
+        "CharacterAppearanceFullRandom(char, undefined, false);": "",
         'if (InventoryGet(char, "ItemNeck") != null) InventoryRemove(char, "ItemNeck", false);': "",
-        "CharacterFullRandomRestrain(char)": ""
+        "CharacterFullRandomRestrain(char, undefined, false);": ""
       });
     }
     if (loginOptions.hideCredits) {
@@ -3871,7 +3872,7 @@ var Themed = (() => {
             ElementWrap("tmd-colors-color-picker-backdrop")?.toggleAttribute("hidden", true);
           }, "onExit")
         }).then((colorPicker) => {
-          let backdrop = ElementWrap("tmd-colors-color-picker-backdrop");
+          const backdrop = ElementWrap("tmd-colors-color-picker-backdrop");
           if (!backdrop) {
             ElementCreate({
               tag: "div",
@@ -3926,7 +3927,7 @@ var Themed = (() => {
         const limited = item.Icons.includes("AllowedLimited");
         if (blocked) return specialColors.blocked[hover ? 1 : 0];
         else if (item.Worn) return specialColors.equipped[hover ? 1 : 0];
-        else if (item.Craft != null && item.Craft.Name != null) return specialColors.crafted[hover ? 1 : 0];
+        else if (item.Craft && item.Craft.Name) return specialColors.crafted[hover ? 1 : 0];
         else if (unusable) return plainColors.elementDisabled;
         else if (limited) return specialColors.limited[hover ? 1 : 0];
         else return hover ? plainColors.elementHover : plainColors.element;
@@ -3957,7 +3958,7 @@ var Themed = (() => {
       if (!doRedraw()) return next(args);
       const [Left, Top, Width, Height, Label, Color2, Image, , , Disabled] = args;
       let [, , , , , , , BackText, NextText, , ArrowWidth] = args;
-      if (ArrowWidth == null || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
+      if (!ArrowWidth || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
       const LeftSplit = Left + ArrowWidth;
       const RightSplit = Left + Width - ArrowWidth;
       ControllerAddActiveArea(Left, Top);
@@ -3988,10 +3989,9 @@ var Themed = (() => {
       MainCanvas.closePath();
       DrawTextFit(Label, Left + Width / 2, Top + Height / 2 + 1, CommonIsMobile ? Width - 6 : Width - 36, Color2);
       DrawTextFit(Label, Left + Width / 2, Top + Height / 2 + 1, CommonIsMobile ? Width - 6 : Width - 36, "Black");
-      if (Image != null && Image != "") {
+      if (Image) {
         DrawImage(Image, Left + 2, Top + 2);
       }
-      ControllerAddActiveArea(Left + Width / 2, Top);
       MainCanvas.beginPath();
       MainCanvas.fillStyle = "Black";
       MainCanvas.moveTo(Left + 15, Top + Height / 5);
@@ -4008,8 +4008,8 @@ var Themed = (() => {
       MainCanvas.closePath();
       MainCanvas.restore();
       if (CommonIsMobile) return;
-      if (BackText == null) BackText = /* @__PURE__ */ __name(() => "MISSING VALUE FOR: BACK TEXT", "BackText");
-      if (NextText == null) NextText = /* @__PURE__ */ __name(() => "MISSING VALUE FOR: NEXT TEXT", "NextText");
+      if (!BackText) BackText = /* @__PURE__ */ __name(() => "MISSING VALUE FOR: BACK TEXT", "BackText");
+      if (!NextText) NextText = /* @__PURE__ */ __name(() => "MISSING VALUE FOR: NEXT TEXT", "NextText");
       if (MouseX >= Left && MouseX <= Left + Width && MouseY >= Top && MouseY <= Top + Height && !Disabled)
         DrawHoverElements.push(() => {
           DrawButtonHover(Left, Top, Width, Height, MouseX < LeftSplit ? BackText() : MouseX >= RightSplit ? NextText() : "");
@@ -4199,7 +4199,6 @@ var Themed = (() => {
         return "~" /* Base */;
       })();
       color = "@" /* FromButton */ + buttonStateSymbol + color;
-      ControllerAddActiveArea(x, y2);
       drawButtonRect(
         x,
         y2,
@@ -4225,7 +4224,7 @@ var Themed = (() => {
           DrawImageEx(image, MainCanvas, baseImageRect.x, baseImageRect.y, { Width: imageRect[2], Height: imageRect[3] });
         }
       }
-      if (hoveringText != null && isHovering && !CommonPhotoMode) {
+      if (hoveringText && isHovering && !CommonPhotoMode) {
         DrawHoverElements.push(() => {
           const rect = tooltipPosition ?? RectMakeRect(x, y2, width, height);
           DrawButtonHover(...RectGetFrame(rect), hoveringText);
@@ -4241,7 +4240,7 @@ var Themed = (() => {
       if (!doRedraw()) return next(args);
       const [, , Width, Height, HoveringText] = args;
       let [Left, Top] = args;
-      if (HoveringText == null || HoveringText == "") return next(args);
+      if (!HoveringText || !HoveringText) return next(args);
       Left = MouseX > 1e3 ? Left - 475 : Left + Width + 25;
       Top = Top + (Height - 65) / 2;
       MainCanvas.save();
@@ -4360,7 +4359,6 @@ var Themed = (() => {
         ImageY += 1 + Math.floor(Math.random() * 3);
       }
       DrawRect(X2, Y2, Width, Height, Background);
-      ControllerAddActiveArea(X2, Y2);
       DrawEmptyRect(X2, Y2, Width, Height, hover ? plainColors.accentHover : plainColors.accent);
       if (Path !== "") DrawImageResize(Path, ImageX, ImageY, ImageWidth, ImageHeight);
       DrawPreviewIcons(Icons ?? [], X2, Y2);
@@ -4507,7 +4505,7 @@ var Themed = (() => {
       let parsedColor = color;
       try {
         parsedColor = color_default(color.toLowerCase()).hex();
-      } catch (e) {
+      } catch {
         parsedColor = color;
       }
       if (parsedColor === "#000000") {
@@ -4530,7 +4528,7 @@ var Themed = (() => {
       let parsedColor = args[4];
       try {
         parsedColor = color_default(args[4].toLowerCase()).hex();
-      } catch (e) {
+      } catch {
         parsedColor = args[4];
       }
       if (parsedColor === "#000000") {
@@ -4551,8 +4549,7 @@ var Themed = (() => {
       let [, , Y2, , ,] = args;
       const isHovering = MouseHovering(X2, Y2, Width, Height);
       if (!Text) return;
-      ControllerAddActiveArea(X2, Y2);
-      if (BackColor != null) {
+      if (BackColor) {
         if (!isHovering) {
           drawRect(X2, Y2, Width, Height, BackColor, plainColors.accent);
         } else {
@@ -4560,14 +4557,14 @@ var Themed = (() => {
         }
       }
       let TextSize;
-      if (MaxLine != null) {
+      if (MaxLine) {
         TextSize = MainCanvas.font;
         GetWrapTextSize(Text, Width, MaxLine);
       }
       let parsedForeColor = ForeColor;
       try {
         parsedForeColor = color_default(ForeColor.toLowerCase()).hex();
-      } catch (e) {
+      } catch {
         parsedForeColor = ForeColor;
       }
       MainCanvas.fillStyle = parsedForeColor === "#000000" ? plainColors.text : ForeColor;
@@ -4596,7 +4593,7 @@ var Themed = (() => {
         }
         MainCanvas.fillText(line, X2 + Width / 2, Y2);
       } else MainCanvas.fillText(Text, X2 + Width / 2, Y2 + Height / 2);
-      if (MaxLine != null && TextSize != null) MainCanvas.font = TextSize;
+      if (MaxLine && TextSize) MainCanvas.font = TextSize;
     }, ModuleCategory.GuiRedraw);
   }
   __name(hookDrawTextWrap, "hookDrawTextWrap");
@@ -4927,7 +4924,7 @@ var Themed = (() => {
           Action(args) {
             if (!args) return B("ShareModule").share(void 0);
             const targetNumber = parseInt(args, 10);
-            const target = ChatRoomCharacter.find((c) => c.MemberNumber == targetNumber);
+            const target = ChatRoomCharacter.find((c) => c.MemberNumber === targetNumber);
             if (!target)
               Rn("theme-share-error", `No character with MemberNumber ${targetNumber} found!`);
             else
@@ -5021,7 +5018,7 @@ var Themed = (() => {
         (args, next) => {
           if (!this.settings.modEnabled) return next(args);
           if (!this.settings.doIndicateCharacterAbsence) return next(args);
-          if (!(CurrentScreen == "ChatRoom")) return next(args);
+          if (!(CurrentScreen === "ChatRoom")) return next(args);
           if (!CurrentCharacter) return next(args);
           next(args);
           if (!CurrentCharacter || !CurrentCharacter?.MemberNumber) return;
@@ -5059,7 +5056,7 @@ var Themed = (() => {
         (args, next) => {
           if (!this.settings.modEnabled) return next(args);
           if (!this.settings.doIndicateCharacterAbsence) return next(args);
-          if (!(CurrentScreen == "Appearance")) return next(args);
+          if (!(CurrentScreen === "Appearance")) return next(args);
           if (!CharacterAppearanceSelection || !CharacterAppearanceSelection.MemberNumber) return next(args);
           next(args);
           if (CharacterAppearanceSelection === null) return;
@@ -5486,7 +5483,7 @@ var Themed = (() => {
       ColorsModule.reloadTheme();
     }
     share(target) {
-      Rn("theme-share", "Shared theme with " + (target ? CharacterNickname(ChatRoomCharacter.find((c) => c.MemberNumber == target)) : "everyone"));
+      Rn("theme-share", "Shared theme with " + (target ? CharacterNickname(ChatRoomCharacter.find((c) => c.MemberNumber === target)) : "everyone"));
       An(`${CharacterNickname(Player)} shares ${CharacterPronoun(Player, "Possessive", false)} Themed theme!`, target);
       this.channel?.sendEvent("ThemedTheme", {
         Theme: B("ColorsModule").settings,
