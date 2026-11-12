@@ -14,9 +14,6 @@ export function hookDrawBackNextButton() {
 		const LeftSplit = Left + ArrowWidth;
 		const RightSplit = Left + Width - ArrowWidth;
 
-		ControllerAddActiveArea(Left, Top);
-		ControllerAddActiveArea(Left + Width - ArrowWidth, Top);
-
 		MainCanvas.save();
 		MainCanvas.textAlign = 'center';
 
