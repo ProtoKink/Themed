@@ -3961,8 +3961,6 @@ var Themed = (() => {
       if (!ArrowWidth || ArrowWidth > Width / 2) ArrowWidth = Width / 2;
       const LeftSplit = Left + ArrowWidth;
       const RightSplit = Left + Width - ArrowWidth;
-      ControllerAddActiveArea(Left, Top);
-      ControllerAddActiveArea(Left + Width - ArrowWidth, Top);
       MainCanvas.save();
       MainCanvas.textAlign = "center";
       MainCanvas.beginPath();
