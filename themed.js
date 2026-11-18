@@ -1,9 +1,31 @@
 "use strict";
 var Themed = (() => {
   var __defProp = Object.defineProperty;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
   var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, { get: all[name], enumerable: true });
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
   var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+
+  // src/themed.ts
+  var themed_exports = {};
+  __export(themed_exports, {
+    isEnabled: () => isEnabled
+  });
 
   // <define:BUNDLED_PUBLIC_ASSET_MAP>
   var define_BUNDLED_PUBLIC_ASSET_MAP_default = {};
@@ -4031,7 +4053,9 @@ var Themed = (() => {
       "Assets/Map/"
     ],
     doColorizeImageIncludes: [
-      "https://protokink.github.io/Themed/public"
+      "https://protokink.github.io/Themed/public",
+      "https://protokink",
+      "http://localhost"
     ],
     doNotColorizeImages: [
       "Icons/Accept.png",
@@ -4083,7 +4107,9 @@ var Themed = (() => {
       "Assets/Map/"
     ],
     doColorizeHTMLImageIncludes: [
-      "https://protokink.github.io/Themed/public"
+      "https://protokink.github.io/Themed/public",
+      "https://protokink",
+      "http://localhost"
     ],
     doNotColorizeHTMLImages: [
       "Icons/Information.svg",
@@ -4607,6 +4633,7 @@ var Themed = (() => {
         options2 ?? (options2 = {});
         if (!options2.image || typeof options2.image !== "string") return next(args);
         if (!_Image.doColorizeHTMLImage(options2.image)) return next(args);
+        if (options2.imageColor) return next(args);
         options2.imageColor = plainColors.accent;
         return next(args);
       },
@@ -4775,9 +4802,9 @@ var Themed = (() => {
   };
   var BcStyle = {
     injectAll() {
-      const isEnabled = p.playerStorage.GlobalModule.modEnabled;
+      const isEnabled2 = p.playerStorage.GlobalModule.modEnabled;
       H.injectEmbed("tmd-style", `${"https://protokink.github.io/Themed/public"}/styles/themed.css`);
-      if (!isEnabled) return;
+      if (!isEnabled2) return;
       H.injectInline("tmd-root", composeRoot());
       H.injectEmbed("tmd-chat-room-search", `${"https://protokink.github.io/Themed/public"}/styles/chatroom_search.css`);
       H.injectEmbed("tmd-preference", `${"https://protokink.github.io/Themed/public"}/styles/preference.css`);
@@ -5625,7 +5652,20 @@ var Themed = (() => {
   });
   var GuiReset = _GuiReset;
 
+  // src/utilities/api.ts
+  function getApi() {
+    return Object.freeze({
+      get isEnabled() {
+        const globalModule = B("GlobalModule");
+        if (!globalModule) return false;
+        return globalModule.settings.modEnabled;
+      }
+    });
+  }
+  __name(getApi, "getApi");
+
   // src/themed.ts
+  var { isEnabled } = getApi();
   (async () => {
     const changelog = await fetch(`${"https://protokink.github.io/Themed/public"}/text/changelog.txt`).then((res) => res.text()).then((text) => text.replace(/\r\n/g, "\n"));
     const migrators = [
@@ -5675,6 +5715,7 @@ var Themed = (() => {
       }
     });
   })();
+  return __toCommonJS(themed_exports);
 })();
 /*! Bundled license information:
 

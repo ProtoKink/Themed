@@ -47,8 +47,14 @@
   color: var(--tmd-text);
 }
 
-#AllowedInteractions-dropdown-label {
-  color: var(--tmd-text);
+.information-sheet-bimeter-axis {
+  background-color: var(--tmd-text);
+}
+
+[data-tmd-theme-type=dark] .information-sheet-bimeter,
+[data-tmd-theme-type=dark] .information-sheet-meter,
+[data-tmd-theme-type=dark] .information-sheet-pip {
+  border-color: rgba(255, 255, 255, 0.32);
 }
 
 /* #endregion InformationSheet */
