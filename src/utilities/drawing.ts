@@ -13,7 +13,9 @@ export const _Image = {
 	],
 
 	doColorizeImageIncludes: [
-		PUBLIC_URL
+		PUBLIC_URL,
+		'https://protokink',
+		'http://localhost'
 	],
 
 	doNotColorizeImages: [
@@ -69,7 +71,9 @@ export const _Image = {
 	],
 
 	doColorizeHTMLImageIncludes: [
-		PUBLIC_URL
+		PUBLIC_URL,
+		'https://protokink',
+		'http://localhost'
 	],
 
 	doNotColorizeHTMLImages: [
