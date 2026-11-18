@@ -16,6 +16,7 @@ export function hookElementButtonCreate() {
 
 			if (!options.image || typeof options.image !== 'string') return next(args);
 			if (!_Image.doColorizeHTMLImage(options.image)) return next(args);
+			if (options.imageColor) return next(args);
 
 			options.imageColor = plainColors.accent;
 
