@@ -11,6 +11,11 @@ import { ShareModule } from './modules/share';
 import { DeeplibMigrator } from './migrators/deeplib_migrator';
 import { GuiReset } from './screens/reset';
 import { loadLocalSettings } from './utilities/data';
+import { getApi } from './utilities/api';
+
+const { isEnabled } = getApi();
+
+export { isEnabled };
 
 (async () => {
 	const changelog = await fetch(`${PUBLIC_URL}/text/changelog.txt`)
