@@ -5655,11 +5655,11 @@ var Themed = (() => {
   // src/utilities/api.ts
   function getApi() {
     return Object.freeze({
-      get isEnabled() {
+      isEnabled: /* @__PURE__ */ __name(() => {
         const globalModule = B("GlobalModule");
         if (!globalModule) return false;
         return globalModule.settings.modEnabled;
-      }
+      }, "isEnabled")
     });
   }
   __name(getApi, "getApi");
